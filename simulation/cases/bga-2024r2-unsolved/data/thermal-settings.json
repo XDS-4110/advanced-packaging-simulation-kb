@@ -1,0 +1,540 @@
+{
+  "initial_conditions": {
+    "InitialTemperature": {
+      "value": "22",
+      "unit": "degree C"
+    }
+  },
+  "loads": [
+    {
+      "tag": "FullTemperature",
+      "id": "5948",
+      "properties": {
+        "Caption": {
+          "value": "__",
+          "unit": ""
+        },
+        "Scoping": {
+          "value": "5983",
+          "unit": ""
+        }
+      },
+      "times_s": [
+        0.0,
+        30.0,
+        1830.0,
+        1890.0,
+        3690.0,
+        3750.0,
+        5550.0,
+        5610.0,
+        7410.0,
+        7470.0,
+        9270.0,
+        9330.0,
+        11130.0,
+        11190.0,
+        12990.0,
+        13050.0,
+        14850.0,
+        14910.0,
+        16710.0,
+        16770.0,
+        18570.0,
+        18600.0
+      ],
+      "values": [
+        25.0,
+        150.0,
+        150.0,
+        -55.0,
+        -55.0,
+        150.0,
+        150.0,
+        -55.0,
+        -55.0,
+        150.0,
+        150.0,
+        -55.0,
+        -55.0,
+        150.0,
+        150.0,
+        -55.0,
+        -55.0,
+        150.0,
+        150.0,
+        -55.0,
+        -55.0,
+        25.0
+      ],
+      "value_unit": "degree C"
+    }
+  ],
+  "step_end_times_s": [
+    30.0,
+    1830.0,
+    1890.0,
+    3690.0,
+    3750.0,
+    5550.0,
+    5610.0,
+    7410.0,
+    7470.0,
+    9270.0,
+    9330.0,
+    11130.0,
+    11190.0,
+    13049.2374379261,
+    13050.0,
+    14850.0,
+    14910.0,
+    16710.0,
+    16770.0,
+    18570.0,
+    18600.0
+  ],
+  "step_controls": [
+    {
+      "EndTime": {
+        "value": "30.",
+        "unit": ""
+      },
+      "TimeIntegration": {
+        "value": "true",
+        "unit": ""
+      },
+      "LoadCaseIdentifier": {
+        "value": "",
+        "unit": ""
+      },
+      "time_step_options": {
+        "AutoTimeSteppingType": {
+          "value": "ProgramControlled",
+          "unit": ""
+        }
+      }
+    },
+    {
+      "EndTime": {
+        "value": "1830.",
+        "unit": ""
+      },
+      "TimeIntegration": {
+        "value": "true",
+        "unit": ""
+      },
+      "LoadCaseIdentifier": {
+        "value": "",
+        "unit": ""
+      },
+      "time_step_options": {
+        "AutoTimeSteppingType": {
+          "value": "ProgramControlled",
+          "unit": ""
+        }
+      }
+    },
+    {
+      "EndTime": {
+        "value": "1890.",
+        "unit": ""
+      },
+      "TimeIntegration": {
+        "value": "true",
+        "unit": ""
+      },
+      "LoadCaseIdentifier": {
+        "value": "",
+        "unit": ""
+      },
+      "time_step_options": {
+        "AutoTimeSteppingType": {
+          "value": "ProgramControlled",
+          "unit": ""
+        }
+      }
+    },
+    {
+      "EndTime": {
+        "value": "3690.",
+        "unit": ""
+      },
+      "TimeIntegration": {
+        "value": "true",
+        "unit": ""
+      },
+      "LoadCaseIdentifier": {
+        "value": "",
+        "unit": ""
+      },
+      "time_step_options": {
+        "AutoTimeSteppingType": {
+          "value": "ProgramControlled",
+          "unit": ""
+        }
+      }
+    },
+    {
+      "EndTime": {
+        "value": "3750.",
+        "unit": ""
+      },
+      "TimeIntegration": {
+        "value": "true",
+        "unit": ""
+      },
+      "LoadCaseIdentifier": {
+        "value": "",
+        "unit": ""
+      },
+      "time_step_options": {
+        "AutoTimeSteppingType": {
+          "value": "ProgramControlled",
+          "unit": ""
+        }
+      }
+    },
+    {
+      "EndTime": {
+        "value": "5550.",
+        "unit": ""
+      },
+      "TimeIntegration": {
+        "value": "true",
+        "unit": ""
+      },
+      "LoadCaseIdentifier": {
+        "value": "",
+        "unit": ""
+      },
+      "time_step_options": {
+        "AutoTimeSteppingType": {
+          "value": "ProgramControlled",
+          "unit": ""
+        }
+      }
+    },
+    {
+      "EndTime": {
+        "value": "5610.",
+        "unit": ""
+      },
+      "TimeIntegration": {
+        "value": "true",
+        "unit": ""
+      },
+      "LoadCaseIdentifier": {
+        "value": "",
+        "unit": ""
+      },
+      "time_step_options": {
+        "AutoTimeSteppingType": {
+          "value": "ProgramControlled",
+          "unit": ""
+        }
+      }
+    },
+    {
+      "EndTime": {
+        "value": "7410.",
+        "unit": ""
+      },
+      "TimeIntegration": {
+        "value": "true",
+        "unit": ""
+      },
+      "LoadCaseIdentifier": {
+        "value": "",
+        "unit": ""
+      },
+      "time_step_options": {
+        "AutoTimeSteppingType": {
+          "value": "ProgramControlled",
+          "unit": ""
+        }
+      }
+    },
+    {
+      "EndTime": {
+        "value": "7470.",
+        "unit": ""
+      },
+      "TimeIntegration": {
+        "value": "true",
+        "unit": ""
+      },
+      "LoadCaseIdentifier": {
+        "value": "",
+        "unit": ""
+      },
+      "time_step_options": {
+        "AutoTimeSteppingType": {
+          "value": "ProgramControlled",
+          "unit": ""
+        }
+      }
+    },
+    {
+      "EndTime": {
+        "value": "9270.",
+        "unit": ""
+      },
+      "TimeIntegration": {
+        "value": "true",
+        "unit": ""
+      },
+      "LoadCaseIdentifier": {
+        "value": "",
+        "unit": ""
+      },
+      "time_step_options": {
+        "AutoTimeSteppingType": {
+          "value": "ProgramControlled",
+          "unit": ""
+        }
+      }
+    },
+    {
+      "EndTime": {
+        "value": "9330.",
+        "unit": ""
+      },
+      "TimeIntegration": {
+        "value": "true",
+        "unit": ""
+      },
+      "LoadCaseIdentifier": {
+        "value": "",
+        "unit": ""
+      },
+      "time_step_options": {
+        "AutoTimeSteppingType": {
+          "value": "ProgramControlled",
+          "unit": ""
+        }
+      }
+    },
+    {
+      "EndTime": {
+        "value": "11130.",
+        "unit": ""
+      },
+      "TimeIntegration": {
+        "value": "true",
+        "unit": ""
+      },
+      "LoadCaseIdentifier": {
+        "value": "",
+        "unit": ""
+      },
+      "time_step_options": {
+        "AutoTimeSteppingType": {
+          "value": "ProgramControlled",
+          "unit": ""
+        }
+      }
+    },
+    {
+      "EndTime": {
+        "value": "11190.",
+        "unit": ""
+      },
+      "TimeIntegration": {
+        "value": "true",
+        "unit": ""
+      },
+      "LoadCaseIdentifier": {
+        "value": "",
+        "unit": ""
+      },
+      "time_step_options": {
+        "AutoTimeSteppingType": {
+          "value": "ProgramControlled",
+          "unit": ""
+        }
+      }
+    },
+    {
+      "EndTime": {
+        "value": "13049.2374379261",
+        "unit": ""
+      },
+      "TimeIntegration": {
+        "value": "true",
+        "unit": ""
+      },
+      "LoadCaseIdentifier": {
+        "value": "",
+        "unit": ""
+      },
+      "time_step_options": {
+        "AutoTimeSteppingType": {
+          "value": "ProgramControlled",
+          "unit": ""
+        }
+      }
+    },
+    {
+      "EndTime": {
+        "value": "13050.",
+        "unit": ""
+      },
+      "TimeIntegration": {
+        "value": "true",
+        "unit": ""
+      },
+      "LoadCaseIdentifier": {
+        "value": "",
+        "unit": ""
+      },
+      "time_step_options": {
+        "AutoTimeSteppingType": {
+          "value": "ProgramControlled",
+          "unit": ""
+        }
+      }
+    },
+    {
+      "EndTime": {
+        "value": "14850.",
+        "unit": ""
+      },
+      "TimeIntegration": {
+        "value": "true",
+        "unit": ""
+      },
+      "LoadCaseIdentifier": {
+        "value": "",
+        "unit": ""
+      },
+      "time_step_options": {
+        "AutoTimeSteppingType": {
+          "value": "ProgramControlled",
+          "unit": ""
+        }
+      }
+    },
+    {
+      "EndTime": {
+        "value": "14910.",
+        "unit": ""
+      },
+      "TimeIntegration": {
+        "value": "true",
+        "unit": ""
+      },
+      "LoadCaseIdentifier": {
+        "value": "",
+        "unit": ""
+      },
+      "time_step_options": {
+        "AutoTimeSteppingType": {
+          "value": "ProgramControlled",
+          "unit": ""
+        }
+      }
+    },
+    {
+      "EndTime": {
+        "value": "16710.",
+        "unit": ""
+      },
+      "TimeIntegration": {
+        "value": "true",
+        "unit": ""
+      },
+      "LoadCaseIdentifier": {
+        "value": "",
+        "unit": ""
+      },
+      "time_step_options": {
+        "AutoTimeSteppingType": {
+          "value": "ProgramControlled",
+          "unit": ""
+        }
+      }
+    },
+    {
+      "EndTime": {
+        "value": "16770.",
+        "unit": ""
+      },
+      "TimeIntegration": {
+        "value": "true",
+        "unit": ""
+      },
+      "LoadCaseIdentifier": {
+        "value": "",
+        "unit": ""
+      },
+      "time_step_options": {
+        "AutoTimeSteppingType": {
+          "value": "ProgramControlled",
+          "unit": ""
+        }
+      }
+    },
+    {
+      "EndTime": {
+        "value": "18570.",
+        "unit": ""
+      },
+      "TimeIntegration": {
+        "value": "true",
+        "unit": ""
+      },
+      "LoadCaseIdentifier": {
+        "value": "",
+        "unit": ""
+      },
+      "time_step_options": {
+        "AutoTimeSteppingType": {
+          "value": "ProgramControlled",
+          "unit": ""
+        }
+      }
+    },
+    {
+      "EndTime": {
+        "value": "18600.",
+        "unit": ""
+      },
+      "TimeIntegration": {
+        "value": "true",
+        "unit": ""
+      },
+      "LoadCaseIdentifier": {
+        "value": "",
+        "unit": ""
+      },
+      "time_step_options": {
+        "AutoTimeSteppingType": {
+          "value": "ProgramControlled",
+          "unit": ""
+        }
+      }
+    }
+  ],
+  "solver": {
+    "AnalysisType": {
+      "value": "Transient",
+      "unit": ""
+    },
+    "PhysicsType": {
+      "value": "Thermal",
+      "unit": ""
+    },
+    "SolverTargetName": {
+      "value": "ANSYS",
+      "unit": ""
+    },
+    "SolverUnits": {
+      "value": "6",
+      "unit": ""
+    },
+    "UnknownPointerId": {
+      "value": "00000000028ABF08",
+      "unit": ""
+    }
+  }
+}

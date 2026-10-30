@@ -1,0 +1,1088 @@
+[
+  {
+    "name": "SI",
+    "description": "",
+    "properties": [
+      {
+        "property": "Density",
+        "qualifiers": {
+          "Field Variable Compatible": "Temperature",
+          "Localized Name": "密度"
+        },
+        "parameters": [
+          {
+            "parameter": "Density",
+            "raw_value": "2330",
+            "unit": "kg m^-3",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "密度"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Localized Name": "温度",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled",
+              "Field Units": "C"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Thermal Conductivity",
+        "qualifiers": {
+          "Behavior": "Isotropic",
+          "Field Variable Compatible": "Temperature",
+          "Localized Name": "各向同性热导率"
+        },
+        "parameters": [
+          {
+            "parameter": "Thermal Conductivity",
+            "raw_value": "154",
+            "unit": "W m^-1 C^-1",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "热导率"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Localized Name": "温度",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled",
+              "Field Units": "C"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Specific Heat",
+        "qualifiers": {
+          "Definition": "Constant Pressure",
+          "Field Variable Compatible": "Temperature",
+          "Symbol": "Cᵨ",
+          "Localized Name": "比热恒压"
+        },
+        "parameters": [
+          {
+            "parameter": "Specific Heat",
+            "raw_value": "713",
+            "unit": "J kg^-1 C^-1",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "比热"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Localized Name": "温度",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled",
+              "Field Units": "C"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Coefficient of Thermal Expansion",
+        "qualifiers": {
+          "Definition": "Instantaneous",
+          "Behavior": "Isotropic",
+          "Localized Name": "各向同性瞬时热膨胀系数"
+        },
+        "parameters": [
+          {
+            "parameter": "Coefficient of Thermal Expansion",
+            "raw_value": "2.5e-06",
+            "unit": "C^-1",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "热膨胀系数"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Localized Name": "温度"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Elasticity",
+        "qualifiers": {
+          "Behavior": "Isotropic",
+          "Derive from": "Young's Modulus and Poisson's Ratio",
+          "Field Variable Compatible": "Temperature",
+          "Localized Name": "各向同性弹性"
+        },
+        "parameters": [
+          {
+            "parameter": "Young's Modulus",
+            "raw_value": "112400000000",
+            "unit": "Pa",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "杨氏模量"
+            }
+          },
+          {
+            "parameter": "Poisson's Ratio",
+            "raw_value": "0.28",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "泊松比"
+            }
+          },
+          {
+            "parameter": "Bulk Modulus",
+            "raw_value": "85151515151.5152",
+            "unit": "Pa",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "体积模量"
+            }
+          },
+          {
+            "parameter": "Shear Modulus",
+            "raw_value": "43906250000",
+            "unit": "Pa",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "剪切模量"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Localized Name": "温度",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled",
+              "Field Units": "C"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Underfill",
+    "description": "",
+    "properties": [
+      {
+        "property": "Density",
+        "qualifiers": {
+          "Field Variable Compatible": "Temperature",
+          "Localized Name": "密度"
+        },
+        "parameters": [
+          {
+            "parameter": "Density",
+            "raw_value": "1490",
+            "unit": "kg m^-3",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "密度"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Localized Name": "温度",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled",
+              "Field Units": "C"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Coefficient of Thermal Expansion",
+        "qualifiers": {
+          "Definition": "Instantaneous",
+          "Behavior": "Isotropic",
+          "Localized Name": "各向同性瞬时热膨胀系数"
+        },
+        "parameters": [
+          {
+            "parameter": "Coefficient of Thermal Expansion",
+            "raw_value": "3.2e-05",
+            "unit": "C^-1",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "热膨胀系数"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Localized Name": "温度"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Elasticity",
+        "qualifiers": {
+          "Behavior": "Isotropic",
+          "Derive from": "Young's Modulus and Poisson's Ratio",
+          "Field Variable Compatible": "Temperature",
+          "Localized Name": "各向同性弹性"
+        },
+        "parameters": [
+          {
+            "parameter": "Young's Modulus",
+            "raw_value": "8000000000",
+            "unit": "Pa",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "杨氏模量"
+            }
+          },
+          {
+            "parameter": "Poisson's Ratio",
+            "raw_value": "0.3",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "泊松比"
+            }
+          },
+          {
+            "parameter": "Bulk Modulus",
+            "raw_value": "6666666666.66667",
+            "unit": "Pa",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "体积模量"
+            }
+          },
+          {
+            "parameter": "Shear Modulus",
+            "raw_value": "3076923076.92308",
+            "unit": "Pa",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "剪切模量"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Localized Name": "温度",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled",
+              "Field Units": "C"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Specific Heat",
+        "qualifiers": {
+          "Definition": "Constant Pressure",
+          "Field Variable Compatible": "Temperature",
+          "Symbol": "Cᵨ",
+          "Localized Name": "比热恒压"
+        },
+        "parameters": [
+          {
+            "parameter": "Specific Heat",
+            "raw_value": "870",
+            "unit": "J kg^-1 C^-1",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "比热"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Localized Name": "温度",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled",
+              "Field Units": "C"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Thermal Conductivity",
+        "qualifiers": {
+          "Behavior": "Isotropic",
+          "Field Variable Compatible": "Temperature",
+          "Localized Name": "各向同性热导率"
+        },
+        "parameters": [
+          {
+            "parameter": "Thermal Conductivity",
+            "raw_value": "0.55",
+            "unit": "W m^-1 C^-1",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "热导率"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Localized Name": "温度",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled",
+              "Field Units": "C"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Sn63Pb37",
+    "description": "",
+    "properties": [
+      {
+        "property": "Density",
+        "qualifiers": {
+          "Field Variable Compatible": "Temperature",
+          "Localized Name": "密度"
+        },
+        "parameters": [
+          {
+            "parameter": "Density",
+            "raw_value": "8400",
+            "unit": "kg m^-3",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "密度"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Localized Name": "温度",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Upper Limit": "125",
+              "Lower Limit": "-55",
+              "Field Units": "C"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Coefficient of Thermal Expansion",
+        "qualifiers": {
+          "Definition": "Instantaneous",
+          "Behavior": "Isotropic",
+          "Localized Name": "各向同性瞬时热膨胀系数"
+        },
+        "parameters": [
+          {
+            "parameter": "Coefficient of Thermal Expansion",
+            "raw_value": "2.41e-05,2.46e-05,2.5e-05,2.52e-05,2.54e-05,2.61e-05,2.68e-05,2.73e-05,2.78e-05",
+            "unit": "C^-1",
+            "qualifiers": {
+              "Variable Type": "Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent",
+              "Localized Name": "热膨胀系数"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "-55,-35,-15,5,12,50,75,100,125",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent,Independent,Independent,Independent,Independent,Independent,Independent,Independent,Independent",
+              "Localized Name": "温度"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Elasticity",
+        "qualifiers": {
+          "Behavior": "Isotropic",
+          "Derive from": "Young's Modulus and Poisson's Ratio",
+          "Field Variable Compatible": "Temperature",
+          "Localized Name": "各向同性弹性"
+        },
+        "parameters": [
+          {
+            "parameter": "Young's Modulus",
+            "raw_value": "41440000000,39360000000,36620000000,33580000000,32520000000,26740000000,22940000000,19140000000,15340000000",
+            "unit": "Pa",
+            "qualifiers": {
+              "Variable Type": "Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent",
+              "Localized Name": "杨氏模量"
+            }
+          },
+          {
+            "parameter": "Poisson's Ratio",
+            "raw_value": "0.352,0.354,0.357,0.36,0.363,0.365,0.37,0.377,0.384",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent",
+              "Localized Name": "泊松比"
+            }
+          },
+          {
+            "parameter": "Bulk Modulus",
+            "raw_value": "46666666666.6667,44931506849.3151,42680652680.6527,39976190476.1905,39562043795.6204,33012345679.0123,29410256410.2564,25934959349.5935,22040229885.0575",
+            "unit": "Pa",
+            "qualifiers": {
+              "Variable Type": "Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent",
+              "Localized Name": "体积模量"
+            }
+          },
+          {
+            "parameter": "Shear Modulus",
+            "raw_value": "15325443786.9823,14534711964.5495,13492999263.0803,12345588235.2941,11929567131.328,9794871794.8718,8372262773.72263,6949891067.53813,5541907514.45087",
+            "unit": "Pa",
+            "qualifiers": {
+              "Variable Type": "Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent",
+              "Localized Name": "剪切模量"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "-55,-35,5,12,15,50,75,100,125",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent,Independent,Independent,Independent,Independent,Independent,Independent,Independent,Independent",
+              "Localized Name": "温度",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Upper Limit": "125",
+              "Lower Limit": "-55",
+              "Field Units": "C"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Thermal Conductivity",
+        "qualifiers": {
+          "Behavior": "Isotropic",
+          "Field Variable Compatible": "Temperature",
+          "Localized Name": "各向同性热导率"
+        },
+        "parameters": [
+          {
+            "parameter": "Thermal Conductivity",
+            "raw_value": "50",
+            "unit": "W m^-1 C^-1",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "热导率"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Localized Name": "温度",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Upper Limit": "125",
+              "Lower Limit": "-55",
+              "Field Units": "C"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Specific Heat",
+        "qualifiers": {
+          "Definition": "Constant Pressure",
+          "Field Variable Compatible": "Temperature",
+          "Symbol": "Cᵨ",
+          "Localized Name": "比热恒压"
+        },
+        "parameters": [
+          {
+            "parameter": "Specific Heat",
+            "raw_value": "128",
+            "unit": "J kg^-1 C^-1",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "比热"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Localized Name": "温度",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Upper Limit": "125",
+              "Lower Limit": "-55",
+              "Field Units": "C"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Viscoplasticity",
+        "qualifiers": {
+          "Definition": "Anand",
+          "Reference Units (Stress, Temperature, Per Time)": "MPa, K, s^-1",
+          "Localized Name": "Anand粘塑性"
+        },
+        "parameters": [
+          {
+            "parameter": "Initial Deformation Resistance So",
+            "raw_value": "56.63",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "初始抗变形能力"
+            }
+          },
+          {
+            "parameter": "Activation Energy Q/Universal Gas Constant R",
+            "raw_value": "10830",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "活化能Q/通用气体常数R"
+            }
+          },
+          {
+            "parameter": "Pre-exponential Factor A",
+            "raw_value": "14900000",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "指数前因子A"
+            }
+          },
+          {
+            "parameter": "Multiplier of Stress ξ",
+            "raw_value": "11",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "应力乘数ξ"
+            }
+          },
+          {
+            "parameter": "Strain Rate Sensitivity of Stress m",
+            "raw_value": "2640.75",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "应力m的应变速率敏感性"
+            }
+          },
+          {
+            "parameter": "Hardening/Softening Constant ho",
+            "raw_value": "0.303",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "硬化/软化常数ho"
+            }
+          },
+          {
+            "parameter": "Coefficient for Deformation Resistance Saturation Ŝ",
+            "raw_value": "80.415",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "变形阻力饱和系数Ŝ"
+            }
+          },
+          {
+            "parameter": "Strain Rate Sensitivity of Saturation (Deformation Resistance) n",
+            "raw_value": "0.0231",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "饱和应变速率敏感性（抗变形性）n"
+            }
+          },
+          {
+            "parameter": "Strain Rate Sensitivity of Hardening or Softening a",
+            "raw_value": "1.34",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "硬化或软化的应变速率敏感性a"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Localized Name": "温度"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Field Variable",
+        "qualifiers": {
+          "Temperature": "Temperature:TEMP",
+          "Localized Name": "场变量"
+        },
+        "parameters": []
+      }
+    ]
+  },
+  {
+    "name": "BT",
+    "description": "",
+    "properties": [
+      {
+        "property": "Density",
+        "qualifiers": {
+          "Field Variable Compatible": "Temperature",
+          "Localized Name": "密度"
+        },
+        "parameters": [
+          {
+            "parameter": "Density",
+            "raw_value": "1700",
+            "unit": "kg m^-3",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "密度"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Localized Name": "温度",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled",
+              "Field Units": "C"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Coefficient of Thermal Expansion",
+        "qualifiers": {
+          "Definition": "Instantaneous",
+          "Behavior": "Isotropic",
+          "Localized Name": "各向同性瞬时热膨胀系数"
+        },
+        "parameters": [
+          {
+            "parameter": "Coefficient of Thermal Expansion",
+            "raw_value": "1.36e-05",
+            "unit": "C^-1",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "热膨胀系数"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Localized Name": "温度"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Elasticity",
+        "qualifiers": {
+          "Behavior": "Isotropic",
+          "Derive from": "Young's Modulus and Poisson's Ratio",
+          "Field Variable Compatible": "Temperature",
+          "Localized Name": "各向同性弹性"
+        },
+        "parameters": [
+          {
+            "parameter": "Young's Modulus",
+            "raw_value": "23100000000",
+            "unit": "Pa",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "杨氏模量"
+            }
+          },
+          {
+            "parameter": "Poisson's Ratio",
+            "raw_value": "0.21",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "泊松比"
+            }
+          },
+          {
+            "parameter": "Bulk Modulus",
+            "raw_value": "13275862068.9655",
+            "unit": "Pa",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "体积模量"
+            }
+          },
+          {
+            "parameter": "Shear Modulus",
+            "raw_value": "9545454545.45455",
+            "unit": "Pa",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "剪切模量"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Localized Name": "温度",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled",
+              "Field Units": "C"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Thermal Conductivity",
+        "qualifiers": {
+          "Behavior": "Isotropic",
+          "Field Variable Compatible": "Temperature",
+          "Localized Name": "各向同性热导率"
+        },
+        "parameters": [
+          {
+            "parameter": "Thermal Conductivity",
+            "raw_value": "0.2",
+            "unit": "W m^-1 C^-1",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "热导率"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Localized Name": "温度",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled",
+              "Field Units": "C"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Specific Heat",
+        "qualifiers": {
+          "Definition": "Constant Pressure",
+          "Field Variable Compatible": "Temperature",
+          "Symbol": "Cᵨ",
+          "Localized Name": "比热恒压"
+        },
+        "parameters": [
+          {
+            "parameter": "Specific Heat",
+            "raw_value": "920",
+            "unit": "J kg^-1 C^-1",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "比热"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Localized Name": "温度",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled",
+              "Field Units": "C"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "SFL",
+    "description": "",
+    "properties": [
+      {
+        "property": "Density",
+        "qualifiers": {
+          "Field Variable Compatible": "Temperature",
+          "Localized Name": "密度"
+        },
+        "parameters": [
+          {
+            "parameter": "Density",
+            "raw_value": "1890",
+            "unit": "kg m^-3",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "密度"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Localized Name": "温度",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Upper Limit": "260",
+              "Lower Limit": "25",
+              "Field Units": "C"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Coefficient of Thermal Expansion",
+        "qualifiers": {
+          "Definition": "Instantaneous",
+          "Behavior": "Isotropic",
+          "Localized Name": "各向同性瞬时热膨胀系数"
+        },
+        "parameters": [
+          {
+            "parameter": "Coefficient of Thermal Expansion",
+            "raw_value": "8e-06,3.5e-05",
+            "unit": "C^-1",
+            "qualifiers": {
+              "Variable Type": "Dependent,Dependent",
+              "Localized Name": "热膨胀系数"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "25,150",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent,Independent",
+              "Localized Name": "温度"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Elasticity",
+        "qualifiers": {
+          "Behavior": "Isotropic",
+          "Derive from": "Young's Modulus and Poisson's Ratio",
+          "Field Variable Compatible": "Temperature",
+          "Localized Name": "各向同性弹性"
+        },
+        "parameters": [
+          {
+            "parameter": "Young's Modulus",
+            "raw_value": "26000000000,700000000",
+            "unit": "Pa",
+            "qualifiers": {
+              "Variable Type": "Dependent,Dependent",
+              "Localized Name": "杨氏模量"
+            }
+          },
+          {
+            "parameter": "Poisson's Ratio",
+            "raw_value": "0.3,0.3",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent,Dependent",
+              "Localized Name": "泊松比"
+            }
+          },
+          {
+            "parameter": "Bulk Modulus",
+            "raw_value": "21666666666.6667,583333333.333333",
+            "unit": "Pa",
+            "qualifiers": {
+              "Variable Type": "Dependent,Dependent",
+              "Localized Name": "体积模量"
+            }
+          },
+          {
+            "parameter": "Shear Modulus",
+            "raw_value": "10000000000,269230769.230769",
+            "unit": "Pa",
+            "qualifiers": {
+              "Variable Type": "Dependent,Dependent",
+              "Localized Name": "剪切模量"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "25,260",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent,Independent",
+              "Localized Name": "温度",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Upper Limit": "260",
+              "Lower Limit": "25",
+              "Field Units": "C"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Thermal Conductivity",
+        "qualifiers": {
+          "Behavior": "Isotropic",
+          "Field Variable Compatible": "Temperature",
+          "Localized Name": "各向同性热导率"
+        },
+        "parameters": [
+          {
+            "parameter": "Thermal Conductivity",
+            "raw_value": "1",
+            "unit": "W m^-1 C^-1",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "热导率"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Localized Name": "温度",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Upper Limit": "260",
+              "Lower Limit": "25",
+              "Field Units": "C"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Specific Heat",
+        "qualifiers": {
+          "Definition": "Constant Pressure",
+          "Field Variable Compatible": "Temperature",
+          "Symbol": "Cᵨ",
+          "Localized Name": "比热恒压"
+        },
+        "parameters": [
+          {
+            "parameter": "Specific Heat",
+            "raw_value": "3305.36",
+            "unit": "J kg^-1 C^-1",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Localized Name": "比热"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "C",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Localized Name": "温度",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Upper Limit": "260",
+              "Lower Limit": "25",
+              "Field Units": "C"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Field Variable",
+        "qualifiers": {
+          "Temperature": "Temperature:TEMP",
+          "Localized Name": "场变量"
+        },
+        "parameters": []
+      }
+    ]
+  }
+]

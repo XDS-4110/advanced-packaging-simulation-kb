@@ -23,3 +23,7 @@
 ## 问题排查
 
 - [COMSOL 与 ANSYS 问题案例及解决办法](troubleshooting/README.md)
+
+## BGA 参数提取案例
+
+- [首个案例：BGA 未求解参数提取](cases/bga-2024r2-unsolved/README.md)（draft，未求解；含待复核设置，不能直接作为推荐输入）。

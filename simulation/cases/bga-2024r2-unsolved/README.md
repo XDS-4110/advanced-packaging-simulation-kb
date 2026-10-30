@@ -1,0 +1,18 @@
+# BGA：Workbench 2024 R2 未求解工程的知识提取
+
+本案例依据用户提供的工程文件只读提取。**尚未求解、没有温度/应力/翘曲/寿命结果；全部技术条目为 draft。**
+
+## 内容入口
+
+- [案例总览与系统连接](01-case-overview.md)
+- [实体、材料赋值与接触](02-geometry-contacts.md)
+- [材料属性与 Anand 参数原值](03-materials.md)
+- [温度循环载荷](04-temperature-cycle.md)
+- [分析设置、网格与输入文件范围](05-settings-mesh.md)
+- [无法可靠提取的内容与补充清单](06-missing-information.md)
+- [发现的待复核问题](07-review-findings.md)
+- [提取方法与来源证据](08-provenance.md)
+
+`data/` 提供 CSV 和 JSON，保留原值、单位及定位。原始 WBPZ、STEP、Mechanical 数据库与大网格输入不上传仓库。
+
+优先复核第 7 篇的 Anand 参数、材料温区和时间节点，再补全第 6 篇的结构设置。不要将本案例直接作为已验证的自动化模板。

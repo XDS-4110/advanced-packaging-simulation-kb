@@ -1,0 +1,11 @@
+﻿material,property,parameter,engineering_raw,engineering_unit,conversion_factor,solver_material_raw,solver_material_unit,check
+SI,Specific Heat,Specific Heat,0.713,J g^-1 K^-1,1000.0,713,J kg^-1 C^-1,matched_after_unit_conversion
+SI,Elasticity,Young's Modulus,112.4,GPa,1000000000.0,112400000000,Pa,matched_after_unit_conversion
+Underfill,Elasticity,Young's Modulus,8,GPa,1000000000.0,8000000000,Pa,matched_after_unit_conversion
+Underfill,Specific Heat,Specific Heat,0.87,J g^-1 K^-1,1000.0,870,J kg^-1 C^-1,matched_after_unit_conversion
+Sn63Pb37,Elasticity,Young's Modulus,"41.44,39.36,36.62,33.58,32.52,26.74,22.94,19.14,15.34",GPa,1000000000.0,"41440000000,39360000000,36620000000,33580000000,32520000000,26740000000,22940000000,19140000000,15340000000",Pa,matched_after_unit_conversion
+Sn63Pb37,Specific Heat,Specific Heat,0.128,J g^-1 K^-1,1000.0,128,J kg^-1 C^-1,matched_after_unit_conversion
+BT,Elasticity,Young's Modulus,23.1,GPa,1000000000.0,23100000000,Pa,matched_after_unit_conversion
+BT,Specific Heat,Specific Heat,0.92,J g^-1 K^-1,1000.0,920,J kg^-1 C^-1,matched_after_unit_conversion
+SFL,Elasticity,Young's Modulus,"26,0.7",GPa,1000000000.0,"26000000000,700000000",Pa,matched_after_unit_conversion
+SFL,Specific Heat,Specific Heat,0.79,cal g^-1 K^-1,4184,3305.36,J kg^-1 C^-1,matched_after_unit_conversion

@@ -1,0 +1,151 @@
+{
+  "source": "用户提供的 BGA.wbpj、BGA_files 及 BGA.wbpz",
+  "extraction_date": "2026-10-30",
+  "method": "只读 XML/ZIP、流式 APDL 解析；只读 HDF5 名称索引。未启动求解器，未改写源工程。",
+  "file_hashes": {
+    "BGA.wbpj": {
+      "bytes": 91869,
+      "sha256": "21226f7a457281c28999568118a931f5d0fec77115345ff10e7b91410605f169"
+    },
+    "BGA_files/dp0/SYS/MECH/CAERep.xml": {
+      "bytes": 6406027,
+      "sha256": "29c0dc5026120125d8346e173de2d37d82f5ccba203f259d23e212b0c24fff00"
+    },
+    "BGA_files/dp0/SYS/MECH/MatML.xml": {
+      "bytes": 61188,
+      "sha256": "b404ca47422532894c94109bb807b1356ea436a3824137b0c222a46623c9d33f"
+    },
+    "BGA_files/dp0/SYS/ENGD/EngineeringData.xml": {
+      "bytes": 90243,
+      "sha256": "e646f71783226e446a5c81628e3c5add8ca57652d8261c1e9607915516b1576a"
+    },
+    "BGA_files/dp0/global/MECH/SYS.mechdb": {
+      "bytes": 87898472,
+      "sha256": "24f8179c3af647100fcbe62e4d18118870009741e444f1e771f94bb1dd06f367"
+    },
+    "BGA_files/dp0/SYS/MECH/ds.dat": {
+      "bytes": 1008002403,
+      "sha256": "af731ddd9a66ab91cae019a8d89fa119e96a5d3061a5cc18245259f3c97cf86f"
+    }
+  },
+  "archive_entries": [
+    {
+      "path": "BGA_files/dp0/global/MECH/SYS.engd",
+      "bytes": 85938,
+      "crc32": "282cf548",
+      "matches_local": true
+    },
+    {
+      "path": "BGA_files/dp0/global/MECH/SYS.mechdb",
+      "bytes": 87898472,
+      "crc32": "263bcbb2",
+      "matches_local": true
+    },
+    {
+      "path": "BGA_files/dp0/SYS/ENGD/EngineeringData.xml",
+      "bytes": 90243,
+      "crc32": "ed7577e1",
+      "matches_local": true
+    },
+    {
+      "path": "BGA_files/dp0/SYS/ENGD/material.engd",
+      "bytes": 85938,
+      "crc32": "282cf548",
+      "matches_local": true
+    },
+    {
+      "path": "BGA_files/dp0/SYS/MECH/CAERep.xml",
+      "bytes": 6406027,
+      "crc32": "957c3b11",
+      "matches_local": true
+    },
+    {
+      "path": "BGA_files/dp0/SYS/MECH/CAERepOutput.xml",
+      "bytes": 789,
+      "crc32": "2e4df411",
+      "matches_local": true
+    },
+    {
+      "path": "BGA_files/dp0/SYS/MECH/ds.dat",
+      "bytes": 1008002403,
+      "crc32": "f6ff84b8"
+    },
+    {
+      "path": "BGA_files/dp0/SYS/MECH/MatML.xml",
+      "bytes": 61188,
+      "crc32": "81efc899",
+      "matches_local": true
+    },
+    {
+      "path": "BGA_files/dp0/act.dat",
+      "bytes": 265640,
+      "crc32": "6b06aeaa",
+      "matches_local": true
+    },
+    {
+      "path": "BGA_files/dp0/designPoint.wbdp",
+      "bytes": 247605,
+      "crc32": "8e9c24fa",
+      "matches_local": true
+    },
+    {
+      "path": "BGA_files/import_files/CMB97D39B(PCB--).STEP",
+      "bytes": 1293145,
+      "crc32": "0ed7f891"
+    },
+    {
+      "path": "BGA_files/session_files/journal1.wbjn",
+      "bytes": 29134,
+      "crc32": "4b605689",
+      "matches_local": true
+    },
+    {
+      "path": "BGA_files/session_files/journal2.wbjn",
+      "bytes": 68,
+      "crc32": "4160fd7c",
+      "matches_local": false
+    },
+    {
+      "path": "BGA_files/.project_cache",
+      "bytes": 593,
+      "crc32": "0e61e73c",
+      "matches_local": false
+    },
+    {
+      "path": "BGA.wbpj",
+      "bytes": 91894,
+      "crc32": "8bfb34a6",
+      "matches_local": false
+    },
+    {
+      "path": "BGA_files/dp0/global/MECH/SYS/",
+      "bytes": 0,
+      "crc32": "00000000"
+    },
+    {
+      "path": "BGA_files/dp0/SYS/DM/",
+      "bytes": 0,
+      "crc32": "00000000"
+    },
+    {
+      "path": "BGA_files/dp0/SYS-1/MECH/",
+      "bytes": 0,
+      "crc32": "00000000"
+    },
+    {
+      "path": "BGA_files/dpall/global/ACT/extensions/",
+      "bytes": 0,
+      "crc32": "00000000"
+    },
+    {
+      "path": "BGA_files/user_files/",
+      "bytes": 0,
+      "crc32": "00000000"
+    }
+  ],
+  "limits": [
+    "HDF5 仅提取对象名称，不将私有二进制字段猜测成设置。",
+    "当前 ds.dat 未检出完整边界及求解控制，不视为完整可执行输入。",
+    "节点/实体单元数量来自当前输入文件，不是成功求解日志。"
+  ]
+}

@@ -1,1 +1,3 @@
 source_id,title,source_type,authors,year,url_or_doi,version,access_scope,license,status,notes
+SRC-BGA-001,BGA Workbench 2024 R2 未求解工程与参数快照,internal_project,用户提供,2026,,2024 R2,local source files; extracted draft in repository,未授予原工程转载许可,draft,文件名、哈希、归档差异及读取范围见 simulation/cases/bga-2024r2-unsolved/data/source-manifest.json；未求解。
+SRC-ANSYS-242-ANAND,ANSYS 2024 R2 Theory Reference 4.3 / Table 4.3,official_documentation,ANSYS,2024,https://ansyshelp.ansys.com/public/Views/Secured/corp/v242/en/ans_thry/thy_mat2.html,2024 R2,public web page,原站版权；仅链接与归纳,reviewed,用于核对 Anand 参数顺序与单位，不作为本工程材料标定数值来源。

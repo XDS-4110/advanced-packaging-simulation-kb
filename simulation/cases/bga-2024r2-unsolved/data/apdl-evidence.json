@@ -1,0 +1,52 @@
+{
+  "source": "BGA_files/dp0/SYS/MECH/ds.dat",
+  "anand_first_material_commands": [
+    {
+      "line": 1718731,
+      "text": "TB,RATE,3,1,9,ANAND"
+    },
+    {
+      "line": 1718732,
+      "text": "TBDATA,1,56.63,10830,14900000,11,2640.75,0.303"
+    },
+    {
+      "line": 1718733,
+      "text": "TBDATA,7,80.415,0.0231,1.34"
+    }
+  ],
+  "first_node_block": [
+    {
+      "line": 32,
+      "text": "nblock,3,,926472"
+    }
+  ],
+  "node_records_count": 842248,
+  "node_bounds_mm": {
+    "min": [
+      -18.75502916,
+      -69.70320256,
+      -2.397
+    ],
+    "max": [
+      121.2449708,
+      70.29679744,
+      0.597
+    ]
+  },
+  "solid_element_count_from_eblock_headers": 437228,
+  "command_prefix_counts": {
+    "et": 1827,
+    "mp": 1292,
+    "mptemp": 10407,
+    "mpdata": 1893,
+    "tb": 315,
+    "tbdata": 630,
+    "r": 1506
+  },
+  "element_type_numbers_seen": [
+    170,
+    174,
+    279,
+    291
+  ]
+}
