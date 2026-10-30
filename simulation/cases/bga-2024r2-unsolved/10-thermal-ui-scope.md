@@ -9,7 +9,7 @@ tags: [BGA, thermal-cycling, screenshot-evidence, unsolved]
 physics: [thermal]
 software: [ANSYS Mechanical]
 software_versions: ["2024 R2"]
-source_ids: [SRC-BGA-THERMAL-SCOPE-002, SRC-BGA-THERMAL-UI-001, SRC-BGA-001]
+source_ids: [SRC-BGA-THERMAL-FULLTABLE-001, SRC-BGA-THERMAL-SCOPE-002, SRC-BGA-THERMAL-UI-001, SRC-BGA-001]
 source_locator: "用户说明及5张截图；图1初温、图2/3分析设置、图4温度、图5命名选择tem"
 updated_at: "2026-10-30"
 reviewed_by: ""
@@ -51,14 +51,14 @@ reviewed_at: ""
 - 原快照初始22 ℃，本次界面为25 ℃；按本轮证据记录当前初温，不覆盖历史快照。
 - 现已确认Temperature对象使用tem；tem有335个面。没有导出完整面ID或工作表筛选行，不能声称已逐面检查“所有外露面都选中且没有内部面”。
 - 分析步结束时间表可读第1～18步；第14步为12990 s，与初次快照13049.2374379261 s不同。该历史时间节点差异在本轮界面已对齐载荷拐点。
-- 温度表截图可读t=0至14910 s的前18条记录，与历史载荷表该段一致。末段表格未完整显示；图形延伸到18600 s不代替最后几行的逐值核对。
+- 温度表截图可读t=0至14910 s的前18条记录，与历史载荷表该段一致。当时末段表格未完整显示；后补完整截图现已逐值核对全部22点，见文末。
 - 初温25 ℃不能直接用作尚未设置的结构无应力参考温度。
 
 [结构化设置](data/thermal-ui-20261030/settings.json)、[可见步结束时间](data/thermal-ui-20261030/visible-step-end-times.csv)、[图片来源哈希](data/thermal-ui-20261030/source-manifest.json)。原图不上传仓库。
 
 ## 当前还需补充
 
-若需实现自动复现，应导出tem工作表筛选规则及面ID，补全第19～21步和末段温度载荷表。接触热传递设置、网格控制/质量和材料温区依据仍待核实。结构阶段的约束及温度场导入以后单独建立。
+若需实现自动复现，应导出tem工作表筛选规则及面ID，补全Analysis Settings中第19～21步的实际设置；末段温度载荷表已由后补截图确认。接触热传递设置、网格控制/质量和材料温区依据仍待核实。结构阶段的约束及温度场导入以后单独建立。
 
 ## 命名选择修改与温度关联已确认
 
@@ -69,3 +69,11 @@ reviewed_at: ""
 当前可复现所缺的是该几何面集合的完整ID/可重建选面依据，而不是命名选择名称和载荷关联。335面及相同显示面积不能证明集合与旧tem逐面相同，也不能单独证明所有外露面均被选中且未包含内部界面。用户说明继续作为“所有暴露外表面”的建模意图记录。
 
 [当前作用域及两张截图哈希](data/thermal-ui-20261030/external-surface-binding.json)。初温、逐步时步、温度表尾部及其他设置未由此次截图重新完整核对，不推断其全部变更或已完成求解。
+
+## 完整温度载荷表截图替换
+
+按用户要求，以SRC-BGA-THERMAL-FULLTABLE-001完整截图替换此前温度载荷关联的首选截图。当前“外表面”命名选择、表格数据、时间自变量及未抑制状态依然可见；截图完整显示22个载荷点，与初次提取温度表全部一致。
+
+末段为14910 s/150 ℃、16710 s/150 ℃、16770 s/−55 ℃、18570 s/−55 ℃、18600 s/25 ℃。至此完整载荷表已取得当前界面证据，不再需要为最后几行补截图。
+
+[完整22点转录](data/thermal-ui-20261030/current-temperature-history.csv)、[替换来源哈希](data/thermal-ui-20261030/full-temperature-table-source.json)。温度载荷表中的步骤标签不替代Analysis Settings中各步自动时步等详细设置；尚未重新核对全部21步的设置。截图是载荷输入，不是求解温度结果。

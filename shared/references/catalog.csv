@@ -11,3 +11,4 @@ SRC-BGA-MAT-SCREEN-001,材料属性截图.docx 五种BGA材料的工程数据界
 SRC-BGA-MAT-SCREEN-002,BGA 补充材料温度表三张截图,user_provided_screenshots,用户提供,2026,,截图未显示发行版本,local user-provided PNGs,只上传提取笔记与转录表；不上传原图,draft,SFL弹性/CTE和焊料CTE表补齐；15条温度相关输入与revision3一致；温区与Mechanical同步仍待核实。
 SRC-BGA-THERMAL-UI-001,BGA 瞬态热设置及暴露表面说明,user_provided_screenshots_and_statement,用户提供,2026,,2024 R2,local PNG screenshots and user statement,仅上传提取知识；不上传原图,draft,初温25 ℃，Temperature使用tem共335面；第18步及第1～18步结束时间可见；尚未结构分析。
 SRC-BGA-THERMAL-SCOPE-002,BGA 外表面命名选择与温度载荷关联截图,user_provided_screenshots,用户提供,2026,,2024 R2,two local PNG screenshots,只上传提取记录；不上传原图,draft,外表面=几何结构选择335面；温度已引用该命名选择；完整面ID与逐面完备性未核实。
+SRC-BGA-THERMAL-FULLTABLE-001,BGA 完整22点温度载荷表替换截图,user_provided_screenshot,用户提供,2026,,2024 R2,local PNG screenshot,仅上传转录与提取记录；不上传原图,draft,按用户要求替换此前温度载荷关联首选截图；外表面作用域及完整0～18600 s载荷表可见，不代表已求解。

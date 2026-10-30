@@ -31,9 +31,11 @@
     },
     {
       "role": "temperature-binding",
-      "filename": "codex-clipboard-a4a2cae5-0d4c-4ca1-bb5a-edd152d8b33c.png",
-      "bytes": 152765,
-      "sha256": "3b1eb2d3cce1f022017832610f95018f79aefa6301356fd21166550993ab8d02"
+      "filename": "codex-clipboard-aa5fdfdd-05e9-4ad7-b000-d27ab0b7fff4.png",
+      "bytes": 158539,
+      "sha256": "0cdde8445d400d10a82ed64343a908ef4777b8ca573d0ac7ee15743803a47c44",
+      "superseded_filename": "codex-clipboard-a4a2cae5-0d4c-4ca1-bb5a-edd152d8b33c.png",
+      "source_id": "SRC-BGA-THERMAL-FULLTABLE-001"
     }
   ]
 }

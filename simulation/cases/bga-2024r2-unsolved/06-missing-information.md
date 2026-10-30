@@ -9,7 +9,7 @@ tags: [BGA, thermal-cycling, extracted, unsolved]
 physics: [thermal, structural]
 software: [ANSYS Workbench, ANSYS Mechanical]
 software_versions: ["2024 R2"]
-source_ids: [SRC-BGA-THERMAL-SCOPE-002, SRC-BGA-THERMAL-UI-001, SRC-BGA-MAT-SCREEN-002, SRC-BGA-MAT-SCREEN-001, SRC-BGA-REV3-001, SRC-BGA-REV2-001, SRC-BGA-001, SRC-BGA-REPORT-001]
+source_ids: [SRC-BGA-THERMAL-FULLTABLE-001, SRC-BGA-THERMAL-SCOPE-002, SRC-BGA-THERMAL-UI-001, SRC-BGA-MAT-SCREEN-002, SRC-BGA-MAT-SCREEN-001, SRC-BGA-REV3-001, SRC-BGA-REV2-001, SRC-BGA-001, SRC-BGA-REPORT-001]
 source_locator: "见本条目来源定位及 data/source-manifest.json"
 updated_at: "2026-10-30"
 reviewed_by: ""
@@ -67,3 +67,7 @@ reviewed_at: ""
 ## 最新温度作用域关联
 
 温度载荷现已引用“外表面”命名选择（几何结构选择，335面），界面关联已确认；旧tem工作表不再是当前作用域。完整面ID/选面完备性仍未导出，见 [当前作用域更新](10-thermal-ui-scope.md#命名选择修改与温度关联已确认)。
+
+## 完整温度表已补齐
+
+用户替换后的截图已完整显示22个载荷点（0～18600 s），均与初次温度表一致；末段载荷截图缺项关闭。当前外表面关联保持可见；各分析步的详细时步控制仍与载荷表分开核实。见 [完整温度表证据](10-thermal-ui-scope.md#完整温度载荷表截图替换)。

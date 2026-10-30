@@ -1,0 +1,16 @@
+{
+  "source_id": "SRC-BGA-THERMAL-FULLTABLE-001",
+  "filename": "codex-clipboard-aa5fdfdd-05e9-4ad7-b000-d27ab0b7fff4.png",
+  "bytes": 158539,
+  "sha256": "0cdde8445d400d10a82ed64343a908ef4777b8ca573d0ac7ee15743803a47c44",
+  "role": "完整温度载荷表及当前外表面作用域的首选截图",
+  "replaces_temperature_binding_image": "codex-clipboard-a4a2cae5-0d4c-4ca1-bb5a-edd152d8b33c.png",
+  "source_rows_visible": 22,
+  "time_range_s": [
+    0,
+    18600
+  ],
+  "named_selection_visible": "外表面",
+  "original_image_uploaded": false,
+  "analysis_settings_all_steps_rechecked": false
+}
