@@ -1,0 +1,39 @@
+{
+  "source_id": "SRC-BGA-THERMAL-SCOPE-002",
+  "status": "draft",
+  "received_at": "2026-10-30",
+  "named_selection": {
+    "name": "外表面",
+    "scope_method": "Geometry Selection",
+    "face_count": 335,
+    "display_area_mm2": 31896,
+    "send_to_solver": true,
+    "suppressed_count": 0
+  },
+  "temperature_load": {
+    "scope_method": "Named Selection",
+    "named_selection": "外表面",
+    "suppressed": false,
+    "definition": "tabular data",
+    "independent_variable": "time"
+  },
+  "previous_snapshot": "settings.json; tem/Worksheet is historical",
+  "full_face_id_list_available": false,
+  "exhaustive_external_face_audit_completed": false,
+  "solver_run_by_extractor": false,
+  "original_images_uploaded": false,
+  "images": [
+    {
+      "role": "named-selection",
+      "filename": "codex-clipboard-df781178-0895-4234-bce1-1c4d59d0f4c6.png",
+      "bytes": 137081,
+      "sha256": "3fe3f4225dfb217a58fd24e722ecff3c871afcca00df3151491a93c9cfeab738"
+    },
+    {
+      "role": "temperature-binding",
+      "filename": "codex-clipboard-a4a2cae5-0d4c-4ca1-bb5a-edd152d8b33c.png",
+      "bytes": 152765,
+      "sha256": "3b1eb2d3cce1f022017832610f95018f79aefa6301356fd21166550993ab8d02"
+    }
+  ]
+}

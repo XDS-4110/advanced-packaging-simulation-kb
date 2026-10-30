@@ -9,12 +9,15 @@ tags: [BGA, thermal-cycling, screenshot-evidence, unsolved]
 physics: [thermal]
 software: [ANSYS Mechanical]
 software_versions: ["2024 R2"]
-source_ids: [SRC-BGA-THERMAL-UI-001, SRC-BGA-001]
+source_ids: [SRC-BGA-THERMAL-SCOPE-002, SRC-BGA-THERMAL-UI-001, SRC-BGA-001]
 source_locator: "用户说明及5张截图；图1初温、图2/3分析设置、图4温度、图5命名选择tem"
 updated_at: "2026-10-30"
 reviewed_by: ""
 reviewed_at: ""
 ---
+
+> 当前作用域更新：温度载荷已引用命名选择“外表面”（几何结构选择，335面，面积显示31896 mm²），见文末补充。下文tem/工作表为此前快照。
+
 
 # BGA 瞬态热界面设置与暴露表面作用域
 
@@ -56,3 +59,13 @@ reviewed_at: ""
 ## 当前还需补充
 
 若需实现自动复现，应导出tem工作表筛选规则及面ID，补全第19～21步和末段温度载荷表。接触热传递设置、网格控制/质量和材料温区依据仍待核实。结构阶段的约束及温度场导入以后单独建立。
+
+## 命名选择修改与温度关联已确认
+
+后续两张截图（SRC-BGA-THERMAL-SCOPE-002）确认当前命名选择为“外表面”，范围限定方法为几何结构选择，共335个面，面积显示31896 mm²，发送给求解器=是、抑制0。
+
+最新Temperature对象的Details明确显示“范围限定方法=命名选择”“命名选择=外表面”“类型=温度”“量级=表格数据”“自变量=时间”“抑制=否”。因此当前温度载荷到该面集合的关联已经取得界面证据，不再要求提供旧tem工作表的空白规则作为当前复现依据。
+
+当前可复现所缺的是该几何面集合的完整ID/可重建选面依据，而不是命名选择名称和载荷关联。335面及相同显示面积不能证明集合与旧tem逐面相同，也不能单独证明所有外露面均被选中且未包含内部界面。用户说明继续作为“所有暴露外表面”的建模意图记录。
+
+[当前作用域及两张截图哈希](data/thermal-ui-20261030/external-surface-binding.json)。初温、逐步时步、温度表尾部及其他设置未由此次截图重新完整核对，不推断其全部变更或已完成求解。
