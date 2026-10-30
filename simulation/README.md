@@ -28,3 +28,7 @@
 ## BGA 参数提取案例
 
 - [首个案例：BGA 未求解参数提取](cases/bga-2024r2-unsolved/README.md)（draft，未求解；含待复核设置，不能直接作为推荐输入）。
+
+## 材料模型与输入专题
+
+[Workbench 2024 R2 材料模型与输入](materials/README.md)：属性映射、模型选择、单位与 CTE、Anand、BGA 审核清单；均为待审核草稿。

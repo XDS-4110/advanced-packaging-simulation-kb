@@ -1,0 +1,11 @@
+﻿material,check_id,item,status,evidence,reviewed_by,reviewed_at
+ALL,identity,牌号、工艺状态与来源,pending,,,
+ALL,units,数值/单位/温度轴,pending,,,
+ALL,definition,Behavior 与 Definition,pending,,,
+ALL,assignment,材料实体赋值,pending,,,
+Sn63Pb37,anand,九参数、参考单位、m/h0,pending,,,
+Sn63Pb37,temperature_range,表格覆盖循环范围或有处理依据,pending,,,
+SFL,temperature_range,低温区数据,pending,,,
+BT,direction,基板/PCB 共用与方向假设,pending,,,
+SI,direction,晶向与各向同性近似,pending,,,
+ALL,response,材料响应验证：当前未求解,pending,,,
