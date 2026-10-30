@@ -37,4 +37,4 @@
 
 ## 材料界面证据
 
-[5张材料截图核对](bga-material-screenshots.md)：51条可见数值与revision 3显示精度相符，尚缺SFL和焊料的部分温度表；不能据此关闭Mechanical同步与结构参考温度缺项。
+[材料截图及后补温度表核对](bga-material-screenshots.md)：初次51条可见数值及后补15条温度相关输入均与revision 3相符；三张温度表截图已补齐。Mechanical同步、结构参考温度及材料温区依据仍待核实。

@@ -9,7 +9,7 @@ tags: [BGA, thermal-cycling, extracted, unsolved]
 physics: [thermal, structural]
 software: [ANSYS Workbench, ANSYS Mechanical]
 software_versions: ["2024 R2"]
-source_ids: [SRC-BGA-MAT-SCREEN-001, SRC-BGA-REV3-001, SRC-BGA-REV2-001, SRC-BGA-001, SRC-BGA-REPORT-001]
+source_ids: [SRC-BGA-MAT-SCREEN-002, SRC-BGA-MAT-SCREEN-001, SRC-BGA-REV3-001, SRC-BGA-REV2-001, SRC-BGA-001, SRC-BGA-REPORT-001]
 source_locator: "见本条目来源定位及 data/source-manifest.json"
 updated_at: "2026-10-30"
 reviewed_by: ""
@@ -59,4 +59,4 @@ reviewed_at: ""
 
 ## 材料截图补充
 
-已取得 [五种材料的Engineering Data界面截图](../../../shared/materials/bga-material-screenshots.md)，补充瞬时CTE/各向同性弹性类型、Anand参考单位及可见数值的界面证据。仍缺SFL弹性和CTE温度表、焊料CTE表；材料牌号/原始来源、Mechanical内实际材料值、结构无应力参考温度等缺项继续保留。场变量默认22 ℃不作为参考温度证据。
+已取得 [五种材料的Engineering Data界面截图](../../../shared/materials/bga-material-screenshots.md)，补充瞬时CTE/各向同性弹性类型、Anand参考单位及可见数值的界面证据。后续补充的3张截图已核实SFL弹性和CTE温度表、焊料CTE表，这三项截图资料已补齐。材料牌号/原始来源、温度表覆盖循环温区的处理依据、Mechanical内实际材料值、结构无应力参考温度等缺项继续保留。场变量默认22 ℃不作为参考温度证据。

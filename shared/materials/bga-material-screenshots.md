@@ -9,7 +9,7 @@ tags: [BGA, material-input, screenshot-evidence]
 physics: [thermal, structural]
 software: [ANSYS Workbench]
 software_versions: []
-source_ids: [SRC-BGA-MAT-SCREEN-001, SRC-BGA-REV3-001]
+source_ids: [SRC-BGA-MAT-SCREEN-002, SRC-BGA-MAT-SCREEN-001, SRC-BGA-REV3-001]
 source_locator: "材料属性截图.docx 的5张原图，按文档顺序image1至image5；不使用未经核实页码"
 updated_at: "2026-10-30"
 reviewed_by: ""
@@ -20,7 +20,7 @@ reviewed_at: ""
 
 用户提供的5张Engineering Data截图补充了 [revision 3工程提取](bga-20261030-revision3.md) 的界面证据。可见字段与该快照相符；截图没有证明Mechanical材料已刷新或求解已完成，也没有显示可核实的软件发行版本。
 
-## 各图已确认与未覆盖内容
+## 初次5张截图的覆盖范围（历史记录）
 
 | 原图与材料 | 可确认的定义与字段 | 尚未显示 |
 | --- | --- | --- |
@@ -45,4 +45,22 @@ SFL、焊料表格属性下面的“比例1、偏移0”是缩放设置，不是
 
 BT、SI、Underfill右上方场变量中的默认温度22 ℃，不是结构分析无应力参考温度的证据。瞬时CTE类型的可见选择也不证明该类型符合原始材料数据定义。
 
-当前未新增材料版本数值，不覆盖revision 3或升级为validated。应继续补充SFL两张温度表、焊料CTE表，以及结构分析参考温度与Mechanical材料实际值。
+当前未新增材料版本数值，不覆盖revision 3或升级为validated。此前待补的三张材料温度表现已取得，见下文；结构分析参考温度与Mechanical材料实际值仍未确认。
+
+## 后续三张温度表已补齐
+
+用户另行提供的3张截图（SRC-BGA-MAT-SCREEN-002）新增15条温度相关输入的界面证据，均与revision 3快照一致。加上原5张图，现有8张截图、66条输入数值转录；不把温度列或派生模量重复计为独立属性。
+
+| 截图 | 温度 ℃ | 可见输入 |
+| --- | --- | --- |
+| SFL-elasticity | 25 | E=26 GPa，ν=0.3 |
+| SFL-elasticity | 260 | E=0.7 GPa，ν=0.3 |
+| SFL-CTE | 25 | 瞬时CTE=8×10⁻⁶ K⁻¹ |
+| SFL-CTE | 150 | 瞬时CTE=3.5×10⁻⁵ K⁻¹ |
+| Sn63Pb37-CTE | −55、−35、−15、5、12、50、75、100、125 | 瞬时CTE依次为24.1、24.6、25.0、25.2、25.4、26.1、26.8、27.3、27.8 ×10⁻⁶ K⁻¹ |
+
+[补充转录数据](datasets/bga-material-screenshots-draft/supplementary-temperature-tables.csv)与[截图哈希和定位](datasets/bga-material-screenshots-draft/supplementary-source-manifest.json)保留独立来源；原5张图转录表不改写。
+
+此前三项“材料表未展开”的界面资料缺口现已关闭。材料原始来源与类型适用性、温区处理、结构参考温度及Mechanical同步仍未验证。
+
+尤其本案例循环最低−55 ℃，SFL的E与CTE表都从25 ℃起；焊料E/ν/CTE表最高125 ℃，低于循环最高150 ℃。截图已完整显示当前输入表，但不提供这些区间之外的材料数据或求解器实际端点处理证据。不能自动补点、改变CTE类型或认定温区问题已解决。

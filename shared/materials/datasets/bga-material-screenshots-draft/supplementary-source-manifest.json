@@ -1,0 +1,27 @@
+{
+  "source_id": "SRC-BGA-MAT-SCREEN-002",
+  "received_at": "2026-10-30",
+  "method": "直接检查用户提供的3张原始截图，并将15条温度相关输入与revision3 XML快照逐项比较",
+  "images": [
+    {
+      "image_id": "SFL-elasticity",
+      "filename": "codex-clipboard-481a6fb4-febe-41d9-a1cb-08f6357ad1e7.png",
+      "bytes": 105704,
+      "sha256": "c666a24a910dbd55b027ecfefd4496ae802ec55662d19a5466e8076be6664e1d"
+    },
+    {
+      "image_id": "SFL-CTE",
+      "filename": "codex-clipboard-2137499b-9697-43a6-9ff2-7410a3db2820.png",
+      "bytes": 162400,
+      "sha256": "05363a27b5fcb5c5c062638aaac2316697215220b8127ee7d0c2ad55fa6d6819"
+    },
+    {
+      "image_id": "Sn63Pb37-CTE",
+      "filename": "codex-clipboard-14492526-43ee-4636-bb77-ca5130e332db.png",
+      "bytes": 188848,
+      "sha256": "a3f3ee2f9a69c52f3d6d01e202384beb666dd7cad67a3e0588db820aa69d1e01"
+    }
+  ],
+  "original_images_uploaded": false,
+  "mechanical_refresh_proven": false
+}

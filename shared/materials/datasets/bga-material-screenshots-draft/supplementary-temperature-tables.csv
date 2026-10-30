@@ -1,0 +1,16 @@
+﻿material,property,temperature_degC,display_value,display_unit,comparison_value,comparison_unit,image_id,source_id,finding,status
+SFL,Young's Modulus,25,26,GPa,26000000000.0,Pa,SFL-elasticity,SRC-BGA-MAT-SCREEN-002,matches_revision3,draft
+SFL,Poisson's Ratio,25,0.3,dimensionless,0.3,dimensionless,SFL-elasticity,SRC-BGA-MAT-SCREEN-002,matches_revision3,draft
+SFL,Young's Modulus,260,0.7,GPa,700000000.0,Pa,SFL-elasticity,SRC-BGA-MAT-SCREEN-002,matches_revision3,draft
+SFL,Poisson's Ratio,260,0.3,dimensionless,0.3,dimensionless,SFL-elasticity,SRC-BGA-MAT-SCREEN-002,matches_revision3,draft
+SFL,CTE,25,8e-06,K^-1,8e-06,K^-1,SFL-CTE,SRC-BGA-MAT-SCREEN-002,matches_revision3,draft
+SFL,CTE,150,3.5e-05,K^-1,3.5e-05,K^-1,SFL-CTE,SRC-BGA-MAT-SCREEN-002,matches_revision3,draft
+Sn63Pb37,CTE,-55,2.41e-05,K^-1,2.41e-05,K^-1,Sn63Pb37-CTE,SRC-BGA-MAT-SCREEN-002,matches_revision3,draft
+Sn63Pb37,CTE,-35,2.46e-05,K^-1,2.46e-05,K^-1,Sn63Pb37-CTE,SRC-BGA-MAT-SCREEN-002,matches_revision3,draft
+Sn63Pb37,CTE,-15,2.5e-05,K^-1,2.5e-05,K^-1,Sn63Pb37-CTE,SRC-BGA-MAT-SCREEN-002,matches_revision3,draft
+Sn63Pb37,CTE,5,2.52e-05,K^-1,2.52e-05,K^-1,Sn63Pb37-CTE,SRC-BGA-MAT-SCREEN-002,matches_revision3,draft
+Sn63Pb37,CTE,12,2.54e-05,K^-1,2.54e-05,K^-1,Sn63Pb37-CTE,SRC-BGA-MAT-SCREEN-002,matches_revision3,draft
+Sn63Pb37,CTE,50,2.61e-05,K^-1,2.61e-05,K^-1,Sn63Pb37-CTE,SRC-BGA-MAT-SCREEN-002,matches_revision3,draft
+Sn63Pb37,CTE,75,2.68e-05,K^-1,2.68e-05,K^-1,Sn63Pb37-CTE,SRC-BGA-MAT-SCREEN-002,matches_revision3,draft
+Sn63Pb37,CTE,100,2.73e-05,K^-1,2.73e-05,K^-1,Sn63Pb37-CTE,SRC-BGA-MAT-SCREEN-002,matches_revision3,draft
+Sn63Pb37,CTE,125,2.78e-05,K^-1,2.78e-05,K^-1,Sn63Pb37-CTE,SRC-BGA-MAT-SCREEN-002,matches_revision3,draft
