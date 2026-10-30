@@ -1,5 +1,9 @@
-# 封装基础
+# 原分类入口
 
-范围：术语、封装分类、技术演进与整体架构。
+封装知识已按共用基础、BGA、2.5D 重组。本页保留以兼容旧链接；新内容请写入以下入口。
 
-当前为空，待补充经审核的知识条目。使用根目录 `shared/templates/` 中的模板，并遵循根目录 `CONTRIBUTING.md` 和 `shared/rag/README.md`。
+- [电子封装共用基础](../common/fundamentals/README.md)
+- [BGA 专题](../bga/fundamentals/README.md)
+- [2.5D 专题](../2-5d/fundamentals/README.md)
+
+[封装总入口](../README.md)

@@ -1,5 +1,9 @@
-# 封装文献笔记
+# 原分类入口
 
-范围：封装结构、工艺、材料、试验资料的阅读笔记；来源统一登记到 shared/references/catalog.csv。
+封装知识已按共用基础、BGA、2.5D 重组。本页保留以兼容旧链接；新内容请写入以下入口。
 
-当前为空，待补充经审核的知识条目。使用根目录 `shared/templates/` 中的模板，并遵循根目录 `CONTRIBUTING.md` 和 `shared/rag/README.md`。
+- [电子封装共用基础](../common/references/README.md)
+- [BGA 专题](../bga/references/README.md)
+- [2.5D 专题](../2-5d/references/README.md)
+
+[封装总入口](../README.md)
