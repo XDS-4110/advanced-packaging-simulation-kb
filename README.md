@@ -1,32 +1,31 @@
 # LLM 驱动先进封装自动化建模与仿真知识库
 
-本仓库整理电子封装与仿真相关知识，为 LLM 的检索增强生成（RAG）提供可追溯的依据。
+为先进封装自动化建模与仿真提供可追溯的 RAG 知识。当前仅有目录与填写模板，尚无已审核技术正文或材料参数。
 
-当前阶段：知识库骨架。尚未收录经过审核的技术条目、材料参数或仿真案例；后续逐步补充。
+## 两个知识入口
 
-## 内容导航
+| 入口 | 主要维护 | 内容 |
+| --- | --- | --- |
+| [封装知识 packaging](packaging/README.md) | 封装协作者 | 基础、结构、工艺、材料原始资料、可靠性试验与封装案例 |
+| [仿真知识 simulation](simulation/README.md) | 仿真负责人 | 建模等效、热分析、结构分析、发热应力翘曲、温度循环、材料输入、软件操作与验证 |
 
-| 目录 | 用途 |
-| --- | --- |
-| [封装基础](knowledge/packaging/README.md) | 封装类型、结构、工艺、术语与可靠性 |
-| [建模与简化](knowledge/modeling/README.md) | 几何识别、参数化、TSV/凸点等效、均匀化 |
-| [热仿真](knowledge/simulation/thermal/README.md) | 稳态/瞬态传热、边界条件、接触热阻 |
-| [力学仿真](knowledge/simulation/mechanical/README.md) | 热应力、翘曲、焊点与界面可靠性 |
-| [电磁与耦合仿真](knowledge/simulation/electromagnetic/README.md) | 互连寄生、信号/电源完整性、电热耦合 |
-| [网格与验证](knowledge/verification/README.md) | 网格收敛、热平衡、结果核验与误差分析 |
-| [材料数据](materials/README.md) | 带来源、单位、温度与适用条件的材料属性 |
-| [软件操作](software/README.md) | ANSYS Mechanical、Icepak、HFSS 等版本化操作与脚本说明 |
-| [仿真案例](cases/README.md) | 输入、建模步骤、结果、验证与复现记录 |
-| [资料来源](references/README.md) | 论文、官方文档、数据表、标准和外部项目索引 |
-| [填写模板](templates/README.md) | 知识条目、材料、案例和文献模板 |
-| [RAG 入库规范](rag/README.md) | 元数据、切分边界、筛选与来源追踪 |
+仿真基线：**ANSYS Workbench 2024 R2**。当前重点为运行发热后的应力与翘曲，以及温度循环。
 
-## 如何开始补充
+## 公共资料
 
-1. 在 `references/catalog.csv` 登记资料来源。
-2. 从 `templates/` 复制对应模板，放入合适目录，并填写元数据。
-3. 保留公式条件、变量单位、页码或章节，标明事实、推导或个人经验。
-4. 默认标记为 `draft`；完成审核后再设为 `reviewed`，完成案例验证后可设为 `validated`。
-5. 按 [贡献说明](CONTRIBUTING.md) 提交修改。模板和目录说明默认不进入正式检索索引。
+- [填写模板](shared/templates/README.md)
+- [RAG 入库规范](shared/rag/README.md)
+- [资料来源登记](shared/references/README.md)
+- [贡献与协作约定](CONTRIBUTING.md)
 
-不上传密钥、受限工程文件或未经许可的论文、标准全文。外部内容保留原始许可和署名；仓库初始不统一授予开源许可，公开前另行确定。
+## 两人协作方式
+
+1. 封装协作者在 `packaging/` 补充结构、工艺、材料原始证据及试验条件。
+2. 仿真负责人在 `simulation/` 补充建模假设、材料输入、边界、网格、求解和验证。
+3. 材料原始资料放在 `packaging/materials/`；仿真采用值与本构设置放在 `simulation/materials/`，明确引用来源。
+4. 先在 `shared/references/catalog.csv` 登记来源，再复制模板建立条目，默认状态为 `draft`。
+5. 知识元数据 `domain` 填 `packaging` 或 `simulation`，方便 RAG 按领域过滤。模板和目录说明不进入正式检索索引。
+
+目录分工不限制协作者的实际写入权限；本次整理不修改仓库可见性或成员权限。
+
+缺失信息标注“待补充”，不填猜测数值。不上传密钥、受限工程文件或未经许可的论文和标准全文；外部内容保留原始许可和署名。公开前另行确定本仓库许可。
