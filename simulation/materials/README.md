@@ -24,3 +24,7 @@
 ## 当前修改状态
 
 见 [revision 2材料证据](../../shared/materials/bga-20261030-revision2.md)：m/h0和E/ν温度轴已对齐报告，比热差异仍在；不要把历史revision 1的差异当成当前保存值。
+
+## 最新状态：revision 3
+
+[比热修正后的当前材料证据](../../shared/materials/bga-20261030-revision3.md)：65条材料属性与报告对齐。此前差异记录保留历史；Mechanical同步与归档仍待核对。

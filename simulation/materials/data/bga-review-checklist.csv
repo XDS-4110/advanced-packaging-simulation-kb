@@ -1,6 +1,6 @@
 ﻿material,check_id,item,status,evidence,reviewed_by,reviewed_at
 ALL,identity,牌号、工艺状态与来源,partial_evidence,已有报告材料表，但厂商/牌号/原始标定依据仍不完整,,
-ALL,units,数值/单位/温度轴,conflict,SRC-BGA-REV2-001：SFL现为3.30536 J/(g K)，仍不同于报告0.79 J/(g K),,
+ALL,units,数值/单位/温度轴,partial_evidence,SRC-BGA-REV3-001：比热已为0.79 J/(g K)，65条材料对齐报告；原始来源和Mechanical同步未验证,,
 ALL,definition,Behavior 与 Definition,pending,,,
 ALL,assignment,材料实体赋值,pending,,,
 Sn63Pb37,anand,九参数、参考单位、m/h0,partial_evidence,SRC-BGA-REV2-001：Engineering Data m/h0已对齐报告；原始标定及Mechanical同步未验证,,

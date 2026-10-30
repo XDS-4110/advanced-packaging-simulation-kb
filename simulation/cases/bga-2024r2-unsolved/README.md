@@ -27,3 +27,7 @@
 ## 最新提取
 
 - [第二次提取：材料修改与剩余问题](09-revision2-material-review.md)。第1～8篇保留初次快照和后续报告的证据历史；当前Engineering Data修改状态以第9篇为准。
+
+## 最新状态：revision 3
+
+[比热修正后的当前材料证据](../../../shared/materials/bga-20261030-revision3.md)：65条材料属性与报告对齐。此前差异记录保留历史；Mechanical同步与归档仍待核对。

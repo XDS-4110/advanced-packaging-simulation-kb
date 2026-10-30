@@ -1,0 +1,1196 @@
+[
+  {
+    "name": "SI",
+    "description": "",
+    "properties": [
+      {
+        "property": "Density",
+        "qualifiers": {
+          "Field Variable Compatible": "Temperature"
+        },
+        "parameters": [
+          {
+            "parameter": "Density",
+            "raw_value": "2330",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [kg m^-3]",
+              "Scale": "1",
+              "Units": "kg m^-3"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Offset": "0 [C]",
+              "Scale": "1",
+              "Units": "C",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Field Units": "C",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Thermal Conductivity",
+        "qualifiers": {
+          "Behavior": "Isotropic",
+          "Field Variable Compatible": "Temperature"
+        },
+        "parameters": [
+          {
+            "parameter": "Thermal Conductivity",
+            "raw_value": "154",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [W m^-1 K^-1]",
+              "Scale": "1",
+              "Units": "W m^-1 K^-1"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Offset": "0 [C]",
+              "Scale": "1",
+              "Units": "C",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Field Units": "C",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Specific Heat",
+        "qualifiers": {
+          "Definition": "Constant Pressure",
+          "Field Variable Compatible": "Temperature",
+          "Symbol": "Cᵨ"
+        },
+        "parameters": [
+          {
+            "parameter": "Specific Heat",
+            "raw_value": "0.713",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [J g^-1 K^-1]",
+              "Scale": "1",
+              "Units": "J g^-1 K^-1"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Offset": "0 [C]",
+              "Scale": "1",
+              "Units": "C",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Field Units": "C",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Coefficient of Thermal Expansion",
+        "qualifiers": {
+          "Definition": "Instantaneous",
+          "Behavior": "Isotropic"
+        },
+        "parameters": [
+          {
+            "parameter": "Coefficient of Thermal Expansion",
+            "raw_value": "2.5e-06",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [K^-1]",
+              "Scale": "1",
+              "Units": "K^-1"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Offset": "0 [C]",
+              "Scale": "1",
+              "Units": "C"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Elasticity",
+        "qualifiers": {
+          "Behavior": "Isotropic",
+          "Derive from": "Young's Modulus and Poisson's Ratio",
+          "Field Variable Compatible": "Temperature"
+        },
+        "parameters": [
+          {
+            "parameter": "Young's Modulus",
+            "raw_value": "112.4",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [GPa]",
+              "Scale": "1",
+              "Units": "GPa"
+            }
+          },
+          {
+            "parameter": "Poisson's Ratio",
+            "raw_value": "0.28",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0",
+              "Scale": "1",
+              "Units": ""
+            }
+          },
+          {
+            "parameter": "Bulk Modulus",
+            "raw_value": "85151515151.5152",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [Pa]",
+              "Scale": "1",
+              "Units": "Pa"
+            }
+          },
+          {
+            "parameter": "Shear Modulus",
+            "raw_value": "43906250000",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [Pa]",
+              "Scale": "1",
+              "Units": "Pa"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Offset": "0 [C]",
+              "Scale": "1",
+              "Units": "C",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Field Units": "C",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Underfill",
+    "description": "",
+    "properties": [
+      {
+        "property": "Density",
+        "qualifiers": {
+          "Field Variable Compatible": "Temperature"
+        },
+        "parameters": [
+          {
+            "parameter": "Density",
+            "raw_value": "1490",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [kg m^-3]",
+              "Scale": "1",
+              "Units": "kg m^-3"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Offset": "0 [C]",
+              "Scale": "1",
+              "Units": "C",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Field Units": "C",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Coefficient of Thermal Expansion",
+        "qualifiers": {
+          "Definition": "Instantaneous",
+          "Behavior": "Isotropic"
+        },
+        "parameters": [
+          {
+            "parameter": "Coefficient of Thermal Expansion",
+            "raw_value": "3.2e-05",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [K^-1]",
+              "Scale": "1",
+              "Units": "K^-1"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Offset": "0 [C]",
+              "Scale": "1",
+              "Units": "C"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Elasticity",
+        "qualifiers": {
+          "Behavior": "Isotropic",
+          "Derive from": "Young's Modulus and Poisson's Ratio",
+          "Field Variable Compatible": "Temperature"
+        },
+        "parameters": [
+          {
+            "parameter": "Young's Modulus",
+            "raw_value": "8",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [GPa]",
+              "Scale": "1",
+              "Units": "GPa"
+            }
+          },
+          {
+            "parameter": "Poisson's Ratio",
+            "raw_value": "0.3",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0",
+              "Scale": "1",
+              "Units": ""
+            }
+          },
+          {
+            "parameter": "Bulk Modulus",
+            "raw_value": "6666666666.66667",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [Pa]",
+              "Scale": "1",
+              "Units": "Pa"
+            }
+          },
+          {
+            "parameter": "Shear Modulus",
+            "raw_value": "3076923076.92308",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [Pa]",
+              "Scale": "1",
+              "Units": "Pa"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Offset": "0 [C]",
+              "Scale": "1",
+              "Units": "C",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Field Units": "C",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Specific Heat",
+        "qualifiers": {
+          "Definition": "Constant Pressure",
+          "Field Variable Compatible": "Temperature",
+          "Symbol": "Cᵨ"
+        },
+        "parameters": [
+          {
+            "parameter": "Specific Heat",
+            "raw_value": "0.87",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [J g^-1 K^-1]",
+              "Scale": "1",
+              "Units": "J g^-1 K^-1"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Offset": "0 [C]",
+              "Scale": "1",
+              "Units": "C",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Field Units": "C",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Thermal Conductivity",
+        "qualifiers": {
+          "Behavior": "Isotropic",
+          "Field Variable Compatible": "Temperature"
+        },
+        "parameters": [
+          {
+            "parameter": "Thermal Conductivity",
+            "raw_value": "0.55",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [W m^-1 K^-1]",
+              "Scale": "1",
+              "Units": "W m^-1 K^-1"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Offset": "0 [C]",
+              "Scale": "1",
+              "Units": "C",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Field Units": "C",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "BT",
+    "description": "",
+    "properties": [
+      {
+        "property": "Density",
+        "qualifiers": {
+          "Field Variable Compatible": "Temperature"
+        },
+        "parameters": [
+          {
+            "parameter": "Density",
+            "raw_value": "1700",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [kg m^-3]",
+              "Scale": "1",
+              "Units": "kg m^-3"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Offset": "0 [C]",
+              "Scale": "1",
+              "Units": "C",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Field Units": "C",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Coefficient of Thermal Expansion",
+        "qualifiers": {
+          "Definition": "Instantaneous",
+          "Behavior": "Isotropic"
+        },
+        "parameters": [
+          {
+            "parameter": "Coefficient of Thermal Expansion",
+            "raw_value": "1.36e-05",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [K^-1]",
+              "Scale": "1",
+              "Units": "K^-1"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Offset": "0 [C]",
+              "Scale": "1",
+              "Units": "C"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Elasticity",
+        "qualifiers": {
+          "Behavior": "Isotropic",
+          "Derive from": "Young's Modulus and Poisson's Ratio",
+          "Field Variable Compatible": "Temperature"
+        },
+        "parameters": [
+          {
+            "parameter": "Young's Modulus",
+            "raw_value": "23.1",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [GPa]",
+              "Scale": "1",
+              "Units": "GPa"
+            }
+          },
+          {
+            "parameter": "Poisson's Ratio",
+            "raw_value": "0.21",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0",
+              "Scale": "1",
+              "Units": ""
+            }
+          },
+          {
+            "parameter": "Bulk Modulus",
+            "raw_value": "13275862068.9655",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [Pa]",
+              "Scale": "1",
+              "Units": "Pa"
+            }
+          },
+          {
+            "parameter": "Shear Modulus",
+            "raw_value": "9545454545.45455",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [Pa]",
+              "Scale": "1",
+              "Units": "Pa"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Offset": "0 [C]",
+              "Scale": "1",
+              "Units": "C",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Field Units": "C",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Thermal Conductivity",
+        "qualifiers": {
+          "Behavior": "Isotropic",
+          "Field Variable Compatible": "Temperature"
+        },
+        "parameters": [
+          {
+            "parameter": "Thermal Conductivity",
+            "raw_value": "0.2",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [W m^-1 K^-1]",
+              "Scale": "1",
+              "Units": "W m^-1 K^-1"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Offset": "0 [C]",
+              "Scale": "1",
+              "Units": "C",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Field Units": "C",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Specific Heat",
+        "qualifiers": {
+          "Definition": "Constant Pressure",
+          "Field Variable Compatible": "Temperature",
+          "Symbol": "Cᵨ"
+        },
+        "parameters": [
+          {
+            "parameter": "Specific Heat",
+            "raw_value": "0.92",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [J g^-1 K^-1]",
+              "Scale": "1",
+              "Units": "J g^-1 K^-1"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Offset": "0 [C]",
+              "Scale": "1",
+              "Units": "C",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Field Units": "C",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "SFL",
+    "description": "",
+    "properties": [
+      {
+        "property": "Density",
+        "qualifiers": {
+          "Field Variable Compatible": "Temperature"
+        },
+        "parameters": [
+          {
+            "parameter": "Density",
+            "raw_value": "1890",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [kg m^-3]",
+              "Scale": "1",
+              "Units": "kg m^-3"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Offset": "0 [C]",
+              "Scale": "1",
+              "Units": "C",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Field Units": "C",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Coefficient of Thermal Expansion",
+        "qualifiers": {
+          "Definition": "Instantaneous",
+          "Behavior": "Isotropic"
+        },
+        "parameters": [
+          {
+            "parameter": "Coefficient of Thermal Expansion",
+            "raw_value": "8e-06,3.5e-05",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent,Dependent",
+              "Offset": "0 [K^-1],0 [K^-1]",
+              "Scale": "1,1",
+              "Units": "K^-1,K^-1"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "25,150",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent,Independent",
+              "Offset": "0 [C],0 [C]",
+              "Scale": "1,1",
+              "Units": "C,C"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Elasticity",
+        "qualifiers": {
+          "Behavior": "Isotropic",
+          "Derive from": "Young's Modulus and Poisson's Ratio",
+          "Field Variable Compatible": "Temperature"
+        },
+        "parameters": [
+          {
+            "parameter": "Young's Modulus",
+            "raw_value": "26,0.7",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent,Dependent",
+              "Offset": "0 [GPa],0 [GPa]",
+              "Scale": "1,1",
+              "Units": "GPa,GPa"
+            }
+          },
+          {
+            "parameter": "Poisson's Ratio",
+            "raw_value": "0.3,0.3",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent,Dependent",
+              "Offset": "0,0",
+              "Scale": "1,1",
+              "Units": ","
+            }
+          },
+          {
+            "parameter": "Bulk Modulus",
+            "raw_value": "21666666666.6667,583333333.333333",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent,Dependent",
+              "Offset": "0 [Pa],0 [Pa]",
+              "Scale": "1,1",
+              "Units": "Pa,Pa"
+            }
+          },
+          {
+            "parameter": "Shear Modulus",
+            "raw_value": "10000000000,269230769.230769",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent,Dependent",
+              "Offset": "0 [Pa],0 [Pa]",
+              "Scale": "1,1",
+              "Units": "Pa,Pa"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "25,260",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent,Independent",
+              "Offset": "0 [C],0 [C]",
+              "Scale": "1,1",
+              "Units": "C,C",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Field Units": "C",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Thermal Conductivity",
+        "qualifiers": {
+          "Behavior": "Isotropic",
+          "Field Variable Compatible": "Temperature"
+        },
+        "parameters": [
+          {
+            "parameter": "Thermal Conductivity",
+            "raw_value": "1",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [W m^-1 K^-1]",
+              "Scale": "1",
+              "Units": "W m^-1 K^-1"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Offset": "0 [C]",
+              "Scale": "1",
+              "Units": "C",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Field Units": "C",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Specific Heat",
+        "qualifiers": {
+          "Definition": "Constant Pressure",
+          "Field Variable Compatible": "Temperature",
+          "Symbol": "Cᵨ"
+        },
+        "parameters": [
+          {
+            "parameter": "Specific Heat",
+            "raw_value": "0.79",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [J g^-1 K^-1]",
+              "Scale": "1",
+              "Units": "J g^-1 K^-1"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Offset": "0 [C]",
+              "Scale": "1",
+              "Units": "C",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Field Units": "C",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Sn63Pb37",
+    "description": "",
+    "properties": [
+      {
+        "property": "Density",
+        "qualifiers": {
+          "Field Variable Compatible": "Temperature"
+        },
+        "parameters": [
+          {
+            "parameter": "Density",
+            "raw_value": "8400",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [kg m^-3]",
+              "Scale": "1",
+              "Units": "kg m^-3"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Offset": "0 [C]",
+              "Scale": "1",
+              "Units": "C",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Field Units": "C",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Coefficient of Thermal Expansion",
+        "qualifiers": {
+          "Definition": "Instantaneous",
+          "Behavior": "Isotropic"
+        },
+        "parameters": [
+          {
+            "parameter": "Coefficient of Thermal Expansion",
+            "raw_value": "2.41e-05,2.46e-05,2.5e-05,2.52e-05,2.54e-05,2.61e-05,2.68e-05,2.73e-05,2.78e-05",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent",
+              "Offset": "0 [K^-1],0 [K^-1],0 [K^-1],0 [K^-1],0 [K^-1],0 [K^-1],0 [K^-1],0 [K^-1],0 [K^-1]",
+              "Scale": "1,1,1,1,1,1,1,1,1",
+              "Units": "K^-1,K^-1,K^-1,K^-1,K^-1,K^-1,K^-1,K^-1,K^-1"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "-55,-35,-15,5,12,50,75,100,125",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent,Independent,Independent,Independent,Independent,Independent,Independent,Independent,Independent",
+              "Offset": "0 [C],0 [C],0 [C],0 [C],0 [C],0 [C],0 [C],0 [C],0 [C]",
+              "Scale": "1,1,1,1,1,1,1,1,1",
+              "Units": "C,C,C,C,C,C,C,C,C"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Elasticity",
+        "qualifiers": {
+          "Behavior": "Isotropic",
+          "Derive from": "Young's Modulus and Poisson's Ratio",
+          "Field Variable Compatible": "Temperature"
+        },
+        "parameters": [
+          {
+            "parameter": "Young's Modulus",
+            "raw_value": "41.44,39.36,36.62,33.58,32.52,26.74,22.94,19.14,15.34",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent",
+              "Offset": "0 [GPa],0 [GPa],0 [GPa],0 [GPa],0 [GPa],0 [GPa],0 [GPa],0 [GPa],0 [GPa]",
+              "Scale": "1,1,1,1,1,1,1,1,1",
+              "Units": "GPa,GPa,GPa,GPa,GPa,GPa,GPa,GPa,GPa"
+            }
+          },
+          {
+            "parameter": "Poisson's Ratio",
+            "raw_value": "0.352,0.354,0.357,0.36,0.363,0.365,0.37,0.377,0.384",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent",
+              "Offset": "0,0,0,0,0,0,0,0,0",
+              "Scale": "1,1,1,1,1,1,1,1,1",
+              "Units": ",,,,,,,,"
+            }
+          },
+          {
+            "parameter": "Bulk Modulus",
+            "raw_value": "46666666666.6667,44931506849.3151,42680652680.6527,39976190476.1905,39562043795.6204,33012345679.0123,29410256410.2564,25934959349.5935,22040229885.0575",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent",
+              "Offset": "0 [Pa],0 [Pa],0 [Pa],0 [Pa],0 [Pa],0 [Pa],0 [Pa],0 [Pa],0 [Pa]",
+              "Scale": "1,1,1,1,1,1,1,1,1",
+              "Units": "Pa,Pa,Pa,Pa,Pa,Pa,Pa,Pa,Pa"
+            }
+          },
+          {
+            "parameter": "Shear Modulus",
+            "raw_value": "15325443786.9823,14534711964.5495,13492999263.0803,12345588235.2941,11929567131.328,9794871794.8718,8372262773.72263,6949891067.53813,5541907514.45087",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent,Dependent",
+              "Offset": "0 [Pa],0 [Pa],0 [Pa],0 [Pa],0 [Pa],0 [Pa],0 [Pa],0 [Pa],0 [Pa]",
+              "Scale": "1,1,1,1,1,1,1,1,1",
+              "Units": "Pa,Pa,Pa,Pa,Pa,Pa,Pa,Pa,Pa"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "-55,-35,-15,5,12,50,75,100,125",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent,Independent,Independent,Independent,Independent,Independent,Independent,Independent,Independent",
+              "Offset": "0 [C],0 [C],0 [C],0 [C],0 [C],0 [C],0 [C],0 [C],0 [C]",
+              "Scale": "1,1,1,1,1,1,1,1,1",
+              "Units": "C,C,C,C,C,C,C,C,C",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Field Units": "C",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Thermal Conductivity",
+        "qualifiers": {
+          "Behavior": "Isotropic",
+          "Field Variable Compatible": "Temperature"
+        },
+        "parameters": [
+          {
+            "parameter": "Thermal Conductivity",
+            "raw_value": "50",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [W m^-1 K^-1]",
+              "Scale": "1",
+              "Units": "W m^-1 K^-1"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Offset": "0 [C]",
+              "Scale": "1",
+              "Units": "C",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Field Units": "C",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Specific Heat",
+        "qualifiers": {
+          "Definition": "Constant Pressure",
+          "Field Variable Compatible": "Temperature",
+          "Symbol": "Cᵨ"
+        },
+        "parameters": [
+          {
+            "parameter": "Specific Heat",
+            "raw_value": "0.128",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0 [J g^-1 K^-1]",
+              "Scale": "1",
+              "Units": "J g^-1 K^-1"
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Offset": "0 [C]",
+              "Scale": "1",
+              "Units": "C",
+              "Field Variable": "Temperature",
+              "Default Data": "22",
+              "Field Units": "C",
+              "Upper Limit": "Program Controlled",
+              "Lower Limit": "Program Controlled"
+            }
+          }
+        ]
+      },
+      {
+        "property": "Viscoplasticity",
+        "qualifiers": {
+          "Definition": "Anand",
+          "Reference Units (Stress, Temperature, Per Time)": "MPa, K, s^-1"
+        },
+        "parameters": [
+          {
+            "parameter": "Initial Deformation Resistance So",
+            "raw_value": "56.63",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0",
+              "Scale": "1",
+              "Units": ""
+            }
+          },
+          {
+            "parameter": "Activation Energy Q/Universal Gas Constant R",
+            "raw_value": "10830",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0",
+              "Scale": "1",
+              "Units": ""
+            }
+          },
+          {
+            "parameter": "Pre-exponential Factor A",
+            "raw_value": "14900000",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0",
+              "Scale": "1",
+              "Units": ""
+            }
+          },
+          {
+            "parameter": "Multiplier of Stress ξ",
+            "raw_value": "11",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0",
+              "Scale": "1",
+              "Units": ""
+            }
+          },
+          {
+            "parameter": "Strain Rate Sensitivity of Stress m",
+            "raw_value": "0.303",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0",
+              "Scale": "1",
+              "Units": ""
+            }
+          },
+          {
+            "parameter": "Hardening/Softening Constant ho",
+            "raw_value": "2640.75",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0",
+              "Scale": "1",
+              "Units": ""
+            }
+          },
+          {
+            "parameter": "Coefficient for Deformation Resistance Saturation Ŝ",
+            "raw_value": "80.415",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0",
+              "Scale": "1",
+              "Units": ""
+            }
+          },
+          {
+            "parameter": "Strain Rate Sensitivity of Saturation (Deformation Resistance) n",
+            "raw_value": "0.0231",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0",
+              "Scale": "1",
+              "Units": ""
+            }
+          },
+          {
+            "parameter": "Strain Rate Sensitivity of Hardening or Softening a",
+            "raw_value": "1.34",
+            "unit": "Unitless (as exported)",
+            "qualifiers": {
+              "Variable Type": "Dependent",
+              "Offset": "0",
+              "Scale": "1",
+              "Units": ""
+            }
+          },
+          {
+            "parameter": "Temperature",
+            "raw_value": "7.88860905221012e-31",
+            "unit": "",
+            "qualifiers": {
+              "Variable Type": "Independent",
+              "Offset": "0 [C]",
+              "Scale": "1",
+              "Units": "C"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -30,3 +30,7 @@
 ## 最新工程修订证据
 
 - [2026-10-30 revision 2](bga-20261030-revision2.md)：Anand与弹性温度轴已对齐报告；SFL比热仍有差异。只核实Engineering Data，未确认Mechanical同步。
+
+## 最新状态：revision 3
+
+[比热修正后的当前材料证据](bga-20261030-revision3.md)：65条材料属性与报告对齐。此前差异记录保留历史；Mechanical同步与归档仍待核对。

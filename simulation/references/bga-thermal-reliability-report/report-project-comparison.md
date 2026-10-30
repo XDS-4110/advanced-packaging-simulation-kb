@@ -9,14 +9,17 @@ tags: [BGA, thermal-cycling, report-evidence, not-reproduced]
 physics: [thermal, structural]
 software: [ANSYS Workbench]
 software_versions: []
-source_ids: [SRC-BGA-REV2-001, SRC-BGA-REPORT-001, SRC-BGA-001, SRC-ANSYS-242-ANAND]
+source_ids: [SRC-BGA-REV3-001, SRC-BGA-REV2-001, SRC-BGA-REPORT-001, SRC-BGA-001, SRC-ANSYS-242-ANAND]
 source_locator: "报告章节/表图号及原文块索引见正文和提取清单；不使用未经核实页码"
 updated_at: "2026-10-30"
 reviewed_by: ""
 reviewed_at: ""
 ---
 
-> 当前修订提示：本页对应初次工程快照。最新Engineering Data的m/h0及弹性温度轴已对齐报告，SFL比热仍有差异，见 [revision 2](../../../shared/materials/bga-20261030-revision2.md)。
+> 最新状态（revision 3）：SFL比热已保存为0.79 J/(g·K)，65条材料属性与报告对齐；Mechanical同步与重新归档未确认。见 [当前证据](../../../shared/materials/bga-20261030-revision3.md)。
+
+
+> revision 2历史提示：本页对应初次工程快照。最新Engineering Data的m/h0及弹性温度轴已对齐报告，SFL比热仍有差异，见 [revision 2](../../../shared/materials/bga-20261030-revision2.md)。
 
 
 # BGA 报告与工程的差异及处理决策

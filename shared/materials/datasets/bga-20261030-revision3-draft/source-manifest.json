@@ -1,0 +1,53 @@
+{
+  "source_id": "SRC-BGA-REV3-001",
+  "extracted_at": "2026-10-30",
+  "extraction_revision": 3,
+  "status": "draft",
+  "files": [
+    {
+      "file": "BGA.wbpj",
+      "bytes": 78279,
+      "modified_local": "2026-10-30T15:55:31",
+      "sha256": "787809341a81fde03f7aa8f0374147d005402a9279e1605032c0fbd2e3d22830"
+    },
+    {
+      "file": "BGA_files/dp0/SYS/ENGD/EngineeringData.xml",
+      "bytes": 64786,
+      "modified_local": "2026-10-30T15:55:29",
+      "sha256": "0777d6c9898e0b5c079717dca99cf14578f3a38d4764dc0e2842749d2136b4e1"
+    },
+    {
+      "file": "BGA_files/session_files/journal2.wbjn",
+      "bytes": 2073,
+      "modified_local": "2026-10-30T15:55:31",
+      "sha256": "e1f3694463f518da0e9753931d45a5f7b9731a28e46497aa774129292963b7d2"
+    },
+    {
+      "file": "BGA_files/dp0/global/MECH/SYS.mechdb",
+      "bytes": 163144280,
+      "modified_local": "2026-10-30T15:42:06",
+      "sha256": "0d970950696f26409d1bf36ff9d7a96110a24d2c6b5e8387c571338f99813580"
+    },
+    {
+      "file": "BGA_files/dp0/global/MECH/SYS.engd",
+      "bytes": 60418,
+      "modified_local": "2026-10-30T14:53:22",
+      "sha256": "0046649d08b9201d63a519be2de9e90227e339fe75e8d6f5b7085eb65b562c0b"
+    },
+    {
+      "file": "BGA.wbpz",
+      "bytes": 321949772,
+      "modified_local": "2026-10-30T14:36:25",
+      "sha256": "ce29297b186f146aa3b302c1a09286f77bc4dfc83d235f6ad270e4bf211ac258"
+    }
+  ],
+  "archive_unchanged_since_revision2": true,
+  "mechanical_files_unchanged_since_revision2": true,
+  "mechanical_material_refresh_verified": false,
+  "solver_run_by_extractor": false,
+  "notes": [
+    "EngineeringData.xml与journal2.wbjn均确认比热0.79 J/(g K)。",
+    "与revision 2相比仅SFL比热属性变化；65条报告对照全部一致不代表参数标定或求解验证。",
+    "WBPZ与Mechanical文件哈希未变；不确认本次修改已传入Mechanical。"
+  ]
+}
