@@ -9,7 +9,7 @@ tags: [BGA, thermal-cycling, extracted, unsolved]
 physics: [thermal, structural]
 software: [ANSYS Workbench, ANSYS Mechanical]
 software_versions: ["2024 R2"]
-source_ids: [SRC-BGA-ASSIGN-SCREEN-001, SRC-BGA-THERMAL-FULLTABLE-001, SRC-BGA-THERMAL-SCOPE-002, SRC-BGA-THERMAL-UI-001, SRC-BGA-MAT-SCREEN-002, SRC-BGA-MAT-SCREEN-001, SRC-BGA-REV3-001, SRC-BGA-REV2-001, SRC-BGA-001, SRC-BGA-REPORT-001]
+source_ids: [SRC-GJB548C-1010-USER-001, SRC-BGA-ASSIGN-SCREEN-001, SRC-BGA-THERMAL-FULLTABLE-001, SRC-BGA-THERMAL-SCOPE-002, SRC-BGA-THERMAL-UI-001, SRC-BGA-MAT-SCREEN-002, SRC-BGA-MAT-SCREEN-001, SRC-BGA-REV3-001, SRC-BGA-REV2-001, SRC-BGA-001, SRC-BGA-REPORT-001]
 source_locator: "见本条目来源定位及 data/source-manifest.json"
 updated_at: "2026-10-30"
 reviewed_by: ""
@@ -75,3 +75,7 @@ reviewed_at: ""
 ## 实体材料赋值界面资料已补充
 
 此前七张Mechanical截图已整理为 [实体材料赋值记录](11-material-assignment-ui.md)：芯片SI、底部填充Underfill、凸点/焊球Sn63Pb37、基板/PCB均BT、塑封料SFL。可见名称与高亮已确认，完整实体ID及材料参数修订同步仍未核实。参考温度均显示“按环境”，不等于已取得结构参考温度数值。
+
+## 温循标准依据补充
+
+用户明确本项目采用 [GJB 548C—2021 方法1010.1](../../thermal-cycling/gjb548c-2021-method-1010-1.md)。标准/方法编号已补充；具体条件代号及温度、时间、循环数的条款符合性仍需原文核对，不能将当前载荷值直接写为标准要求。

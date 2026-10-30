@@ -9,7 +9,7 @@ tags: [BGA, thermal-cycling, screenshot-evidence, unsolved]
 physics: [thermal]
 software: [ANSYS Mechanical]
 software_versions: ["2024 R2"]
-source_ids: [SRC-BGA-THERMAL-FULLTABLE-001, SRC-BGA-THERMAL-SCOPE-002, SRC-BGA-THERMAL-UI-001, SRC-BGA-001]
+source_ids: [SRC-GJB548C-1010-USER-001, SRC-BGA-THERMAL-FULLTABLE-001, SRC-BGA-THERMAL-SCOPE-002, SRC-BGA-THERMAL-UI-001, SRC-BGA-001]
 source_locator: "用户说明及5张截图；图1初温、图2/3分析设置、图4温度、图5命名选择tem"
 updated_at: "2026-10-30"
 reviewed_by: ""
@@ -77,3 +77,7 @@ reviewed_at: ""
 末段为14910 s/150 ℃、16710 s/150 ℃、16770 s/−55 ℃、18570 s/−55 ℃、18600 s/25 ℃。至此完整载荷表已取得当前界面证据，不再需要为最后几行补截图。
 
 [完整22点转录](data/thermal-ui-20261030/current-temperature-history.csv)、[替换来源哈希](data/thermal-ui-20261030/full-temperature-table-source.json)。温度载荷表中的步骤标签不替代Analysis Settings中各步自动时步等详细设置；尚未重新核对全部21步的设置。截图是载荷输入，不是求解温度结果。
+
+## 温循标准依据补充
+
+用户明确本项目采用 [GJB 548C—2021 方法1010.1](../../thermal-cycling/gjb548c-2021-method-1010-1.md)。标准/方法编号已补充；具体条件代号及温度、时间、循环数的条款符合性仍需原文核对，不能将当前载荷值直接写为标准要求。

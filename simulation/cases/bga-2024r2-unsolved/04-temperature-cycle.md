@@ -9,7 +9,7 @@ tags: [BGA, thermal-cycling, extracted, unsolved]
 physics: [thermal, structural]
 software: [ANSYS Workbench, ANSYS Mechanical]
 software_versions: ["2024 R2"]
-source_ids: [SRC-BGA-THERMAL-UI-001, SRC-BGA-001]
+source_ids: [SRC-GJB548C-1010-USER-001, SRC-BGA-THERMAL-UI-001, SRC-BGA-001]
 source_locator: "见本条目来源定位及 data/source-manifest.json"
 updated_at: "2026-10-30"
 reviewed_by: ""
@@ -73,3 +73,7 @@ reviewed_at: ""
 ## 限制
 
 这是温度边界载荷表，不是芯片发热功率表，也不是已求解的芯片内部温度。未取得实际热循环试验标准、温箱条件或热电偶曲线。
+
+## 温循标准依据补充
+
+用户明确本项目采用 [GJB 548C—2021 方法1010.1](../../thermal-cycling/gjb548c-2021-method-1010-1.md)。标准/方法编号已补充；具体条件代号及温度、时间、循环数的条款符合性仍需原文核对，不能将当前载荷值直接写为标准要求。

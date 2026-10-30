@@ -37,3 +37,7 @@ reviewed_at: ""
 ## 来源
 
 SRC-BGA-REPORT-001 第2.3节、图2-4及第3.2/3.3节；[现有工程温度记录](../cases/bga-2024r2-unsolved/04-temperature-cycle.md)。
+
+## 后续标准依据与当前设置
+
+用户后续指定采用 [GJB 548C—2021 方法1010.1](gjb548c-2021-method-1010-1.md)。本页报告及初次工程对照保留历史；当前初温已由界面确认为25 ℃、温度载荷引用“外表面”，详见 [最新热阶段证据](../cases/bga-2024r2-unsolved/10-thermal-ui-scope.md)。具体标准试验条件及符合性仍待原文核对。
