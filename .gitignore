@@ -1,0 +1,33 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local RAG indexes and generated artifacts
+.venv/
+__pycache__/
+.chroma/
+vectorstore/
+rag/index/
+rag/cache/
+outputs/
+*.log
+
+# Local source documents and solver projects; register references instead
+local-sources/
+*.pdf
+*.step
+*.stp
+*.aedt
+*.aedb/
+*.wbpj
+*.wbpz
+*.mechdb
+*.rst
+*.rth
+*.db
+*.zip
+.DS_Store
+Thumbs.db
