@@ -1,0 +1,56 @@
+{
+  "source_id": "SRC-BGA-MAT-SCREEN-001",
+  "filename": "材料属性截图.docx",
+  "bytes": 776958,
+  "sha256": "92f65d2a32945e20a4de9d10066775c439d7b608073dc61fdff3f2394251165e",
+  "extracted_at": "2026-10-30",
+  "method": "从DOCX直接提取5张原始PNG并逐图按原始尺寸查看；人工转录可见字段",
+  "location_scheme": "按文档顺序和word/media/image1.png至image5.png定位；不声称Word页码",
+  "page_rendering": "未生成整页渲染；已知配套渲染环境缺少soffice，直接核查原始嵌入PNG",
+  "media": [
+    {
+      "file": "image1.png",
+      "size": [
+        1916,
+        1010
+      ],
+      "sha256": "0756b5637630c627d9cf009c58107cda6c04bcdf55aab4b7512126a02dce07df"
+    },
+    {
+      "file": "image2.png",
+      "size": [
+        1914,
+        1010
+      ],
+      "sha256": "6d97dbe473067e680f1868d5f35ac85fb18591f1f6d467a57facaabb4b1bab4b"
+    },
+    {
+      "file": "image3.png",
+      "size": [
+        1916,
+        1016
+      ],
+      "sha256": "81bfebe70c8ff5d834da92172d9ae089482fe8719abf81aee3ab9ff9b69b6341"
+    },
+    {
+      "file": "image4.png",
+      "size": [
+        1917,
+        1023
+      ],
+      "sha256": "21337cb19948fe7be580f27167e559ab19d517681069058633a9b6622c9b3b91"
+    },
+    {
+      "file": "image5.png",
+      "size": [
+        1915,
+        1010
+      ],
+      "sha256": "bfada0b907598d6bf430d69e4fca915148fe966a4ff4d7ccedb205f8540d0fad"
+    }
+  ],
+  "raw_document_uploaded": false,
+  "original_images_uploaded": false,
+  "mechanical_refresh_proven": false,
+  "source_report_validated": false
+}

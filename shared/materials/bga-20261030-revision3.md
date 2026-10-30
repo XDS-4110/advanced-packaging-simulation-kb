@@ -42,3 +42,7 @@ EngineeringData.xml与journal2.wbjn中的SetData及后续Save相互印证。相�
 - 约束、无应力参考温度、结构时间步、接触、网格及温度映射的待补项不因此关闭。
 
 后续核对Model/Mechanical中的材料后保存，再创建新的WBPZ。当前仍按未求解案例记录，报告应力结果不算当前工程的求解结果。本次提取没有修改源工程或运行求解器。
+
+## 后续截图证据
+
+[5张Engineering Data截图](bga-material-screenshots.md)进一步核实了可见字段。h0显示2640.8符合2640.75的显示精度；SFL弹性/CTE及焊料CTE表未在截图中展开，不覆盖原提取值。

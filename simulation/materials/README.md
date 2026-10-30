@@ -28,3 +28,7 @@
 ## 最新状态：revision 3
 
 [比热修正后的当前材料证据](../../shared/materials/bga-20261030-revision3.md)：65条材料属性与报告对齐。此前差异记录保留历史；Mechanical同步与归档仍待核对。
+
+## 材料界面证据
+
+[5张材料截图核对](../../shared/materials/bga-material-screenshots.md)：51条可见数值与revision 3显示精度相符，尚缺SFL和焊料的部分温度表；不能据此关闭Mechanical同步与结构参考温度缺项。

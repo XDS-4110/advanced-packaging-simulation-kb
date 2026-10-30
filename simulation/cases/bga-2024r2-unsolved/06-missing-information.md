@@ -9,7 +9,7 @@ tags: [BGA, thermal-cycling, extracted, unsolved]
 physics: [thermal, structural]
 software: [ANSYS Workbench, ANSYS Mechanical]
 software_versions: ["2024 R2"]
-source_ids: [SRC-BGA-REV3-001, SRC-BGA-REV2-001, SRC-BGA-001, SRC-BGA-REPORT-001]
+source_ids: [SRC-BGA-MAT-SCREEN-001, SRC-BGA-REV3-001, SRC-BGA-REV2-001, SRC-BGA-001, SRC-BGA-REPORT-001]
 source_locator: "见本条目来源定位及 data/source-manifest.json"
 updated_at: "2026-10-30"
 reviewed_by: ""
@@ -56,3 +56,7 @@ reviewed_at: ""
 ## 后续报告补充
 
 已取得 [BGA 报告方法与材料资料](../../references/bga-thermal-reliability-report/report-knowledge.md)。报告补充外表面温度循环意图、5循环描述及材料表，但未给足支撑、参考温度、接触、网格与结构步设置。材料与工程差异见 [对照](../../references/bga-thermal-reliability-report/report-project-comparison.md)。上方材料来源项现为“已有二次报告，仍待原始出处与冲突核对”；后续结果项仍指当前工程，不能用报告图代替。
+
+## 材料截图补充
+
+已取得 [五种材料的Engineering Data界面截图](../../../shared/materials/bga-material-screenshots.md)，补充瞬时CTE/各向同性弹性类型、Anand参考单位及可见数值的界面证据。仍缺SFL弹性和CTE温度表、焊料CTE表；材料牌号/原始来源、Mechanical内实际材料值、结构无应力参考温度等缺项继续保留。场变量默认22 ℃不作为参考温度证据。
