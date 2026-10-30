@@ -8,3 +8,5 @@
 复制后修改 ID、标题、来源与状态。模板中的空字段是占位，不是有效数据；模板本身不进入正式 RAG 索引。
 
 - [排错案例](troubleshooting-case.md)：报错原文、复现条件、原因排查、设置变化、无效尝试与结果验证。
+
+- [封装案例](packaging-case.md)：实物结构、材料引用、制造历史、实际工况与试验证据；填写后放入 packaging/bga/cases 或 packaging/2-5d/cases。
