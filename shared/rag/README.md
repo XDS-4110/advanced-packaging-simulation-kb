@@ -12,7 +12,7 @@
 
 ## 默认索引范围
 
-- 收录 `packaging/` 和 `simulation/` 下符合元数据要求的 Markdown；`shared/` 是公共规范与来源登记，不作为领域正文索引。
+- 收录 `packaging/`、`simulation/` 及 `shared/materials/` 下符合元数据要求的 Markdown；其他 `shared/` 内容是公共规范与来源登记，不作为领域正文索引。
 - 默认仅收录 `reviewed` 和 `validated`；`draft` 单独用于人工查阅，`deprecated` 不用于生成新工程设置。
 - 排除所有 `README.md`、`shared/templates/`、`local-sources/`、生成结果和索引文件。
 - 软件文档与封装理论、案例、材料记录分别标记文档类型，以便查询过滤。
@@ -37,4 +37,8 @@
 
 ## 领域分工
 
-`domain` 仅使用 `packaging` 或 `simulation`，应与所在顶层目录一致。支持分别建索引或合并后按该字段过滤；跨领域条目互相引用。目录迁移后需重建原索引，清理旧路径片段，避免重复召回。
+`domain` 使用 `packaging`、`simulation`，或公共材料记录的 `shared`。封装或仿真检索必须同时查询公共材料记录（`domain=shared` 且 `document_type=material`），避免分域后漏掉材料依据。支持分别建索引或合并后按字段过滤；跨领域条目互相引用。目录迁移后需重建原索引，清理旧路径片段，避免重复召回。
+
+## 公共材料检索
+
+按材料 ID、revision、牌号、状态、温度范围和方向过滤。优先取公共材料记录；案例快照用于回答“该工程当时设置了什么”，不自动作为通用材料参数。CSV/JSON 是正文附带证据，入库管线应与所属材料条目关联；若同时索引正文与表格，按材料 ID/版本/属性去重。

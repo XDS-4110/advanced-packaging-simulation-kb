@@ -13,6 +13,7 @@
 
 ## 公共资料
 
+- [公共材料库](shared/materials/README.md)
 - [填写模板](shared/templates/README.md)
 - [RAG 入库规范](shared/rag/README.md)
 - [资料来源登记](shared/references/README.md)
@@ -22,9 +23,9 @@
 
 1. 封装协作者在 `packaging/` 补充结构、工艺、材料原始证据及试验条件。
 2. 仿真负责人在 `simulation/` 补充建模假设、材料输入、边界、网格、求解和验证。
-3. 材料原始资料放在 `packaging/materials/`；仿真采用值与本构设置放在 `simulation/materials/`，明确引用来源。
+3. 材料身份、原始资料与属性统一维护在 `shared/materials/`，封装和仿真共同引用材料 ID 与修订版。`simulation/materials/` 只记录本构选择、单位转换和软件映射；案例中的历史输入保持可追溯。
 4. 先在 `shared/references/catalog.csv` 登记来源，再复制模板建立条目，默认状态为 `draft`。
-5. 知识元数据 `domain` 填 `packaging` 或 `simulation`，方便 RAG 按领域过滤。模板和目录说明不进入正式检索索引。
+5. 知识元数据 `domain` 填 `packaging`、`simulation` 或公共材料的 `shared`，方便 RAG 按领域过滤。模板和目录说明不进入正式检索索引。
 
 目录分工不限制协作者的实际写入权限；本次整理不修改仓库可见性或成员权限。
 

@@ -1,7 +1,7 @@
 # 填写模板
 
 - [知识条目](knowledge-entry.md)：概念、方法、公式、操作或经验。
-- [材料记录](material-entry.md)：材料属性、条件与数据来源。
+- [材料记录](material-entry.md)：填写后放入 `shared/materials/`，供封装与仿真共同引用。
 - [仿真案例](simulation-case.md)：完整复现和验证记录。
 - [文献笔记](reference-note.md)：原文定位、结论、假设与局限。
 

@@ -7,7 +7,7 @@
 - [封装基础](fundamentals/README.md)
 - [封装结构](structures/README.md)
 - [封装工艺](processes/README.md)
-- [封装材料与原始资料](materials/README.md)
+- [公共材料库（双方共用）](../shared/materials/README.md)
 - [封装可靠性与试验](reliability/README.md)
 - [封装案例](cases/README.md)
 - [封装文献笔记](references/README.md)

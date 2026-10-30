@@ -1,5 +1,6 @@
 # 公共规范与资料
 
+- [公共材料库](materials/README.md)
 - [填写模板](templates/README.md)
 - [RAG 入库规范](rag/README.md)
 - [资料来源](references/README.md)

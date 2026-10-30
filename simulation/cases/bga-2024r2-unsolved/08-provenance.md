@@ -38,7 +38,7 @@ reviewed_at: ""
 - [源文件大小、SHA-256 及归档清单](data/source-manifest.json)
 - [APDL 命令行号与网格计数证据](data/apdl-evidence.json)
 - [HDF5 对象名称与 ID](data/object-names.json)
-- [材料数据及其原始限定字段](data/materials.json)
+- [材料数据及其原始限定字段](../../../shared/materials/datasets/bga-2024r2-draft/materials.json)
 - [热分析设置快照](data/thermal-settings.json)
 
 原始工程文件保留在用户电脑，不复制进 GitHub。数据 SHA-256 用于后续检查对应源文件是否变化。

@@ -1,0 +1,6 @@
+material_id,material_name_as_imported,revision,status,record_kind,record_path,source_id
+MAT-BGA-SI-001,SI,1,draft,case_import_snapshot,bga-2024r2-import.md,SRC-BGA-001
+MAT-BGA-UNDERFILL-001,Underfill,1,draft,case_import_snapshot,bga-2024r2-import.md,SRC-BGA-001
+MAT-BGA-SN63PB37-001,Sn63Pb37,1,draft,case_import_snapshot,bga-2024r2-import.md,SRC-BGA-001
+MAT-BGA-BT-001,BT,1,draft,case_import_snapshot,bga-2024r2-import.md,SRC-BGA-001
+MAT-BGA-SFL-001,SFL,1,draft,case_import_snapshot,bga-2024r2-import.md,SRC-BGA-001

@@ -2,7 +2,10 @@
 id: ""
 title: ""
 document_type: material
-domain: ""
+domain: shared
+revision: "1"
+record_kind: ""
+material_ids: []
 status: draft
 tags: []
 source_ids: []
@@ -13,6 +16,9 @@ reviewed_at: ""
 ---
 
 # 材料名称（待填写）
+
+## 材料标识与引用
+待补充：唯一材料 ID、修订版、记录类型（实测/厂商/文献/工程快照/等效或拟合），以及采用本记录的案例。
 
 ## 具体牌号、成分与工艺
 待补充。区分块材、薄膜、镀层、填料复合材料及加工状态。
