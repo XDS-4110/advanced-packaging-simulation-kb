@@ -20,3 +20,7 @@
 ## 已取得的报告证据
 
 [BGA 报告与工程对照](../references/bga-thermal-reliability-report/report-project-comparison.md) 已确认 m/h0 对应、SFL 比热单位和焊料弹性温度轴不一致。原值不覆盖，需决定采用依据。
+
+## 当前修改状态
+
+见 [revision 2材料证据](../../shared/materials/bga-20261030-revision2.md)：m/h0和E/ν温度轴已对齐报告，比热差异仍在；不要把历史revision 1的差异当成当前保存值。

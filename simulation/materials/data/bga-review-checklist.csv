@@ -1,9 +1,9 @@
 ﻿material,check_id,item,status,evidence,reviewed_by,reviewed_at
 ALL,identity,牌号、工艺状态与来源,partial_evidence,已有报告材料表，但厂商/牌号/原始标定依据仍不完整,,
-ALL,units,数值/单位/温度轴,conflict,SRC-BGA-REPORT-001 表2-1：SFL比热单位与工程不一致,,
+ALL,units,数值/单位/温度轴,conflict,SRC-BGA-REV2-001：SFL现为3.30536 J/(g K)，仍不同于报告0.79 J/(g K),,
 ALL,definition,Behavior 与 Definition,pending,,,
 ALL,assignment,材料实体赋值,pending,,,
-Sn63Pb37,anand,九参数、参考单位、m/h0,conflict,SRC-BGA-REPORT-001 表2-3：m/h0与工程相反；见报告—工程对照,,
+Sn63Pb37,anand,九参数、参考单位、m/h0,partial_evidence,SRC-BGA-REV2-001：Engineering Data m/h0已对齐报告；原始标定及Mechanical同步未验证,,
 Sn63Pb37,temperature_range,表格覆盖循环范围或有处理依据,pending,,,
 SFL,temperature_range,低温区数据,pending,,,
 BT,direction,基板/PCB 共用与方向假设,pending,,,

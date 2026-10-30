@@ -26,3 +26,7 @@
 ## 新增报告证据
 
 - [BGA 报告材料表及与工程的差异](bga-report-evidence.md)：保留来源冲突，未替换工程原值。
+
+## 最新工程修订证据
+
+- [2026-10-30 revision 2](bga-20261030-revision2.md)：Anand与弹性温度轴已对齐报告；SFL比热仍有差异。只核实Engineering Data，未确认Mechanical同步。

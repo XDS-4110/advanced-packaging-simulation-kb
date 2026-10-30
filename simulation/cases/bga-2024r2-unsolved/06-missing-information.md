@@ -9,12 +9,15 @@ tags: [BGA, thermal-cycling, extracted, unsolved]
 physics: [thermal, structural]
 software: [ANSYS Workbench, ANSYS Mechanical]
 software_versions: ["2024 R2"]
-source_ids: [SRC-BGA-001, SRC-BGA-REPORT-001]
+source_ids: [SRC-BGA-REV2-001, SRC-BGA-001, SRC-BGA-REPORT-001]
 source_locator: "见本条目来源定位及 data/source-manifest.json"
 updated_at: "2026-10-30"
 reviewed_by: ""
 reviewed_at: ""
 ---
+
+> 当前修订提示：材料m/h0和E/ν温度轴已在Engineering Data中对齐报告；SFL比热仍有差异。其余缺项未由本轮证据补齐，见 [第二次提取](09-revision2-material-review.md)。
+
 
 # BGA 无法可靠提取的信息与补充清单
 

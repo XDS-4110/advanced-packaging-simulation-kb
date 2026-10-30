@@ -9,12 +9,15 @@ tags: [material-input, Workbench-2024R2, thermal-stress, thermal-cycling]
 physics: [thermal, structural]
 software: [ANSYS Workbench, ANSYS Mechanical]
 software_versions: ["2024 R2"]
-source_ids: [SRC-BGA-001, SRC-ANSYS-242-ANAND, SRC-BGA-REPORT-001]
+source_ids: [SRC-BGA-REV2-001, SRC-BGA-001, SRC-ANSYS-242-ANAND, SRC-BGA-REPORT-001]
 source_locator: "见文末官方资料与公共材料记录"
 updated_at: "2026-10-30"
 reviewed_by: ""
 reviewed_at: ""
 ---
+
+> 当前修订提示：最新Engineering Data已保存m=0.303、h0=2640.75 MPa，与报告相符；原始标定与Mechanical同步仍未验证。见 [revision 2证据](../../shared/materials/bga-20261030-revision2.md)。
+
 
 # Sn63Pb37 的 Anand 字段与输入核对
 

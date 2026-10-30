@@ -9,12 +9,15 @@ tags: [BGA, thermal-cycling, report-evidence, not-reproduced]
 physics: [thermal, structural]
 software: [ANSYS Workbench]
 software_versions: []
-source_ids: [SRC-BGA-REPORT-001, SRC-BGA-001, SRC-ANSYS-242-ANAND]
+source_ids: [SRC-BGA-REV2-001, SRC-BGA-REPORT-001, SRC-BGA-001, SRC-ANSYS-242-ANAND]
 source_locator: "报告章节/表图号及原文块索引见正文和提取清单；不使用未经核实页码"
 updated_at: "2026-10-30"
 reviewed_by: ""
 reviewed_at: ""
 ---
+
+> 当前修订提示：本页9条差异是报告对revision 1的历史对照。最新Engineering Data中8条已对齐，SFL比热仍不同，见 [revision 2](bga-20261030-revision2.md)。
+
 
 # BGA 报告材料证据及与工程的差异
 

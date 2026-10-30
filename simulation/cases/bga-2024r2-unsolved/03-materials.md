@@ -9,12 +9,15 @@ tags: [BGA, thermal-cycling, extracted, unsolved]
 physics: [thermal, structural]
 software: [ANSYS Workbench, ANSYS Mechanical]
 software_versions: ["2024 R2"]
-source_ids: [SRC-BGA-001]
+source_ids: [SRC-BGA-REV2-001, SRC-BGA-001]
 source_locator: "见本条目来源定位及 data/source-manifest.json"
 updated_at: "2026-10-30"
 reviewed_by: ""
 reviewed_at: ""
 ---
+
+> 当前修订提示：本页为初次材料快照。当前保存值及未解决问题见 [第二次提取](09-revision2-material-review.md)。
+
 
 # BGA 工程材料参数：公共记录引用
 

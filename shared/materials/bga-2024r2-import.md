@@ -12,12 +12,15 @@ revision: "1"
 record_kind: case_import_snapshot
 software: [ANSYS Workbench, ANSYS Mechanical]
 software_versions: ["2024 R2"]
-source_ids: [SRC-BGA-001, SRC-BGA-REPORT-001]
+source_ids: [SRC-BGA-REV2-001, SRC-BGA-001, SRC-BGA-REPORT-001]
 source_locator: "见本条目来源定位及 simulation/cases/bga-2024r2-unsolved/data/source-manifest.json"
 updated_at: "2026-10-30"
 reviewed_by: ""
 reviewed_at: ""
 ---
+
+> 当前修订提示：本页为revision 1历史快照。当前Engineering Data已修正m/h0与弹性温度轴，比热物理值未变，见 [revision 2](bga-20261030-revision2.md)。
+
 
 # BGA 工程材料参数：原值与适用范围
 

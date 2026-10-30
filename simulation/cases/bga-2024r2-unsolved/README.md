@@ -23,3 +23,7 @@
 - [报告—工程差异及决策](../../references/bga-thermal-reliability-report/report-project-comparison.md)
 
 报告有作者结果，但当前工程仍未求解。
+
+## 最新提取
+
+- [第二次提取：材料修改与剩余问题](09-revision2-material-review.md)。第1～8篇保留初次快照和后续报告的证据历史；当前Engineering Data修改状态以第9篇为准。

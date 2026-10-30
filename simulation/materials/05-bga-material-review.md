@@ -9,12 +9,15 @@ tags: [material-input, Workbench-2024R2, thermal-stress, thermal-cycling]
 physics: [thermal, structural]
 software: [ANSYS Workbench, ANSYS Mechanical]
 software_versions: ["2024 R2"]
-source_ids: [SRC-BGA-001, SRC-ANSYS-242-ENGDATA, SRC-ANSYS-242-ANAND, SRC-BGA-REPORT-001]
+source_ids: [SRC-BGA-REV2-001, SRC-BGA-001, SRC-ANSYS-242-ENGDATA, SRC-ANSYS-242-ANAND, SRC-BGA-REPORT-001]
 source_locator: "见文末官方资料与公共材料记录"
 updated_at: "2026-10-30"
 reviewed_by: ""
 reviewed_at: ""
 ---
+
+> 当前修订提示：最新Engineering Data中Anand与弹性温度轴已对齐报告，SFL比热仍有差异。见 [revision 2证据](../../shared/materials/bga-20261030-revision2.md)。
+
 
 # BGA 材料输入：待补资料与完成判据
 

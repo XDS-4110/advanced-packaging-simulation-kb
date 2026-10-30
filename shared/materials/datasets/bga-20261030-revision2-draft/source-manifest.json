@@ -1,0 +1,54 @@
+{
+  "source_id": "SRC-BGA-REV2-001",
+  "extracted_at": "2026-10-30",
+  "extraction_revision": 2,
+  "status": "draft",
+  "files": [
+    {
+      "file": "BGA.wbpj",
+      "bytes": 78279,
+      "modified_local": "2026-10-30T15:49:30",
+      "sha256": "c2723839d6a4bafbc20279828b8e08010c19870f8586bc5b5a143c11dfd539a0"
+    },
+    {
+      "file": "BGA_files/dp0/SYS/ENGD/EngineeringData.xml",
+      "bytes": 64789,
+      "modified_local": "2026-10-30T15:49:28",
+      "sha256": "fc3afb0b2797ad2a7c6b4f3eff3b564f4908f7f0b50f25deba7b3628ef580637"
+    },
+    {
+      "file": "BGA_files/session_files/journal2.wbjn",
+      "bytes": 1959,
+      "modified_local": "2026-10-30T15:49:30",
+      "sha256": "c462d9799da28fb88ffd766c3e57788dfc267aceb922aaa185099a4d63d87263"
+    },
+    {
+      "file": "BGA_files/dp0/global/MECH/SYS.mechdb",
+      "bytes": 163144280,
+      "modified_local": "2026-10-30T15:42:06",
+      "sha256": "0d970950696f26409d1bf36ff9d7a96110a24d2c6b5e8387c571338f99813580"
+    },
+    {
+      "file": "BGA_files/dp0/global/MECH/SYS.engd",
+      "bytes": 60418,
+      "modified_local": "2026-10-30T14:53:22",
+      "sha256": "0046649d08b9201d63a519be2de9e90227e339fe75e8d6f5b7085eb65b562c0b"
+    },
+    {
+      "file": "BGA.wbpz",
+      "bytes": 321949772,
+      "modified_local": "2026-10-30T14:36:25",
+      "sha256": "ce29297b186f146aa3b302c1a09286f77bc4dfc83d235f6ad270e4bf211ac258"
+    }
+  ],
+  "archive_material_xml_sha256": "e646f71783226e446a5c81628e3c5add8ca57652d8261c1e9607915516b1576a",
+  "archive_materials_differ_from_live_project": true,
+  "mechanical_material_refresh_verified": false,
+  "solver_run_by_extractor": false,
+  "mechanical_settings_extracted_this_revision": false,
+  "notes": [
+    "EngineeringData.xml与journal2.wbjn交叉核对；未打开/修改源工程。",
+    "当前目录缺少CAERep.xml/MatML.xml/APDL，Mechanical数据库未通过软件API导出，不能确认新材料已传入Mechanical或重新核实约束/时间步。",
+    "归档修改时间早于本轮编辑，且内部材料XML哈希与当前工程不同。"
+  ]
+}
