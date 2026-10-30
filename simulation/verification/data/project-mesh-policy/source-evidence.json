@@ -1,0 +1,50 @@
+{
+  "original_document": {
+    "source_id": "SRC-PROJECT-MESH-DOC-001",
+    "filename": "网格要求.docx",
+    "bytes": 2649090,
+    "sha256": "d4e1fcf82b8e23b8172713e8cd5346f5e62b7774c7bde8b63d9c4d780227f5b9",
+    "location_scheme": "文字段落与图1至图8，无未经核实页码",
+    "original_file_uploaded": false
+  },
+  "clarification": {
+    "source_id": "SRC-PROJECT-MESH-CONFIRM-001",
+    "date": "2026-10-30",
+    "reviewer": "用户（本会话逐项确认）",
+    "items": [
+      {
+        "topic": "scope",
+        "confirmed_statement": "这里的描述适用于后面的所有的模型，不是针对BGA这个例子"
+      },
+      {
+        "topic": "layers",
+        "confirmed_statement": "三层网格方向沿厚度最小和最小尺寸方向，对于焊球圆柱按照高度方向进行检查"
+      },
+      {
+        "topic": "circle",
+        "confirmed_statement": "完整的一圈至少16段，并尽量均匀，不用严格等分，超过16个可以"
+      },
+      {
+        "topic": "tetrahedra",
+        "confirmed_statement": "尽量接近等边三角形，避免细长、尖锐的三角形"
+      },
+      {
+        "topic": "quality",
+        "confirmed_statement": "每个实体的平均质量达到0.75，恰好达到0.75和0.05算合格"
+      },
+      {
+        "topic": "critical_regions",
+        "confirmed_statement": "LLM先进行目标分析，然后给出分析结果，人再进行确认"
+      },
+      {
+        "topic": "priority",
+        "confirmed_statement": "先自动划分 → 检查全部要求 → 不合格再调整尺寸或局部控制 → 优先扫掠 → 再尝试多区域，当规则六面体结构不合格时，优先采用四面体"
+      },
+      {
+        "topic": "exception_and_limit",
+        "confirmed_statement": "第一点需要人工单独批准，同时300万是指整个模型的单元总数，超过上限时需要暂停并交由人工决定"
+      }
+    ]
+  },
+  "precedence": "clarified user instructions take precedence over ambiguous original prose; reviewed as project policy, not physically validated"
+}

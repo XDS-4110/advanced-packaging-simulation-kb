@@ -2,4 +2,8 @@
 
 范围：几何识别、参数化、TSV/凸点等效、均匀化与子模型；明确热等效和力学等效的验证范围。
 
-当前为空，待补充经审核的知识条目。使用根目录 `shared/templates/` 中的模板，并遵循根目录 `CONTRIBUTING.md` 和 `shared/rag/README.md`。
+专题内容逐步补充。使用根目录 `shared/templates/` 中的模板，并遵循根目录 `CONTRIBUTING.md` 和 `shared/rag/README.md`。
+
+## 网格规则
+
+所有后续模型采用 [项目统一网格要求](../verification/project-mesh-requirements.md)，包括BGA和2.5D。阈值及例外统一维护于该条目。

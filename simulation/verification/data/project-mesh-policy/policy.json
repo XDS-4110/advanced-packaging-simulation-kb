@@ -1,0 +1,61 @@
+{
+  "policy_id": "POLICY-PROJECT-MESH-001",
+  "revision": 1,
+  "status": "reviewed",
+  "authority": "user_confirmed_project_requirement",
+  "scope": "all subsequent models in this project, including BGA and 2.5D",
+  "software_baseline": "ANSYS Workbench 2024 R2",
+  "metric": "Element Quality",
+  "minimum_layers": {
+    "count": 3,
+    "count_type": "elements, not node rows",
+    "general_direction": "thickness or minimum dimension",
+    "solder_ball_and_cylinder_direction": "height"
+  },
+  "circular_boundary": {
+    "minimum_segments_per_full_circle": 16,
+    "approximately_uniform": true,
+    "strict_equal_spacing_required": false,
+    "more_segments_allowed": true
+  },
+  "shape": {
+    "tet_surface_triangles": "as close to equilateral as practicable; avoid slender and sharp shapes",
+    "hex": "uniform, regular shapes; avoid irregular local distortion"
+  },
+  "quality": {
+    "average_per_body_min_inclusive": 0.75,
+    "minimum_element_quality_min_inclusive": 0.05,
+    "global_average_cannot_replace_per_body_check": true
+  },
+  "critical_regions": {
+    "proposed_by": "LLM based on simulation objective with rationale",
+    "human_confirmation_required": true
+  },
+  "low_quality_exception": {
+    "condition": "elements with quality < 0.05 all outside human-confirmed critical regions",
+    "separate_human_approval_required": true,
+    "automatic_acceptance_allowed": false,
+    "does_not_waive_per_body_average_requirement": true
+  },
+  "method_priority": {
+    "first": "automatic meshing",
+    "accept_automatic_only_if": "all applicable requirements satisfied, including approved exceptions if used",
+    "on_failure_first": "adjust sizing or local controls",
+    "regular_hexahedral_geometry_next": "tetrahedrons",
+    "other_geometry_next": [
+      "Sweep",
+      "MultiZone"
+    ]
+  },
+  "element_limit": {
+    "whole_model_max_inclusive": 3000000,
+    "counts_nodes": false,
+    "if_exceeded": "pause automatic workflow and request human decision"
+  },
+  "physical_convergence_validated": false,
+  "execution_implemented": false,
+  "source_ids": [
+    "SRC-PROJECT-MESH-DOC-001",
+    "SRC-PROJECT-MESH-CONFIRM-001"
+  ]
+}

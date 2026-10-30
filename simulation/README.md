@@ -32,3 +32,7 @@
 ## 材料模型与输入专题
 
 [Workbench 2024 R2 材料模型与输入](materials/README.md)：属性映射、模型选择、单位与 CTE、Anand、BGA 审核清单；均为待审核草稿。
+
+## 全部后续模型的网格规范
+
+[统一网格要求与人工确认流程](verification/project-mesh-requirements.md)已由用户逐项确认，状态reviewed，适用于所有模型。
