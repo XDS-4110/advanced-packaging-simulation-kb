@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-BGA-THERMAL-UI-001",
+  "received_at": "2026-10-30",
+  "evidence": [
+    "用户直接说明暴露表面选面原则",
+    "5张Mechanical 2024 R2截图"
+  ],
+  "images": [
+    {
+      "image": 1,
+      "filename": "codex-clipboard-0070063a-08f1-42dc-a814-eea487434ca5.png",
+      "sha256": "f0551ca4facbc9af078d8cd4aae29adaba4744e61f8f41e198c2973f91d8af94",
+      "bytes": 139919
+    },
+    {
+      "image": 2,
+      "filename": "codex-clipboard-1d124b58-abf7-4806-b63d-9d44eae0a707.png",
+      "sha256": "02961c7091a7bf39dcac6156a91b6784d42c3fa037ed5a932d69c97c3e40515d",
+      "bytes": 168269
+    },
+    {
+      "image": 3,
+      "filename": "codex-clipboard-f08403a6-4849-43bd-abfc-dbe377ba6441.png",
+      "sha256": "715d6aaac85feccf7a44b71ff2d266bb1701bc1ab00aa6dd3111f778cb78493d",
+      "bytes": 172653
+    },
+    {
+      "image": 4,
+      "filename": "codex-clipboard-5548e233-4556-4a19-97f2-ecf0239364e9.png",
+      "sha256": "4620c8e023ae52d5a13a73c78d107aef7436dd03e4eadab498ba8c88758b428d",
+      "bytes": 145030
+    },
+    {
+      "image": 5,
+      "filename": "codex-clipboard-52a56173-61a2-4882-8f49-8a84c36c2910.png",
+      "sha256": "bd13657e20a6979b83ebf1e23e72da5a13a6e4ae406105612a732eea63a5ae20",
+      "bytes": 134513
+    }
+  ],
+  "original_images_uploaded": false,
+  "solver_run_by_extractor": false,
+  "full_face_id_list_available": false
+}

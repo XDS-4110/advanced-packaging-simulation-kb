@@ -9,12 +9,15 @@ tags: [BGA, thermal-cycling, extracted, unsolved]
 physics: [thermal, structural]
 software: [ANSYS Workbench, ANSYS Mechanical]
 software_versions: ["2024 R2"]
-source_ids: [SRC-BGA-MAT-SCREEN-002, SRC-BGA-MAT-SCREEN-001, SRC-BGA-REV3-001, SRC-BGA-REV2-001, SRC-BGA-001, SRC-BGA-REPORT-001]
+source_ids: [SRC-BGA-THERMAL-UI-001, SRC-BGA-MAT-SCREEN-002, SRC-BGA-MAT-SCREEN-001, SRC-BGA-REV3-001, SRC-BGA-REV2-001, SRC-BGA-001, SRC-BGA-REPORT-001]
 source_locator: "见本条目来源定位及 data/source-manifest.json"
 updated_at: "2026-10-30"
 reviewed_by: ""
 reviewed_at: ""
 ---
+
+> 最新热阶段证据：初温25 ℃、温度作用于tem（335面）、第14步结束12990 s，详见 [瞬态热界面与作用域](10-thermal-ui-scope.md)。本页早期快照保留历史；用户明确瞬态结构尚未开展，结构设置列为后续阶段待建立。
+
 
 > 最新状态（revision 3）：SFL比热已保存为0.79 J/(g·K)，65条材料属性与报告对齐；Mechanical同步与重新归档未确认。见 [当前证据](../../../shared/materials/bga-20261030-revision3.md)。
 

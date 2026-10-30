@@ -9,3 +9,4 @@ SRC-BGA-REV2-001,BGA 当前保存工程的第二次材料提取,internal_project
 SRC-BGA-REV3-001,BGA 比热修正后的第三次材料提取,internal_project,用户提供,2026,,2024 R2; extraction revision 3,local EngineeringData.xml and journal2.wbjn,仅提取知识与参数；不上传原工程,draft,65条材料对齐报告；未验证Mechanical同步、求解或原始材料标定。哈希见shared/materials/datasets/bga-20261030-revision3-draft/source-manifest.json。
 SRC-BGA-MAT-SCREEN-001,材料属性截图.docx 五种BGA材料的工程数据界面,user_provided_screenshots,用户提供,2026,,截图未显示发行版本,local DOCX; five embedded PNGs inspected,只上传提取笔记与转录表；不上传原文档或原图,draft,51条可见数值与revision 3一致（含显示精度）；SFL弹性/CTE及焊料CTE表未展开，不能确认Mechanical同步。
 SRC-BGA-MAT-SCREEN-002,BGA 补充材料温度表三张截图,user_provided_screenshots,用户提供,2026,,截图未显示发行版本,local user-provided PNGs,只上传提取笔记与转录表；不上传原图,draft,SFL弹性/CTE和焊料CTE表补齐；15条温度相关输入与revision3一致；温区与Mechanical同步仍待核实。
+SRC-BGA-THERMAL-UI-001,BGA 瞬态热设置及暴露表面说明,user_provided_screenshots_and_statement,用户提供,2026,,2024 R2,local PNG screenshots and user statement,仅上传提取知识；不上传原图,draft,初温25 ℃，Temperature使用tem共335面；第18步及第1～18步结束时间可见；尚未结构分析。

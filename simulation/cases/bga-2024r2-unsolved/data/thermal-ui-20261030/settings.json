@@ -1,0 +1,38 @@
+{
+  "source_id": "SRC-BGA-THERMAL-UI-001",
+  "status": "draft",
+  "software_release_visible": "2024 R2",
+  "thermal_initial_temperature_degC": 25,
+  "thermal_initial_temperature_type": "uniform",
+  "temperature_load": {
+    "scope_method": "Named Selection",
+    "named_selection": "tem",
+    "suppressed": false,
+    "definition": "tabular data",
+    "independent_variable": "time"
+  },
+  "named_selection": {
+    "name": "tem",
+    "scope_method": "Worksheet",
+    "selected_faces": 335,
+    "area_mm2_display": 31896,
+    "send_to_solver": true,
+    "suppressed_count": 0,
+    "full_face_ids_available": false
+  },
+  "analysis_settings": {
+    "step_count": 21,
+    "visible_step_index": 18,
+    "visible_step_end_s": 16710,
+    "auto_time_stepping": "Program Controlled",
+    "initial_dt_s": 18,
+    "minimum_dt_s": 1.8,
+    "maximum_dt_s": 180,
+    "time_integration": "On",
+    "solver_type": "Program Controlled",
+    "store_results_at": "All Time Points"
+  },
+  "scope_intent_user_statement": "本项目温度循环的温度边界施加于所有与外界接触的暴露表面，包括用户描述的芯片下表面暴露部分、焊点周围及圆形基板上表面暴露部分。",
+  "scope_verified_exhaustive": false,
+  "structural_stage_user_statement": "用户明确尚未进行瞬态结构分析；结构约束及其设置属于后续阶段，不推断为当前热设置遗漏。"
+}
