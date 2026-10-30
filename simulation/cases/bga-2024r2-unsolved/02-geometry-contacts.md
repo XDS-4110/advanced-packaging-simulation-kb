@@ -26,7 +26,7 @@ CAERep 记录 320 个 Solid 实体，材料分布为：
 
 | 材料名称 | 实体数量 | 名称线索（不代替人工确认） |
 | --- | --- | --- |
-| Sn63Pb37 | 315 | 包含 TUDIAN/QIUXIZHEN 等命名，不能将全部 315 个实体直接等同于 BGA 球数量 |
+| Sn63Pb37 | 315 | 155 个名称含 TUDIAN，160 个含 HANQIU；不能将全部 315 个实体直接等同于 BGA 球数量 |
 | SI | 1 | XINPIAN，芯片 |
 | Underfill | 1 | Underfill |
 | BT | 2 | JIBAN 与 PCB |

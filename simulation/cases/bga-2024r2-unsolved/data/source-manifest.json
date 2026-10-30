@@ -147,5 +147,18 @@
     "HDF5 仅提取对象名称，不将私有二进制字段猜测成设置。",
     "当前 ds.dat 未检出完整边界及求解控制，不视为完整可执行输入。",
     "节点/实体单元数量来自当前输入文件，不是成功求解日志。"
-  ]
+  ],
+  "archive_snapshot": {
+    "file": "BGA.wbpz",
+    "bytes": 321949772,
+    "sha256": "ce29297b186f146aa3b302c1a09286f77bc4dfc83d235f6ad270e4bf211ac258",
+    "sha256_verified_entries": [
+      "BGA_files/dp0/SYS/MECH/CAERep.xml",
+      "BGA_files/dp0/SYS/MECH/MatML.xml",
+      "BGA_files/dp0/SYS/ENGD/EngineeringData.xml",
+      "BGA_files/dp0/global/MECH/SYS.mechdb",
+      "BGA_files/dp0/SYS/MECH/ds.dat"
+    ]
+  },
+  "source_recheck_note": "提取后复核时工作目录 SYS/MECH 的生成文件已不在原路径；归档内五个关键文件的 SHA-256 与提取快照完全相同。知识条目对应此归档快照，不代表用户后续保存的任意工程状态。"
 }

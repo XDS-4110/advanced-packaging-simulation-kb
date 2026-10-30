@@ -46,3 +46,7 @@ reviewed_at: ""
 ## RAG 状态
 
 本案例可用于人工审阅和独立草稿索引。按仓库默认规则，draft 不进入正式工程决策索引；技术内容经人工审核后再升级状态。源参数与修正建议分别记录。
+
+## 提取后的快照复核
+
+复核时工作目录的 SYS/MECH 生成文件已不在原路径。因此进一步对归档中的 CAERep.xml、MatML.xml、EngineeringData.xml、SYS.mechdb 和约 1 GB 的 ds.dat 逐个流式计算 SHA-256，均与提取时的源文件哈希完全一致。归档本体哈希及已核对条目见 source-manifest.json。本文对应该归档快照；用户后续修改需作为新版本重新提取。
