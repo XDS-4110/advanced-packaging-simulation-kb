@@ -33,3 +33,6 @@ local-sources/
 *.zip
 .DS_Store
 Thumbs.db
+
+# Explicitly tracked reference book
+!books/microelectronic-packaging-technology.pdf

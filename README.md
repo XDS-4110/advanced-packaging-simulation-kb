@@ -13,6 +13,9 @@
 
 ## 公共资料
 
+- [论文资料](papers/README.md)
+- [书籍资料](books/README.md)
+
 - [公共材料库](shared/materials/README.md)
 - [填写模板](shared/templates/README.md)
 - [RAG 入库规范](shared/rag/README.md)
