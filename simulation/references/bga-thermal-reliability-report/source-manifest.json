@@ -1,0 +1,145 @@
+{
+  "source_id": "SRC-BGA-REPORT-001",
+  "file_name": "BGA器件热可靠性分析.docx",
+  "document_title": "BGA塑封器件热可靠性研究",
+  "sha256": "d3ea90d644fde75e42c22372ba9b6c595e3a887f5ebac6362b38639ebc9a3177",
+  "bytes": 1033691,
+  "author": "正文未明确",
+  "year": "正文未明确；结果截图显示2024年日期，不能据此确定报告日期",
+  "software_release": "正文未明确",
+  "extraction": "OOXML文本、3个原生表格（保留合并单元格与数学符号），16幅嵌入图逐图缩略查看并放大关键图",
+  "location_scheme": "章节/表图号 + OOXML正文段落编号P001-P073；不声称为Word页码",
+  "rendering_limit": "尝试官方render_docx.py失败：运行环境缺少soffice.exe；未生成整页PDF/PNG，没有页面级版式核对。关键图直接从原DOCX嵌入图片读取。",
+  "media": [
+    {
+      "rid": "rId8",
+      "file": "media/image3.png",
+      "size": [
+        1108,
+        269
+      ]
+    },
+    {
+      "rid": "rId13",
+      "file": "media/image8.png",
+      "size": [
+        449,
+        292
+      ]
+    },
+    {
+      "rid": "rId18",
+      "file": "media/image13.png",
+      "size": [
+        486,
+        293
+      ]
+    },
+    {
+      "rid": "rId21",
+      "file": "media/image16.png",
+      "size": [
+        362,
+        309
+      ]
+    },
+    {
+      "rid": "rId7",
+      "file": "media/image2.png",
+      "size": [
+        578,
+        574
+      ]
+    },
+    {
+      "rid": "rId12",
+      "file": "media/image7.png",
+      "size": [
+        929,
+        765
+      ]
+    },
+    {
+      "rid": "rId17",
+      "file": "media/image12.png",
+      "size": [
+        941,
+        759
+      ]
+    },
+    {
+      "rid": "rId16",
+      "file": "media/image11.png",
+      "size": [
+        341,
+        292
+      ]
+    },
+    {
+      "rid": "rId20",
+      "file": "media/image15.png",
+      "size": [
+        474,
+        291
+      ]
+    },
+    {
+      "rid": "rId6",
+      "file": "media/image1.png",
+      "size": [
+        435,
+        204
+      ]
+    },
+    {
+      "rid": "rId11",
+      "file": "media/image6.png",
+      "size": [
+        358,
+        290
+      ]
+    },
+    {
+      "rid": "rId15",
+      "file": "media/image10.png",
+      "size": [
+        470,
+        291
+      ]
+    },
+    {
+      "rid": "rId10",
+      "file": "media/image5.png",
+      "size": [
+        532,
+        426
+      ]
+    },
+    {
+      "rid": "rId19",
+      "file": "media/image14.png",
+      "size": [
+        391,
+        325
+      ]
+    },
+    {
+      "rid": "rId9",
+      "file": "media/image4.png",
+      "size": [
+        1268,
+        471
+      ]
+    },
+    {
+      "rid": "rId14",
+      "file": "media/image9.png",
+      "size": [
+        384,
+        294
+      ]
+    }
+  ],
+  "raw_document_uploaded": false,
+  "independently_reproduced": false
+}

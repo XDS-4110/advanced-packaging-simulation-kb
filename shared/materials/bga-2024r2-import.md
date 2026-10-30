@@ -12,7 +12,7 @@ revision: "1"
 record_kind: case_import_snapshot
 software: [ANSYS Workbench, ANSYS Mechanical]
 software_versions: ["2024 R2"]
-source_ids: [SRC-BGA-001]
+source_ids: [SRC-BGA-001, SRC-BGA-REPORT-001]
 source_locator: "见本条目来源定位及 simulation/cases/bga-2024r2-unsolved/data/source-manifest.json"
 updated_at: "2026-10-30"
 reviewed_by: ""
@@ -78,3 +78,7 @@ EngineeringData.xml 与 MatML.xml 的 10 项原始数值差异来自 GPa→Pa、
 ## 公共记录与案例引用
 
 本记录只描述 BGA 工程提取快照，状态仍为 draft；它不证明这些数值已经获得厂商或试验认可。封装与仿真双方共同审阅这一份参数，不创建各自的参数副本。上述材料 ID 只标识当前工程中的定义，不能代表所有同名牌号或不同工艺材料。源工程的历史输入原值不得被后续审核值覆盖；修订应保留 revision 和来源。
+
+## 后续报告对照
+
+新取得的 [报告材料证据](bga-report-evidence.md) 与本工程快照的 m/h0、SFL 比热单位及焊料弹性温度轴存在明确不一致。本记录原值与 revision 保持不变，不应自动选为正确参数。

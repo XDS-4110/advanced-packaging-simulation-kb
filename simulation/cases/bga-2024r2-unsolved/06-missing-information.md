@@ -9,7 +9,7 @@ tags: [BGA, thermal-cycling, extracted, unsolved]
 physics: [thermal, structural]
 software: [ANSYS Workbench, ANSYS Mechanical]
 software_versions: ["2024 R2"]
-source_ids: [SRC-BGA-001]
+source_ids: [SRC-BGA-001, SRC-BGA-REPORT-001]
 source_locator: "见本条目来源定位及 data/source-manifest.json"
 updated_at: "2026-10-30"
 reviewed_by: ""
@@ -46,3 +46,7 @@ reviewed_at: ""
 ## 来源定位
 
 以本次 XML/APDL/名称索引覆盖范围与原始文件清单为依据。未对私有二进制参数做未经验证的逆向映射。
+
+## 后续报告补充
+
+已取得 [BGA 报告方法与材料资料](../../references/bga-thermal-reliability-report/report-knowledge.md)。报告补充外表面温度循环意图、5循环描述及材料表，但未给足支撑、参考温度、接触、网格与结构步设置。材料与工程差异见 [对照](../../references/bga-thermal-reliability-report/report-project-comparison.md)。上方材料来源项现为“已有二次报告，仍待原始出处与冲突核对”；后续结果项仍指当前工程，不能用报告图代替。

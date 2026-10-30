@@ -16,3 +16,10 @@
 `data/` 提供 CSV 和 JSON，保留原值、单位及定位。原始 WBPZ、STEP、Mechanical 数据库与大网格输入不上传仓库。
 
 优先复核第 7 篇的 Anand 参数、材料温区和时间节点，再补全第 6 篇的结构设置。不要将本案例直接作为已验证的自动化模板。
+
+## 新取得的报告
+
+- [报告方法与来源](../../references/bga-thermal-reliability-report/report-knowledge.md)
+- [报告—工程差异及决策](../../references/bga-thermal-reliability-report/report-project-comparison.md)
+
+报告有作者结果，但当前工程仍未求解。

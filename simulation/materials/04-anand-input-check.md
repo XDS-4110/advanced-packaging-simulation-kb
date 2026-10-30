@@ -9,7 +9,7 @@ tags: [material-input, Workbench-2024R2, thermal-stress, thermal-cycling]
 physics: [thermal, structural]
 software: [ANSYS Workbench, ANSYS Mechanical]
 software_versions: ["2024 R2"]
-source_ids: [SRC-BGA-001, SRC-ANSYS-242-ANAND]
+source_ids: [SRC-BGA-001, SRC-ANSYS-242-ANAND, SRC-BGA-REPORT-001]
 source_locator: "见文末官方资料与公共材料记录"
 updated_at: "2026-10-30"
 reviewed_by: ""
@@ -57,3 +57,7 @@ reviewed_at: ""
 ## 来源
 
 [2024 R2 Theory Reference 4.3.2.4 / Table 4.3](https://ansyshelp.ansys.com/public/Views/Secured/corp/v242/en/ans_thry/thy_mat2.html) 定义顺序和参数物理单位。Q/R 的 K 单位由量纲关系得到；SRC-BGA-001 给出实际字段及参考单位声明。
+
+## 报告补充后的状态
+
+报告表2-3已给出 m=0.303、h0=2640.75 MPa，与工程对应相反。现在可确认“报告—工程不一致”，但报告自身的Q/R单位和中文解释也需核对；原始标定依据仍待查。见 [对照记录](../references/bga-thermal-reliability-report/report-project-comparison.md)。

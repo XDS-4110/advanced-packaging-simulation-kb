@@ -1,0 +1,6 @@
+﻿component,time_s,equivalent_stress_max_MPa,location_as_reported,report_locator,embedded_image,evidence_kind,reproduction_status,source_id
+chip,18600,54.054,芯片边角,第3.1节P036/图3-1,image6.png,author_reported_text_and_embedded_plot,not_reproduced,SRC-BGA-REPORT-001
+bump,16776.6,62.471,凸点与芯片接触边缘,第3.2节P040/图3-3,"image8.png,image9.png",author_reported_text_and_embedded_plot,not_reproduced,SRC-BGA-REPORT-001
+bump,18600,27.554,危险凸点上半部分,第3.2节P046/图3-4,"image10.png,image11.png",author_reported_text_and_embedded_plot,not_reproduced,SRC-BGA-REPORT-001
+solder_ball,16776.6,41.552,焊球与BT基板接触面/边缘,第3.3节P052/图3-6,"image13.png,image14.png",author_reported_text_and_embedded_plot,not_reproduced,SRC-BGA-REPORT-001
+solder_ball,18600,18.814,焊球与BT基板接触面,第3.3节P058/图3-7,"image15.png,image16.png",author_reported_text_and_embedded_plot,not_reproduced,SRC-BGA-REPORT-001

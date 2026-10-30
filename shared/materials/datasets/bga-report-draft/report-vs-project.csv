@@ -1,0 +1,66 @@
+﻿material,parameter,report_value,comparison_unit,report_temperature_degC,project_value,project_temperature_degC,finding,report_locator,project_source,decision
+SI,Density,2330,kg m^-3,,2330.0,,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+SI,Young's Modulus,112400000000.0,Pa,,112400000000.0,,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+SI,Poisson's Ratio,0.28,dimensionless,,0.28,,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+SI,Coefficient of Thermal Expansion,2.4999999999999998e-06,C^-1,,2.5e-06,,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+SI,Thermal Conductivity,154,W m^-1 C^-1,,154.0,,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+SI,Specific Heat,713.0,J kg^-1 C^-1,,713.0,,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Underfill,Density,1490,kg m^-3,,1490.0,,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Underfill,Young's Modulus,8000000000.0,Pa,,8000000000.0,,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Underfill,Poisson's Ratio,0.3,dimensionless,,0.3,,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Underfill,Coefficient of Thermal Expansion,3.2e-05,C^-1,,3.2e-05,,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Underfill,Thermal Conductivity,0.55,W m^-1 C^-1,,0.55,,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Underfill,Specific Heat,870.0,J kg^-1 C^-1,,870.0,,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+BT,Density,1700,kg m^-3,,1700.0,,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+BT,Young's Modulus,23100000000.0,Pa,,23100000000.0,,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+BT,Poisson's Ratio,0.21,dimensionless,,0.21,,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+BT,Coefficient of Thermal Expansion,1.3599999999999999e-05,C^-1,,1.36e-05,,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+BT,Thermal Conductivity,0.2,W m^-1 C^-1,,0.2,,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+BT,Specific Heat,920.0,J kg^-1 C^-1,,920.0,,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+SFL,Density,1890,kg m^-3,,1890.0,,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+SFL,Thermal Conductivity,1,W m^-1 C^-1,,1.0,,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+SFL,Specific Heat,790,J kg^-1 C^-1,,3305.36,,value_mismatch,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+SFL,Poisson's Ratio,0.3,dimensionless,,0.3,25,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+SFL,Young's Modulus,26000000000.0,Pa,25,26000000000.0,25,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+SFL,Young's Modulus,700000000.0,Pa,260,700000000.0,260,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+SFL,Coefficient of Thermal Expansion,8e-06,C^-1,25,8e-06,25,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+SFL,Coefficient of Thermal Expansion,3.5e-05,C^-1,150,3.5e-05,150,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Density,8400,kg m^-3,,8400.0,,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Thermal Conductivity,50,W m^-1 C^-1,,50.0,,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Specific Heat,128,J kg^-1 C^-1,,128.0,,match,表2-1,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Young's Modulus,41440000000.0,Pa,-55.0,41440000000.0,-55,match,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Young's Modulus,39360000000.0,Pa,-35.0,39360000000.0,-35,match,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Young's Modulus,36620000000.0,Pa,-15.0,36620000000.0,5,temperature_axis_mismatch,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Young's Modulus,33580000000.0,Pa,5.0,33580000000.0,12,temperature_axis_mismatch,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Young's Modulus,32520000000.000004,Pa,12.0,32520000000.0,15,temperature_axis_mismatch,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Young's Modulus,26740000000.0,Pa,50.0,26740000000.0,50,match,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Young's Modulus,22940000000.0,Pa,75.0,22940000000.0,75,match,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Young's Modulus,19140000000.0,Pa,100.0,19140000000.0,100,match,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Young's Modulus,15340000000.0,Pa,125.0,15340000000.0,125,match,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Poisson's Ratio,0.352,dimensionless,-55.0,0.352,-55,match,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Poisson's Ratio,0.354,dimensionless,-35.0,0.354,-35,match,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Poisson's Ratio,0.357,dimensionless,-15.0,0.357,5,temperature_axis_mismatch,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Poisson's Ratio,0.36,dimensionless,5.0,0.36,12,temperature_axis_mismatch,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Poisson's Ratio,0.363,dimensionless,12.0,0.363,15,temperature_axis_mismatch,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Poisson's Ratio,0.365,dimensionless,50.0,0.365,50,match,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Poisson's Ratio,0.37,dimensionless,75.0,0.37,75,match,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Poisson's Ratio,0.377,dimensionless,100.0,0.377,100,match,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Poisson's Ratio,0.384,dimensionless,125.0,0.384,125,match,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Coefficient of Thermal Expansion,2.41e-05,C^-1,-55.0,2.41e-05,-55,match,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Coefficient of Thermal Expansion,2.46e-05,C^-1,-35.0,2.46e-05,-35,match,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Coefficient of Thermal Expansion,2.4999999999999998e-05,C^-1,-15.0,2.5e-05,-15,match,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Coefficient of Thermal Expansion,2.52e-05,C^-1,5.0,2.52e-05,5,match,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Coefficient of Thermal Expansion,2.5399999999999997e-05,C^-1,12.0,2.54e-05,12,match,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Coefficient of Thermal Expansion,2.61e-05,C^-1,50.0,2.61e-05,50,match,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Coefficient of Thermal Expansion,2.68e-05,C^-1,75.0,2.68e-05,75,match,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Coefficient of Thermal Expansion,2.73e-05,C^-1,100.0,2.73e-05,100,match,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Coefficient of Thermal Expansion,2.7799999999999998e-05,C^-1,125.0,2.78e-05,125,match,表2-2,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Initial Deformation Resistance So,56.63,MPa,,56.63,,match,表2-3,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Activation Energy Q/Universal Gas Constant R,10830,K,,10830.0,,match,表2-3,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Pre-exponential Factor A,14900000.0,s^-1,,14900000.0,,match,表2-3,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Multiplier of Stress ξ,11,dimensionless,,11.0,,match,表2-3,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Strain Rate Sensitivity of Stress m,0.303,dimensionless,,2640.75,,value_mismatch,表2-3,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Hardening/Softening Constant ho,2640.75,MPa,,0.303,,value_mismatch,表2-3,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Coefficient for Deformation Resistance Saturation Ŝ,80.415,MPa,,80.415,,match,表2-3,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Strain Rate Sensitivity of Saturation (Deformation Resistance) n,0.0231,dimensionless,,0.0231,,match,表2-3,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite
+Sn63Pb37,Strain Rate Sensitivity of Hardening or Softening a,1.34,dimensionless,,1.34,,match,表2-3,MAT-BGA-IMPORT-001 revision 1,pending; do not overwrite

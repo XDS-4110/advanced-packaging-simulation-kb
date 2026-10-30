@@ -16,3 +16,7 @@
 - [输入审核清单](data/bga-review-checklist.csv)：待填写，初始全部 pending。
 
 初版均为 draft，尚未本地界面逐项复现或求解。官方字段核对不等于材料已标定。原工程及公共参数不作修改，新数据保留修订记录。
+
+## 已取得的报告证据
+
+[BGA 报告与工程对照](../references/bga-thermal-reliability-report/report-project-comparison.md) 已确认 m/h0 对应、SFL 比热单位和焊料弹性温度轴不一致。原值不覆盖，需决定采用依据。

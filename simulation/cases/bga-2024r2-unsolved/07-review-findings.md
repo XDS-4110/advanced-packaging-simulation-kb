@@ -9,7 +9,7 @@ tags: [BGA, thermal-cycling, extracted, unsolved]
 physics: [thermal, structural]
 software: [ANSYS Workbench, ANSYS Mechanical]
 software_versions: ["2024 R2"]
-source_ids: [SRC-BGA-001, SRC-ANSYS-242-ANAND]
+source_ids: [SRC-BGA-001, SRC-ANSYS-242-ANAND, SRC-BGA-REPORT-001]
 source_locator: "见本条目来源定位及 data/source-manifest.json"
 updated_at: "2026-10-30"
 reviewed_by: ""
@@ -42,3 +42,7 @@ ANSYS 2024 R2 Theory Reference 第 4.3 节表 4.3 将第 5 项定义为无量纲
 ## 来源定位
 
 R1/R2：CAERep 的 InitialConditionsRep、StepEndTimes、FullTemperature/Magnitude；R3-R6：MatML 对应材料的 PropertyData 和 ParameterValue；R7：全部 MaterialRep；R8：ContactRep 及 ds.dat 扫描。
+
+## 报告补充后的问题状态
+
+R5 已从疑似变成明确的报告—工程对应不一致；R6 可定位到报告表2-2温度轴。另有塑封料比热 J/(g·K) 与 cal/(g·K) 的单位冲突。详见 [逐项对照](../../references/bga-thermal-reliability-report/report-project-comparison.md)。这不授权修改工程或自动判定报告全部正确。

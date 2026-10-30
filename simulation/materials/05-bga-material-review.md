@@ -9,7 +9,7 @@ tags: [material-input, Workbench-2024R2, thermal-stress, thermal-cycling]
 physics: [thermal, structural]
 software: [ANSYS Workbench, ANSYS Mechanical]
 software_versions: ["2024 R2"]
-source_ids: [SRC-BGA-001, SRC-ANSYS-242-ENGDATA, SRC-ANSYS-242-ANAND]
+source_ids: [SRC-BGA-001, SRC-ANSYS-242-ENGDATA, SRC-ANSYS-242-ANAND, SRC-BGA-REPORT-001]
 source_locator: "见文末官方资料与公共材料记录"
 updated_at: "2026-10-30"
 reviewed_by: ""
@@ -54,3 +54,7 @@ reviewed_at: ""
 ## 来源
 
 [BGA 公共材料记录](../../shared/materials/bga-2024r2-import.md)、[原案例补充清单](../cases/bga-2024r2-unsolved/06-missing-information.md) 及本专题前四篇的官方定位。
+
+## 新增报告来源
+
+报告已提供材料表与Anand表，不再完全缺少文档来源；但与工程有明确差异，仍缺原始标定/厂商证据及本地界面核对。见 [报告对照](../references/bga-thermal-reliability-report/report-project-comparison.md)。

@@ -1,0 +1,530 @@
+[
+  {
+    "table_id": "T01",
+    "report_label": "表2-1",
+    "rows": [
+      [
+        {
+          "text": "属性名称",
+          "grid_span": 1
+        },
+        {
+          "text": "密度（kg/m3）",
+          "grid_span": 1
+        },
+        {
+          "text": "弹性模量(Gpa)",
+          "grid_span": 1
+        },
+        {
+          "text": "泊松比",
+          "grid_span": 1
+        },
+        {
+          "text": "热膨胀系数(10-6/K)",
+          "grid_span": 1
+        },
+        {
+          "text": "导热系数（W/mK）",
+          "grid_span": 1
+        },
+        {
+          "text": "比热容（J/gK）",
+          "grid_span": 1
+        }
+      ],
+      [
+        {
+          "text": "芯片（Si）",
+          "grid_span": 1
+        },
+        {
+          "text": "2330",
+          "grid_span": 1
+        },
+        {
+          "text": "112.4",
+          "grid_span": 1
+        },
+        {
+          "text": "0.28",
+          "grid_span": 1
+        },
+        {
+          "text": "2.5",
+          "grid_span": 1
+        },
+        {
+          "text": "154",
+          "grid_span": 1
+        },
+        {
+          "text": "0.713",
+          "grid_span": 1
+        }
+      ],
+      [
+        {
+          "text": "Underfill",
+          "grid_span": 1
+        },
+        {
+          "text": "1490",
+          "grid_span": 1
+        },
+        {
+          "text": "8",
+          "grid_span": 1
+        },
+        {
+          "text": "0.3",
+          "grid_span": 1
+        },
+        {
+          "text": "32",
+          "grid_span": 1
+        },
+        {
+          "text": "0.55",
+          "grid_span": 1
+        },
+        {
+          "text": "0.87",
+          "grid_span": 1
+        }
+      ],
+      [
+        {
+          "text": "BT基板",
+          "grid_span": 1
+        },
+        {
+          "text": "1700",
+          "grid_span": 1
+        },
+        {
+          "text": "23.1",
+          "grid_span": 1
+        },
+        {
+          "text": "0.21",
+          "grid_span": 1
+        },
+        {
+          "text": "13.6",
+          "grid_span": 1
+        },
+        {
+          "text": "0.2",
+          "grid_span": 1
+        },
+        {
+          "text": "0.92",
+          "grid_span": 1
+        }
+      ],
+      [
+        {
+          "text": "塑封料",
+          "grid_span": 1
+        },
+        {
+          "text": "1890",
+          "grid_span": 1
+        },
+        {
+          "text": "25℃：26",
+          "grid_span": 1
+        },
+        {
+          "text": "0.3",
+          "grid_span": 1
+        },
+        {
+          "text": "25℃：8",
+          "grid_span": 1
+        },
+        {
+          "text": "1",
+          "grid_span": 1
+        },
+        {
+          "text": "0.79",
+          "grid_span": 1
+        }
+      ],
+      [
+        {
+          "text": "",
+          "grid_span": 1
+        },
+        {
+          "text": "",
+          "grid_span": 1
+        },
+        {
+          "text": "260℃：0.7",
+          "grid_span": 1
+        },
+        {
+          "text": "",
+          "grid_span": 1
+        },
+        {
+          "text": "150℃：35",
+          "grid_span": 1
+        },
+        {
+          "text": "",
+          "grid_span": 1
+        },
+        {
+          "text": "",
+          "grid_span": 1
+        }
+      ],
+      [
+        {
+          "text": "（凸点、焊球）Sn63Pb37",
+          "grid_span": 1
+        },
+        {
+          "text": "8400",
+          "grid_span": 1
+        },
+        {
+          "text": "见表2-2",
+          "grid_span": 3
+        },
+        {
+          "text": "50",
+          "grid_span": 1
+        },
+        {
+          "text": "0.128",
+          "grid_span": 1
+        }
+      ]
+    ]
+  },
+  {
+    "table_id": "T02",
+    "report_label": "表2-2",
+    "rows": [
+      [
+        {
+          "text": "温度(℃)",
+          "grid_span": 1
+        },
+        {
+          "text": "-55",
+          "grid_span": 1
+        },
+        {
+          "text": "-35",
+          "grid_span": 1
+        },
+        {
+          "text": "-15",
+          "grid_span": 1
+        },
+        {
+          "text": "5",
+          "grid_span": 1
+        },
+        {
+          "text": "12",
+          "grid_span": 1
+        },
+        {
+          "text": "50",
+          "grid_span": 1
+        },
+        {
+          "text": "75",
+          "grid_span": 1
+        },
+        {
+          "text": "100",
+          "grid_span": 1
+        },
+        {
+          "text": "125",
+          "grid_span": 1
+        }
+      ],
+      [
+        {
+          "text": "弹性模量(GPa)",
+          "grid_span": 1
+        },
+        {
+          "text": "41.44",
+          "grid_span": 1
+        },
+        {
+          "text": "39.36",
+          "grid_span": 1
+        },
+        {
+          "text": "36.62",
+          "grid_span": 1
+        },
+        {
+          "text": "33.58",
+          "grid_span": 1
+        },
+        {
+          "text": "32.52",
+          "grid_span": 1
+        },
+        {
+          "text": "26.74",
+          "grid_span": 1
+        },
+        {
+          "text": "22.94",
+          "grid_span": 1
+        },
+        {
+          "text": "19.14",
+          "grid_span": 1
+        },
+        {
+          "text": "15.34",
+          "grid_span": 1
+        }
+      ],
+      [
+        {
+          "text": "泊松比",
+          "grid_span": 1
+        },
+        {
+          "text": "0.352",
+          "grid_span": 1
+        },
+        {
+          "text": "0.354",
+          "grid_span": 1
+        },
+        {
+          "text": "0.357",
+          "grid_span": 1
+        },
+        {
+          "text": "0.360",
+          "grid_span": 1
+        },
+        {
+          "text": "0.363",
+          "grid_span": 1
+        },
+        {
+          "text": "0.365",
+          "grid_span": 1
+        },
+        {
+          "text": "0.370",
+          "grid_span": 1
+        },
+        {
+          "text": "0.377",
+          "grid_span": 1
+        },
+        {
+          "text": "0.384",
+          "grid_span": 1
+        }
+      ],
+      [
+        {
+          "text": "热膨胀系数（10-6·K-1）",
+          "grid_span": 1
+        },
+        {
+          "text": "24.1",
+          "grid_span": 1
+        },
+        {
+          "text": "24.6",
+          "grid_span": 1
+        },
+        {
+          "text": "25",
+          "grid_span": 1
+        },
+        {
+          "text": "25.2",
+          "grid_span": 1
+        },
+        {
+          "text": "25.4",
+          "grid_span": 1
+        },
+        {
+          "text": "26.1",
+          "grid_span": 1
+        },
+        {
+          "text": "26.8",
+          "grid_span": 1
+        },
+        {
+          "text": "27.3",
+          "grid_span": 1
+        },
+        {
+          "text": "27.8",
+          "grid_span": 1
+        }
+      ]
+    ]
+  },
+  {
+    "table_id": "T03",
+    "report_label": "表2-3",
+    "rows": [
+      [
+        {
+          "text": "参数",
+          "grid_span": 1
+        },
+        {
+          "text": "数值",
+          "grid_span": 1
+        },
+        {
+          "text": "定义",
+          "grid_span": 1
+        }
+      ],
+      [
+        {
+          "text": "s0（Mpa）",
+          "grid_span": 1
+        },
+        {
+          "text": "56.63",
+          "grid_span": 1
+        },
+        {
+          "text": "形变阻抗初始值",
+          "grid_span": 1
+        }
+      ],
+      [
+        {
+          "text": "Q/R(1/K)",
+          "grid_span": 1
+        },
+        {
+          "text": "10830",
+          "grid_span": 1
+        },
+        {
+          "text": "激活能/气体常数",
+          "grid_span": 1
+        }
+      ],
+      [
+        {
+          "text": "A（1/sec）",
+          "grid_span": 1
+        },
+        {
+          "text": "1.49e7",
+          "grid_span": 1
+        },
+        {
+          "text": "指数前系数因子",
+          "grid_span": 1
+        }
+      ],
+      [
+        {
+          "text": "ξ",
+          "grid_span": 1
+        },
+        {
+          "text": "11",
+          "grid_span": 1
+        },
+        {
+          "text": "材料常数",
+          "grid_span": 1
+        }
+      ],
+      [
+        {
+          "text": "m",
+          "grid_span": 1
+        },
+        {
+          "text": "0.303",
+          "grid_span": 1
+        },
+        {
+          "text": "应变硬化常数",
+          "grid_span": 1
+        }
+      ],
+      [
+        {
+          "text": "h0（Mpa）",
+          "grid_span": 1
+        },
+        {
+          "text": "2640.75",
+          "grid_span": 1
+        },
+        {
+          "text": "应力的应变率敏感指数",
+          "grid_span": 1
+        }
+      ],
+      [
+        {
+          "text": "s（Mpa）",
+          "grid_span": 1
+        },
+        {
+          "text": "80.415",
+          "grid_span": 1
+        },
+        {
+          "text": "形变阻抗饱和值系数",
+          "grid_span": 1
+        }
+      ],
+      [
+        {
+          "text": "n",
+          "grid_span": 1
+        },
+        {
+          "text": "0.0231",
+          "grid_span": 1
+        },
+        {
+          "text": "形变阻抗饱和值的应变率敏感指数",
+          "grid_span": 1
+        }
+      ],
+      [
+        {
+          "text": "α",
+          "grid_span": 1
+        },
+        {
+          "text": "1.34",
+          "grid_span": 1
+        },
+        {
+          "text": "应变硬化指数",
+          "grid_span": 1
+        }
+      ]
+    ]
+  }
+]
