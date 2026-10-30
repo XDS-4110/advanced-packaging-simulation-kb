@@ -14,3 +14,4 @@ SRC-BGA-THERMAL-SCOPE-002,BGA 外表面命名选择与温度载荷关联截图,u
 SRC-BGA-THERMAL-FULLTABLE-001,BGA 完整22点温度载荷表替换截图,user_provided_screenshot,用户提供,2026,,2024 R2,local PNG screenshot,仅上传转录与提取记录；不上传原图,draft,按用户要求替换此前温度载荷关联首选截图；外表面作用域及完整0～18600 s载荷表可见，不代表已求解。
 SRC-PROJECT-MESH-DOC-001,网格要求.docx,user_provided_document,用户,2026,,revision 1,local DOCX and current conversation,用户授权整理知识；仅提交规则与来源摘要,reviewed,原文规则与图1至8；有歧义处以SRC-PROJECT-MESH-CONFIRM-001为准；原文件不上传。
 SRC-PROJECT-MESH-CONFIRM-001,项目统一网格要求的用户逐项确认,user_confirmed_project_policy,用户,2026,,revision 1,local DOCX and current conversation,用户授权整理知识；仅提交规则与来源摘要,reviewed,2026-10-30本会话确认适用范围、层数方向、圆周、等边形状、逐实体阈值、方法分支及人工批准；是项目规范，未做物理验证。
+SRC-BGA-ASSIGN-SCREEN-001,BGA 七类实体材料赋值Mechanical截图,user_provided_screenshots,用户提供,2026,,2024 R2,seven local PNG screenshots,用户授权整理提取记录；不上传原图,draft,实体赋值名称、按环境参考温度及包围框读数；不证明修订材料参数已同步或已求解。

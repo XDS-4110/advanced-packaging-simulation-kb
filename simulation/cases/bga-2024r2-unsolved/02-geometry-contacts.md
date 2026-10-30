@@ -9,7 +9,7 @@ tags: [BGA, thermal-cycling, extracted, unsolved]
 physics: [thermal, structural]
 software: [ANSYS Workbench, ANSYS Mechanical]
 software_versions: ["2024 R2"]
-source_ids: [SRC-BGA-001]
+source_ids: [SRC-BGA-ASSIGN-SCREEN-001, SRC-BGA-001]
 source_locator: "见本条目来源定位及 data/source-manifest.json"
 updated_at: "2026-10-30"
 reviewed_by: ""
@@ -48,3 +48,7 @@ CAERep 记录 320 个 Solid 实体，材料分布为：
 ## 来源定位
 
 `CAERep.xml/EngineeringRep/GeometryAttributes/AssemblyAttributes/PartAttributes/BodyAttributes` 及 `EngineeringRep/BCRep/ContactRep`。
+
+## 实体材料赋值界面资料已补充
+
+此前七张Mechanical截图已整理为 [实体材料赋值记录](11-material-assignment-ui.md)：芯片SI、底部填充Underfill、凸点/焊球Sn63Pb37、基板/PCB均BT、塑封料SFL。可见名称与高亮已确认，完整实体ID及材料参数修订同步仍未核实。参考温度均显示“按环境”，不等于已取得结构参考温度数值。

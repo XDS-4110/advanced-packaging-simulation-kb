@@ -9,7 +9,7 @@ tags: [BGA, thermal-cycling, extracted, unsolved]
 physics: [thermal, structural]
 software: [ANSYS Workbench, ANSYS Mechanical]
 software_versions: ["2024 R2"]
-source_ids: [SRC-BGA-THERMAL-FULLTABLE-001, SRC-BGA-THERMAL-SCOPE-002, SRC-BGA-THERMAL-UI-001, SRC-BGA-MAT-SCREEN-002, SRC-BGA-MAT-SCREEN-001, SRC-BGA-REV3-001, SRC-BGA-REV2-001, SRC-BGA-001, SRC-BGA-REPORT-001]
+source_ids: [SRC-BGA-ASSIGN-SCREEN-001, SRC-BGA-THERMAL-FULLTABLE-001, SRC-BGA-THERMAL-SCOPE-002, SRC-BGA-THERMAL-UI-001, SRC-BGA-MAT-SCREEN-002, SRC-BGA-MAT-SCREEN-001, SRC-BGA-REV3-001, SRC-BGA-REV2-001, SRC-BGA-001, SRC-BGA-REPORT-001]
 source_locator: "见本条目来源定位及 data/source-manifest.json"
 updated_at: "2026-10-30"
 reviewed_by: ""
@@ -71,3 +71,7 @@ reviewed_at: ""
 ## 完整温度表已补齐
 
 用户替换后的截图已完整显示22个载荷点（0～18600 s），均与初次温度表一致；末段载荷截图缺项关闭。当前外表面关联保持可见；各分析步的详细时步控制仍与载荷表分开核实。见 [完整温度表证据](10-thermal-ui-scope.md#完整温度载荷表截图替换)。
+
+## 实体材料赋值界面资料已补充
+
+此前七张Mechanical截图已整理为 [实体材料赋值记录](11-material-assignment-ui.md)：芯片SI、底部填充Underfill、凸点/焊球Sn63Pb37、基板/PCB均BT、塑封料SFL。可见名称与高亮已确认，完整实体ID及材料参数修订同步仍未核实。参考温度均显示“按环境”，不等于已取得结构参考温度数值。

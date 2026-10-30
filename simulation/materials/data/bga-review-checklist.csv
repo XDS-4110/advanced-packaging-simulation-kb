@@ -2,7 +2,7 @@
 ALL,identity,牌号、工艺状态与来源,partial_evidence,已有报告材料表，但厂商/牌号/原始标定依据仍不完整,,
 ALL,units,数值/单位/温度轴,partial_evidence,SRC-BGA-REV3-001：比热已为0.79 J/(g K)，65条材料对齐报告；原始来源和Mechanical同步未验证,,
 ALL,definition,Behavior 与 Definition,partial_evidence,SRC-BGA-MAT-SCREEN-001/002：五种材料类型及此前缺少的三张温度表已核对；原始数据定义适用性及Mechanical同步仍未验证,,
-ALL,assignment,材料实体赋值,pending,,,
+ALL,assignment,材料实体赋值,partial_evidence,SRC-BGA-ASSIGN-SCREEN-001：七类部件赋值名称与高亮已核对；多选完整ID及修订参数同步未验证,,
 Sn63Pb37,anand,九参数、参考单位、m/h0,partial_evidence,SRC-BGA-REV2-001：Engineering Data m/h0已对齐报告；原始标定及Mechanical同步未验证,,
 Sn63Pb37,temperature_range,表格覆盖循环范围或有处理依据,pending,,,
 SFL,temperature_range,低温区数据,pending,,,

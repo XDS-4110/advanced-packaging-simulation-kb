@@ -1,0 +1,8 @@
+﻿image_number,body_name_clue,component,material_name,material_id,selection_scope,suppressed,stiffness_behavior,coordinate_system,reference_temperature,nonlinear_effects,thermal_strain_effects,details_bbox_x_mm,details_bbox_y_mm,details_bbox_z_mm,numeric_material_sync_verified,source_id,status
+1,XINPIAN,芯片,SI,MAT-BGA-SI-001,single_body,No,Flexible,Default,By Environment,Yes,Yes,5,5,0.35,false,SRC-BGA-ASSIGN-SCREEN-001,draft
+2,Underfill,底部填充,Underfill,MAT-BGA-UNDERFILL-001,single_body,No,Flexible,Default,By Environment,Yes,Yes,5,5,0.05,false,SRC-BGA-ASSIGN-SCREEN-001,draft
+3,TUDIAN,凸点,Sn63Pb37,MAT-BGA-SN63PB37-001,multiple_selection,No,Flexible,Default,By Environment,Yes,Yes,0.075,0.075,0.05,false,SRC-BGA-ASSIGN-SCREEN-001,draft
+4,JIBAN,封装基板,BT,MAT-BGA-BT-001,single_body,No,Flexible,Default,By Environment,Yes,Yes,12,12,0.27,false,SRC-BGA-ASSIGN-SCREEN-001,draft
+5,SUFENGLIAO,塑封料,SFL,MAT-BGA-SFL-001,single_body,No,Flexible,Default,By Environment,Yes,Yes,12,12,0.624,false,SRC-BGA-ASSIGN-SCREEN-001,draft
+6,HANQIU,焊球,Sn63Pb37,MAT-BGA-SN63PB37-001,multiple_selection,No,Flexible,Default,By Environment,Yes,Yes,0.54,0.54,0.3,false,SRC-BGA-ASSIGN-SCREEN-001,draft
+7,PCB,PCB,BT,MAT-BGA-BT-001,single_body,No,Flexible,Default,By Environment,Yes,Yes,140,140,1.8,false,SRC-BGA-ASSIGN-SCREEN-001,draft

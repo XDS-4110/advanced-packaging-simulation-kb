@@ -32,3 +32,7 @@
 ## 材料界面证据
 
 [材料截图及后补温度表核对](../../shared/materials/bga-material-screenshots.md)：初次51条可见数值及后补15条温度相关输入均与revision 3相符；三张温度表截图已补齐。Mechanical同步、结构参考温度及材料温区依据仍待核实。
+
+## Mechanical赋值证据
+
+[BGA七类部件材料赋值截图记录](../cases/bga-2024r2-unsolved/11-material-assignment-ui.md)：确认材料名称关联，具体参数同步另行核实。

@@ -1,0 +1,65 @@
+{
+  "source_id": "SRC-BGA-ASSIGN-SCREEN-001",
+  "received_at": "2026-10-30",
+  "software_release_visible": "ANSYS Mechanical 2024 R2",
+  "method": "逐图查看用户所给七张Mechanical几何实体Details和高亮截图，转录可见赋值名称、公共选项和包围框数值",
+  "images": [
+    {
+      "image_number": 1,
+      "body_name_clue": "XINPIAN",
+      "filename": "codex-clipboard-84f2ecee-2d9e-437c-9a52-a9efbe4c3c17.png",
+      "bytes": 148035,
+      "sha256": "0248c8c3eef17a7c83d9f48d6358def28abe5ef51d8c210383d0b76c8a43fe57"
+    },
+    {
+      "image_number": 2,
+      "body_name_clue": "Underfill",
+      "filename": "codex-clipboard-a36239a4-b8af-494b-b31b-472ab2ac64e3.png",
+      "bytes": 161693,
+      "sha256": "8da67a586e236238aabb48f004784f5c2ef0a77b861e09817b3bdcb5c4651177"
+    },
+    {
+      "image_number": 3,
+      "body_name_clue": "TUDIAN",
+      "filename": "codex-clipboard-cd39acaa-f997-4d72-9454-100f505251b5.png",
+      "bytes": 159782,
+      "sha256": "94f97d629a60b5b121515303abeea62503d73d092ffd759212b65cd5e8d6dfc6"
+    },
+    {
+      "image_number": 4,
+      "body_name_clue": "JIBAN",
+      "filename": "codex-clipboard-aa6c037b-e0d9-4c75-81e6-54ebacc78a0d.png",
+      "bytes": 165651,
+      "sha256": "c84e98485ca303f69e4e3991deede6f4c3a9ae975451adb99aae435525c24f88"
+    },
+    {
+      "image_number": 5,
+      "body_name_clue": "SUFENGLIAO",
+      "filename": "codex-clipboard-d21c6ddb-8156-401f-af5f-8d0a4986fa14.png",
+      "bytes": 163344,
+      "sha256": "7b7205ddece6f14c40b5386a720b03bc48150c1c7527281fc842f5853d11decc"
+    },
+    {
+      "image_number": 6,
+      "body_name_clue": "HANQIU",
+      "filename": "codex-clipboard-a5ce4f35-4688-417a-a0d7-6d68ed3afa5a.png",
+      "bytes": 177933,
+      "sha256": "b6a0439fc09fe580c4d5d5309892882713f57e2d96fd367a1549dc13d99babed"
+    },
+    {
+      "image_number": 7,
+      "body_name_clue": "PCB",
+      "filename": "codex-clipboard-93b0f8fa-eaec-41fc-afe9-6091e145f127.png",
+      "bytes": 157326,
+      "sha256": "15c40e534ba5275e5f297d329a39f6a2f47f54195ca51a80c07a28db4faceaea"
+    }
+  ],
+  "numeric_material_sync_verified": false,
+  "all_selected_body_ids_available": false,
+  "original_images_uploaded": false,
+  "notes": [
+    "凸点、焊球是多选截图，截图未导出完整已选对象ID；历史155凸点/160焊球计数仍来自初次工程导出，不由序号标题推断。",
+    "多选Details中的包围框读数不作为整个群组外包尺寸；不将包围框尺寸直接当作球径或精确几何定义。",
+    "参考温度按环境是继承设置，未显示实际结构无应力参考温度数值。"
+  ]
+}
