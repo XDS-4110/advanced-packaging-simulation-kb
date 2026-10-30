@@ -13,7 +13,6 @@
 
 ## 公共资料
 
-- [论文资料](papers/README.md)
 - [书籍资料](books/README.md)
 
 - [公共材料库](shared/materials/README.md)
