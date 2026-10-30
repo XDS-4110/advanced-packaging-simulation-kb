@@ -19,3 +19,7 @@
 ## 开始补充
 
 从 [公共模板](../shared/templates/README.md) 复制对应条目；元数据 `domain` 填 `simulation`。来源登记到 [统一来源表](../shared/references/catalog.csv)。跨领域内容保留一份，通过条目 ID 或相对链接引用，避免两份参数不一致。
+
+## 问题排查
+
+- [COMSOL 与 ANSYS 问题案例及解决办法](troubleshooting/README.md)
