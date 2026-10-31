@@ -1,0 +1,148 @@
+{
+  "schema_version": "project-package-structure-draft-1",
+  "status": "draft",
+  "ready_for_execution": false,
+  "native_chiplet_or_mfit_compatible": false,
+  "units": {
+    "length": "mm",
+    "rotation": "degree"
+  },
+  "coordinate_frame": {
+    "id": "assembly_frame",
+    "origin_definition": null,
+    "x_axis_definition": null,
+    "y_axis_definition": null,
+    "z_axis_definition": null,
+    "position_anchor": "unrotated_local_rectangular_bbox_min_corner",
+    "rotation_convention": null
+  },
+  "assembly_id": null,
+  "base_model_revision": null,
+  "simulation_goal": null,
+  "components": [
+    {
+      "id": "die_1",
+      "type": "die",
+      "geometry": {
+        "shape": null,
+        "cad_or_profile_reference": null,
+        "bbox_dimensions_mm": {
+          "x": null,
+          "y": null,
+          "z": null
+        }
+      },
+      "position_mm": {
+        "x": null,
+        "y": null,
+        "z": null
+      },
+      "rotation_degrees": {
+        "x": null,
+        "y": null,
+        "z": null
+      },
+      "material_ref": {
+        "id": null,
+        "revision": null
+      },
+      "tsv_rdl_modeling": null
+    },
+    {
+      "id": "interposer_1",
+      "type": "interposer",
+      "geometry": {
+        "shape": null,
+        "cad_or_profile_reference": null,
+        "bbox_dimensions_mm": {
+          "x": null,
+          "y": null,
+          "z": null
+        }
+      },
+      "position_mm": {
+        "x": null,
+        "y": null,
+        "z": null
+      },
+      "rotation_degrees": {
+        "x": null,
+        "y": null,
+        "z": null
+      },
+      "material_ref": {
+        "id": null,
+        "revision": null
+      },
+      "tsv_rdl_modeling": null
+    },
+    {
+      "id": "substrate_1",
+      "type": "package_substrate",
+      "geometry": {
+        "shape": null,
+        "cad_or_profile_reference": null,
+        "bbox_dimensions_mm": {
+          "x": null,
+          "y": null,
+          "z": null
+        }
+      },
+      "position_mm": {
+        "x": null,
+        "y": null,
+        "z": null
+      },
+      "rotation_degrees": {
+        "x": null,
+        "y": null,
+        "z": null
+      },
+      "material_ref": {
+        "id": null,
+        "revision": null
+      },
+      "tsv_rdl_modeling": null
+    }
+  ],
+  "connections": [
+    {
+      "id": "upper_connection",
+      "lower_component": "interposer_1",
+      "upper_component": "die_1",
+      "method": null,
+      "explicit_or_equivalent": null,
+      "occupied_height_mm": null,
+      "interconnect_geometry_or_array": null,
+      "underfill": {
+        "present": null,
+        "material_id": null,
+        "material_revision": null,
+        "geometry_rule": null
+      },
+      "thermal_contact_definition": null
+    },
+    {
+      "id": "lower_connection",
+      "lower_component": "substrate_1",
+      "upper_component": "interposer_1",
+      "method": null,
+      "explicit_or_equivalent": null,
+      "occupied_height_mm": null,
+      "interconnect_geometry_or_array": null,
+      "underfill": {
+        "present": null,
+        "material_id": null,
+        "material_revision": null,
+        "geometry_rule": null
+      },
+      "thermal_contact_definition": null
+    }
+  ],
+  "unresolved_parameters": [],
+  "notes": [
+    "All null values mean unknown, not zero.",
+    "Stable IDs must be resolved against actual CAD/API entities before editing.",
+    "BGA example dimensions are not defaults for this template."
+  ]
+}

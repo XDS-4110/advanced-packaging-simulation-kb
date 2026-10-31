@@ -17,4 +17,8 @@
 
 ## 已有知识条目
 
-暂无独立正文；本目录说明和待办清单不代表已审核知识。
+正文链接见下方新增资料。
+
+## 本次新增资料
+
+[GitHub结构资料筛选及固定来源](../../../simulation/references/github-packaging-source-selection.md)。
