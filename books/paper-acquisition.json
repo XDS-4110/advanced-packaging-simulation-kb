@@ -1,0 +1,67 @@
+[
+  {
+    "id": "SRC-LIT-UNDERFILL-2025",
+    "title": "Underfill: A Review of Reliability Improvement Methods in Electronics Production",
+    "doi": "10.3390/polym17162206",
+    "authors": "Zbyněk Plachý; Anna Pražanová; Karel Dušek; Attila Géczy",
+    "year": "2025",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12389694/",
+    "access": "PDF 未取得；公开页面或书目线索已核对",
+    "license": "CC BY 4.0",
+    "file": null,
+    "sha256": null,
+    "note": "packaging/common/references/underfill-2025.md"
+  },
+  {
+    "id": "SRC-LIT-BGA-FATIGUE-2022",
+    "title": "Survey on Fatigue Life Prediction of BGA Solder Joints",
+    "doi": "10.3390/electronics11040542",
+    "authors": "Baojun Qiu; Jingang Xiong; Han Wang; Shuai Zhou; Xiuding Yang; Zhengpei Lin; Maolin Liu; Nian Cai",
+    "year": "2022",
+    "url": "https://mdpi-res.com/d_attachment/electronics/electronics-11-00542/article_deploy/electronics-11-00542.pdf?version=1644572039",
+    "access": "PDF 已入库（17页）",
+    "license": "CC BY 4.0",
+    "file": "bga-fatigue-2022.pdf",
+    "sha256": "7ce0c809ec427130636d63e6047c21494024d092de4dc8077f5f7df1f5e6e634",
+    "note": "packaging/bga/references/bga-fatigue-2022.md"
+  },
+  {
+    "id": "SRC-LIT-EMC-WARPAGE-2022",
+    "title": "Effect of critical properties of epoxy molding compound on warpage prediction: A critical review",
+    "doi": "10.1016/j.microrel.2022.114480",
+    "authors": "Sukrut Prashant Phansalkar; Changsu Kim; Bongtae Han",
+    "year": "2022",
+    "url": "https://terpconnect.umd.edu/~bthan/paper/A%20Chapter%2C%20Review%20and%20Invited/Review%20papers/2022%20Warpage%20Review%20Paper%20MRE.pdf",
+    "access": "PDF 已在本地读取；仅提供原文链接，未确认转载许可",
+    "license": "© 2022 Elsevier Ltd. All rights reserved; 作者大学提供公开阅读版本；未确认再分发许可",
+    "file": null,
+    "sha256": null,
+    "note": "packaging/common/references/emc-warpage-2022.md"
+  },
+  {
+    "id": "SRC-LIT-SOLDER-FAILURES-2020",
+    "title": "Solder joint failures under thermo-mechanical loading conditions – A review",
+    "doi": "10.1080/2374068X.2020.1751514",
+    "authors": "Joshua Depiver; Sabuj Mallik; Dani Harmanto",
+    "year": "2020",
+    "url": "https://doi.org/10.1080/2374068X.2020.1751514",
+    "access": "PDF 未取得；公开页面或书目线索已核对",
+    "license": "版权与存档版本再分发条件待核对",
+    "file": null,
+    "sha256": null,
+    "note": "packaging/common/references/solder-failures-2020.md"
+  },
+  {
+    "id": "SRC-LIT-CONSTITUTIVE-2025",
+    "title": "Material and constitutive parameters of various Pb-based and Pb-free solders and other interconnection materials: A collective review",
+    "doi": "10.1016/j.rineng.2025.105618",
+    "authors": "Mohammad A. Gharaibeh",
+    "year": "2025",
+    "url": "https://doi.org/10.1016/j.rineng.2025.105618",
+    "access": "PDF 未取得；公开页面或书目线索已核对",
+    "license": "Crossref VOR: CC BY-NC-ND 4.0；下载后仍需核对文件内许可",
+    "file": null,
+    "sha256": null,
+    "note": "packaging/common/references/constitutive-2025.md"
+  }
+]

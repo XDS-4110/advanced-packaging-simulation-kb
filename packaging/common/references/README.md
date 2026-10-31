@@ -18,3 +18,11 @@
 ## 已有知识条目
 
 暂无独立正文；本目录说明和待办清单不代表已审核知识。
+
+- [Underfill: A Review of Reliability Improvement Methods in Electronics Production](underfill-2025.md)：draft；PDF 未取得；公开页面或书目线索已核对。
+
+- [Effect of critical properties of epoxy molding compound on warpage prediction: A critical review](emc-warpage-2022.md)：draft；PDF 已在本地读取；仅提供原文链接，未确认转载许可。
+
+- [Solder joint failures under thermo-mechanical loading conditions – A review](solder-failures-2020.md)：draft；PDF 未取得；公开页面或书目线索已核对。
+
+- [Material and constitutive parameters of various Pb-based and Pb-free solders and other interconnection materials: A collective review](constitutive-2025.md)：draft；PDF 未取得；公开页面或书目线索已核对。

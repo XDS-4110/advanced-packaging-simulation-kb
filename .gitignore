@@ -36,3 +36,5 @@ Thumbs.db
 
 # Explicitly tracked reference book
 !books/microelectronic-packaging-technology.pdf
+
+!books/bga-fatigue-2022.pdf
