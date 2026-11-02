@@ -9,8 +9,8 @@ tags: [packaging, fundamentals]
 physics: [thermal, mechanical]
 software: []
 software_versions: []
-source_ids: [SRC-LIT-BGA-FATIGUE-2022]
-source_locator: "第3节研究方法；以下清单为本项目整理建议"
+source_ids: [SRC-LIT-BGA-FATIGUE-2022, SRC-COURSE-VIDEO-SOLDER-UP]
+source_locator: "综述第3节；锡球失效上段00:00–01:53及38:40画面；清单为本项目整理建议"
 updated_at: "2026-11-02"
 reviewed_by: ""
 reviewed_at: ""
@@ -35,6 +35,21 @@ reviewed_at: ""
 逐项补齐：器件型号与CAD；芯片和基板尺寸；凸点及焊球排列；PCB范围；材料ID与修订版；制造历史；温循表；实验或原文结果位置。
 
 ## 验证方法与常见错误
+
+### 焊点课程对本案例提出的补充问题
+
+| 待确认字段 | 本案例当前要求 |
+| --- | --- |
+| 目标互连 | 明确芯片—封装基板凸点或封装—PCB焊球，分别编号；不能混用两层几何与材料 |
+| 周围结构 | 记录PCB是否存在、底填所在层及覆盖范围；课程中的示意结构不代替本案例剖面 |
+| 制造与服役 | 将回流/热压键合、底填固化、后续温循分开；每一步注明哪些部件已经连接 |
+| 时间历程 | 保存温度节点与时间单位、升降温段、保温段、循环数和初始状态，不只给上下限温度 |
+| 焊料本构 | 提供合金与状态、参数原始论文及页码、单位、标定温度和应变率区间 |
+| 对照指标 | 区分位移、应力、非弹性应变量、起裂寿命及电气失效；各自保留测量/计算定义 |
+
+这是根据课程整理的补充提问，不表示上述输入已取得。课程参数表中m的写法、合金来源及适用范围仍不清楚，不能用它自动补齐本案例。详见[视频核对笔记](../../common/references/course-video-solder-viscoplastic.md)及[蠕变与疲劳的区别](../../common/reliability/solder-creep-and-fatigue.md)。
+
+### 交接前核验
 
 每项标已知、待核实或缺失，并给来源页码。保留原文采用值与本项目拟采用值的区别；未经审核不生成工程输入。
 

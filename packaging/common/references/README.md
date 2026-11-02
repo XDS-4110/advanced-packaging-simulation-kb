@@ -30,3 +30,9 @@
 - [芯片封装仿真41讲：阅读笔记与疑点](course-41-reading-notes.md)：6份课件，8篇知识正文；视频未逐讲观看。
 
 - [warpage计算问题更正：视频证据笔记](course-video-warpage-correction.md)：带时间戳，draft；未完成全部原始帧语义审核。
+
+- [TEC原理与建模：上下两段视频笔记](course-video-tec.md)：全段转录阅读与关键画面核对，draft。
+
+- [光通信封装案例：结构与连接笔记](course-video-optical.md)：上/下/下下转录及关键画面；中段待核对。
+
+- [锡球失效与黏塑性视频笔记](course-video-solder-viscoplastic.md)：上段全段转录与148张索引画面；记录Anand、蠕变及材料参数疑点，下段待读。

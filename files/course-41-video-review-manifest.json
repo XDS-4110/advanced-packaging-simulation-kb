@@ -12,41 +12,61 @@
       "file": "加餐课程\\10. TEC-原理、建模和仿真上_.mkv",
       "metadata_estimated_duration_seconds": 2338.16,
       "metadata_estimated_frames": 58454,
-      "learning_status": "未完成",
-      "visual_review": "未核对",
-      "transcript_review": "未核对"
+      "learning_status": "首轮笔记已形成，逐帧细节与工程复现未完成",
+      "visual_review": "关键原尺寸帧抽查，具体时刻见TEC视频笔记；其余索引帧未全部查看",
+      "transcript_review": "已读全段机器转录；有识别错误；未逐句听音核验",
+      "source_id": "SRC-COURSE-VIDEO-TEC-UP",
+      "sha256": "e61c1cf18482763dbd5f1a8c437a16c8ae50c69a515046e924b0be6634471660",
+      "decoded_frames": 58448,
+      "selected_frame_count": 139
     },
     {
       "file": "加餐课程\\10. TEC-原理、建模和仿真下_.mkv",
       "metadata_estimated_duration_seconds": 3669.32,
       "metadata_estimated_frames": 91733,
-      "learning_status": "未完成",
-      "visual_review": "未核对",
-      "transcript_review": "未核对"
+      "learning_status": "首轮笔记已形成，逐帧细节与工程复现未完成",
+      "visual_review": "关键原尺寸帧抽查，具体时刻见TEC视频笔记；其余索引帧未全部查看",
+      "transcript_review": "已读全段机器转录；有识别错误；未逐句听音核验",
+      "source_id": "SRC-COURSE-VIDEO-TEC-DOWN",
+      "sha256": "04907e8927a3d7be35fc1f3f3b291f3e1fcae735d221a34c532a805d4a4821e6",
+      "decoded_frames": 91728,
+      "selected_frame_count": 1636
     },
     {
       "file": "加餐课程\\11. 光通信封装仿真实例上_.mkv",
       "metadata_estimated_duration_seconds": 1123.36,
       "metadata_estimated_frames": 28084,
-      "learning_status": "未完成",
-      "visual_review": "未核对",
-      "transcript_review": "未核对"
+      "learning_status": "首轮笔记已形成，逐帧细节及工程复现未完成",
+      "visual_review": "关键帧原尺寸抽查，时刻见光通信视频笔记；未全部查看索引帧",
+      "transcript_review": "已读全段机器转录；术语/数字存在误识别，未逐句听音核验",
+      "source_id": "SRC-COURSE-VIDEO-OPTICAL-UP",
+      "sha256": "5b09a78a676ce9e6be0d7fd6142b19b487d9b04e4ff821f99b62b6f47e5cab85",
+      "decoded_frames": 28078,
+      "selected_frame_count": 58
     },
     {
       "file": "加餐课程\\11. 光通信封装仿真实例下_.mkv",
       "metadata_estimated_duration_seconds": 4239.32,
       "metadata_estimated_frames": 105983,
-      "learning_status": "未完成",
-      "visual_review": "未核对",
-      "transcript_review": "未核对"
+      "learning_status": "首轮笔记已形成，逐帧细节及工程复现未完成",
+      "visual_review": "关键帧原尺寸抽查，时刻见光通信视频笔记；未全部查看索引帧",
+      "transcript_review": "已读全段机器转录；术语/数字存在误识别，未逐句听音核验",
+      "source_id": "SRC-COURSE-VIDEO-OPTICAL-DOWN",
+      "sha256": "f13683fa3866e82517e1fabc399a68ccc352b155f8d69d9b5ae857e38d3b9d43",
+      "decoded_frames": 105978,
+      "selected_frame_count": 2665
     },
     {
       "file": "加餐课程\\11. 光通信封装仿真实例下下_.mkv",
       "metadata_estimated_duration_seconds": 794.64,
       "metadata_estimated_frames": 19866,
-      "learning_status": "未完成",
-      "visual_review": "未核对",
-      "transcript_review": "未核对"
+      "learning_status": "首轮笔记已形成，逐帧细节及工程复现未完成",
+      "visual_review": "关键帧原尺寸抽查，时刻见光通信视频笔记；未全部查看索引帧",
+      "transcript_review": "已读全段机器转录；术语/数字存在误识别，未逐句听音核验",
+      "source_id": "SRC-COURSE-VIDEO-OPTICAL-SUPPLEMENT",
+      "sha256": "798f5225498d88d7f84d3897925bffe65e70c40d5169e5a53989f15bff9a7007",
+      "decoded_frames": 19859,
+      "selected_frame_count": 404
     },
     {
       "file": "加餐课程\\11. 光通信封装仿真实例中_.mkv",
@@ -92,9 +112,13 @@
       "file": "加餐课程\\7. 锡球失效-粘塑性模型仿真上_.mkv",
       "metadata_estimated_duration_seconds": 2332.52,
       "metadata_estimated_frames": 58313,
-      "learning_status": "未完成",
-      "visual_review": "未核对",
-      "transcript_review": "未核对"
+      "learning_status": "上段首轮笔记已形成；未完成原始逐帧语义审核或复现",
+      "visual_review": "148张索引图以13张联系表浏览；另原尺寸检查1297.20、1637.56、2022.52、2320.68秒",
+      "transcript_review": "已读全段机器转录；未逐句听音核验",
+      "source_id": "SRC-COURSE-VIDEO-SOLDER-UP",
+      "sha256": "f82ff2dc96a2e7c52677688997534cefa7034f2737a002599fe00b45bddebaa8",
+      "selected_frame_count": 148,
+      "decoded_frames": 58308
     },
     {
       "file": "加餐课程\\7. 锡球失效-粘塑性模型仿真下_.mkv",
@@ -341,5 +365,5 @@
       "transcript_review": "未核对"
     }
   ],
-  "snapshot_note": "首批更正视频核对完成时的记录；后台处理计数不等于内容核对计数"
+  "snapshot_note": "分讲核对阶段记录；后台程序计数不等于内容学习计数"
 }

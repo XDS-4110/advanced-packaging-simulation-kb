@@ -9,8 +9,8 @@ tags: [solder, creep, fatigue]
 physics: [thermal, mechanical]
 software: []
 software_versions: []
-source_ids: [SRC-COURSE-CHIP-PACKAGING-07]
-source_locator: "课件07 p.3–9（PDF文件页码）"
+source_ids: [SRC-COURSE-CHIP-PACKAGING-07, SRC-COURSE-VIDEO-SOLDER-UP, SRC-ANSYS-242-ANAND]
+source_locator: "课件07 p.3–9；锡球失效上段14:23–27:53；ANSYS Theory Reference §4.3.2.4"
 updated_at: "2026-11-02"
 reviewed_by: ""
 reviewed_at: ""
@@ -30,7 +30,13 @@ reviewed_at: ""
 
 课件p.7展示的九参数表缺少可确认的合金、状态、标定温度/速率及原始实验来源，不能直接作为本项目BGA的材料输入。尤其应辨认参数定义与单位，不能仅凭表格顺序转录到软件。
 
-## 封装侧应收集的证据
+## 稳态蠕变与统一黏塑性如何理解
+
+“稳态蠕变”不表示应变不再随时间累积。在给定温度和应力下，若蠕变应变率近似恒定且不为零，持续时间越长，累积的蠕变应变仍会增加。这是对视频21:38附近转录歧义的澄清；不能把稳态蠕变等同于可忽略保温时间。
+
+Anand描述统一的非弹性变形，不能再把同一份变形任意重复算作独立塑性和蠕变贡献。它也不要求先跨过常规屈服面才出现非弹性流动。模型含应变率和内部状态演化，因此仅比较两次计算的最高温度或最大应力不足以说明两者经历相同。定义依据见[ANSYS 2024 R2 §4.3.2.4](https://ansyshelp.ansys.com/public/Views/Secured/corp/v242/en/ans_thry/thy_mat2.html)。
+
+## 封装资料交接字段
 
 | 内容 | 为什么需要 |
 | --- | --- |
@@ -45,3 +51,5 @@ Underfill会改变载荷传递，是否改善可靠性需结合材料、几何�
 ## 来源与审核边界
 
 本条为课程课件的归纳及明确标注的基础推导/项目交接建议，尚待审核；未通过本案例求解验证。阅读范围与原文疑点见[课程阅读笔记](../../common/references/course-41-reading-notes.md)。
+
+视频补充及尚未完成的范围见[锡球失效视频笔记](../references/course-video-solder-viscoplastic.md)。九参数表在视频27:17原尺寸画面中仍缺少完整材料来源，m行显示“03”，不凭经验补小数点；本条未新增任何可导入的材料数值。

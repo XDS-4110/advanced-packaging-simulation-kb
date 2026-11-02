@@ -22,3 +22,7 @@
 - [倒装互连与封装外部焊球](flip-chip-interconnect.md)（draft）
 
 - [基板叠层与过孔的结构识别](substrate-stackup-and-vias.md)：课程归纳，draft。
+
+- [TEC的结构、热路径与热端散热负荷](tec-heat-path-and-load.md)：视频归纳，draft。
+
+- [键合线几何、工艺可制造性与电连接](wire-bond-geometry-and-connectivity.md)：视频归纳，draft。

@@ -20,3 +20,5 @@
 下列正文均为待审核草稿。
 
 - [封装层级与案例研究边界](integration-levels.md)（draft）
+
+- [测温位置、控温目标与芯片温度的区别](temperature-measurement-location.md)：视频归纳，draft。
