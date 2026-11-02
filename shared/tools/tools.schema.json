@@ -1,0 +1,526 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Workbench / Mechanical执行契约骨架（仅预览请求）",
+  "description": "第一阶段骨架：工具参数只接收null占位，未定义运行适配器。通过此schema不表示可执行。",
+  "x-contract": {
+    "id": "KB-TOOLS-CONTRACT-SKELETON-001",
+    "document_type": "execution_contract",
+    "domain": "shared",
+    "status": "draft",
+    "reviewed_by": "",
+    "reviewed_at": "",
+    "updated_at": "2026-11-02",
+    "source_ids": ["SRC-EXEC-CONTRACT-USER-001", "SRC-EXEC-MECH-V242-001", "SRC-EXEC-ENGDATA-V242-001", "SRC-EXEC-JSONSCHEMA-202012"],
+    "source_locator": "本会话确认要求；api_evidence中的官方v242类/字段及JSON Schema Core。",
+    "mechanical_release": "2024 R2",
+    "mechanical_api_namespace": "v242",
+    "software_version": null,
+    "software_version_state": "待确认：ansys-mechanical-core确切版本",
+    "execution_enabled": false,
+    "verification": "仅文档归纳与静态schema检查；未连接或运行ANSYS。",
+    "units": {
+      "internal_system": "SI",
+      "canonical_units": {
+        "length": "m",
+        "mass": "kg",
+        "time": "s",
+        "absolute_temperature": "K",
+        "temperature_difference": "K",
+        "rotation": "rad",
+        "stress": "Pa",
+        "force": "N",
+        "power": "W",
+        "energy": "J"
+      },
+      "conversion_boundary": "仅在输入与输出边界换算；内部运算、比对和保存的规范化记录采用SI。",
+      "quantity_fields": ["value", "unit", "temperature_kind", "source_ref"],
+      "temperature_kind": ["absolute_temperature", "temperature_difference", "not_temperature"],
+      "absolute_temperature_rule": "使用绝对温标换算，必要时含偏移；规范化为K。",
+      "temperature_difference_rule": "仅使用温差比例换算，不施加绝对温度偏移；规范化为K并保留温差标签。",
+      "conversion_bindings": null,
+      "comparison_tolerances": null,
+      "unknown_unit_rule": "单位、量纲、温度语义或换算依据不明时阻止写入；不推断当前界面单位。"
+    },
+    "entity_policy": {
+      "primary_key": "stable_id",
+      "display_name_is_unique_key": false,
+      "resolved_from_required": true,
+      "resolver_implementation": null,
+      "runtime_ids_are_revision_bound": true,
+      "on_geometry_change": "旧ID映射失效，重新解析并核对命名选择与全部载荷作用域。"
+    },
+    "material_policy": {
+      "revision_required": true,
+      "on_property_change": "生成同一材料ID的新revision，不覆盖原revision；已引用的旧revision保持不变，直到显式切换。",
+      "ansys_native_revision_binding": null,
+      "mechanical_assignment": "只切换已有且已确认revision的材料；不得同时创建或修改Engineering Data。"
+    },
+    "common_gates": ["当前骨架只允许preview_only；所有工具禁止执行。", "后续执行前核对软件版本、项目/模型修订、stable_id映射、作用域、来源与单位。", "有unresolved、null必需值、失效ID或未确认物理条件时阻止写入。"],
+    "write_lifecycle": ["准备与读取原值", "写入后以对应层read_property/resolve_entity回读并进行SI比对", "requires_save为true时经Workbench工程保存并回读持久化证据后才可标记persisted"],
+    "requires_save_semantics": "会话内写入与回读可先发生；true表示达到持久化完成状态还需要显式工程保存，不表示保存前软件属性完全无效。export_results=false不豁免结果来源与导出文件校验。",
+    "invalidates_semantics": "项目要求的下游重新检查/重建清单，不声称ANSYS会自动删除或重建这些对象。先标记stale再逐项处理。",
+    "idempotent_semantics": "true仅可在具体前提下证明重试不产生额外修改时使用；null表示未知，禁止自动重试。",
+    "failure_policy": {
+      "codes": [
+        "UNRESOLVED_BINDING",
+        "MISSING_REQUIRED_VALUE",
+        "STALE_REFERENCE",
+        "UNIT_MISMATCH",
+        "REVISION_MISMATCH",
+        "READBACK_MISMATCH",
+        "PARTIAL_WRITE",
+        "SAVE_UNCONFIRMED",
+        "EXPORT_UNCONFIRMED"
+      ],
+      "response_fields": [
+        "request_id",
+        "tool",
+        "state",
+        "before",
+        "after",
+        "units",
+        "invalidated",
+        "completed_operations",
+        "pending_operations",
+        "errors",
+        "save_evidence",
+        "artifact_evidence"
+      ],
+      "automatic_retry": false,
+      "automatic_rollback": false,
+      "note": "失败或部分写入如实报告；不把Transaction或异常捕获当回滚。恢复绑定尚未定义。"
+    },
+    "constraint_kinds": {
+      "fixed_support": {"status": "draft"},
+      "displacement": {"status": "draft"},
+      "frictionless_support": {"status": "pending"},
+      "remote_displacement": {"status": "pending"},
+      "elastic_support": {"status": "pending"}
+    },
+    "result_request": {
+      "required_kinds": ["temperature", "equivalent_stress", "equivalent_plastic_strain", "directional_displacement_UZ", "reaction_force"],
+      "required_formats": ["CSV", "PNG"],
+      "csv_fields": ["scope_ref", "time", "result_kind", "minimum", "maximum", "unit", "model_revision"],
+      "multiple_times": true,
+      "uz_coordinate_frame": null,
+      "warpage_reference_plane": null,
+      "optional_formats": {"rst": {"binding_state": "unresolved"}, "npz": {"binding_state": "unresolved"}}
+    },
+    "stage_three_handoff": [
+      "温度实际作用面",
+      "结构支撑对象",
+      "接触配置",
+      "无应力参考温度：Body.ReferenceTemperature与Analysis Settings来源分别取证",
+      "结构时间步与非线性/蠕变设置",
+      "导入温度源分析与时刻对应",
+      "Anand m和h0原始出处"
+    ],
+    "api_evidence": {
+      "engineering_data": {
+        "source_id": "SRC-EXEC-ENGDATA-V242-001",
+        "url": "https://ansyshelp.ansys.com/public/Views/Secured/corp/v242/en/wb2_js/ContainerName37.html",
+        "locator": "Engineering Data容器：GetMaterials、GetMaterial、CreateMaterial；不包含本项目revision实现或工程参数枚举绑定。"
+      },
+      "model": {
+        "source_id": "SRC-EXEC-MECH-V242-001",
+        "url": "https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/Model.html",
+        "locator": "Model类；仅提供模型层入口，不是stable_id解析接口。"
+      },
+      "body": {
+        "source_id": "SRC-EXEC-MECH-V242-001",
+        "url": "https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/Body.html",
+        "locator": "Body.Material、GetAllProperties；Material为软件材料名字段，并非项目material ID/revision。"
+      },
+      "geometry_import": {
+        "source_id": "SRC-EXEC-MECH-V242-001",
+        "url": "https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/GeometryImport.html",
+        "locator": "GeometryImport.Import；原WBPJ几何单元的关联与刷新仍待核对。"
+      },
+      "analysis": {
+        "source_id": "SRC-EXEC-MECH-V242-001",
+        "url": "https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/Analysis.html",
+        "locator": "AddConvection、AddTemperature、AddFixedSupport、AddDisplacement；仅创建入口。"
+      },
+      "displacement": {
+        "source_id": "SRC-EXEC-MECH-V242-001",
+        "url": "https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/BoundaryConditions/Displacement.html",
+        "locator": "Displacement类；分量自由/给定、坐标系及单位绑定待细化。"
+      },
+      "analysis_settings": {
+        "source_id": "SRC-EXEC-MECH-V242-001",
+        "url": "https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/AnalysisSettings/ANSYSAnalysisSettings.html",
+        "locator": "NumberOfSteps、SetStepEndTime；逐步控制与重试策略待细化。"
+      },
+      "solution": {
+        "source_id": "SRC-EXEC-MECH-V242-001",
+        "url": "https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/Solution.html",
+        "locator": "Solution结果入口；CSV、PNG与多时刻导出尚未绑定。"
+      }
+    },
+    "toolsets": {
+      "workbench_scripting": {
+        "display_name": "Workbench脚本层；Engineering Data独立命名空间",
+        "engineering_data_tools": ["engineering_data.resolve_entity", "engineering_data.read_property", "engineering_data.update_material_properties"],
+        "project_tools": ["workbench_project.list_parameters", "workbench_project.set_geometry_parameter"],
+        "boundary": "材料库读写只在Engineering Data；工程参数查询/后续参数化另属workbench_project，不混入材料函数。打开/保存WBPJ仍属Workbench脚本层，保存绑定待确认。"
+      },
+      "mechanical_session": {
+        "display_name": "Mechanical会话层（PyMechanical v242）",
+        "tools": [
+          "mechanical.resolve_entity",
+          "mechanical.read_property",
+          "mechanical.assign_material",
+          "mechanical.reimport_geometry",
+          "mechanical.transform_entity",
+          "mechanical.apply_convection",
+          "mechanical.apply_temperature",
+          "mechanical.apply_constraint",
+          "mechanical.add_analysis_step",
+          "mechanical.export_results"
+        ],
+        "boundary": "实体赋值、热/结构对象和结果；不修改Engineering Data材料库，不在此保存WBPJ。"
+      }
+    },
+    "tools": {
+      "engineering_data.resolve_entity": {
+        "status": "draft",
+        "reviewed_by": "",
+        "reviewed_at": "",
+        "effect": "read_only",
+        "execution_enabled": false,
+        "parameters": ["material_id", "material_revision"],
+        "api_binding": {"state": "unresolved", "evidence_refs": ["engineering_data"], "documented_members": [], "adapter_method": null},
+        "preconditions": null,
+        "readback": null,
+        "failure_handling": null,
+        "unresolved_refs": ["U-STABLE-ID", "U-MATERIAL-REVISION"],
+        "example": {"request_id": null, "tool": "engineering_data.resolve_entity", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"material_id": null, "material_revision": null}}
+      },
+      "engineering_data.read_property": {
+        "status": "draft",
+        "reviewed_by": "",
+        "reviewed_at": "",
+        "effect": "read_only",
+        "execution_enabled": false,
+        "parameters": ["property_key", "table_selector"],
+        "api_binding": {"state": "unresolved", "evidence_refs": ["engineering_data"], "documented_members": [], "adapter_method": null},
+        "preconditions": null,
+        "readback": null,
+        "failure_handling": null,
+        "unresolved_refs": ["U-READBACK", "U-MATERIAL-REVISION"],
+        "example": {"request_id": null, "tool": "engineering_data.read_property", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"property_key": null, "table_selector": null}}
+      },
+      "workbench_project.list_parameters": {
+        "status": "draft",
+        "reviewed_by": "",
+        "reviewed_at": "",
+        "effect": "read_only",
+        "execution_enabled": false,
+        "parameters": ["parameter_domain"],
+        "api_binding": {"state": "unresolved", "evidence_refs": ["engineering_data"], "documented_members": [], "adapter_method": null},
+        "preconditions": null,
+        "readback": null,
+        "failure_handling": null,
+        "unresolved_refs": ["U-PARAMETERS"],
+        "example": {"request_id": null, "tool": "workbench_project.list_parameters", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"parameter_domain": null}}
+      },
+      "engineering_data.update_material_properties": {
+        "status": "draft",
+        "reviewed_by": "",
+        "reviewed_at": "",
+        "effect": "model_write",
+        "execution_enabled": false,
+        "parameters": ["material_id", "base_revision", "new_revision", "property_changes"],
+        "api_binding": {"state": "unresolved", "evidence_refs": ["engineering_data"], "documented_members": [], "adapter_method": null},
+        "preconditions": null,
+        "readback": null,
+        "failure_handling": null,
+        "unresolved_refs": ["U-MATERIAL-REVISION", "U-READBACK", "U-SAVE"],
+        "idempotent": null,
+        "requires_save": true,
+        "invalidates": ["new_material_revision_validation"],
+        "example": {"request_id": null, "tool": "engineering_data.update_material_properties", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"material_id": null, "base_revision": null, "new_revision": null, "property_changes": null}}
+      },
+      "workbench_project.set_geometry_parameter": {
+        "status": "draft",
+        "reviewed_by": "",
+        "reviewed_at": "",
+        "effect": "model_write",
+        "execution_enabled": false,
+        "parameters": ["parameter_ref", "value"],
+        "api_binding": {"state": "unresolved", "evidence_refs": [], "documented_members": [], "adapter_method": null},
+        "preconditions": null,
+        "readback": null,
+        "failure_handling": null,
+        "unresolved_refs": ["U-GEOMETRY-PARAMETER"],
+        "idempotent": null,
+        "requires_save": true,
+        "invalidates": ["entity_resolution", "named_selections", "contacts", "mesh", "load_scopes", "temperature_mapping", "solutions", "exported_results"],
+        "example": {"request_id": null, "tool": "workbench_project.set_geometry_parameter", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"parameter_ref": null, "value": null}}
+      },
+      "mechanical.resolve_entity": {
+        "status": "draft",
+        "reviewed_by": "",
+        "reviewed_at": "",
+        "effect": "read_only",
+        "execution_enabled": false,
+        "parameters": ["expected_kind"],
+        "api_binding": {"state": "unresolved", "evidence_refs": ["model", "body"], "documented_members": [], "adapter_method": null},
+        "preconditions": null,
+        "readback": null,
+        "failure_handling": null,
+        "unresolved_refs": ["U-STABLE-ID"],
+        "example": {"request_id": null, "tool": "mechanical.resolve_entity", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"expected_kind": null}}
+      },
+      "mechanical.read_property": {
+        "status": "draft",
+        "reviewed_by": "",
+        "reviewed_at": "",
+        "effect": "read_only",
+        "execution_enabled": false,
+        "parameters": ["property_key"],
+        "api_binding": {"state": "unresolved", "evidence_refs": ["body"], "documented_members": ["Body.GetAllProperties"], "adapter_method": null},
+        "preconditions": null,
+        "readback": null,
+        "failure_handling": null,
+        "unresolved_refs": ["U-READBACK"],
+        "example": {"request_id": null, "tool": "mechanical.read_property", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"property_key": null}}
+      },
+      "mechanical.assign_material": {
+        "status": "draft",
+        "reviewed_by": "",
+        "reviewed_at": "",
+        "effect": "model_write",
+        "execution_enabled": false,
+        "parameters": ["material_id", "material_revision"],
+        "api_binding": {"state": "unresolved", "evidence_refs": ["body"], "documented_members": ["Body.Material"], "adapter_method": null},
+        "preconditions": null,
+        "readback": null,
+        "failure_handling": null,
+        "unresolved_refs": ["U-MATERIAL-REVISION", "U-SAVE"],
+        "idempotent": null,
+        "requires_save": true,
+        "invalidates": ["material_assignment_readback", "thermal_solution", "temperature_mapping", "structural_solution", "exported_results"],
+        "example": {"request_id": null, "tool": "mechanical.assign_material", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"material_id": null, "material_revision": null}}
+      },
+      "mechanical.reimport_geometry": {
+        "status": "draft",
+        "reviewed_by": "",
+        "reviewed_at": "",
+        "effect": "model_write",
+        "execution_enabled": false,
+        "parameters": ["file_ref", "file_revision", "length_unit", "import_preferences"],
+        "api_binding": {"state": "unresolved", "evidence_refs": ["geometry_import"], "documented_members": ["GeometryImport.Import"], "adapter_method": null},
+        "preconditions": null,
+        "readback": null,
+        "failure_handling": null,
+        "unresolved_refs": ["U-GEOMETRY-IMPORT", "U-STABLE-ID", "U-SAVE"],
+        "idempotent": null,
+        "requires_save": true,
+        "invalidates": [
+          "entity_resolution",
+          "named_selections",
+          "material_assignment_scopes",
+          "contacts",
+          "mesh",
+          "thermal_load_scopes",
+          "structural_support_scopes",
+          "temperature_mapping",
+          "solutions",
+          "exported_results"
+        ],
+        "example": {"request_id": null, "tool": "mechanical.reimport_geometry", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"file_ref": null, "file_revision": null, "length_unit": null, "import_preferences": null}}
+      },
+      "mechanical.transform_entity": {
+        "status": "draft",
+        "reviewed_by": "",
+        "reviewed_at": "",
+        "effect": "model_write",
+        "execution_enabled": false,
+        "parameters": ["coordinate_frame_ref", "translation", "rotation"],
+        "api_binding": {"state": "unresolved", "evidence_refs": [], "documented_members": [], "adapter_method": null},
+        "preconditions": null,
+        "readback": null,
+        "failure_handling": null,
+        "unresolved_refs": ["U-GEOMETRY-TRANSFORM", "U-STABLE-ID", "U-SAVE"],
+        "idempotent": null,
+        "requires_save": true,
+        "invalidates": [
+          "entity_resolution",
+          "named_selections",
+          "material_assignment_scopes",
+          "contacts",
+          "mesh",
+          "thermal_load_scopes",
+          "structural_support_scopes",
+          "temperature_mapping",
+          "solutions",
+          "exported_results"
+        ],
+        "example": {"request_id": null, "tool": "mechanical.transform_entity", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"coordinate_frame_ref": null, "translation": null, "rotation": null}}
+      },
+      "mechanical.apply_convection": {
+        "status": "draft",
+        "reviewed_by": "",
+        "reviewed_at": "",
+        "effect": "model_write",
+        "execution_enabled": false,
+        "parameters": ["analysis_ref", "film_coefficient", "ambient_temperature", "time_table"],
+        "api_binding": {"state": "unresolved", "evidence_refs": ["analysis"], "documented_members": ["Analysis.AddConvection"], "adapter_method": null},
+        "preconditions": null,
+        "readback": null,
+        "failure_handling": null,
+        "unresolved_refs": ["U-FIELD-TABLES", "U-RETRY", "U-SAVE"],
+        "idempotent": null,
+        "requires_save": true,
+        "invalidates": ["thermal_solution", "temperature_mapping", "structural_solution", "exported_results"],
+        "example": {"request_id": null, "tool": "mechanical.apply_convection", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"analysis_ref": null, "film_coefficient": null, "ambient_temperature": null, "time_table": null}}
+      },
+      "mechanical.apply_temperature": {
+        "status": "draft",
+        "reviewed_by": "",
+        "reviewed_at": "",
+        "effect": "model_write",
+        "execution_enabled": false,
+        "parameters": ["analysis_ref", "temperature", "time_table"],
+        "api_binding": {"state": "unresolved", "evidence_refs": ["analysis"], "documented_members": ["Analysis.AddTemperature"], "adapter_method": null},
+        "preconditions": null,
+        "readback": null,
+        "failure_handling": null,
+        "unresolved_refs": ["U-FIELD-TABLES", "U-RETRY", "U-SAVE"],
+        "idempotent": null,
+        "requires_save": true,
+        "invalidates": ["thermal_solution", "temperature_mapping", "structural_solution", "exported_results"],
+        "example": {"request_id": null, "tool": "mechanical.apply_temperature", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"analysis_ref": null, "temperature": null, "time_table": null}}
+      },
+      "mechanical.apply_constraint": {
+        "status": "draft",
+        "reviewed_by": "",
+        "reviewed_at": "",
+        "effect": "model_write",
+        "execution_enabled": false,
+        "parameters": ["analysis_ref", "kind", "coordinate_frame_ref", "components"],
+        "api_binding": {
+          "state": "unresolved",
+          "evidence_refs": ["analysis", "displacement"],
+          "documented_members": ["Analysis.AddFixedSupport", "Analysis.AddDisplacement"],
+          "adapter_method": null
+        },
+        "preconditions": null,
+        "readback": null,
+        "failure_handling": null,
+        "unresolved_refs": ["U-CONSTRAINT", "U-RETRY", "U-SAVE"],
+        "idempotent": null,
+        "requires_save": true,
+        "invalidates": ["structural_solution", "reaction_force_results", "exported_results"],
+        "example": {"request_id": null, "tool": "mechanical.apply_constraint", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"analysis_ref": null, "kind": null, "coordinate_frame_ref": null, "components": null}}
+      },
+      "mechanical.add_analysis_step": {
+        "status": "draft",
+        "reviewed_by": "",
+        "reviewed_at": "",
+        "effect": "model_write",
+        "execution_enabled": false,
+        "parameters": ["analysis_ref", "step_ref", "end_time", "time_controls"],
+        "api_binding": {
+          "state": "unresolved",
+          "evidence_refs": ["analysis_settings"],
+          "documented_members": ["ANSYSAnalysisSettings.NumberOfSteps", "ANSYSAnalysisSettings.SetStepEndTime"],
+          "adapter_method": null
+        },
+        "preconditions": null,
+        "readback": null,
+        "failure_handling": null,
+        "unresolved_refs": ["U-ANALYSIS-STEP", "U-RETRY", "U-SAVE"],
+        "idempotent": null,
+        "requires_save": true,
+        "invalidates": ["analysis_step_readback", "temperature_mapping", "affected_solution", "exported_results"],
+        "example": {"request_id": null, "tool": "mechanical.add_analysis_step", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"analysis_ref": null, "step_ref": null, "end_time": null, "time_controls": null}}
+      },
+      "mechanical.export_results": {
+        "status": "draft",
+        "reviewed_by": "",
+        "reviewed_at": "",
+        "effect": "artifact_write",
+        "execution_enabled": false,
+        "parameters": ["analysis_ref", "result_kinds", "times", "scope_ref", "coordinate_frame_ref", "formats", "output_ref"],
+        "api_binding": {"state": "unresolved", "evidence_refs": ["solution"], "documented_members": [], "adapter_method": null},
+        "preconditions": null,
+        "readback": null,
+        "failure_handling": null,
+        "unresolved_refs": ["U-EXPORT", "U-RETRY"],
+        "idempotent": null,
+        "requires_save": false,
+        "invalidates": ["export_manifest_validation"],
+        "example": {"request_id": null, "tool": "mechanical.export_results", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"analysis_ref": null, "result_kinds": null, "times": null, "scope_ref": null, "coordinate_frame_ref": null, "formats": null, "output_ref": null}}
+      }
+    }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["request_id", "tool", "execution_mode", "context", "target", "arguments"],
+  "properties": {
+    "request_id": {"type": ["string", "null"]},
+    "tool": {"type": "string"},
+    "execution_mode": {"const": "preview_only"},
+    "context": {"$ref": "#/$defs/context"},
+    "target": {"$ref": "#/$defs/entity_ref"},
+    "arguments": {"type": "object"}
+  },
+  "oneOf": [
+    {"properties": {"tool": {"const": "engineering_data.resolve_entity"}, "arguments": {"type": "object", "required": ["material_id", "material_revision"], "properties": {"material_id": {"type": "null"}, "material_revision": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
+    {"properties": {"tool": {"const": "engineering_data.read_property"}, "arguments": {"type": "object", "required": ["property_key", "table_selector"], "properties": {"property_key": {"type": "null"}, "table_selector": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
+    {"properties": {"tool": {"const": "workbench_project.list_parameters"}, "arguments": {"type": "object", "required": ["parameter_domain"], "properties": {"parameter_domain": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
+    {"properties": {"tool": {"const": "engineering_data.update_material_properties"}, "arguments": {"type": "object", "required": ["material_id", "base_revision", "new_revision", "property_changes"], "properties": {"material_id": {"type": "null"}, "base_revision": {"type": "null"}, "new_revision": {"type": "null"}, "property_changes": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
+    {"properties": {"tool": {"const": "workbench_project.set_geometry_parameter"}, "arguments": {"type": "object", "required": ["parameter_ref", "value"], "properties": {"parameter_ref": {"type": "null"}, "value": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
+    {"properties": {"tool": {"const": "mechanical.resolve_entity"}, "arguments": {"type": "object", "required": ["expected_kind"], "properties": {"expected_kind": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
+    {"properties": {"tool": {"const": "mechanical.read_property"}, "arguments": {"type": "object", "required": ["property_key"], "properties": {"property_key": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
+    {"properties": {"tool": {"const": "mechanical.assign_material"}, "arguments": {"type": "object", "required": ["material_id", "material_revision"], "properties": {"material_id": {"type": "null"}, "material_revision": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
+    {"properties": {"tool": {"const": "mechanical.reimport_geometry"}, "arguments": {"type": "object", "required": ["file_ref", "file_revision", "length_unit", "import_preferences"], "properties": {"file_ref": {"type": "null"}, "file_revision": {"type": "null"}, "length_unit": {"type": "null"}, "import_preferences": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
+    {"properties": {"tool": {"const": "mechanical.transform_entity"}, "arguments": {"type": "object", "required": ["coordinate_frame_ref", "translation", "rotation"], "properties": {"coordinate_frame_ref": {"type": "null"}, "translation": {"type": "null"}, "rotation": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
+    {"properties": {"tool": {"const": "mechanical.apply_convection"}, "arguments": {"type": "object", "required": ["analysis_ref", "film_coefficient", "ambient_temperature", "time_table"], "properties": {"analysis_ref": {"type": "null"}, "film_coefficient": {"type": "null"}, "ambient_temperature": {"type": "null"}, "time_table": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
+    {"properties": {"tool": {"const": "mechanical.apply_temperature"}, "arguments": {"type": "object", "required": ["analysis_ref", "temperature", "time_table"], "properties": {"analysis_ref": {"type": "null"}, "temperature": {"type": "null"}, "time_table": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
+    {"properties": {"tool": {"const": "mechanical.apply_constraint"}, "arguments": {"type": "object", "required": ["analysis_ref", "kind", "coordinate_frame_ref", "components"], "properties": {"analysis_ref": {"type": "null"}, "kind": {"type": "null"}, "coordinate_frame_ref": {"type": "null"}, "components": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
+    {"properties": {"tool": {"const": "mechanical.add_analysis_step"}, "arguments": {"type": "object", "required": ["analysis_ref", "step_ref", "end_time", "time_controls"], "properties": {"analysis_ref": {"type": "null"}, "step_ref": {"type": "null"}, "end_time": {"type": "null"}, "time_controls": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
+    {"properties": {"tool": {"const": "mechanical.export_results"}, "arguments": {"type": "object", "required": ["analysis_ref", "result_kinds", "times", "scope_ref", "coordinate_frame_ref", "formats", "output_ref"], "properties": {"analysis_ref": {"type": "null"}, "result_kinds": {"type": "null"}, "times": {"type": "null"}, "scope_ref": {"type": "null"}, "coordinate_frame_ref": {"type": "null"}, "formats": {"type": "null"}, "output_ref": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]}
+  ],
+  "$defs": {
+    "entity_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stable_id", "display_name_hint", "model_revision", "mechanical_tree_id", "geometry_body_ids", "geometry_face_ids", "resolved_from"],
+      "properties": {
+        "stable_id": {"type": ["string", "null"], "description": "项目维护的主键；不是ANSYS原生持久ID。null表示尚未解析。"},
+        "display_name_hint": {"type": ["string", "null"], "description": "仅供显示；不得作为唯一标识或执行定位依据。"},
+        "model_revision": {"type": ["string", "null"]},
+        "mechanical_tree_id": {"type": ["integer", "null"]},
+        "geometry_body_ids": {"type": ["array", "null"], "items": {"type": "integer"}},
+        "geometry_face_ids": {"type": ["array", "null"], "items": {"type": "integer"}},
+        "resolved_from": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "source_ref", "evidence_ref"],
+          "properties": {
+            "kind": {"enum": ["named_selection", "parameter_table", "cad_import", "manual_mapping", null]},
+            "source_ref": {"type": ["string", "null"]},
+            "evidence_ref": {"type": ["string", "null"]}
+          }
+        }
+      }
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["project_ref", "model_revision", "software_version"],
+      "properties": {
+        "project_ref": {"type": ["string", "null"]},
+        "model_revision": {"type": ["string", "null"]},
+        "software_version": {"const": null, "description": "ansys-mechanical-core确切版本待用户提供；不是Mechanical发布版编号。"}
+      }
+    },
+    "constraint_kind": {
+      "enum": ["fixed_support", "displacement", "frictionless_support", "remote_displacement", "elastic_support", null],
+      "description": "骨架预留；可用状态另见x-contract.constraint_kinds，pending不得执行。当前arguments仍只允许null。"
+    }
+  }
+}
