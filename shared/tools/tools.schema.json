@@ -729,13 +729,21 @@
     "contract_version": "0.1.0",
     "versioning": {
       "identity_rule": "$id包含contract_version；执行端按该URI注册本地schema，跨模板$ref引用该URI及片段，不复制定义。URN不是HTTP下载地址。",
-      "unpublished_draft_rule": "本0.1.0仍是分支内待确认草案；发布/合并前的审阅修订由Git提交区分。首次正式发布后，同一$id内容冻结。",
+      "unpublished_draft_rule": "标签建立前的审阅修订由Git提交区分；PR #1 squash合并并建立contract-0.1.0后同一$id内容冻结。",
       "change_rule": "首次发布后的接收范围、必填项、失败语义、门槛、结果字段或去重语义变化均需新版本；发布前不宣称已有稳定执行兼容性。",
       "breaking_change": "0.x期间升次版本；稳定版以后升主版本。",
       "compatible_addition": "兼容新增工具或可选字段升次版本；仍需确认执行端支持，不能静默启用。",
       "documentation_only": "不改变验证和执行语义的说明修订升修订版本。",
       "reference_rule": "版本变更同步更新$id与contract_version，引用方显式升级；禁止以latest作为执行契约身份。",
-      "execution_enablement": "无论是否发布，从preview_only改为允许执行，或将执行开关由false转true，都必须升contract_version次版本并同步更新$id；同一0.1.0不得出现两种执行行为。"
+      "execution_enablement": "无论是否发布，从preview_only改为允许执行，或将执行开关由false转true，都必须升contract_version次版本并同步更新$id；同一0.1.0不得出现两种执行行为。",
+      "freeze_anchor": {
+        "kind": "git_tag",
+        "name": "contract-0.1.0",
+        "ref": "refs/tags/contract-0.1.0",
+        "target": "PR #1 squash merge commit",
+        "must_not_move": true,
+        "receipt_note": "last_run.commit是原始取证提交；squash后以标签定位冻结内容并复核内容哈希，不假定该提交仍是main父提交。"
+      }
     },
     "gate_registry": {
       "G-PREVIEW": {"definition": "本版本只允许preview_only，所有工具执行开关仍为false；这不是运行许可。", "implementation_state": "unresolved", "evidence_ref": null},
@@ -881,8 +889,8 @@
           "expected": "reject"
         }
       ],
-      "last_result": "passed_static_only",
-      "last_run": {"commit": "d6d1524084976a4fbd86954dc7abcaad3737601c", "at": "2026-11-02T05:28:52.921669+00:00", "python": "3.14.7", "jsonschema": "4.26.0", "schema_content_sha256": "f8648b6d799d2b183bb51c696b0c12bdda8388b595ab126d572f2181eadf0557", "validation_script_sha256": "70830f7fc7eda0b73bf4b5723711804786a55c9dd9ac68be48d4c3c6ca010957"}
+      "last_result": null,
+      "last_run": null
     },
     "argument_typing": {
       "status": "draft",

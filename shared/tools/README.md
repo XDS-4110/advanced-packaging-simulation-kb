@@ -76,7 +76,7 @@ JSON Schema验证的是骨架预览请求的结构，`x-contract`是配套的项
 
 `$id`为`urn:advanced-packaging-simulation-kb:tools:0.1.0`，`x-contract.contract_version`为`0.1.0`，这是用户指定的协议版本，不是材料/工程数值。URN是契约身份，不是下载地址。执行端应将仓库中的该文件注册到此URI，2.5D等引用方用`$ref: urn:advanced-packaging-simulation-kb:tools:0.1.0#/$defs/entity_ref`引用；校验脚本实际检查离线跨文档解析，没有复制定义。
 
-当前0.1.0尚未发布，分支审阅修订由Git提交区分。首次发布后同一$id内容冻结；破坏性变化在0.x阶段升次版本，稳定版以后升主版本；兼容新增升次版本，仅说明变化升修订版本。版本变化同步更新$id，引用方显式升级；不使用latest。另有强制规则：preview_only变为允许执行（含执行开关false→true）必须升contract_version次版本并同步改$id；无论是否发布，同一0.1.0不得有两种执行行为。规则见`x-contract.versioning`。
+0.1.0在PR #1 squash合并并建立contract-0.1.0标签后冻结；标签指向该合并提交。标签建立前的分支审阅修订由Git提交区分，建立后同一$id内容不再原地修订；破坏性变化在0.x阶段升次版本，稳定版以后升主版本；兼容新增升次版本，仅说明变化升修订版本。版本变化同步更新$id，引用方显式升级；不使用latest。另有强制规则：preview_only变为允许执行（含执行开关false→true）必须升contract_version次版本并同步改$id；无论是否发布，同一0.1.0不得有两种执行行为。规则见`x-contract.versioning`。
 
 ## request_id与作用域
 
@@ -100,7 +100,7 @@ JSON Schema验证的是骨架预览请求的结构，`x-contract`是配套的项
 
 普通check只需Python、指定jsonschema及其依赖和仓库中的数据文件；不依赖git，也不要求干净工作树。默认只读校验，不启动ANSYS、不触碰几何/工程文件，CI可直接使用同一命令，失败返回非零退出码。`--record`在这些前提之外额外依赖git和干净、已提交的工作树，才把校验记录写回schema；这是审计记录，不是模型执行工具。
 
-static_validation.last_run记录被校验提交commit、UTC时间at、python、jsonschema，并附schema_content_sha256和校验脚本哈希。回执指向被校验内容所在提交，即本提交的父提交；这里“本提交”专指随后保存回执的审计提交，读者应在审计提交查看回执，在父提交查看被校验内容，而不是去父提交找回执。内容哈希用规范化JSON排除last_run/last_result两个自记录字段，避免提交/哈希自引用。首次取证前last_run保持null。
+static_validation.last_run记录被校验提交commit、UTC时间at、python、jsonschema，并附schema_content_sha256和校验脚本哈希。last_run.commit指向最初被校验内容所在提交。在普通分支历史里它通常是随后审计提交的父提交；squash/rebase后不再保证这个父子关系，不能从main父提交推导回执位置。PR分支保留原取证历史；冻结版本以contract-0.1.0标签定位squash合并提交，并用内容/脚本哈希与registry、模板pin复核一致性。内容哈希用规范化JSON排除last_run/last_result两个自记录字段，避免提交/哈希自引用。首次取证前last_run保持null。
 
 校验脚本哈希按UTF-8文本统一换行后计算，避免Windows与CI的LF/CRLF检出差异造成误报。
 
@@ -149,7 +149,7 @@ registry.csv新增aliases和parent_id。当前只登记die_1→ENT-BGA-BODY-25�
 
 模板validation_state可声明draft/resolved/executable；当前为draft且ready_for_execution=false。draft允许未知引用留null，但不允许错误ID、悬空修订或错连端点。resolved需要全部必需引用、材料与注册映射已解析；executable还需几何重叠、单位、适配器及执行版本门槛。几何重叠和单位转换仍为unresolved，不由LLM宣称已检查；0.1.0始终禁止执行。
 
-本轮仅完成上述数据结构与静态检查，不表示阶段二全部完成。单位换算、几何检查和运行时解析均未实现，也不提前进入阶段三。
+本轮仅完成上述数据结构与静态检查，不表示阶段二全部完成。单位换算、几何检查和运行时解析均未实现。阶段三现已补取证方法清单，但尚未采集证据或关闭缺口。
 
 
 ## 实体种类与连接语义
@@ -165,3 +165,20 @@ entity_kind只允许body、material、named_selection、analysis。components[].
 3. 重跑`python shared/tools/validate_contract.py --record`，再单独提交回执。CI在第二步之前报pin不一致是预期保护，不表示修改内容本身一定错误。
 
 变更后仍为draft，审计记录不等同于运行证据；若打开执行开关，必须遵守升次版本和同步$id的独立规则。
+
+
+## 静态来源的审核路径与发布状态
+
+internal_validation_record与消费它的契约分别审核，不互相等待。SRC-CONTRACT-STATIC-CHECK-001的有权限审核人（用户或其指定技术审阅人）应核对：指定校验器实际复跑、版本/命令、被校验提交、schema/脚本哈希及pin、反例拒绝原因和结论范围。审核人将姓名/角色、日期、复核记录与定位写入可追溯的审阅证据，由有权限维护者更新来源登记；本次代理不改reviewed状态、不代签审核。
+
+该来源升级reviewed只表示静态回执可信，不要求先有ANSYS执行证据，也不自动提升契约或工程案例状态；这样避免“来源等契约、契约等来源”的循环。材料标定、实际适配器与仿真结果仍各自需要相应证据，不能由静态来源审核替代。
+
+0.1.0作为只预览的历史版本，本次按授权保留status=draft与空审核字段后冻结。冻结的是被审阅的内容，不是授予执行权限；后续审核结论在新提交/新版本中维护，保留标签历史。当前缺少软件包版本和真实适配器证据，所以执行禁用。validated仍需明确计算/实验与验证范围，单次脚本成功不能证明物理模型有效。
+
+## 冻结锚点与执行端交接
+
+冻结引用为refs/tags/contract-0.1.0，必须指向PR #1的squash合并提交；禁止移动或删除该锚点。标签提供内容定位，本次未额外配置GitHub标签保护规则，权限层面的保护需仓库维护者另行管理。合并后只读复跑check，不在冻结版本上重写--record。
+
+等待连接负责人提供ansys-mechanical-core确切版本、连接模式/Mechanical发行版、首个适配器的接口与代码修订、可复现输入和实际回读/失败记录后，再创建contract 0.2.0。此处不预填版本，不提前绑定adapter_method，也不提前打开执行开关。
+
+指定校验器完整支持其声明的JSON Schema关键字，能避免等价子集漏实现allOf等问题；它仍只能验证已经编码的规则。此前补充的实体种类、连接语义和作用域反例说明业务约束也会遗漏。后续必须保留mutation检查，并分别验证真实ID解析、写后回读、持久化、去重日志和失败恢复；静态绿灯与真实执行证据不能合并汇报。
