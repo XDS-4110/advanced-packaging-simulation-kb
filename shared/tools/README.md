@@ -102,6 +102,8 @@ JSON Schema验证的是骨架预览请求的结构，`x-contract`是配套的项
 
 static_validation.last_run记录被校验提交commit、UTC时间at、python、jsonschema，并附schema_content_sha256和校验脚本哈希。commit指向校验时工作区的提交，不是随后保存审计记录的提交；内容哈希用规范化JSON排除last_run/last_result两个自记录字段，避免提交/哈希自引用。首次取证前last_run保持null。
 
+校验脚本哈希按UTF-8文本统一换行后计算，避免Windows与CI的LF/CRLF检出差异造成误报。
+
 schema内容或校验脚本变更会使旧记录失效，脚本将拒绝沿用旧“通过”；需将last_run/last_result重置为null，提交内容后重新取证。记录校验结果不会将条目状态改为reviewed或validated。
 
 校验包括原有两个反例，以及entity的target=null、project的非null目标、analysis的非法目标类型三项反例；还检查每个分支的目标规则、三个槽位、非法scope_kind、缺参数键、非法gate ID及独立参数类型。analysis允许null或合法引用的正例也会保留。通过仅证明静态结构，不证明去重日志、API回读、保存、求解或结果导出。

@@ -41,6 +41,11 @@ def content_digest(schema: dict) -> str:
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
+def script_digest() -> str:
+    # Universal-newline text hashing is stable across Git LF/CRLF checkouts.
+    return hashlib.sha256(Path(__file__).read_text(encoding="utf-8").encode("utf-8")).hexdigest()
+
+
 def git(root: Path, *args: str) -> str:
     return subprocess.check_output(["git", *args], cwd=root, text=True).strip()
 
@@ -159,7 +164,7 @@ def check(root: Path, schema: dict) -> dict:
     recorded = contract["static_validation"].get("last_run")
     if recorded is not None:
         require(recorded["schema_content_sha256"] == content_digest(schema), "Stale last_run: schema content differs from the recorded digest.")
-        require(recorded["validation_script_sha256"] == hashlib.sha256(Path(__file__).read_bytes()).hexdigest(), "Stale last_run: validation script changed.")
+        require(recorded["validation_script_sha256"] == script_digest(), "Stale last_run: validation script changed.")
     print("PASS", len(tools), "tools; typed parameters; slots; target guards; offline $ref")
     return {"python": sys.version.split()[0], "jsonschema": installed, "schema_content_sha256": content_digest(schema), "tool_count": len(tools), "parameter_checks": len(parameter_checks), "rejection_checks": len(rejected)}
 
@@ -179,7 +184,7 @@ def main() -> int:
             run = {"commit": git(root, "rev-parse", "HEAD"), "at": datetime.now(timezone.utc).isoformat(),
                    "python": report["python"], "jsonschema": report["jsonschema"],
                    "schema_content_sha256": report["schema_content_sha256"],
-                   "validation_script_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
+                   "validation_script_sha256": script_digest()}
             audit = schema["x-contract"]["static_validation"]
             audit["last_run"] = run
             audit["last_result"] = "passed_static_only"
