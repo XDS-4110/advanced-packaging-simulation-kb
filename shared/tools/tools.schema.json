@@ -869,8 +869,8 @@
           "expected": "reject"
         }
       ],
-      "last_result": null,
-      "last_run": null
+      "last_result": "passed_static_only",
+      "last_run": {"commit": "b23a38c270c80168852f12a2df9cbdebcad3bf45", "at": "2026-11-02T05:04:10.039466+00:00", "python": "3.14.7", "jsonschema": "4.26.0", "schema_content_sha256": "6a4ac0f4345d5a06062b72ef5a0e955f5459d1d02198206f572f1c6515fc30ee", "validation_script_sha256": "aa03b6fd458d809e9c7f45a6643165288edf0bacf666dd4743c8d1f12eb294fd"}
     },
     "argument_typing": {
       "status": "draft",
