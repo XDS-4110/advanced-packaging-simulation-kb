@@ -46,7 +46,20 @@
         "id": null,
         "revision": null
       },
-      "tsv_rdl_modeling": null
+      "tsv_rdl_modeling": null,
+      "entity_ref": {
+        "stable_id": null,
+        "display_name_hint": null,
+        "model_revision": null,
+        "mechanical_tree_id": null,
+        "geometry_body_ids": null,
+        "geometry_face_ids": null,
+        "resolved_from": {
+          "kind": null,
+          "source_ref": null,
+          "evidence_ref": null
+        }
+      }
     },
     {
       "id": "interposer_1",
@@ -74,7 +87,20 @@
         "id": null,
         "revision": null
       },
-      "tsv_rdl_modeling": null
+      "tsv_rdl_modeling": null,
+      "entity_ref": {
+        "stable_id": null,
+        "display_name_hint": null,
+        "model_revision": null,
+        "mechanical_tree_id": null,
+        "geometry_body_ids": null,
+        "geometry_face_ids": null,
+        "resolved_from": {
+          "kind": null,
+          "source_ref": null,
+          "evidence_ref": null
+        }
+      }
     },
     {
       "id": "substrate_1",
@@ -102,7 +128,20 @@
         "id": null,
         "revision": null
       },
-      "tsv_rdl_modeling": null
+      "tsv_rdl_modeling": null,
+      "entity_ref": {
+        "stable_id": null,
+        "display_name_hint": null,
+        "model_revision": null,
+        "mechanical_tree_id": null,
+        "geometry_body_ids": null,
+        "geometry_face_ids": null,
+        "resolved_from": {
+          "kind": null,
+          "source_ref": null,
+          "evidence_ref": null
+        }
+      }
     }
   ],
   "connections": [
@@ -120,7 +159,33 @@
         "material_revision": null,
         "geometry_rule": null
       },
-      "thermal_contact_definition": null
+      "thermal_contact_definition": null,
+      "lower_entity_ref": {
+        "stable_id": null,
+        "display_name_hint": null,
+        "model_revision": null,
+        "mechanical_tree_id": null,
+        "geometry_body_ids": null,
+        "geometry_face_ids": null,
+        "resolved_from": {
+          "kind": null,
+          "source_ref": null,
+          "evidence_ref": null
+        }
+      },
+      "upper_entity_ref": {
+        "stable_id": null,
+        "display_name_hint": null,
+        "model_revision": null,
+        "mechanical_tree_id": null,
+        "geometry_body_ids": null,
+        "geometry_face_ids": null,
+        "resolved_from": {
+          "kind": null,
+          "source_ref": null,
+          "evidence_ref": null
+        }
+      }
     },
     {
       "id": "lower_connection",
@@ -136,7 +201,33 @@
         "material_revision": null,
         "geometry_rule": null
       },
-      "thermal_contact_definition": null
+      "thermal_contact_definition": null,
+      "lower_entity_ref": {
+        "stable_id": null,
+        "display_name_hint": null,
+        "model_revision": null,
+        "mechanical_tree_id": null,
+        "geometry_body_ids": null,
+        "geometry_face_ids": null,
+        "resolved_from": {
+          "kind": null,
+          "source_ref": null,
+          "evidence_ref": null
+        }
+      },
+      "upper_entity_ref": {
+        "stable_id": null,
+        "display_name_hint": null,
+        "model_revision": null,
+        "mechanical_tree_id": null,
+        "geometry_body_ids": null,
+        "geometry_face_ids": null,
+        "resolved_from": {
+          "kind": null,
+          "source_ref": null,
+          "evidence_ref": null
+        }
+      }
     }
   ],
   "unresolved_parameters": [],
@@ -144,5 +235,207 @@
     "All null values mean unknown, not zero.",
     "Stable IDs must be resolved against actual CAD/API entities before editing.",
     "BGA example dimensions are not defaults for this template."
-  ]
+  ],
+  "id": "KB-PACKAGE-STRUCTURE-ENTITY-CONTRACT-001",
+  "title": "封装结构输入：实体引用与静态校验草案",
+  "document_type": "execution_contract",
+  "domain": "shared",
+  "reviewed_by": "",
+  "reviewed_at": "",
+  "source_ids": [
+    "SRC-EXEC-CONTRACT-USER-001",
+    "SRC-ENTITY-REGISTRY-USER-001",
+    "SRC-EXEC-JSONSCHEMA-202012"
+  ],
+  "source_locator": "本会话阶段二实体引用/校验要求；工具契约0.1.0与shared/entities/registry.csv；尚无实际运行映射证据。",
+  "updated_at": "2026-11-02",
+  "case_id": null,
+  "validation_state": "draft",
+  "entity_contract_ref": {
+    "schema_id": "urn:advanced-packaging-simulation-kb:tools:0.1.0",
+    "entity_ref_schema": "urn:advanced-packaging-simulation-kb:tools:0.1.0#/$defs/entity_ref",
+    "registry_path": "shared/entities/registry.csv"
+  },
+  "validation": {
+    "status": "draft",
+    "reviewed_by": "",
+    "reviewed_at": "",
+    "scope": "阶段二第一部分：entity_ref与完整性校验；未提供求解或几何检查实现。",
+    "shape_schema": {
+      "type": "object",
+      "required": [
+        "status",
+        "ready_for_execution",
+        "validation_state",
+        "case_id",
+        "base_model_revision",
+        "components",
+        "connections",
+        "entity_contract_ref",
+        "validation"
+      ],
+      "properties": {
+        "status": {
+          "const": "draft"
+        },
+        "ready_for_execution": {
+          "type": "boolean"
+        },
+        "validation_state": {
+          "enum": [
+            "draft",
+            "resolved",
+            "executable"
+          ]
+        },
+        "case_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "base_model_revision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "components": {
+          "type": "array",
+          "not": {
+            "const": []
+          },
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "type",
+              "entity_ref",
+              "material_ref"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "\\S"
+              },
+              "entity_ref": {
+                "$ref": "urn:advanced-packaging-simulation-kb:tools:0.1.0#/$defs/entity_ref"
+              },
+              "material_ref": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "revision"
+                ],
+                "properties": {
+                  "id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "revision": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "connections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "lower_component",
+              "upper_component",
+              "lower_entity_ref",
+              "upper_entity_ref"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "\\S"
+              },
+              "lower_component": {
+                "type": "string"
+              },
+              "upper_component": {
+                "type": "string"
+              },
+              "entity_ref": false,
+              "lower_entity_ref": {
+                "$ref": "urn:advanced-packaging-simulation-kb:tools:0.1.0#/$defs/entity_ref"
+              },
+              "upper_entity_ref": {
+                "$ref": "urn:advanced-packaging-simulation-kb:tools:0.1.0#/$defs/entity_ref"
+              }
+            }
+          }
+        }
+      }
+    },
+    "registry_rules": {
+      "stable_id_unique": true,
+      "material_revision_in_catalog": true,
+      "source_object_in_case_evidence": true,
+      "source_text_hash_matches": true,
+      "enum_fields_only": true,
+      "unbound_model_revision_forbidden_in_entity_ref": true,
+      "alias_scope": [
+        "case_id",
+        "base_model_revision"
+      ],
+      "alias_is_execution_key": false,
+      "automatic_alias_resolution": false,
+      "reference_rule": "填入stable_id时必须存在唯一注册行、非空model_revision与对应case_id；行修订、引用修订及输入base_model_revision必须一致。"
+    },
+    "required_for_resolved": [
+      "case_id",
+      "base_model_revision",
+      "all_component_entity_refs",
+      "all_endpoint_entity_refs",
+      "registered_material_id_and_revision",
+      "resolved_registry_mappings"
+    ],
+    "state_rules": {
+      "draft": "允许未知字段为null；错误ID、空修订行引用及矛盾引用仍拒绝；不能执行。",
+      "resolved": "全部必需身份/材料/端点引用已解析并有注册证据；不代表物理几何或仿真已验证。",
+      "executable": "还需几何、单位、适配器、模型完整性等门槛完成，且引用允许执行的新版本契约；0.1.0不能进入该状态。"
+    },
+    "geometry_overlap": {
+      "implementation_state": "unresolved",
+      "evidence_ref": null,
+      "result": "unresolved",
+      "tolerance": null,
+      "rule": "需要真实几何的重叠/相交检查及允许连接的解释，不能仅凭包围框或连接名称认定无重叠。"
+    },
+    "units": {
+      "implementation_state": "unresolved",
+      "input_units_ref": "units",
+      "internal_policy_ref": "urn:advanced-packaging-simulation-kb:tools:0.1.0#/x-contract/units",
+      "rule": "现有mm/degree为输入边界字段，内部SI规则仍须独立换算/回读；本轮不填换算数值或执行转换。"
+    },
+    "unresolved_items": [
+      "entity_refs_unbound",
+      "case_and_model_revision_unset",
+      "interposer_alias_unregistered",
+      "material_references_unset",
+      "geometry_overlap_not_checked",
+      "unit_conversion_not_implemented",
+      "adapter_bindings_unresolved"
+    ],
+    "connection_identity": "连接是两端之间的关系，不登记为实体；仅由lower_entity_ref和upper_entity_ref及连接定义推导。禁止connection.entity_ref。",
+    "expected_entity_kinds": {
+      "components[].entity_ref": "body",
+      "connections[].lower_entity_ref": "body",
+      "connections[].upper_entity_ref": "body",
+      "components[].material_ref.id": "material",
+      "connections[].underfill.material_id": "material"
+    }
+  }
 }
