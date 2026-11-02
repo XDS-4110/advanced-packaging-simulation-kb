@@ -17,7 +17,7 @@
 
 ## 已有知识条目
 
-暂无独立正文；本目录说明和待办清单不代表已审核知识。
+以下正文的审核状态以各条目元数据为准。
 
 - [Underfill: A Review of Reliability Improvement Methods in Electronics Production](underfill-2025.md)：draft；PDF 未取得；公开页面或书目线索已核对。
 
@@ -26,3 +26,5 @@
 - [Solder joint failures under thermo-mechanical loading conditions – A review](solder-failures-2020.md)：draft；PDF 未取得；公开页面或书目线索已核对。
 
 - [Material and constitutive parameters of various Pb-based and Pb-free solders and other interconnection materials: A collective review](constitutive-2025.md)：draft；PDF 未取得；公开页面或书目线索已核对。
+
+- [芯片封装仿真41讲：阅读笔记与疑点](course-41-reading-notes.md)：6份课件，8篇知识正文；视频未逐讲观看。

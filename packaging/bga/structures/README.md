@@ -22,3 +22,5 @@
 - [当前塑封倒装BGA的部件与连接关系](flip-chip-bga-components.md)
 
 - [BGA球阵列与装配尺寸应怎样记录](ball-array-dimensions.md)
+
+- [线焊PBGA的部件与连接关系](wire-bond-pbga.md)：课程归纳，draft。

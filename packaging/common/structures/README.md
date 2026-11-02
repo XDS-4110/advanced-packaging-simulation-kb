@@ -20,3 +20,5 @@
 下列正文均为待审核草稿。
 
 - [倒装互连与封装外部焊球](flip-chip-interconnect.md)（draft）
+
+- [基板叠层与过孔的结构识别](substrate-stackup-and-vias.md)：课程归纳，draft。

@@ -1,0 +1,396 @@
+{
+  "course": "芯片封装仿真41讲",
+  "review_date": "2026-11-02",
+  "page_numbering": "1-based PDF file page",
+  "raw_files_uploaded": false,
+  "pdfs": [
+    {
+      "filename": "1. 芯片封装仿真概论.pdf",
+      "sha256": "3ddbc72b37fd98544faff580d5ed8394acafa40f5687d738ecb9a484a6cccfee",
+      "pages": 18,
+      "status": "本轮未作为正文依据",
+      "reviewed_pages": []
+    },
+    {
+      "filename": "10. TEC-原理建模和仿真.pdf",
+      "sha256": "f8a0839bd16a676e6d26410b7d8f0343f8ec16033ff9dcc0ddb9940542767a34",
+      "pages": 9,
+      "status": "本轮未作为正文依据",
+      "reviewed_pages": []
+    },
+    {
+      "filename": "11. 光通信封装实例.pdf",
+      "sha256": "693f80e41a7163918b3731344fe8dd19ff4d1e58e53ca6e1568b7e2aa994a909",
+      "pages": 8,
+      "status": "本轮未作为正文依据",
+      "reviewed_pages": []
+    },
+    {
+      "filename": "12. SIP封装实例.pdf",
+      "sha256": "95e960e5923d75d7046cd8dfceb8aaba0c1ecbb2216f7c5edea7313ba29b8bed",
+      "pages": 7,
+      "status": "本轮未作为正文依据",
+      "reviewed_pages": []
+    },
+    {
+      "filename": "13. 加餐-湿气仿真.pdf",
+      "sha256": "ef35e2ea56e83e3edbc9c6e9dc1d05cb7be6ee136e26bada5a49d3535d0ea76f",
+      "pages": 8,
+      "status": "本轮图像阅读并记录疑点",
+      "reviewed_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "filename": "14. 动力学仿真.pdf",
+      "sha256": "4525402d814189996bd2b5c5fd645eeb14c3ef52407b76d8171470196188dc29",
+      "pages": 9,
+      "status": "本轮未作为正文依据",
+      "reviewed_pages": []
+    },
+    {
+      "filename": "15. TSV综合仿真.pdf",
+      "sha256": "5015c95b0045c82a749f24ae16bd54645fa93a6716d483d4abbfbbeedb9cfdd1",
+      "pages": 7,
+      "status": "本轮图像阅读并记录疑点",
+      "reviewed_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "filename": "16. 麦克斯韦仿真.pdf",
+      "sha256": "7f589c00388355ff9c8be59e80b3482a705799703e6ad718593fc6b5da79eca4",
+      "pages": 6,
+      "status": "本轮未作为正文依据",
+      "reviewed_pages": []
+    },
+    {
+      "filename": "2. 芯片热模型和模型提取.pdf",
+      "sha256": "da5ed1b0b1b89242f0e7d86b491bf5b1ecbb12a2a7b660186c0546109abf9e8b",
+      "pages": 11,
+      "status": "本轮图像阅读并记录疑点",
+      "reviewed_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "filename": "3. PCB和基板的热模型.pdf",
+      "sha256": "3d366c0ed42a7a7e212bce111d2ade15ff5fd18828c83f7592c630267156bd57",
+      "pages": 10,
+      "status": "本轮图像阅读并记录疑点",
+      "reviewed_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "filename": "4. 散热器和风扇系统的优化.pdf",
+      "sha256": "b325dbefbc9cb5c6b19145d300fa4236de12ee97205639d7a033e61407ae0ee8",
+      "pages": 10,
+      "status": "本轮未作为正文依据",
+      "reviewed_pages": []
+    },
+    {
+      "filename": "5. 什么是计算流体动力学.pdf",
+      "sha256": "96edb9777f865db5f622241c4cc86fdb74a0fd45f623ee781b7c3a7ac30f40a7",
+      "pages": 10,
+      "status": "本轮未作为正文依据",
+      "reviewed_pages": []
+    },
+    {
+      "filename": "6. 翘曲-热固耦合仿真.pdf",
+      "sha256": "ed68b91adfcca58182390905896c7b3fdd8b97e5fa91351339d0e5b43279555c",
+      "pages": 9,
+      "status": "本轮图像阅读并记录疑点",
+      "reviewed_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "filename": "7. 锡球失效-粘塑性模型仿真.pdf",
+      "sha256": "f48787194dce40c5a41ece6e5d93903b51b234bb0db0454597f2ee47e3dd8c40",
+      "pages": 10,
+      "status": "本轮图像阅读并记录疑点",
+      "reviewed_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "filename": "8. 信号完整性.pdf",
+      "sha256": "59233a0dcd69435b7984658c3cd55f8ab1ebfb26703a02772d9e9ecb048c2c9a",
+      "pages": 12,
+      "status": "本轮未作为正文依据",
+      "reviewed_pages": []
+    },
+    {
+      "filename": "9. 接地-信号和散热讨论.pdf",
+      "sha256": "c7b242eafc5cdb435f884e92656b1739726c3b39418d15d6c76fb97b772f56b5",
+      "pages": 9,
+      "status": "本轮未作为正文依据",
+      "reviewed_pages": []
+    },
+    {
+      "filename": "CSP 封装 Sn2315Ag 焊点的热疲劳寿命预测.pdf",
+      "sha256": "ff1cb142da378bc8b440f76dc8fcdfbf2c47a5944c2433e75107fa9018c5c882",
+      "pages": 6,
+      "status": "本轮未作为正文依据",
+      "reviewed_pages": []
+    }
+  ],
+  "videos": [
+    {
+      "relative_path": "加餐课程/10. TEC-原理、建模和仿真上_.mkv",
+      "bytes": 76427007,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/10. TEC-原理、建模和仿真下_.mkv",
+      "bytes": 152637709,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/11. 光通信封装仿真实例上_.mkv",
+      "bytes": 37800013,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/11. 光通信封装仿真实例下_.mkv",
+      "bytes": 246971008,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/11. 光通信封装仿真实例下下_.mkv",
+      "bytes": 36773546,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/11. 光通信封装仿真实例中_.mkv",
+      "bytes": 203697719,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/12. SiP封装实例上_.mkv",
+      "bytes": 30547983,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/12. SiP封装实例下_.mkv",
+      "bytes": 109063889,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/12. SiP封装实例中上_.mkv",
+      "bytes": 100625052,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/12. SiP封装实例中下_.mkv",
+      "bytes": 45208265,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/7. 锡球失效-粘塑性模型仿真上_.mkv",
+      "bytes": 79138930,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/7. 锡球失效-粘塑性模型仿真下_.mkv",
+      "bytes": 209345114,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/8. 信号完整性上_.mkv",
+      "bytes": 165626771,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/8. 信号完整性下_.mkv",
+      "bytes": 233151282,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/9. 接地-信号和散热讨论上__.mkv",
+      "bytes": 91525383,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/9. 接地-信号和散热讨论下_.mkv",
+      "bytes": 107089378,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/加餐10_回答问题1.mkv",
+      "bytes": 100350643,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/加餐11_单元生死.mkv",
+      "bytes": 160040481,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/加餐12_3Dalyout和Circuit模块.mkv",
+      "bytes": 443473286,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/加餐1SpaceClaim画封装结构_.mkv",
+      "bytes": 51053114,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/加餐2光通信热构耦合仿真实例2D_.mkv",
+      "bytes": 81206960,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/加餐3HFSSsolver详解_.mkv",
+      "bytes": 88539152,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/加餐4电热力耦合仿真流程_.mkv",
+      "bytes": 91178009,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/加餐5热循环锡球寿命仿真_.mkv",
+      "bytes": 162220022,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/加餐6湿气仿真_.mkv",
+      "bytes": 307869088,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/加餐7随机振动仿真_.mkv",
+      "bytes": 161358700,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/加餐8TSV力学分析_.mkv",
+      "bytes": 249573166,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "加餐课程/加餐9TSV电学分析_.mkv",
+      "bytes": 139920462,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "正式课程/1.芯片仿真概论_.mkv",
+      "bytes": 307796434,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "正式课程/2. 芯片热模型几何文件处理_.mkv",
+      "bytes": 34240025,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "正式课程/2.芯片热模型和模型提取上_.mkv",
+      "bytes": 64999685,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "正式课程/2.芯片热模型和模型提取下_.mkv",
+      "bytes": 168919597,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "正式课程/3. PCB和基板的热模型上_.mkv",
+      "bytes": 90472157,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "正式课程/3. PCB和基板的热模型下_.mkv",
+      "bytes": 99866617,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "正式课程/4. 散热器和风扇系统的优化上_.mkv",
+      "bytes": 85946746,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "正式课程/4. 散热器和风扇系统的优化下_.mkv",
+      "bytes": 140706526,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "正式课程/5. 什么是计算流体动力学上_.mkv",
+      "bytes": 116948626,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "正式课程/5. 什么是计算流体动力学下_.mkv",
+      "bytes": 157144742,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "正式课程/6. 第11讲warpage计算问题更正_.mkv",
+      "bytes": 12745755,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "正式课程/6. 翘曲-热固耦合仿真上_.mkv",
+      "bytes": 85685283,
+      "status": "未逐讲观看或转录"
+    },
+    {
+      "relative_path": "正式课程/6. 翘曲-热固耦合仿真下_.mkv",
+      "bytes": 100198806,
+      "status": "未逐讲观看或转录"
+    }
+  ],
+  "geometry_status": "STEP文件尚未核验；未作为尺寸证据"
+}
