@@ -1,7 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:advanced-packaging-simulation-kb:tools:0.1.0",
   "title": "Workbench / Mechanical执行契约骨架（仅预览请求）",
-  "description": "第一阶段骨架：工具参数只接收null占位，未定义运行适配器。通过此schema不表示可执行。",
+  "description": "第一阶段结构化占位：preconditions/readback/failure_handling已有可校验形状；arguments仍只收null，工具全部禁止执行。",
   "x-contract": {
     "id": "KB-TOOLS-CONTRACT-SKELETON-001",
     "document_type": "execution_contract",
@@ -10,7 +11,7 @@
     "reviewed_by": "",
     "reviewed_at": "",
     "updated_at": "2026-11-02",
-    "source_ids": ["SRC-EXEC-CONTRACT-USER-001", "SRC-EXEC-MECH-V242-001", "SRC-EXEC-ENGDATA-V242-001", "SRC-EXEC-JSONSCHEMA-202012"],
+    "source_ids": ["SRC-EXEC-CONTRACT-USER-001", "SRC-ANSYS-242-OPS-API", "SRC-ANSYS-242-ENGDATA", "SRC-EXEC-JSONSCHEMA-202012"],
     "source_locator": "本会话确认要求；api_evidence中的官方v242类/字段及JSON Schema Core。",
     "mechanical_release": "2024 R2",
     "mechanical_api_namespace": "v242",
@@ -70,7 +71,13 @@
         "READBACK_MISMATCH",
         "PARTIAL_WRITE",
         "SAVE_UNCONFIRMED",
-        "EXPORT_UNCONFIRMED"
+        "EXPORT_UNCONFIRMED",
+        "MISSING_REQUEST_ID",
+        "REQUEST_ID_CONFLICT",
+        "REQUEST_IN_PROGRESS",
+        "REQUEST_RECOVERY_REQUIRED",
+        "LOG_UNAVAILABLE",
+        "SCOPE_MISMATCH"
       ],
       "response_fields": [
         "request_id",
@@ -117,42 +124,42 @@
     ],
     "api_evidence": {
       "engineering_data": {
-        "source_id": "SRC-EXEC-ENGDATA-V242-001",
+        "source_id": "SRC-ANSYS-242-ENGDATA",
         "url": "https://ansyshelp.ansys.com/public/Views/Secured/corp/v242/en/wb2_js/ContainerName37.html",
         "locator": "Engineering Data容器：GetMaterials、GetMaterial、CreateMaterial；不包含本项目revision实现或工程参数枚举绑定。"
       },
       "model": {
-        "source_id": "SRC-EXEC-MECH-V242-001",
+        "source_id": "SRC-ANSYS-242-OPS-API",
         "url": "https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/Model.html",
         "locator": "Model类；仅提供模型层入口，不是stable_id解析接口。"
       },
       "body": {
-        "source_id": "SRC-EXEC-MECH-V242-001",
+        "source_id": "SRC-ANSYS-242-OPS-API",
         "url": "https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/Body.html",
         "locator": "Body.Material、GetAllProperties；Material为软件材料名字段，并非项目material ID/revision。"
       },
       "geometry_import": {
-        "source_id": "SRC-EXEC-MECH-V242-001",
+        "source_id": "SRC-ANSYS-242-OPS-API",
         "url": "https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/GeometryImport.html",
         "locator": "GeometryImport.Import；原WBPJ几何单元的关联与刷新仍待核对。"
       },
       "analysis": {
-        "source_id": "SRC-EXEC-MECH-V242-001",
+        "source_id": "SRC-ANSYS-242-OPS-API",
         "url": "https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/Analysis.html",
         "locator": "AddConvection、AddTemperature、AddFixedSupport、AddDisplacement；仅创建入口。"
       },
       "displacement": {
-        "source_id": "SRC-EXEC-MECH-V242-001",
+        "source_id": "SRC-ANSYS-242-OPS-API",
         "url": "https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/BoundaryConditions/Displacement.html",
         "locator": "Displacement类；分量自由/给定、坐标系及单位绑定待细化。"
       },
       "analysis_settings": {
-        "source_id": "SRC-EXEC-MECH-V242-001",
+        "source_id": "SRC-ANSYS-242-OPS-API",
         "url": "https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/AnalysisSettings/ANSYSAnalysisSettings.html",
         "locator": "NumberOfSteps、SetStepEndTime；逐步控制与重试策略待细化。"
       },
       "solution": {
-        "source_id": "SRC-EXEC-MECH-V242-001",
+        "source_id": "SRC-ANSYS-242-OPS-API",
         "url": "https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/Solution.html",
         "locator": "Solution结果入口；CSV、PNG与多时刻导出尚未绑定。"
       }
@@ -190,11 +197,12 @@
         "execution_enabled": false,
         "parameters": ["material_id", "material_revision"],
         "api_binding": {"state": "unresolved", "evidence_refs": ["engineering_data"], "documented_members": [], "adapter_method": null},
-        "preconditions": null,
-        "readback": null,
-        "failure_handling": null,
+        "preconditions": ["G-PREVIEW", "G-CONTEXT", "G-API", "G-MATERIAL"],
+        "readback": ["entity_ref", "resolution_evidence", "material_ref"],
+        "failure_handling": ["UNRESOLVED_BINDING", "MISSING_REQUIRED_VALUE", "STALE_REFERENCE", "REVISION_MISMATCH"],
         "unresolved_refs": ["U-STABLE-ID", "U-MATERIAL-REVISION"],
-        "example": {"request_id": null, "tool": "engineering_data.resolve_entity", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"material_id": null, "material_revision": null}}
+        "example": {"request_id": "<REQUEST_ID>", "tool": "engineering_data.resolve_entity", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"material_id": null, "material_revision": null}, "scope_kind": "entity"},
+        "scope_kind": "entity"
       },
       "engineering_data.read_property": {
         "status": "draft",
@@ -204,11 +212,12 @@
         "execution_enabled": false,
         "parameters": ["property_key", "table_selector"],
         "api_binding": {"state": "unresolved", "evidence_refs": ["engineering_data"], "documented_members": [], "adapter_method": null},
-        "preconditions": null,
-        "readback": null,
-        "failure_handling": null,
+        "preconditions": ["G-PREVIEW", "G-CONTEXT", "G-API", "G-STABLE-ID", "G-MATERIAL", "G-PROPERTY", "G-UNITS"],
+        "readback": ["entity_ref", "material_ref", "property_values", "property_units", "table_axes"],
+        "failure_handling": ["UNRESOLVED_BINDING", "MISSING_REQUIRED_VALUE", "STALE_REFERENCE", "REVISION_MISMATCH", "UNIT_MISMATCH", "READBACK_MISMATCH"],
         "unresolved_refs": ["U-READBACK", "U-MATERIAL-REVISION"],
-        "example": {"request_id": null, "tool": "engineering_data.read_property", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"property_key": null, "table_selector": null}}
+        "example": {"request_id": "<REQUEST_ID>", "tool": "engineering_data.read_property", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"property_key": null, "table_selector": null}, "scope_kind": "entity"},
+        "scope_kind": "entity"
       },
       "workbench_project.list_parameters": {
         "status": "draft",
@@ -217,12 +226,13 @@
         "effect": "read_only",
         "execution_enabled": false,
         "parameters": ["parameter_domain"],
-        "api_binding": {"state": "unresolved", "evidence_refs": ["engineering_data"], "documented_members": [], "adapter_method": null},
-        "preconditions": null,
-        "readback": null,
-        "failure_handling": null,
+        "api_binding": {"state": "unresolved", "evidence_refs": [], "documented_members": [], "adapter_method": null},
+        "preconditions": ["G-PREVIEW", "G-CONTEXT", "G-API", "G-PARAMETERS"],
+        "readback": ["parameter_inventory", "parameter_absence_evidence"],
+        "failure_handling": ["UNRESOLVED_BINDING", "MISSING_REQUIRED_VALUE", "STALE_REFERENCE"],
         "unresolved_refs": ["U-PARAMETERS"],
-        "example": {"request_id": null, "tool": "workbench_project.list_parameters", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"parameter_domain": null}}
+        "example": {"request_id": "<REQUEST_ID>", "tool": "workbench_project.list_parameters", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": null, "arguments": {"parameter_domain": null}, "scope_kind": "project"},
+        "scope_kind": "project"
       },
       "engineering_data.update_material_properties": {
         "status": "draft",
@@ -232,14 +242,51 @@
         "execution_enabled": false,
         "parameters": ["material_id", "base_revision", "new_revision", "property_changes"],
         "api_binding": {"state": "unresolved", "evidence_refs": ["engineering_data"], "documented_members": [], "adapter_method": null},
-        "preconditions": null,
-        "readback": null,
-        "failure_handling": null,
+        "preconditions": [
+          "G-PREVIEW",
+          "G-CONTEXT",
+          "G-API",
+          "G-STABLE-ID",
+          "G-MATERIAL",
+          "G-NEW-REVISION",
+          "G-PROPERTY",
+          "G-UNITS",
+          "G-REQUEST-LOG",
+          "G-INVALIDATION",
+          "G-SAVE"
+        ],
+        "readback": [
+          "new_revision_ref",
+          "property_values",
+          "property_units",
+          "table_axes",
+          "previous_revision_unchanged",
+          "existing_references_unchanged",
+          "invalidated",
+          "request_log_ref",
+          "save_evidence"
+        ],
+        "failure_handling": [
+          "UNRESOLVED_BINDING",
+          "MISSING_REQUIRED_VALUE",
+          "STALE_REFERENCE",
+          "REVISION_MISMATCH",
+          "UNIT_MISMATCH",
+          "MISSING_REQUEST_ID",
+          "REQUEST_ID_CONFLICT",
+          "REQUEST_IN_PROGRESS",
+          "REQUEST_RECOVERY_REQUIRED",
+          "LOG_UNAVAILABLE",
+          "READBACK_MISMATCH",
+          "PARTIAL_WRITE",
+          "SAVE_UNCONFIRMED"
+        ],
         "unresolved_refs": ["U-MATERIAL-REVISION", "U-READBACK", "U-SAVE"],
         "idempotent": null,
         "requires_save": true,
         "invalidates": ["new_material_revision_validation"],
-        "example": {"request_id": null, "tool": "engineering_data.update_material_properties", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"material_id": null, "base_revision": null, "new_revision": null, "property_changes": null}}
+        "example": {"request_id": "<REQUEST_ID>", "tool": "engineering_data.update_material_properties", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"material_id": null, "base_revision": null, "new_revision": null, "property_changes": null}, "scope_kind": "entity"},
+        "scope_kind": "entity"
       },
       "workbench_project.set_geometry_parameter": {
         "status": "draft",
@@ -249,14 +296,28 @@
         "execution_enabled": false,
         "parameters": ["parameter_ref", "value"],
         "api_binding": {"state": "unresolved", "evidence_refs": [], "documented_members": [], "adapter_method": null},
-        "preconditions": null,
-        "readback": null,
-        "failure_handling": null,
+        "preconditions": ["G-PREVIEW", "G-CONTEXT", "G-API", "G-GEOMETRY-PARAMETER", "G-UNITS", "G-REQUEST-LOG", "G-INVALIDATION", "G-SAVE"],
+        "readback": ["parameter_readback", "geometry_inventory", "invalidated", "request_log_ref", "save_evidence"],
+        "failure_handling": [
+          "UNRESOLVED_BINDING",
+          "MISSING_REQUIRED_VALUE",
+          "STALE_REFERENCE",
+          "UNIT_MISMATCH",
+          "MISSING_REQUEST_ID",
+          "REQUEST_ID_CONFLICT",
+          "REQUEST_IN_PROGRESS",
+          "REQUEST_RECOVERY_REQUIRED",
+          "LOG_UNAVAILABLE",
+          "READBACK_MISMATCH",
+          "PARTIAL_WRITE",
+          "SAVE_UNCONFIRMED"
+        ],
         "unresolved_refs": ["U-GEOMETRY-PARAMETER"],
         "idempotent": null,
         "requires_save": true,
         "invalidates": ["entity_resolution", "named_selections", "contacts", "mesh", "load_scopes", "temperature_mapping", "solutions", "exported_results"],
-        "example": {"request_id": null, "tool": "workbench_project.set_geometry_parameter", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"parameter_ref": null, "value": null}}
+        "example": {"request_id": "<REQUEST_ID>", "tool": "workbench_project.set_geometry_parameter", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": null, "arguments": {"parameter_ref": null, "value": null}, "scope_kind": "project"},
+        "scope_kind": "project"
       },
       "mechanical.resolve_entity": {
         "status": "draft",
@@ -266,11 +327,12 @@
         "execution_enabled": false,
         "parameters": ["expected_kind"],
         "api_binding": {"state": "unresolved", "evidence_refs": ["model", "body"], "documented_members": [], "adapter_method": null},
-        "preconditions": null,
-        "readback": null,
-        "failure_handling": null,
+        "preconditions": ["G-PREVIEW", "G-CONTEXT", "G-API", "G-STABLE-ID"],
+        "readback": ["entity_ref", "resolution_evidence"],
+        "failure_handling": ["UNRESOLVED_BINDING", "MISSING_REQUIRED_VALUE", "STALE_REFERENCE"],
         "unresolved_refs": ["U-STABLE-ID"],
-        "example": {"request_id": null, "tool": "mechanical.resolve_entity", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"expected_kind": null}}
+        "example": {"request_id": "<REQUEST_ID>", "tool": "mechanical.resolve_entity", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"expected_kind": null}, "scope_kind": "entity"},
+        "scope_kind": "entity"
       },
       "mechanical.read_property": {
         "status": "draft",
@@ -280,11 +342,12 @@
         "execution_enabled": false,
         "parameters": ["property_key"],
         "api_binding": {"state": "unresolved", "evidence_refs": ["body"], "documented_members": ["Body.GetAllProperties"], "adapter_method": null},
-        "preconditions": null,
-        "readback": null,
-        "failure_handling": null,
+        "preconditions": ["G-PREVIEW", "G-CONTEXT", "G-API", "G-STABLE-ID", "G-PROPERTY", "G-UNITS"],
+        "readback": ["entity_ref", "property_values", "property_units"],
+        "failure_handling": ["UNRESOLVED_BINDING", "MISSING_REQUIRED_VALUE", "STALE_REFERENCE", "UNIT_MISMATCH", "READBACK_MISMATCH"],
         "unresolved_refs": ["U-READBACK"],
-        "example": {"request_id": null, "tool": "mechanical.read_property", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"property_key": null}}
+        "example": {"request_id": "<REQUEST_ID>", "tool": "mechanical.read_property", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"property_key": null}, "scope_kind": "entity"},
+        "scope_kind": "entity"
       },
       "mechanical.assign_material": {
         "status": "draft",
@@ -294,14 +357,28 @@
         "execution_enabled": false,
         "parameters": ["material_id", "material_revision"],
         "api_binding": {"state": "unresolved", "evidence_refs": ["body"], "documented_members": ["Body.Material"], "adapter_method": null},
-        "preconditions": null,
-        "readback": null,
-        "failure_handling": null,
+        "preconditions": ["G-PREVIEW", "G-CONTEXT", "G-API", "G-STABLE-ID", "G-MATERIAL", "G-REQUEST-LOG", "G-INVALIDATION", "G-SAVE"],
+        "readback": ["entity_ref", "material_ref", "invalidated", "request_log_ref", "save_evidence"],
+        "failure_handling": [
+          "UNRESOLVED_BINDING",
+          "MISSING_REQUIRED_VALUE",
+          "STALE_REFERENCE",
+          "REVISION_MISMATCH",
+          "MISSING_REQUEST_ID",
+          "REQUEST_ID_CONFLICT",
+          "REQUEST_IN_PROGRESS",
+          "REQUEST_RECOVERY_REQUIRED",
+          "LOG_UNAVAILABLE",
+          "READBACK_MISMATCH",
+          "PARTIAL_WRITE",
+          "SAVE_UNCONFIRMED"
+        ],
         "unresolved_refs": ["U-MATERIAL-REVISION", "U-SAVE"],
         "idempotent": null,
         "requires_save": true,
         "invalidates": ["material_assignment_readback", "thermal_solution", "temperature_mapping", "structural_solution", "exported_results"],
-        "example": {"request_id": null, "tool": "mechanical.assign_material", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"material_id": null, "material_revision": null}}
+        "example": {"request_id": "<REQUEST_ID>", "tool": "mechanical.assign_material", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"material_id": null, "material_revision": null}, "scope_kind": "entity"},
+        "scope_kind": "entity"
       },
       "mechanical.reimport_geometry": {
         "status": "draft",
@@ -311,9 +388,23 @@
         "execution_enabled": false,
         "parameters": ["file_ref", "file_revision", "length_unit", "import_preferences"],
         "api_binding": {"state": "unresolved", "evidence_refs": ["geometry_import"], "documented_members": ["GeometryImport.Import"], "adapter_method": null},
-        "preconditions": null,
-        "readback": null,
-        "failure_handling": null,
+        "preconditions": ["G-PREVIEW", "G-CONTEXT", "G-API", "G-STABLE-ID", "G-GEOMETRY-SOURCE", "G-UNITS", "G-REQUEST-LOG", "G-INVALIDATION", "G-SAVE"],
+        "readback": ["geometry_file_ref", "geometry_inventory", "resolution_evidence", "material_ref", "invalidated", "request_log_ref", "save_evidence"],
+        "failure_handling": [
+          "UNRESOLVED_BINDING",
+          "MISSING_REQUIRED_VALUE",
+          "STALE_REFERENCE",
+          "UNIT_MISMATCH",
+          "SCOPE_MISMATCH",
+          "MISSING_REQUEST_ID",
+          "REQUEST_ID_CONFLICT",
+          "REQUEST_IN_PROGRESS",
+          "REQUEST_RECOVERY_REQUIRED",
+          "LOG_UNAVAILABLE",
+          "READBACK_MISMATCH",
+          "PARTIAL_WRITE",
+          "SAVE_UNCONFIRMED"
+        ],
         "unresolved_refs": ["U-GEOMETRY-IMPORT", "U-STABLE-ID", "U-SAVE"],
         "idempotent": null,
         "requires_save": true,
@@ -329,7 +420,8 @@
           "solutions",
           "exported_results"
         ],
-        "example": {"request_id": null, "tool": "mechanical.reimport_geometry", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"file_ref": null, "file_revision": null, "length_unit": null, "import_preferences": null}}
+        "example": {"request_id": "<REQUEST_ID>", "tool": "mechanical.reimport_geometry", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"file_ref": null, "file_revision": null, "length_unit": null, "import_preferences": null}, "scope_kind": "entity"},
+        "scope_kind": "entity"
       },
       "mechanical.transform_entity": {
         "status": "draft",
@@ -339,9 +431,23 @@
         "execution_enabled": false,
         "parameters": ["coordinate_frame_ref", "translation", "rotation"],
         "api_binding": {"state": "unresolved", "evidence_refs": [], "documented_members": [], "adapter_method": null},
-        "preconditions": null,
-        "readback": null,
-        "failure_handling": null,
+        "preconditions": ["G-PREVIEW", "G-CONTEXT", "G-API", "G-STABLE-ID", "G-TRANSFORM", "G-UNITS", "G-REQUEST-LOG", "G-INVALIDATION", "G-SAVE"],
+        "readback": ["entity_ref", "transform_readback", "geometry_inventory", "invalidated", "request_log_ref", "save_evidence"],
+        "failure_handling": [
+          "UNRESOLVED_BINDING",
+          "MISSING_REQUIRED_VALUE",
+          "STALE_REFERENCE",
+          "UNIT_MISMATCH",
+          "SCOPE_MISMATCH",
+          "MISSING_REQUEST_ID",
+          "REQUEST_ID_CONFLICT",
+          "REQUEST_IN_PROGRESS",
+          "REQUEST_RECOVERY_REQUIRED",
+          "LOG_UNAVAILABLE",
+          "READBACK_MISMATCH",
+          "PARTIAL_WRITE",
+          "SAVE_UNCONFIRMED"
+        ],
         "unresolved_refs": ["U-GEOMETRY-TRANSFORM", "U-STABLE-ID", "U-SAVE"],
         "idempotent": null,
         "requires_save": true,
@@ -357,7 +463,8 @@
           "solutions",
           "exported_results"
         ],
-        "example": {"request_id": null, "tool": "mechanical.transform_entity", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"coordinate_frame_ref": null, "translation": null, "rotation": null}}
+        "example": {"request_id": "<REQUEST_ID>", "tool": "mechanical.transform_entity", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"coordinate_frame_ref": null, "translation": null, "rotation": null}, "scope_kind": "entity"},
+        "scope_kind": "entity"
       },
       "mechanical.apply_convection": {
         "status": "draft",
@@ -367,14 +474,29 @@
         "execution_enabled": false,
         "parameters": ["analysis_ref", "film_coefficient", "ambient_temperature", "time_table"],
         "api_binding": {"state": "unresolved", "evidence_refs": ["analysis"], "documented_members": ["Analysis.AddConvection"], "adapter_method": null},
-        "preconditions": null,
-        "readback": null,
-        "failure_handling": null,
+        "preconditions": ["G-PREVIEW", "G-CONTEXT", "G-API", "G-STABLE-ID", "G-SCOPE", "G-UNITS", "G-TABLE", "G-REQUEST-LOG", "G-INVALIDATION", "G-SAVE"],
+        "readback": ["analysis_ref", "scope_ref", "boundary_fields", "time_table", "invalidated", "request_log_ref", "save_evidence"],
+        "failure_handling": [
+          "UNRESOLVED_BINDING",
+          "MISSING_REQUIRED_VALUE",
+          "STALE_REFERENCE",
+          "UNIT_MISMATCH",
+          "SCOPE_MISMATCH",
+          "MISSING_REQUEST_ID",
+          "REQUEST_ID_CONFLICT",
+          "REQUEST_IN_PROGRESS",
+          "REQUEST_RECOVERY_REQUIRED",
+          "LOG_UNAVAILABLE",
+          "READBACK_MISMATCH",
+          "PARTIAL_WRITE",
+          "SAVE_UNCONFIRMED"
+        ],
         "unresolved_refs": ["U-FIELD-TABLES", "U-RETRY", "U-SAVE"],
         "idempotent": null,
         "requires_save": true,
         "invalidates": ["thermal_solution", "temperature_mapping", "structural_solution", "exported_results"],
-        "example": {"request_id": null, "tool": "mechanical.apply_convection", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"analysis_ref": null, "film_coefficient": null, "ambient_temperature": null, "time_table": null}}
+        "example": {"request_id": "<REQUEST_ID>", "tool": "mechanical.apply_convection", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"analysis_ref": null, "film_coefficient": null, "ambient_temperature": null, "time_table": null}, "scope_kind": "entity"},
+        "scope_kind": "entity"
       },
       "mechanical.apply_temperature": {
         "status": "draft",
@@ -384,14 +506,29 @@
         "execution_enabled": false,
         "parameters": ["analysis_ref", "temperature", "time_table"],
         "api_binding": {"state": "unresolved", "evidence_refs": ["analysis"], "documented_members": ["Analysis.AddTemperature"], "adapter_method": null},
-        "preconditions": null,
-        "readback": null,
-        "failure_handling": null,
+        "preconditions": ["G-PREVIEW", "G-CONTEXT", "G-API", "G-STABLE-ID", "G-SCOPE", "G-UNITS", "G-TABLE", "G-REQUEST-LOG", "G-INVALIDATION", "G-SAVE"],
+        "readback": ["analysis_ref", "scope_ref", "boundary_fields", "time_table", "invalidated", "request_log_ref", "save_evidence"],
+        "failure_handling": [
+          "UNRESOLVED_BINDING",
+          "MISSING_REQUIRED_VALUE",
+          "STALE_REFERENCE",
+          "UNIT_MISMATCH",
+          "SCOPE_MISMATCH",
+          "MISSING_REQUEST_ID",
+          "REQUEST_ID_CONFLICT",
+          "REQUEST_IN_PROGRESS",
+          "REQUEST_RECOVERY_REQUIRED",
+          "LOG_UNAVAILABLE",
+          "READBACK_MISMATCH",
+          "PARTIAL_WRITE",
+          "SAVE_UNCONFIRMED"
+        ],
         "unresolved_refs": ["U-FIELD-TABLES", "U-RETRY", "U-SAVE"],
         "idempotent": null,
         "requires_save": true,
         "invalidates": ["thermal_solution", "temperature_mapping", "structural_solution", "exported_results"],
-        "example": {"request_id": null, "tool": "mechanical.apply_temperature", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"analysis_ref": null, "temperature": null, "time_table": null}}
+        "example": {"request_id": "<REQUEST_ID>", "tool": "mechanical.apply_temperature", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"analysis_ref": null, "temperature": null, "time_table": null}, "scope_kind": "entity"},
+        "scope_kind": "entity"
       },
       "mechanical.apply_constraint": {
         "status": "draft",
@@ -406,14 +543,29 @@
           "documented_members": ["Analysis.AddFixedSupport", "Analysis.AddDisplacement"],
           "adapter_method": null
         },
-        "preconditions": null,
-        "readback": null,
-        "failure_handling": null,
+        "preconditions": ["G-PREVIEW", "G-CONTEXT", "G-API", "G-STABLE-ID", "G-SCOPE", "G-CONSTRAINT", "G-UNITS", "G-REQUEST-LOG", "G-INVALIDATION", "G-SAVE"],
+        "readback": ["analysis_ref", "scope_ref", "constraint_kind", "component_modes", "invalidated", "request_log_ref", "save_evidence"],
+        "failure_handling": [
+          "UNRESOLVED_BINDING",
+          "MISSING_REQUIRED_VALUE",
+          "STALE_REFERENCE",
+          "SCOPE_MISMATCH",
+          "UNIT_MISMATCH",
+          "MISSING_REQUEST_ID",
+          "REQUEST_ID_CONFLICT",
+          "REQUEST_IN_PROGRESS",
+          "REQUEST_RECOVERY_REQUIRED",
+          "LOG_UNAVAILABLE",
+          "READBACK_MISMATCH",
+          "PARTIAL_WRITE",
+          "SAVE_UNCONFIRMED"
+        ],
         "unresolved_refs": ["U-CONSTRAINT", "U-RETRY", "U-SAVE"],
         "idempotent": null,
         "requires_save": true,
         "invalidates": ["structural_solution", "reaction_force_results", "exported_results"],
-        "example": {"request_id": null, "tool": "mechanical.apply_constraint", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"analysis_ref": null, "kind": null, "coordinate_frame_ref": null, "components": null}}
+        "example": {"request_id": "<REQUEST_ID>", "tool": "mechanical.apply_constraint", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"analysis_ref": null, "kind": null, "coordinate_frame_ref": null, "components": null}, "scope_kind": "entity"},
+        "scope_kind": "entity"
       },
       "mechanical.add_analysis_step": {
         "status": "draft",
@@ -428,14 +580,28 @@
           "documented_members": ["ANSYSAnalysisSettings.NumberOfSteps", "ANSYSAnalysisSettings.SetStepEndTime"],
           "adapter_method": null
         },
-        "preconditions": null,
-        "readback": null,
-        "failure_handling": null,
+        "preconditions": ["G-PREVIEW", "G-CONTEXT", "G-API", "G-STABLE-ID", "G-STEPS", "G-UNITS", "G-REQUEST-LOG", "G-INVALIDATION", "G-SAVE"],
+        "readback": ["analysis_ref", "analysis_steps", "temperature_mapping", "invalidated", "request_log_ref", "save_evidence"],
+        "failure_handling": [
+          "UNRESOLVED_BINDING",
+          "MISSING_REQUIRED_VALUE",
+          "STALE_REFERENCE",
+          "UNIT_MISMATCH",
+          "MISSING_REQUEST_ID",
+          "REQUEST_ID_CONFLICT",
+          "REQUEST_IN_PROGRESS",
+          "REQUEST_RECOVERY_REQUIRED",
+          "LOG_UNAVAILABLE",
+          "READBACK_MISMATCH",
+          "PARTIAL_WRITE",
+          "SAVE_UNCONFIRMED"
+        ],
         "unresolved_refs": ["U-ANALYSIS-STEP", "U-RETRY", "U-SAVE"],
         "idempotent": null,
         "requires_save": true,
         "invalidates": ["analysis_step_readback", "temperature_mapping", "affected_solution", "exported_results"],
-        "example": {"request_id": null, "tool": "mechanical.add_analysis_step", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"analysis_ref": null, "step_ref": null, "end_time": null, "time_controls": null}}
+        "example": {"request_id": "<REQUEST_ID>", "tool": "mechanical.add_analysis_step", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": null, "arguments": {"analysis_ref": null, "step_ref": null, "end_time": null, "time_controls": null}, "scope_kind": "analysis"},
+        "scope_kind": "analysis"
       },
       "mechanical.export_results": {
         "status": "draft",
@@ -445,44 +611,193 @@
         "execution_enabled": false,
         "parameters": ["analysis_ref", "result_kinds", "times", "scope_ref", "coordinate_frame_ref", "formats", "output_ref"],
         "api_binding": {"state": "unresolved", "evidence_refs": ["solution"], "documented_members": [], "adapter_method": null},
-        "preconditions": null,
-        "readback": null,
-        "failure_handling": null,
+        "preconditions": ["G-PREVIEW", "G-CONTEXT", "G-API", "G-RESULTS", "G-SCOPE", "G-UNITS", "G-EXPORT", "G-REQUEST-LOG", "G-INVALIDATION"],
+        "readback": ["analysis_ref", "result_manifest", "artifact_manifest", "invalidated", "request_log_ref"],
+        "failure_handling": [
+          "UNRESOLVED_BINDING",
+          "MISSING_REQUIRED_VALUE",
+          "STALE_REFERENCE",
+          "SCOPE_MISMATCH",
+          "UNIT_MISMATCH",
+          "EXPORT_UNCONFIRMED",
+          "MISSING_REQUEST_ID",
+          "REQUEST_ID_CONFLICT",
+          "REQUEST_IN_PROGRESS",
+          "REQUEST_RECOVERY_REQUIRED",
+          "LOG_UNAVAILABLE",
+          "READBACK_MISMATCH",
+          "PARTIAL_WRITE"
+        ],
         "unresolved_refs": ["U-EXPORT", "U-RETRY"],
         "idempotent": null,
         "requires_save": false,
         "invalidates": ["export_manifest_validation"],
-        "example": {"request_id": null, "tool": "mechanical.export_results", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"analysis_ref": null, "result_kinds": null, "times": null, "scope_ref": null, "coordinate_frame_ref": null, "formats": null, "output_ref": null}}
+        "example": {"request_id": "<REQUEST_ID>", "tool": "mechanical.export_results", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": null, "arguments": {"analysis_ref": null, "result_kinds": null, "times": null, "scope_ref": null, "coordinate_frame_ref": null, "formats": null, "output_ref": null}, "scope_kind": "analysis"},
+        "scope_kind": "analysis"
       }
+    },
+    "contract_version": "0.1.0",
+    "versioning": {
+      "identity_rule": "$id包含contract_version；执行端按该URI注册本地schema，跨模板$ref引用该URI及片段，不复制定义。URN不是HTTP下载地址。",
+      "unpublished_draft_rule": "本0.1.0仍是分支内待确认草案；发布/合并前的审阅修订由Git提交区分。首次正式发布后，同一$id内容冻结。",
+      "change_rule": "首次发布后的接收范围、必填项、失败语义、门槛、结果字段或去重语义变化均需新版本；发布前不宣称已有稳定执行兼容性。",
+      "breaking_change": "0.x期间升次版本；稳定版以后升主版本。",
+      "compatible_addition": "兼容新增工具或可选字段升次版本；仍需确认执行端支持，不能静默启用。",
+      "documentation_only": "不改变验证和执行语义的说明修订升修订版本。",
+      "reference_rule": "版本变更同步更新$id与contract_version，引用方显式升级；禁止以latest作为执行契约身份。"
+    },
+    "gate_registry": {
+      "G-PREVIEW": {"definition": "本版本只允许preview_only，所有工具执行开关仍为false；这不是运行许可。", "implementation_state": "unresolved", "evidence_ref": null},
+      "G-CONTEXT": {"definition": "确认项目/模型修订、Mechanical v242与实际软件包版本；未知值保留待补充。", "implementation_state": "unresolved", "evidence_ref": null},
+      "G-API": {"definition": "工具适配绑定及参数语义已确认；有unresolved则不能运行。", "implementation_state": "unresolved", "evidence_ref": null},
+      "G-STABLE-ID": {"definition": "以stable_id及resolved_from解析目标，核对修订、种类与作用域；显示名不作唯一标识。", "implementation_state": "unresolved", "evidence_ref": null},
+      "G-PROPERTY": {"definition": "属性键/表选择在对应层白名单中，不能把字段名当可执行代码。", "implementation_state": "unresolved", "evidence_ref": null},
+      "G-MATERIAL": {"definition": "材料ID与revision均存在并映射到实际工程材料，软件名称不能替代revision证明。", "implementation_state": "unresolved", "evidence_ref": null},
+      "G-NEW-REVISION": {"definition": "物性修改只创建新revision，旧revision和原引用均保持不变。", "implementation_state": "unresolved", "evidence_ref": null},
+      "G-PARAMETERS": {"definition": "只读枚举工程参数并记录空集证据；未绑定或未查询不等于已确认无参数。", "implementation_state": "unresolved", "evidence_ref": null},
+      "G-GEOMETRY-SOURCE": {"definition": "确认输入几何文件、修订/哈希、单位、目标工程及导入对象，禁止悄然另建模型。", "implementation_state": "unresolved", "evidence_ref": null},
+      "G-GEOMETRY-PARAMETER": {"definition": "真实参数化或选定替代路线已按U-GEOMETRY-PARAMETER完成所需链路和接口取证。", "implementation_state": "unresolved", "evidence_ref": null},
+      "G-TRANSFORM": {"definition": "真实几何变换接口、坐标系与方向已确认；相机/显示变换不合格。", "implementation_state": "unresolved", "evidence_ref": null},
+      "G-SCOPE": {"definition": "载荷/支撑/结果的实体或分析作用域非空、类型合适且属于当前修订。", "implementation_state": "unresolved", "evidence_ref": null},
+      "G-UNITS": {"definition": "单位与量纲明确，内部SI；绝对温度与温差分别处理，比较容差有依据。", "implementation_state": "unresolved", "evidence_ref": null},
+      "G-TABLE": {"definition": "时间/温度或系数表的字段、时刻、单位、点数和覆盖范围已明确。", "implementation_state": "unresolved", "evidence_ref": null},
+      "G-CONSTRAINT": {"definition": "仅使用已确认Fixed Support或Displacement；分量自由/给定与坐标系明确，不默认补零。", "implementation_state": "unresolved", "evidence_ref": null},
+      "G-STEPS": {"definition": "变更前完整步设置已记录；新增步的物理时间、逐步控制及蠕变依赖已确认。", "implementation_state": "unresolved", "evidence_ref": null},
+      "G-RESULTS": {"definition": "实际结果存在且非过期/失败；作用域、时刻、量与模型修订可追溯。", "implementation_state": "unresolved", "evidence_ref": null},
+      "G-EXPORT": {"definition": "输出位置、文件格式、覆盖策略与导出清单要求已确认；UZ坐标系不能省略。", "implementation_state": "unresolved", "evidence_ref": null},
+      "G-REQUEST-LOG": {"definition": "写操作须有非空request_id并在任何副作用前原子占位、持久记录请求指纹；遇冲突或未决写入即停止。", "implementation_state": "unresolved", "evidence_ref": null},
+      "G-INVALIDATION": {"definition": "具备标记与追踪invalidates清单的能力；不把旧结果继续当作当前结果。", "implementation_state": "unresolved", "evidence_ref": null},
+      "G-SAVE": {"definition": "写前确认Workbench持久化与保存回读能力；实际保存完成由写后save_evidence单独证明。", "implementation_state": "unresolved", "evidence_ref": null}
+    },
+    "readback_field_registry": {
+      "entity_ref": {"definition": "解析后的stable_id、运行时ID与修订；不是软件原生持久标识。", "adapter_field": null},
+      "resolution_evidence": {"definition": "resolved_from定位及种类/唯一性/非空检查证据。", "adapter_field": null},
+      "material_ref": {"definition": "实际材料ID/revision及软件材料映射证据。", "adapter_field": null},
+      "property_values": {"definition": "对应层回读的物性或对象属性；此处不预设值类型。", "adapter_field": null},
+      "property_units": {"definition": "回读原单位及规范化SI单位。", "adapter_field": null},
+      "table_axes": {"definition": "物性温度/方向/自变量表轴与完整行列定位。", "adapter_field": null},
+      "parameter_inventory": {"definition": "只读参数清单及其工程来源；值仍待后续定义。", "adapter_field": null},
+      "parameter_absence_evidence": {"definition": "实际查询返回空集的证据；不能由STEP文件类型推断。", "adapter_field": null},
+      "new_revision_ref": {"definition": "新建材料revision及其物性快照关联。", "adapter_field": null},
+      "previous_revision_unchanged": {"definition": "旧revision快照保持不变的比较证据。", "adapter_field": null},
+      "existing_references_unchanged": {"definition": "既有引用仍指向旧revision的证据。", "adapter_field": null},
+      "parameter_readback": {"definition": "实际几何参数或选定替代路线输入的回读。", "adapter_field": null},
+      "geometry_file_ref": {"definition": "当前导入文件、修订与哈希证据。", "adapter_field": null},
+      "geometry_inventory": {"definition": "重生成后实体数量/类型/位置/尺寸的实际回读。", "adapter_field": null},
+      "transform_readback": {"definition": "真实几何变换及坐标系回读，不是相机状态。", "adapter_field": null},
+      "scope_ref": {"definition": "载荷/支撑/结果实际作用域及修订。", "adapter_field": null},
+      "analysis_ref": {"definition": "源/目标分析身份与类型。", "adapter_field": null},
+      "boundary_fields": {"definition": "温度/对流对象字段、单位及抑制状态。", "adapter_field": null},
+      "time_table": {"definition": "完整时间表及各字段单位的回读。", "adapter_field": null},
+      "constraint_kind": {"definition": "实际支撑或位移约束类型。", "adapter_field": null},
+      "component_modes": {"definition": "各分量自由/给定状态及对应坐标系。", "adapter_field": null},
+      "analysis_steps": {"definition": "所有相关步骤、结束时刻与逐步设置。", "adapter_field": null},
+      "temperature_mapping": {"definition": "源分析与源/目标时刻对应的证据。", "adapter_field": null},
+      "result_manifest": {"definition": "结果种类、时刻、作用域、单位、极值与模型修订的关联。", "adapter_field": null},
+      "artifact_manifest": {"definition": "实际导出文件及来源、完整性和覆盖记录。", "adapter_field": null},
+      "save_evidence": {"definition": "Workbench工程保存与持久化回读证据。", "adapter_field": null},
+      "invalidated": {"definition": "已标失效与待重验对象清单。", "adapter_field": null},
+      "request_log_ref": {"definition": "持久日志位置、request_id和状态关联；不是本仓库已实现日志器。", "adapter_field": null}
+    },
+    "request_log_policy": {
+      "deduplication_key": "request_id",
+      "write_request_id_rule": "所有model_write及artifact_write请求必须带非空且非纯空白request_id，并写入持久运行日志；预览也使用占位ID。",
+      "journal_fields": [
+        "request_id",
+        "contract_id",
+        "contract_version",
+        "tool",
+        "project_ref",
+        "expected_model_revision",
+        "payload_fingerprint",
+        "state",
+        "before_evidence",
+        "after_evidence",
+        "invalidated",
+        "save_evidence",
+        "artifact_evidence",
+        "errors"
+      ],
+      "before_effect_rule": "先在日志中以request_id原子占位并持久化请求指纹，后发生写入/导出等副作用；日志不可用则拒绝。",
+      "fingerprint_rule": "指纹覆盖工具、契约版本、工程/预期修订、target及规范化后的arguments，不能只比较工具名。序列化/哈希实现留unresolved。",
+      "same_id_same_fingerprint_completed": "返回原日志回执且标明重放，不再写入；这是历史回执，不能宣称当前工程仍满足原回读。",
+      "same_id_different_fingerprint": "拒绝并返回REQUEST_ID_CONFLICT。",
+      "same_id_in_progress": "拒绝重新派发，返回REQUEST_IN_PROGRESS。",
+      "partial_or_unknown_state": "部分写入或断线后状态未知，返回REQUEST_RECOVERY_REQUIRED；先核对日志及实际工程，不自动重试，也不能换request_id绕过未决写入。",
+      "states": [
+        "reserved",
+        "in_progress",
+        "readback_confirmed",
+        "persisted",
+        "artifact_confirmed",
+        "failed_before_write",
+        "partial_write",
+        "unknown_after_disconnect"
+      ],
+      "implementation_state": "unresolved",
+      "storage_binding": null,
+      "fingerprint_binding": null,
+      "limit": "仅定义契约；未实现原子日志、派发或恢复，不据此宣称exactly-once，也不将idempotent改为true。"
+    },
+    "target_policy": {
+      "entity": "target必须是entity_ref；stable_id映射仍需执行门槛核对。",
+      "project": "target为null，项目身份从context.project_ref解析；不得伪造实体目标。",
+      "analysis": "target可为null或分析对象引用；分析身份由arguments.analysis_ref及对应执行门槛确认。",
+      "preview_limit": "null仅允许预览占位；不能被解释为选择全部实体或跳过实际分析/工程解析。"
+    },
+    "slot_validation": {
+      "schema_ref": "#/$defs/tool_contract_slots",
+      "projection_fields": ["preconditions", "readback", "failure_handling"],
+      "note": "这些是项目gate ID、回读字段名和失败码，不是ANSYS方法名；检查命令显式校验x-contract内的槽位。执行证据仍为null。"
+    },
+    "static_validation": {
+      "validator": "python-jsonschema",
+      "validator_class": "Draft202012Validator",
+      "validator_version": "4.26.0",
+      "python_version": "3.14.7",
+      "command": "python -",
+      "command_location": "shared/tools/README.md 的“可复跑静态校验”PowerShell代码块（从仓库根目录执行）",
+      "scope": "JSON Schema元schema、全部预览示例、工具槽位形状、失败反例与离线跨文档$ref；不校验ANSYS运行能力。",
+      "negative_cases": [
+        {"id": "reject-execution-mode", "base_tool": "mechanical.read_property", "replace": {"execution_mode": "execute"}, "expected": "reject"},
+        {
+          "id": "reject-non-null-argument",
+          "base_tool": "mechanical.read_property",
+          "replace": {"arguments": {"property_key": "<NON_NULL>"}},
+          "expected": "reject"
+        }
+      ],
+      "last_result": "passed_static_only"
     }
   },
   "type": "object",
   "additionalProperties": false,
-  "required": ["request_id", "tool", "execution_mode", "context", "target", "arguments"],
+  "required": ["request_id", "tool", "execution_mode", "context", "target", "arguments", "scope_kind"],
   "properties": {
     "request_id": {"type": ["string", "null"]},
     "tool": {"type": "string"},
     "execution_mode": {"const": "preview_only"},
     "context": {"$ref": "#/$defs/context"},
-    "target": {"$ref": "#/$defs/entity_ref"},
-    "arguments": {"type": "object"}
+    "target": {"anyOf": [{"$ref": "#/$defs/entity_ref"}, {"type": "null"}]},
+    "arguments": {"type": "object"},
+    "scope_kind": {"enum": ["entity", "analysis", "project"]}
   },
   "oneOf": [
-    {"properties": {"tool": {"const": "engineering_data.resolve_entity"}, "arguments": {"type": "object", "required": ["material_id", "material_revision"], "properties": {"material_id": {"type": "null"}, "material_revision": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
-    {"properties": {"tool": {"const": "engineering_data.read_property"}, "arguments": {"type": "object", "required": ["property_key", "table_selector"], "properties": {"property_key": {"type": "null"}, "table_selector": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
-    {"properties": {"tool": {"const": "workbench_project.list_parameters"}, "arguments": {"type": "object", "required": ["parameter_domain"], "properties": {"parameter_domain": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
-    {"properties": {"tool": {"const": "engineering_data.update_material_properties"}, "arguments": {"type": "object", "required": ["material_id", "base_revision", "new_revision", "property_changes"], "properties": {"material_id": {"type": "null"}, "base_revision": {"type": "null"}, "new_revision": {"type": "null"}, "property_changes": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
-    {"properties": {"tool": {"const": "workbench_project.set_geometry_parameter"}, "arguments": {"type": "object", "required": ["parameter_ref", "value"], "properties": {"parameter_ref": {"type": "null"}, "value": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
-    {"properties": {"tool": {"const": "mechanical.resolve_entity"}, "arguments": {"type": "object", "required": ["expected_kind"], "properties": {"expected_kind": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
-    {"properties": {"tool": {"const": "mechanical.read_property"}, "arguments": {"type": "object", "required": ["property_key"], "properties": {"property_key": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
-    {"properties": {"tool": {"const": "mechanical.assign_material"}, "arguments": {"type": "object", "required": ["material_id", "material_revision"], "properties": {"material_id": {"type": "null"}, "material_revision": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
-    {"properties": {"tool": {"const": "mechanical.reimport_geometry"}, "arguments": {"type": "object", "required": ["file_ref", "file_revision", "length_unit", "import_preferences"], "properties": {"file_ref": {"type": "null"}, "file_revision": {"type": "null"}, "length_unit": {"type": "null"}, "import_preferences": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
-    {"properties": {"tool": {"const": "mechanical.transform_entity"}, "arguments": {"type": "object", "required": ["coordinate_frame_ref", "translation", "rotation"], "properties": {"coordinate_frame_ref": {"type": "null"}, "translation": {"type": "null"}, "rotation": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
-    {"properties": {"tool": {"const": "mechanical.apply_convection"}, "arguments": {"type": "object", "required": ["analysis_ref", "film_coefficient", "ambient_temperature", "time_table"], "properties": {"analysis_ref": {"type": "null"}, "film_coefficient": {"type": "null"}, "ambient_temperature": {"type": "null"}, "time_table": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
-    {"properties": {"tool": {"const": "mechanical.apply_temperature"}, "arguments": {"type": "object", "required": ["analysis_ref", "temperature", "time_table"], "properties": {"analysis_ref": {"type": "null"}, "temperature": {"type": "null"}, "time_table": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
-    {"properties": {"tool": {"const": "mechanical.apply_constraint"}, "arguments": {"type": "object", "required": ["analysis_ref", "kind", "coordinate_frame_ref", "components"], "properties": {"analysis_ref": {"type": "null"}, "kind": {"type": "null"}, "coordinate_frame_ref": {"type": "null"}, "components": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
-    {"properties": {"tool": {"const": "mechanical.add_analysis_step"}, "arguments": {"type": "object", "required": ["analysis_ref", "step_ref", "end_time", "time_controls"], "properties": {"analysis_ref": {"type": "null"}, "step_ref": {"type": "null"}, "end_time": {"type": "null"}, "time_controls": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]},
-    {"properties": {"tool": {"const": "mechanical.export_results"}, "arguments": {"type": "object", "required": ["analysis_ref", "result_kinds", "times", "scope_ref", "coordinate_frame_ref", "formats", "output_ref"], "properties": {"analysis_ref": {"type": "null"}, "result_kinds": {"type": "null"}, "times": {"type": "null"}, "scope_ref": {"type": "null"}, "coordinate_frame_ref": {"type": "null"}, "formats": {"type": "null"}, "output_ref": {"type": "null"}}, "additionalProperties": false}}, "required": ["tool", "arguments"]}
+    {"properties": {"tool": {"const": "engineering_data.resolve_entity"}, "arguments": {"type": "object", "required": ["material_id", "material_revision"], "properties": {"material_id": {"type": "null"}, "material_revision": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "entity"}}, "required": ["tool", "arguments", "scope_kind"]},
+    {"properties": {"tool": {"const": "engineering_data.read_property"}, "arguments": {"type": "object", "required": ["property_key", "table_selector"], "properties": {"property_key": {"type": "null"}, "table_selector": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "entity"}}, "required": ["tool", "arguments", "scope_kind"]},
+    {"properties": {"tool": {"const": "workbench_project.list_parameters"}, "arguments": {"type": "object", "required": ["parameter_domain"], "properties": {"parameter_domain": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "project"}}, "required": ["tool", "arguments", "scope_kind"]},
+    {"properties": {"tool": {"const": "engineering_data.update_material_properties"}, "arguments": {"type": "object", "required": ["material_id", "base_revision", "new_revision", "property_changes"], "properties": {"material_id": {"type": "null"}, "base_revision": {"type": "null"}, "new_revision": {"type": "null"}, "property_changes": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "entity"}, "request_id": {"type": "string", "pattern": "\\S"}}, "required": ["tool", "arguments", "scope_kind"]},
+    {"properties": {"tool": {"const": "workbench_project.set_geometry_parameter"}, "arguments": {"type": "object", "required": ["parameter_ref", "value"], "properties": {"parameter_ref": {"type": "null"}, "value": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "project"}, "request_id": {"type": "string", "pattern": "\\S"}}, "required": ["tool", "arguments", "scope_kind"]},
+    {"properties": {"tool": {"const": "mechanical.resolve_entity"}, "arguments": {"type": "object", "required": ["expected_kind"], "properties": {"expected_kind": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "entity"}}, "required": ["tool", "arguments", "scope_kind"]},
+    {"properties": {"tool": {"const": "mechanical.read_property"}, "arguments": {"type": "object", "required": ["property_key"], "properties": {"property_key": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "entity"}}, "required": ["tool", "arguments", "scope_kind"]},
+    {"properties": {"tool": {"const": "mechanical.assign_material"}, "arguments": {"type": "object", "required": ["material_id", "material_revision"], "properties": {"material_id": {"type": "null"}, "material_revision": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "entity"}, "request_id": {"type": "string", "pattern": "\\S"}}, "required": ["tool", "arguments", "scope_kind"]},
+    {"properties": {"tool": {"const": "mechanical.reimport_geometry"}, "arguments": {"type": "object", "required": ["file_ref", "file_revision", "length_unit", "import_preferences"], "properties": {"file_ref": {"type": "null"}, "file_revision": {"type": "null"}, "length_unit": {"type": "null"}, "import_preferences": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "entity"}, "request_id": {"type": "string", "pattern": "\\S"}}, "required": ["tool", "arguments", "scope_kind"]},
+    {"properties": {"tool": {"const": "mechanical.transform_entity"}, "arguments": {"type": "object", "required": ["coordinate_frame_ref", "translation", "rotation"], "properties": {"coordinate_frame_ref": {"type": "null"}, "translation": {"type": "null"}, "rotation": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "entity"}, "request_id": {"type": "string", "pattern": "\\S"}}, "required": ["tool", "arguments", "scope_kind"]},
+    {"properties": {"tool": {"const": "mechanical.apply_convection"}, "arguments": {"type": "object", "required": ["analysis_ref", "film_coefficient", "ambient_temperature", "time_table"], "properties": {"analysis_ref": {"type": "null"}, "film_coefficient": {"type": "null"}, "ambient_temperature": {"type": "null"}, "time_table": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "entity"}, "request_id": {"type": "string", "pattern": "\\S"}}, "required": ["tool", "arguments", "scope_kind"]},
+    {"properties": {"tool": {"const": "mechanical.apply_temperature"}, "arguments": {"type": "object", "required": ["analysis_ref", "temperature", "time_table"], "properties": {"analysis_ref": {"type": "null"}, "temperature": {"type": "null"}, "time_table": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "entity"}, "request_id": {"type": "string", "pattern": "\\S"}}, "required": ["tool", "arguments", "scope_kind"]},
+    {"properties": {"tool": {"const": "mechanical.apply_constraint"}, "arguments": {"type": "object", "required": ["analysis_ref", "kind", "coordinate_frame_ref", "components"], "properties": {"analysis_ref": {"type": "null"}, "kind": {"type": "null"}, "coordinate_frame_ref": {"type": "null"}, "components": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "entity"}, "request_id": {"type": "string", "pattern": "\\S"}}, "required": ["tool", "arguments", "scope_kind"]},
+    {"properties": {"tool": {"const": "mechanical.add_analysis_step"}, "arguments": {"type": "object", "required": ["analysis_ref", "step_ref", "end_time", "time_controls"], "properties": {"analysis_ref": {"type": "null"}, "step_ref": {"type": "null"}, "end_time": {"type": "null"}, "time_controls": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "analysis"}, "request_id": {"type": "string", "pattern": "\\S"}}, "required": ["tool", "arguments", "scope_kind"]},
+    {"properties": {"tool": {"const": "mechanical.export_results"}, "arguments": {"type": "object", "required": ["analysis_ref", "result_kinds", "times", "scope_ref", "coordinate_frame_ref", "formats", "output_ref"], "properties": {"analysis_ref": {"type": "null"}, "result_kinds": {"type": "null"}, "times": {"type": "null"}, "scope_ref": {"type": "null"}, "coordinate_frame_ref": {"type": "null"}, "formats": {"type": "null"}, "output_ref": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "analysis"}, "request_id": {"type": "string", "pattern": "\\S"}}, "required": ["tool", "arguments", "scope_kind"]}
   ],
   "$defs": {
     "entity_ref": {
@@ -521,6 +836,102 @@
     "constraint_kind": {
       "enum": ["fixed_support", "displacement", "frictionless_support", "remote_displacement", "elastic_support", null],
       "description": "骨架预留；可用状态另见x-contract.constraint_kinds，pending不得执行。当前arguments仍只允许null。"
+    },
+    "gate_id": {
+      "enum": [
+        "G-PREVIEW",
+        "G-CONTEXT",
+        "G-API",
+        "G-STABLE-ID",
+        "G-PROPERTY",
+        "G-MATERIAL",
+        "G-NEW-REVISION",
+        "G-PARAMETERS",
+        "G-GEOMETRY-SOURCE",
+        "G-GEOMETRY-PARAMETER",
+        "G-TRANSFORM",
+        "G-SCOPE",
+        "G-UNITS",
+        "G-TABLE",
+        "G-CONSTRAINT",
+        "G-STEPS",
+        "G-RESULTS",
+        "G-EXPORT",
+        "G-REQUEST-LOG",
+        "G-INVALIDATION",
+        "G-SAVE"
+      ]
+    },
+    "readback_field": {
+      "enum": [
+        "entity_ref",
+        "resolution_evidence",
+        "material_ref",
+        "property_values",
+        "property_units",
+        "table_axes",
+        "parameter_inventory",
+        "parameter_absence_evidence",
+        "new_revision_ref",
+        "previous_revision_unchanged",
+        "existing_references_unchanged",
+        "parameter_readback",
+        "geometry_file_ref",
+        "geometry_inventory",
+        "transform_readback",
+        "scope_ref",
+        "analysis_ref",
+        "boundary_fields",
+        "time_table",
+        "constraint_kind",
+        "component_modes",
+        "analysis_steps",
+        "temperature_mapping",
+        "result_manifest",
+        "artifact_manifest",
+        "save_evidence",
+        "invalidated",
+        "request_log_ref"
+      ]
+    },
+    "failure_code": {
+      "enum": [
+        "UNRESOLVED_BINDING",
+        "MISSING_REQUIRED_VALUE",
+        "STALE_REFERENCE",
+        "UNIT_MISMATCH",
+        "REVISION_MISMATCH",
+        "READBACK_MISMATCH",
+        "PARTIAL_WRITE",
+        "SAVE_UNCONFIRMED",
+        "EXPORT_UNCONFIRMED",
+        "MISSING_REQUEST_ID",
+        "REQUEST_ID_CONFLICT",
+        "REQUEST_IN_PROGRESS",
+        "REQUEST_RECOVERY_REQUIRED",
+        "LOG_UNAVAILABLE",
+        "SCOPE_MISMATCH"
+      ]
+    },
+    "tool_contract_slots": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["preconditions", "readback", "failure_handling"],
+      "properties": {
+        "preconditions": {"type": "array", "uniqueItems": true, "not": {"const": []}, "items": {"$ref": "#/$defs/gate_id"}},
+        "readback": {"type": "array", "uniqueItems": true, "not": {"const": []}, "items": {"$ref": "#/$defs/readback_field"}},
+        "failure_handling": {"type": "array", "uniqueItems": true, "not": {"const": []}, "items": {"$ref": "#/$defs/failure_code"}}
+      }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"scope_kind": {"const": "entity"}}, "required": ["scope_kind"]},
+      "then": {"properties": {"target": {"$ref": "#/$defs/entity_ref"}}}
+    },
+    {
+      "if": {"properties": {"scope_kind": {"const": "project"}}, "required": ["scope_kind"]},
+      "then": {"properties": {"target": {"type": "null"}}}
+    }
+  ]
 }

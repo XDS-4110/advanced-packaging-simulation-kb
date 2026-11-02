@@ -7,7 +7,7 @@ status: draft
 language: zh-CN
 software: [ANSYS Workbench, ANSYS Mechanical, PyMechanical]
 software_versions: ["2024 R2"]
-source_ids: [SRC-EXEC-CONTRACT-USER-001, SRC-EXEC-MECH-V242-001, SRC-EXEC-ENGDATA-V242-001, SRC-EXEC-JSONSCHEMA-202012]
+source_ids: [SRC-EXEC-CONTRACT-USER-001, SRC-ANSYS-242-OPS-API, SRC-ANSYS-242-ENGDATA, SRC-EXEC-JSONSCHEMA-202012]
 source_locator: "本会话要求；tools.schema.json的x-contract.api_evidence及正文定位"
 updated_at: "2026-11-02"
 reviewed_by: ""
@@ -16,7 +16,7 @@ reviewed_at: ""
 
 # 执行契约骨架：第一阶段审阅件
 
-本目录是“规范加证据”，没有执行器、仿真脚本或已验证结果。当前只交付第一阶段骨架；审阅确认前不补全各工具的值类型/细节，也不修改结构输入模板或BGA取证文件。全部条目为draft，`software_version: null`等待用户提供ansys-mechanical-core确切版本；软件基线单独记录为Mechanical 2024 R2/v242。
+本目录是“规范加证据”，没有执行器、仿真脚本或已验证结果。当前为第一阶段结构化占位审阅件；二级确认前不补全各工具的值类型/实现细节，也不修改结构输入模板或BGA取证文件。全部条目为draft，`software_version: null`等待用户提供ansys-mechanical-core确切版本；软件基线单独记录为Mechanical 2024 R2/v242。
 
 [契约骨架](tools.schema.json)定义预览请求的形状；[未决清单](unresolved.md)集中记录API与人工取证卡点。源码中没有可调用适配器。所有工具`execution_enabled: false`；请求仅接受`execution_mode: preview_only`，各工具arguments暂时只接受null。示例用来审查字段，不是有效的仿真输入。
 
@@ -32,7 +32,7 @@ reviewed_at: ""
 
 ## 骨架目前定义到哪里
 
-每个工具保留参数名、最小调用示例、API文档线索、未决项引用以及`preconditions`、`readback`、`failure_handling`槽位。这三个槽位目前为null；共同门槛、失败码及生命周期在`x-contract`集中表达，具体工具细节等待骨架审阅后补充。
+每个工具保留参数名、最小调用示例、API文档线索、未决项引用以及`preconditions`、`readback`、`failure_handling`槽位。这三个槽位已分别填为gate ID数组、回读字段名数组与失败码枚举数组，并由`$defs.tool_contract_slots`校验。各ID/字段定义集中于`gate_registry`、`readback_field_registry`和`failure_policy.codes`；它们是项目协议名称，不是ANSYS属性名。具体值类型及适配器仍待二级确认。
 
 写工具额外提供：
 
@@ -59,15 +59,64 @@ JSON Schema验证的是骨架预览请求的结构，`x-contract`是配套的项
 
 ## 最小调用示例与错误处理
 
-每个工具的最小示例位于`x-contract.tools.<工具名>.example`。工程值、ID、位移/温度/时间、软件包版本和来源实例全部留null，未填真实案例值；工具名与`preview_only`仅是协议标记。
+每个工具的最小示例位于`x-contract.tools.<工具名>.example`。工程值、实体ID、位移/温度/时间、软件包版本和来源实例全部留null；request_id使用字符串占位符，未填真实案例值；工具名与`preview_only`仅是协议标记。
 
 任何未解析绑定、未知必需值、失效引用、单位不明或revision不一致均阻止写入。后续回读不一致、部分写入、保存未确认、导出未确认分别报告，不能合并成“成功”。不自动回滚、不自动重试，不把Transaction当持久化或回滚。当前这些都是契约要求，不是已经实现的检查器。
 
 ## 来源与检索边界
 
 - SRC-EXEC-CONTRACT-USER-001：本会话批准的范围、用户补充要求与执行端说明；工具名称、SI与revision制度都是项目设计，不宣称是ANSYS原生API。
-- SRC-EXEC-MECH-V242-001：[Model](https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/Model.html)、[Body](https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/Body.html)等v242类/字段；各条精确页面及定位见`x-contract.api_evidence`。仅字段/定义依据，不证明可执行。
-- SRC-EXEC-ENGDATA-V242-001：[Engineering Data](https://ansyshelp.ansys.com/public/Views/Secured/corp/v242/en/wb2_js/ContainerName37.html)，定位GetMaterials、GetMaterial、CreateMaterial。仅字段/定义依据，不证明可执行；不把按名称查找等同于stable_id/revision解析。
+- SRC-ANSYS-242-OPS-API：[Model](https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/Model.html)、[Body](https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/Body.html)等v242类/字段；各条精确页面及定位见`x-contract.api_evidence`。仅字段/定义依据，不证明可执行。
+- SRC-ANSYS-242-ENGDATA：[Engineering Data](https://ansyshelp.ansys.com/public/Views/Secured/corp/v242/en/wb2_js/ContainerName37.html)，定位GetMaterials、GetMaterial、CreateMaterial。仅字段/定义依据，不证明可执行；不把按名称查找等同于stable_id/revision解析。
 - SRC-EXEC-JSONSCHEMA-202012：[JSON Schema Core](https://json-schema.org/draft/2020-12/json-schema-core)，仅结构校验规范。
 
-来源先登记于[catalog.csv](../references/catalog.csv)，再在本目录引用。依照仓库RAG规范，本目录、README及draft条目不进入默认领域检索；后续执行端应显式读取契约。本轮不修改RAG索引范围，也不读取files中的PDF指针。
+来源登记于[catalog.csv](../references/catalog.csv)。原骨架新建的重复API来源已删除，改为复用SRC-ANSYS-242-OPS-API与SRC-ANSYS-242-ENGDATA，既有来源状态未修改；本契约始终是draft，不能从来源reviewed推导为可执行。依照仓库RAG规范，本目录、README及draft条目不进入默认领域检索；后续执行端应显式读取契约。本轮不修改RAG索引范围，也不读取files中的PDF指针。
+
+## 契约身份、引用与版本
+
+`$id`为`urn:advanced-packaging-simulation-kb:tools:0.1.0`，`x-contract.contract_version`为`0.1.0`，这是用户指定的协议版本，不是材料/工程数值。URN是契约身份，不是下载地址。执行端应将仓库中的该文件注册到此URI，2.5D等引用方用`$ref: urn:advanced-packaging-simulation-kb:tools:0.1.0#/$defs/entity_ref`引用；下方命令实际演示离线跨文档解析，没有复制定义。
+
+当前0.1.0尚未发布，分支审阅修订由Git提交区分。首次发布后同一$id内容冻结；破坏性变化在0.x阶段升次版本，稳定版以后升主版本；兼容新增升次版本，仅说明变化升修订版本。版本变化同步更新$id，引用方显式升级；不使用latest。规则见`x-contract.versioning`。
+
+## request_id与作用域
+
+`request_id`是日志去重主键。每个写请求都必须非空；在任何模型修改/文件导出前先原子占位并持久化工具、契约版本、项目、预期修订及完整请求指纹。相同ID且指纹相同的已完成请求只返回原回执；不同载荷拒绝，在途请求不重复派发。部分写入或断线后的未知状态必须先核对日志与工程，不自动重试，也不换ID绕过未决状态。这是契约要求，日志存储、指纹与恢复实现仍未绑定，U-RETRY未关闭，idempotent仍为null。
+
+请求新增`scope_kind`：entity要求实体引用；project要求target为null并从context识别工程；analysis允许target为null或分析对象引用，实际分析由analysis_ref确定。list_parameters采用project，export_results采用analysis；预览null不表示选择全部实体。示例仍只接受null工程参数。
+
+## 可复跑静态校验
+
+本次环境回读：Python 3.14.7，python-jsonschema 4.26.0，校验类Draft202012Validator。工具版本是环境记录；没有工程参数的新数值。以下从仓库根目录在PowerShell执行；未安装指定校验器时先执行`python -m pip install "jsonschema==4.26.0"`。该检查不启动ANSYS，不产生仿真结果。
+
+```powershell
+@'
+import copy, json, sys
+from pathlib import Path
+from importlib.metadata import version
+from jsonschema import Draft202012Validator
+from referencing import Registry, Resource
+
+schema = json.loads(Path("shared/tools/tools.schema.json").read_text(encoding="utf-8"))
+contract = schema["x-contract"]
+assert version("jsonschema") == contract["static_validation"]["validator_version"]
+Draft202012Validator.check_schema(schema)
+registry = Registry().with_resource(schema["$id"], Resource.from_contents(schema))
+validator = Draft202012Validator(schema, registry=registry)
+slots = validator.evolve(schema={"$ref": schema["$id"] + "#/$defs/tool_contract_slots"})
+for tool in contract["tools"].values():
+    validator.validate(tool["example"])
+    slots.validate({key: tool[key] for key in ("preconditions", "readback", "failure_handling")})
+for case in contract["static_validation"]["negative_cases"]:
+    request = copy.deepcopy(contract["tools"][case["base_tool"]]["example"])
+    request.update(case["replace"])
+    assert not validator.is_valid(request), case["id"]
+    print("REJECT", case["id"])
+entity = contract["tools"]["mechanical.read_property"]["example"]["target"]
+external_ref = {"$ref": schema["$id"] + "#/$defs/entity_ref"}
+validator.evolve(schema=external_ref).validate(entity)
+print("PASS", len(contract["tools"]), "tools; slots; negative cases; offline $ref")
+print("Python", sys.version.split()[0], "jsonschema", version("jsonschema"))
+'@ | python -
+```
+
+必须看到两条REJECT：`reject-execution-mode`将execution_mode改为execute；`reject-non-null-argument`将arguments.property_key改为非null字符串。两者是存于schema的完整变更反例，均以工具example作基准。最后PASS只表示静态结构检查通过，不证明gate判定、去重日志、回读、保存、求解或导出已经实现。
