@@ -1,6 +1,6 @@
 {
   "profile_id": "thermal-structural-2024r2-compact",
-  "revision": 1,
+  "revision": 2,
   "status": "configuration_contract_not_executed",
   "software_release": "2024 R2",
   "core_operation_documents": [
@@ -59,6 +59,9 @@
     ],
     "structure_change_query": [
       "simulation/modeling/insert-interposer-workflow.md"
+    ],
+    "pymechanical_api_or_importload_issue_query": [
+      "simulation/software/ansys-workbench-2024r2/07-pymechanical-thermal-structural.md"
     ]
   },
   "exclude_from_default_context": [
@@ -68,7 +71,8 @@
     "raw upstream repositories",
     "files/*.pdf",
     "books/*.pdf",
-    "historical case snapshots unless explicitly requested"
+    "historical case snapshots unless explicitly requested",
+    "data/pymechanical-coupling-selection.json"
   ],
   "exact_parameter_rule": "retrieve tables by material/case/property/revision and preserve units; do not infer missing values from embeddings",
   "provenance": "source-selection.json stores audit metadata; it is not an operation chunk",

@@ -1,0 +1,141 @@
+{
+  "checked_on": "2026-11-02",
+  "selection_method": "GitHub web search, repository tree inspection, selected file reading and issue comments; not a full source audit",
+  "source_bodies_copied": false,
+  "ansys_runtime_tested": false,
+  "repositories": [
+    {
+      "repo": "ansys/pymechanical",
+      "commit": "ddcaf8256b8035e7a534cdca3b5b8b34b808f215",
+      "license": "MIT",
+      "tree_blob_count": 247
+    },
+    {
+      "repo": "ansys/pymechanical-examples",
+      "commit": "1069560138e7cebfffc97de5d102913530d9c43d",
+      "license": "MIT",
+      "tree_blob_count": 47
+    },
+    {
+      "repo": "ansys/pymechanical-mcp",
+      "commit": "c6e3a5522da7d4fe5af2bb583f6821df6838689c",
+      "license": "Apache-2.0",
+      "tree_blob_count": 107
+    },
+    {
+      "repo": "ansys/pyansys-workflows",
+      "commit": "20647415eef62c71fdea3fc5a5e56abd5295dcf8",
+      "license": "MIT",
+      "tree_blob_count": 97
+    }
+  ],
+  "selected_source_files": [
+    {
+      "repo": "ansys/pymechanical",
+      "path": "README.rst",
+      "commit": "ddcaf8256b8035e7a534cdca3b5b8b34b808f215",
+      "url": "https://github.com/ansys/pymechanical/blob/ddcaf8256b8035e7a534cdca3b5b8b34b808f215/README.rst",
+      "sha256": "b0c081db2cd66b9c85a20f7a3ecbd72b6268f34783a5e58fb67e0cab69f91f4d",
+      "bytes": 5268,
+      "license": "MIT"
+    },
+    {
+      "repo": "ansys/pymechanical",
+      "path": "doc/source/user_guide/embedding/overview.rst",
+      "commit": "ddcaf8256b8035e7a534cdca3b5b8b34b808f215",
+      "url": "https://github.com/ansys/pymechanical/blob/ddcaf8256b8035e7a534cdca3b5b8b34b808f215/doc/source/user_guide/embedding/overview.rst",
+      "sha256": "7d19afa740c862e9d8478f17a135e34fc1956ad93f8245d60ef4e6d7e3b86c14",
+      "bytes": 4266,
+      "license": "MIT"
+    },
+    {
+      "repo": "ansys/pymechanical",
+      "path": "src/ansys/mechanical/core/embedding/addins.py",
+      "commit": "ddcaf8256b8035e7a534cdca3b5b8b34b808f215",
+      "url": "https://github.com/ansys/pymechanical/blob/ddcaf8256b8035e7a534cdca3b5b8b34b808f215/src/ansys/mechanical/core/embedding/addins.py",
+      "sha256": "da002e83e4f07bd8c39f062b780bf72dbb2f62c0531b6c8f1e747433d4ddaea2",
+      "bytes": 2492,
+      "license": "MIT"
+    },
+    {
+      "repo": "ansys/pymechanical-mcp",
+      "path": "src/ansys/mechanical/mcp/contexts.py",
+      "commit": "c6e3a5522da7d4fe5af2bb583f6821df6838689c",
+      "url": "https://github.com/ansys/pymechanical-mcp/blob/c6e3a5522da7d4fe5af2bb583f6821df6838689c/src/ansys/mechanical/mcp/contexts.py",
+      "sha256": "25ac1ec2fd4016ce98782ccffd852cf6557a20afa5c5b7ed32314260b206d223",
+      "bytes": 25506,
+      "license": "Apache-2.0"
+    },
+    {
+      "repo": "ansys/pymechanical-mcp",
+      "path": "doc/source/user_guide/best_practices.rst",
+      "commit": "c6e3a5522da7d4fe5af2bb583f6821df6838689c",
+      "url": "https://github.com/ansys/pymechanical-mcp/blob/c6e3a5522da7d4fe5af2bb583f6821df6838689c/doc/source/user_guide/best_practices.rst",
+      "sha256": "071c5a1bfc2a096e376c5c50bd24e4853cba35af680f608b1b0c176efe5f71b0",
+      "bytes": 3038,
+      "license": "Apache-2.0"
+    },
+    {
+      "repo": "ansys/pyansys-workflows",
+      "path": "fluent-mechanical/wf_fm_02_mechanical.py",
+      "commit": "20647415eef62c71fdea3fc5a5e56abd5295dcf8",
+      "url": "https://github.com/ansys/pyansys-workflows/blob/20647415eef62c71fdea3fc5a5e56abd5295dcf8/fluent-mechanical/wf_fm_02_mechanical.py",
+      "sha256": "c82d0c9285c0b8b50e0ebb99d31050daa429f6f3d10e07f1510403f5aa75fe3d",
+      "bytes": 29180
+    },
+    {
+      "repo": "ansys/pyansys-workflows",
+      "path": "fluent-mechanical/requirements_24.2.txt",
+      "commit": "20647415eef62c71fdea3fc5a5e56abd5295dcf8",
+      "url": "https://github.com/ansys/pyansys-workflows/blob/20647415eef62c71fdea3fc5a5e56abd5295dcf8/fluent-mechanical/requirements_24.2.txt",
+      "sha256": "7a1395489838517ff41037317973d926c3777bc68cff2384c3c0d95187dc17b7",
+      "bytes": 133
+    }
+  ],
+  "issue_evidence": {
+    "url": "https://github.com/ansys/pymechanical/issues/998",
+    "state": "closed",
+    "updated_at": "2025-07-17T17:56:16Z",
+    "comments": [
+      {
+        "url": "https://github.com/ansys/pymechanical/issues/998#issuecomment-2562224809",
+        "created_at": "2024-12-26T06:53:57Z",
+        "body_sha256": "11ddb1512b51a4d2c57a4c67cc4447fd70343c18ea38d30d01c8f646f2551b0a"
+      },
+      {
+        "url": "https://github.com/ansys/pymechanical/issues/998#issuecomment-2567876008",
+        "created_at": "2025-01-02T14:40:14Z",
+        "body_sha256": "d5a5fab120b70146d8eca3bde0739d14323fa70fcd8512a3eeda7c749d48444c"
+      },
+      {
+        "url": "https://github.com/ansys/pymechanical/issues/998#issuecomment-3084944953",
+        "created_at": "2025-07-17T17:56:16Z",
+        "body_sha256": "9b2eb4a60236b76153cc55ffab8f910311d6b7ef1bbb8b13388f58a0f6261803"
+      }
+    ]
+  },
+  "decisions": [
+    {
+      "source": "ansys/pymechanical",
+      "retained": "remote versus embedding execution distinction, historical ImportLoad issue",
+      "excluded": "full library, installation, connection implementation, unrelated embedding demonstrations"
+    },
+    {
+      "source": "ansys/pymechanical-examples",
+      "retained": "existing basic structural source already indexed; no duplicate body",
+      "limit": "no additional thermal-structural example selected in this search; not a proof of absence from all repository content"
+    },
+    {
+      "source": "ansys/pymechanical-mcp",
+      "retained": "script execution context, scoped objects, stage checks and version matching",
+      "excluded": "full contexts.py, modal/harmonic/bolt examples, tool deployment, assumed default supports/materials, newer-release guarantees"
+    },
+    {
+      "source": "ansys/pyansys-workflows",
+      "retained": "thermal settings, heat-to-structure ImportLoad, source time mapping, structural results",
+      "excluded": "Fluent, exhaust manifold geometry, CSV heat transfer coefficient mapping, sample numeric values",
+      "limit": "transient thermal to nonlinear static structural; not transient structural runtime evidence"
+    }
+  ],
+  "deduplication": "six core articles retained; one optional PyMechanical scripting supplement routed only for API/mode/ImportLoad queries; raw metadata excluded from operation chunks"
+}

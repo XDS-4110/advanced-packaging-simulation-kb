@@ -54,3 +54,5 @@ v242提供`Model.AddStaticStructuralAnalysis()`、`AddTransientStructuralAnalysi
 - [v242 Analysis](https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/Analysis.html)：ImportLoad。
 - [v242 ImportedBodyTemperature](https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/ImportedLoads/ImportedBodyTemperature.html)：ImportLoad、GetTableByName、Location。
 - [Workbench与Mechanical联动](https://github.com/ansys/pyworkbench-examples/blob/406c4985e90b16a444fc8605e9f34c44812e6751/examples/pymechanical-integration/main.py)：会话归属与服务连接；该示例不是热结构案例。
+
+PyMechanical执行模式、ImportLoad接口及历史版本问题见[专项补充](07-pymechanical-thermal-structural.md)，不把嵌入模式的临时配置当作远程连接的默认设置。
