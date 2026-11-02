@@ -1,0 +1,345 @@
+{
+  "snapshot_date": "2026-11-02",
+  "complete": false,
+  "method": {
+    "machine_frame_scan": "逐帧解码并比较480x270灰度图，变化比例>0.006触发保存；最短1秒，最长30秒；短暂或细小变化可能漏选",
+    "speech": "faster-whisper small CPU int8；中文机器转录，需要画面/音频复核",
+    "semantic_review": "单独记录；程序扫描完成不表示内容学习完成"
+  },
+  "estimated_hours": 35.14047407407407,
+  "videos": [
+    {
+      "file": "加餐课程\\10. TEC-原理、建模和仿真上_.mkv",
+      "metadata_estimated_duration_seconds": 2338.16,
+      "metadata_estimated_frames": 58454,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\10. TEC-原理、建模和仿真下_.mkv",
+      "metadata_estimated_duration_seconds": 3669.32,
+      "metadata_estimated_frames": 91733,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\11. 光通信封装仿真实例上_.mkv",
+      "metadata_estimated_duration_seconds": 1123.36,
+      "metadata_estimated_frames": 28084,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\11. 光通信封装仿真实例下_.mkv",
+      "metadata_estimated_duration_seconds": 4239.32,
+      "metadata_estimated_frames": 105983,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\11. 光通信封装仿真实例下下_.mkv",
+      "metadata_estimated_duration_seconds": 794.64,
+      "metadata_estimated_frames": 19866,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\11. 光通信封装仿真实例中_.mkv",
+      "metadata_estimated_duration_seconds": 4784.68,
+      "metadata_estimated_frames": 119617,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\12. SiP封装实例上_.mkv",
+      "metadata_estimated_duration_seconds": 917.84,
+      "metadata_estimated_frames": 22946,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\12. SiP封装实例下_.mkv",
+      "metadata_estimated_duration_seconds": 3293.96,
+      "metadata_estimated_frames": 82349,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\12. SiP封装实例中上_.mkv",
+      "metadata_estimated_duration_seconds": 2945.4,
+      "metadata_estimated_frames": 73635,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\12. SiP封装实例中下_.mkv",
+      "metadata_estimated_duration_seconds": 1115.88,
+      "metadata_estimated_frames": 27897,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\7. 锡球失效-粘塑性模型仿真上_.mkv",
+      "metadata_estimated_duration_seconds": 2332.52,
+      "metadata_estimated_frames": 58313,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\7. 锡球失效-粘塑性模型仿真下_.mkv",
+      "metadata_estimated_duration_seconds": 4982.68,
+      "metadata_estimated_frames": 124567,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\8. 信号完整性上_.mkv",
+      "metadata_estimated_duration_seconds": 5053.08,
+      "metadata_estimated_frames": 126327,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\8. 信号完整性下_.mkv",
+      "metadata_estimated_duration_seconds": 3312.44,
+      "metadata_estimated_frames": 82811,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\9. 接地-信号和散热讨论上__.mkv",
+      "metadata_estimated_duration_seconds": 3022.12,
+      "metadata_estimated_frames": 75553,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\9. 接地-信号和散热讨论下_.mkv",
+      "metadata_estimated_duration_seconds": 3616.68,
+      "metadata_estimated_frames": 90417,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\加餐10_回答问题1.mkv",
+      "metadata_estimated_duration_seconds": 2684.3,
+      "metadata_estimated_frames": 26843,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\加餐11_单元生死.mkv",
+      "metadata_estimated_duration_seconds": 2647.6,
+      "metadata_estimated_frames": 26476,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\加餐12_3Dalyout和Circuit模块.mkv",
+      "metadata_estimated_duration_seconds": 3411.866666666667,
+      "metadata_estimated_frames": 102356,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\加餐1SpaceClaim画封装结构_.mkv",
+      "metadata_estimated_duration_seconds": 1319.48,
+      "metadata_estimated_frames": 32987,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\加餐2光通信热构耦合仿真实例2D_.mkv",
+      "metadata_estimated_duration_seconds": 2514.28,
+      "metadata_estimated_frames": 62857,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\加餐3HFSSsolver详解_.mkv",
+      "metadata_estimated_duration_seconds": 2450.0,
+      "metadata_estimated_frames": 61250,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\加餐4电热力耦合仿真流程_.mkv",
+      "metadata_estimated_duration_seconds": 2132.28,
+      "metadata_estimated_frames": 53307,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\加餐5热循环锡球寿命仿真_.mkv",
+      "metadata_estimated_duration_seconds": 3973.64,
+      "metadata_estimated_frames": 99341,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\加餐6湿气仿真_.mkv",
+      "metadata_estimated_duration_seconds": 7122.24,
+      "metadata_estimated_frames": 178056,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\加餐7随机振动仿真_.mkv",
+      "metadata_estimated_duration_seconds": 3918.04,
+      "metadata_estimated_frames": 97951,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\加餐8TSV力学分析_.mkv",
+      "metadata_estimated_duration_seconds": 5171.56,
+      "metadata_estimated_frames": 129289,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "加餐课程\\加餐9TSV电学分析_.mkv",
+      "metadata_estimated_duration_seconds": 3541.92,
+      "metadata_estimated_frames": 88548,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "正式课程\\1.芯片仿真概论_.mkv",
+      "metadata_estimated_duration_seconds": 4417.28,
+      "metadata_estimated_frames": 110432,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "正式课程\\2. 芯片热模型几何文件处理_.mkv",
+      "metadata_estimated_duration_seconds": 468.1,
+      "metadata_estimated_frames": 14043,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "正式课程\\2.芯片热模型和模型提取上_.mkv",
+      "metadata_estimated_duration_seconds": 2145.44,
+      "metadata_estimated_frames": 53636,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "正式课程\\2.芯片热模型和模型提取下_.mkv",
+      "metadata_estimated_duration_seconds": 4934.84,
+      "metadata_estimated_frames": 123371,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "正式课程\\3. PCB和基板的热模型上_.mkv",
+      "metadata_estimated_duration_seconds": 2506.36,
+      "metadata_estimated_frames": 62659,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "正式课程\\3. PCB和基板的热模型下_.mkv",
+      "metadata_estimated_duration_seconds": 3230.2,
+      "metadata_estimated_frames": 80755,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "正式课程\\4. 散热器和风扇系统的优化上_.mkv",
+      "metadata_estimated_duration_seconds": 2469.68,
+      "metadata_estimated_frames": 61742,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "正式课程\\4. 散热器和风扇系统的优化下_.mkv",
+      "metadata_estimated_duration_seconds": 3905.72,
+      "metadata_estimated_frames": 97643,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "正式课程\\5. 什么是计算流体动力学上_.mkv",
+      "metadata_estimated_duration_seconds": 3603.72,
+      "metadata_estimated_frames": 90093,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "正式课程\\5. 什么是计算流体动力学下_.mkv",
+      "metadata_estimated_duration_seconds": 4442.84,
+      "metadata_estimated_frames": 111071,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "正式课程\\6. 第11讲warpage计算问题更正_.mkv",
+      "metadata_estimated_duration_seconds": 427.96,
+      "metadata_estimated_frames": 10699,
+      "learning_status": "首轮笔记已形成，细节及工程复现待审核",
+      "visual_review": "已查看149张索引帧及43张定时预览；00:45、04:20、05:50、06:50原尺寸检查；非全部原始帧语义审核",
+      "transcript_review": "已阅读全段00:02–07:03机器转录并对照索引画面；未逐句听音验证，存在术语/数字识别错误",
+      "source_id": "SRC-COURSE-VIDEO-WARPAGE-CORRECTION",
+      "sha256": "73c35b68d990392365a54d672edcabe5d178efab936ab76c7bb45d0dd81c49f6",
+      "decoded_frames": 10693,
+      "selected_frame_count": 149
+    },
+    {
+      "file": "正式课程\\6. 翘曲-热固耦合仿真上_.mkv",
+      "metadata_estimated_duration_seconds": 2717.76,
+      "metadata_estimated_frames": 67944,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    },
+    {
+      "file": "正式课程\\6. 翘曲-热固耦合仿真下_.mkv",
+      "metadata_estimated_duration_seconds": 2806.52,
+      "metadata_estimated_frames": 70163,
+      "learning_status": "未完成",
+      "visual_review": "未核对",
+      "transcript_review": "未核对"
+    }
+  ],
+  "snapshot_note": "首批更正视频核对完成时的记录；后台处理计数不等于内容核对计数"
+}

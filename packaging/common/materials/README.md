@@ -24,3 +24,5 @@
 - [底填胶的材料与工艺信息](underfill-selection.md)（draft）
 
 - [叠层与互连阵列的导热方向性](directional-conduction-evidence.md)：课程归纳，draft。
+
+- [CTE数据参考温度与封装工艺状态](cte-reference-and-process-state.md)：视频补充，draft。

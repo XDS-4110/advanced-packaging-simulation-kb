@@ -28,3 +28,5 @@
 - [Material and constitutive parameters of various Pb-based and Pb-free solders and other interconnection materials: A collective review](constitutive-2025.md)：draft；PDF 未取得；公开页面或书目线索已核对。
 
 - [芯片封装仿真41讲：阅读笔记与疑点](course-41-reading-notes.md)：6份课件，8篇知识正文；视频未逐讲观看。
+
+- [warpage计算问题更正：视频证据笔记](course-video-warpage-correction.md)：带时间戳，draft；未完成全部原始帧语义审核。
