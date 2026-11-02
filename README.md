@@ -15,7 +15,6 @@
 
 - [文件：论文与书籍原件](files/README.md)
 
-- [书籍资料](books/README.md)
 
 - [公共材料库](shared/materials/README.md)
 - [填写模板](shared/templates/README.md)
