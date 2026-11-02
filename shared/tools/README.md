@@ -16,7 +16,7 @@ reviewed_at: ""
 
 # 执行契约骨架：第一阶段审阅件
 
-本目录是“规范加证据”，没有执行器、仿真脚本或已验证结果。当前为第一阶段结构化占位审阅件；二级确认前不补全各工具的值类型/实现细节，也不修改结构输入模板或BGA取证文件。全部条目为draft，`software_version: null`等待用户提供ansys-mechanical-core确切版本；软件基线单独记录为Mechanical 2024 R2/v242。
+本目录是“规范加证据”，没有执行器、仿真脚本或已验证结果。当前为第一阶段参数值类型与语义审阅件；未绑定适配器方法，未实施仿真操作，也不修改结构输入模板或BGA取证文件。全部条目为draft，`software_version: null`等待用户提供ansys-mechanical-core确切版本；软件基线单独记录为Mechanical 2024 R2/v242。
 
 [契约骨架](tools.schema.json)定义预览请求的形状；[未决清单](unresolved.md)集中记录API与人工取证卡点。源码中没有可调用适配器。所有工具`execution_enabled: false`；请求仅接受`execution_mode: preview_only`，各工具arguments暂时只接受null。示例用来审查字段，不是有效的仿真输入。
 
@@ -32,7 +32,7 @@ reviewed_at: ""
 
 ## 骨架目前定义到哪里
 
-每个工具保留参数名、最小调用示例、API文档线索、未决项引用以及`preconditions`、`readback`、`failure_handling`槽位。这三个槽位已分别填为gate ID数组、回读字段名数组与失败码枚举数组，并由`$defs.tool_contract_slots`校验。各ID/字段定义集中于`gate_registry`、`readback_field_registry`和`failure_policy.codes`；它们是项目协议名称，不是ANSYS属性名。具体值类型及适配器仍待二级确认。
+每个工具保留参数名、最小调用示例、API文档线索、未决项引用以及`preconditions`、`readback`、`failure_handling`槽位。这三个槽位已分别填为gate ID数组、回读字段名数组与失败码枚举数组，并由`$defs.tool_contract_slots`校验。各ID/字段定义集中于`gate_registry`、`readback_field_registry`和`failure_policy.codes`；它们是项目协议名称，不是ANSYS属性名。15个工具的值类型与逐字段语义已在argument_schema_ref和parameter_semantics中补齐；适配器仍待执行端版本及运行取证。
 
 写工具额外提供：
 
@@ -74,7 +74,7 @@ JSON Schema验证的是骨架预览请求的结构，`x-contract`是配套的项
 
 ## 契约身份、引用与版本
 
-`$id`为`urn:advanced-packaging-simulation-kb:tools:0.1.0`，`x-contract.contract_version`为`0.1.0`，这是用户指定的协议版本，不是材料/工程数值。URN是契约身份，不是下载地址。执行端应将仓库中的该文件注册到此URI，2.5D等引用方用`$ref: urn:advanced-packaging-simulation-kb:tools:0.1.0#/$defs/entity_ref`引用；下方命令实际演示离线跨文档解析，没有复制定义。
+`$id`为`urn:advanced-packaging-simulation-kb:tools:0.1.0`，`x-contract.contract_version`为`0.1.0`，这是用户指定的协议版本，不是材料/工程数值。URN是契约身份，不是下载地址。执行端应将仓库中的该文件注册到此URI，2.5D等引用方用`$ref: urn:advanced-packaging-simulation-kb:tools:0.1.0#/$defs/entity_ref`引用；校验脚本实际检查离线跨文档解析，没有复制定义。
 
 当前0.1.0尚未发布，分支审阅修订由Git提交区分。首次发布后同一$id内容冻结；破坏性变化在0.x阶段升次版本，稳定版以后升主版本；兼容新增升次版本，仅说明变化升修订版本。版本变化同步更新$id，引用方显式升级；不使用latest。规则见`x-contract.versioning`。
 
@@ -84,39 +84,24 @@ JSON Schema验证的是骨架预览请求的结构，`x-contract`是配套的项
 
 请求新增`scope_kind`：entity要求实体引用；project要求target为null并从context识别工程；analysis允许target为null或分析对象引用，实际分析由analysis_ref确定。list_parameters采用project，export_results采用analysis；预览null不表示选择全部实体。示例仍只接受null工程参数。
 
+## 参数类型与预览边界
+
+每个工具的`argument_schema_ref`指向独立参数schema，`parameter_semantics`解释各字段。新增共享类型覆盖材料标识/revision、带来源SI量、温度/对流时间表、物性表、STEP文件引用与导入意图、真实变换、位移分量、分析步控制和结果导出。所有参数都有类型与语义；null仍表示未知。工程示例没有填任何非null数值。
+
+当前请求`arguments`通过allOf同时接受类型检查与全null预览限制，所以“arguments含非null”原反例仍必须被拒。参数类型可以通过独立$ref作静态检查；不会据此开启派发。三类target规则直接写入每个oneOf分支：entity必须entity_ref，project必须null，analysis为entity_ref或null；缺失target也不通过。
+
+单位采用内部SI；绝对温度与温差分类型。一般物性单位的量纲、换算、温度表坐标匹配、插值实现、时间单调性以及新旧revision比较属于仍未实现的语义门槛，不把JSON类型通过当作这些检查已完成。新增对象中的键是项目协议字段，不是猜测的ANSYS方法或枚举。适配器方法名及ansys-mechanical-core版本继续为null。
+
 ## 可复跑静态校验
 
-本次环境回读：Python 3.14.7，python-jsonschema 4.26.0，校验类Draft202012Validator。工具版本是环境记录；没有工程参数的新数值。以下从仓库根目录在PowerShell执行；未安装指定校验器时先执行`python -m pip install "jsonschema==4.26.0"`。该检查不启动ANSYS，不产生仿真结果。
+从仓库根目录执行：`python shared/tools/validate_contract.py`。
 
-```powershell
-@'
-import copy, json, sys
-from pathlib import Path
-from importlib.metadata import version
-from jsonschema import Draft202012Validator
-from referencing import Registry, Resource
+校验器为python-jsonschema 4.26.0 / Draft202012Validator；缺少依赖时需要访问PyPI安装该固定版本，或预先从可访问环境取得对应wheel及依赖、使用内网镜像。无法取得依赖时，等价子集校验可作为独立复核，但不能标成已运行本脚本/此版本；脚本不会自动安装或降级依赖。
 
-schema = json.loads(Path("shared/tools/tools.schema.json").read_text(encoding="utf-8"))
-contract = schema["x-contract"]
-assert version("jsonschema") == contract["static_validation"]["validator_version"]
-Draft202012Validator.check_schema(schema)
-registry = Registry().with_resource(schema["$id"], Resource.from_contents(schema))
-validator = Draft202012Validator(schema, registry=registry)
-slots = validator.evolve(schema={"$ref": schema["$id"] + "#/$defs/tool_contract_slots"})
-for tool in contract["tools"].values():
-    validator.validate(tool["example"])
-    slots.validate({key: tool[key] for key in ("preconditions", "readback", "failure_handling")})
-for case in contract["static_validation"]["negative_cases"]:
-    request = copy.deepcopy(contract["tools"][case["base_tool"]]["example"])
-    request.update(case["replace"])
-    assert not validator.is_valid(request), case["id"]
-    print("REJECT", case["id"])
-entity = contract["tools"]["mechanical.read_property"]["example"]["target"]
-external_ref = {"$ref": schema["$id"] + "#/$defs/entity_ref"}
-validator.evolve(schema=external_ref).validate(entity)
-print("PASS", len(contract["tools"]), "tools; slots; negative cases; offline $ref")
-print("Python", sys.version.split()[0], "jsonschema", version("jsonschema"))
-'@ | python -
-```
+默认只读校验，不启动ANSYS、不触碰几何/工程文件。CI可直接使用同一命令，失败返回非零退出码。`--record`仅在Git工作区干净时把校验记录写回schema；这属于审计记录，不是模型执行工具。
 
-必须看到两条REJECT：`reject-execution-mode`将execution_mode改为execute；`reject-non-null-argument`将arguments.property_key改为非null字符串。两者是存于schema的完整变更反例，均以工具example作基准。最后PASS只表示静态结构检查通过，不证明gate判定、去重日志、回读、保存、求解或导出已经实现。
+static_validation.last_run记录被校验提交commit、UTC时间at、python、jsonschema，并附schema_content_sha256和校验脚本哈希。commit指向校验时工作区的提交，不是随后保存审计记录的提交；内容哈希用规范化JSON排除last_run/last_result两个自记录字段，避免提交/哈希自引用。首次取证前last_run保持null。
+
+schema内容或校验脚本变更会使旧记录失效，脚本将拒绝沿用旧“通过”；需将last_run/last_result重置为null，提交内容后重新取证。记录校验结果不会将条目状态改为reviewed或validated。
+
+校验包括原有两个反例，以及entity的target=null、project的非null目标、analysis的非法目标类型三项反例；还检查每个分支的目标规则、三个槽位、非法scope_kind、缺参数键、非法gate ID及独立参数类型。analysis允许null或合法引用的正例也会保留。通过仅证明静态结构，不证明去重日志、API回读、保存、求解或结果导出。

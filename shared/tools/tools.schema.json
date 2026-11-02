@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:advanced-packaging-simulation-kb:tools:0.1.0",
   "title": "Workbench / Mechanical执行契约骨架（仅预览请求）",
-  "description": "第一阶段结构化占位：preconditions/readback/failure_handling已有可校验形状；arguments仍只收null，工具全部禁止执行。",
+  "description": "第一阶段值类型与参数语义草案；各分支target显式受限；预览仍只允许null工程参数，不绑定适配器。",
   "x-contract": {
     "id": "KB-TOOLS-CONTRACT-SKELETON-001",
     "document_type": "execution_contract",
@@ -202,7 +202,9 @@
         "failure_handling": ["UNRESOLVED_BINDING", "MISSING_REQUIRED_VALUE", "STALE_REFERENCE", "REVISION_MISMATCH"],
         "unresolved_refs": ["U-STABLE-ID", "U-MATERIAL-REVISION"],
         "example": {"request_id": "<REQUEST_ID>", "tool": "engineering_data.resolve_entity", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"material_id": null, "material_revision": null}, "scope_kind": "entity"},
-        "scope_kind": "entity"
+        "scope_kind": "entity",
+        "argument_schema_ref": "#/$defs/arguments_engineering_data_resolve_entity",
+        "parameter_semantics": {"material_id": "在Engineering Data映射中定位材料ID，不按显示名唯一匹配。", "material_revision": "必须明确所需revision；不得自动取最新。"}
       },
       "engineering_data.read_property": {
         "status": "draft",
@@ -217,7 +219,9 @@
         "failure_handling": ["UNRESOLVED_BINDING", "MISSING_REQUIRED_VALUE", "STALE_REFERENCE", "REVISION_MISMATCH", "UNIT_MISMATCH", "READBACK_MISMATCH"],
         "unresolved_refs": ["U-READBACK", "U-MATERIAL-REVISION"],
         "example": {"request_id": "<REQUEST_ID>", "tool": "engineering_data.read_property", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"property_key": null, "table_selector": null}, "scope_kind": "entity"},
-        "scope_kind": "entity"
+        "scope_kind": "entity",
+        "argument_schema_ref": "#/$defs/arguments_engineering_data_read_property",
+        "parameter_semantics": {"property_key": "已登记的语义属性键，不是任意代码或猜测API属性名。", "table_selector": "选择材料表轴/分量；标量属性可留null但执行端须确认。"}
       },
       "workbench_project.list_parameters": {
         "status": "draft",
@@ -232,7 +236,9 @@
         "failure_handling": ["UNRESOLVED_BINDING", "MISSING_REQUIRED_VALUE", "STALE_REFERENCE"],
         "unresolved_refs": ["U-PARAMETERS"],
         "example": {"request_id": "<REQUEST_ID>", "tool": "workbench_project.list_parameters", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": null, "arguments": {"parameter_domain": null}, "scope_kind": "project"},
-        "scope_kind": "project"
+        "scope_kind": "project",
+        "argument_schema_ref": "#/$defs/arguments_workbench_project_list_parameters",
+        "parameter_semantics": {"parameter_domain": "查询当前工程参数集；未查询不能把返回值伪造为空集。"}
       },
       "engineering_data.update_material_properties": {
         "status": "draft",
@@ -286,7 +292,14 @@
         "requires_save": true,
         "invalidates": ["new_material_revision_validation"],
         "example": {"request_id": "<REQUEST_ID>", "tool": "engineering_data.update_material_properties", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"material_id": null, "base_revision": null, "new_revision": null, "property_changes": null}, "scope_kind": "entity"},
-        "scope_kind": "entity"
+        "scope_kind": "entity",
+        "argument_schema_ref": "#/$defs/arguments_engineering_data_update_material_properties",
+        "parameter_semantics": {
+          "material_id": "沿用原材料ID。",
+          "base_revision": "本次修改所依据的旧revision。",
+          "new_revision": "必须新建且不同于旧revision；跨字段/库存比较由G-NEW-REVISION完成。",
+          "property_changes": "物性变更及逐项来源；不得覆盖旧revision或隐式切换引用方。"
+        }
       },
       "workbench_project.set_geometry_parameter": {
         "status": "draft",
@@ -317,7 +330,9 @@
         "requires_save": true,
         "invalidates": ["entity_resolution", "named_selections", "contacts", "mesh", "load_scopes", "temperature_mapping", "solutions", "exported_results"],
         "example": {"request_id": "<REQUEST_ID>", "tool": "workbench_project.set_geometry_parameter", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": null, "arguments": {"parameter_ref": null, "value": null}, "scope_kind": "project"},
-        "scope_kind": "project"
+        "scope_kind": "project",
+        "argument_schema_ref": "#/$defs/arguments_workbench_project_set_geometry_parameter",
+        "parameter_semantics": {"parameter_ref": "待建立的真实参数/几何路线映射；当前STEP无参数集，仍unresolved。", "value": "物理量维度由所选参数确认；当前不支持猜测尺寸参数。"}
       },
       "mechanical.resolve_entity": {
         "status": "draft",
@@ -332,7 +347,9 @@
         "failure_handling": ["UNRESOLVED_BINDING", "MISSING_REQUIRED_VALUE", "STALE_REFERENCE"],
         "unresolved_refs": ["U-STABLE-ID"],
         "example": {"request_id": "<REQUEST_ID>", "tool": "mechanical.resolve_entity", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"expected_kind": null}, "scope_kind": "entity"},
-        "scope_kind": "entity"
+        "scope_kind": "entity",
+        "argument_schema_ref": "#/$defs/arguments_mechanical_resolve_entity",
+        "parameter_semantics": {"expected_kind": "预期树对象种类；CAD面集合通过entity_ref记录，不把树ID当面ID。"}
       },
       "mechanical.read_property": {
         "status": "draft",
@@ -347,7 +364,9 @@
         "failure_handling": ["UNRESOLVED_BINDING", "MISSING_REQUIRED_VALUE", "STALE_REFERENCE", "UNIT_MISMATCH", "READBACK_MISMATCH"],
         "unresolved_refs": ["U-READBACK"],
         "example": {"request_id": "<REQUEST_ID>", "tool": "mechanical.read_property", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"property_key": null}, "scope_kind": "entity"},
-        "scope_kind": "entity"
+        "scope_kind": "entity",
+        "argument_schema_ref": "#/$defs/arguments_mechanical_read_property",
+        "parameter_semantics": {"property_key": "在当前对象种类白名单内读取字段；显示标签与底层字段绑定待版本确认。"}
       },
       "mechanical.assign_material": {
         "status": "draft",
@@ -378,7 +397,9 @@
         "requires_save": true,
         "invalidates": ["material_assignment_readback", "thermal_solution", "temperature_mapping", "structural_solution", "exported_results"],
         "example": {"request_id": "<REQUEST_ID>", "tool": "mechanical.assign_material", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"material_id": null, "material_revision": null}, "scope_kind": "entity"},
-        "scope_kind": "entity"
+        "scope_kind": "entity",
+        "argument_schema_ref": "#/$defs/arguments_mechanical_assign_material",
+        "parameter_semantics": {"material_id": "已经存在于工程且已登记的材料ID。", "material_revision": "显式切换到的既有revision；Body.Material名称回读不能单独证明revision。"}
       },
       "mechanical.reimport_geometry": {
         "status": "draft",
@@ -421,7 +442,14 @@
           "exported_results"
         ],
         "example": {"request_id": "<REQUEST_ID>", "tool": "mechanical.reimport_geometry", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"file_ref": null, "file_revision": null, "length_unit": null, "import_preferences": null}, "scope_kind": "entity"},
-        "scope_kind": "entity"
+        "scope_kind": "entity",
+        "argument_schema_ref": "#/$defs/arguments_mechanical_reimport_geometry",
+        "parameter_semantics": {
+          "file_ref": "修改后的几何文件、哈希与来源；只用于当前工程目标导入对象。",
+          "file_revision": "几何文件独立修订标识。",
+          "length_unit": "输入文件的明确长度单位，属于输入边界；换算到内部m，不推断界面单位。",
+          "import_preferences": "显式导入策略；导入后重验材料映射、选择、接触、网格和载荷范围。"
+        }
       },
       "mechanical.transform_entity": {
         "status": "draft",
@@ -464,7 +492,9 @@
           "exported_results"
         ],
         "example": {"request_id": "<REQUEST_ID>", "tool": "mechanical.transform_entity", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"coordinate_frame_ref": null, "translation": null, "rotation": null}, "scope_kind": "entity"},
-        "scope_kind": "entity"
+        "scope_kind": "entity",
+        "argument_schema_ref": "#/$defs/arguments_mechanical_transform_entity",
+        "parameter_semantics": {"coordinate_frame_ref": "变换所依据坐标系，必须明确，不默认全局。", "translation": "三分量SI平移；与旋转至少有一个明确操作意图。", "rotation": "SI弧度旋转及明确顺序；不作用于相机或显示对象。"}
       },
       "mechanical.apply_convection": {
         "status": "draft",
@@ -496,7 +526,14 @@
         "requires_save": true,
         "invalidates": ["thermal_solution", "temperature_mapping", "structural_solution", "exported_results"],
         "example": {"request_id": "<REQUEST_ID>", "tool": "mechanical.apply_convection", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"analysis_ref": null, "film_coefficient": null, "ambient_temperature": null, "time_table": null}, "scope_kind": "entity"},
-        "scope_kind": "entity"
+        "scope_kind": "entity",
+        "argument_schema_ref": "#/$defs/arguments_mechanical_apply_convection",
+        "parameter_semantics": {
+          "analysis_ref": "当前热分析身份。",
+          "film_coefficient": "静态对流换热系数，SI W m^-2 K^-1。",
+          "ambient_temperature": "静态环境绝对温度，内部K；不是试样强制表面温度。",
+          "time_table": "时变对流表；选用时静态字段须留null，不能不明确地混合两种模式。"
+        }
       },
       "mechanical.apply_temperature": {
         "status": "draft",
@@ -528,7 +565,9 @@
         "requires_save": true,
         "invalidates": ["thermal_solution", "temperature_mapping", "structural_solution", "exported_results"],
         "example": {"request_id": "<REQUEST_ID>", "tool": "mechanical.apply_temperature", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"analysis_ref": null, "temperature": null, "time_table": null}, "scope_kind": "entity"},
-        "scope_kind": "entity"
+        "scope_kind": "entity",
+        "argument_schema_ref": "#/$defs/arguments_mechanical_apply_temperature",
+        "parameter_semantics": {"analysis_ref": "当前热分析身份。", "temperature": "强制作用域温度，内部K；不同于初始温度、环境温度和结构参考温度。", "time_table": "时变指定温度表；与静态temperature互斥。"}
       },
       "mechanical.apply_constraint": {
         "status": "draft",
@@ -565,7 +604,14 @@
         "requires_save": true,
         "invalidates": ["structural_solution", "reaction_force_results", "exported_results"],
         "example": {"request_id": "<REQUEST_ID>", "tool": "mechanical.apply_constraint", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": {"stable_id": null, "display_name_hint": null, "model_revision": null, "mechanical_tree_id": null, "geometry_body_ids": null, "geometry_face_ids": null, "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}}, "arguments": {"analysis_ref": null, "kind": null, "coordinate_frame_ref": null, "components": null}, "scope_kind": "entity"},
-        "scope_kind": "entity"
+        "scope_kind": "entity",
+        "argument_schema_ref": "#/$defs/arguments_mechanical_apply_constraint",
+        "parameter_semantics": {
+          "analysis_ref": "目标结构分析身份。",
+          "kind": "第一版仅Fixed Support/Displacement可进入后续绑定；其他kind保持pending。",
+          "coordinate_frame_ref": "分量位移所用坐标系；不得自动补全方向。",
+          "components": "Fixed Support必须为null；Displacement显式给出各分量自由/给定与来源。"
+        }
       },
       "mechanical.add_analysis_step": {
         "status": "draft",
@@ -601,7 +647,14 @@
         "requires_save": true,
         "invalidates": ["analysis_step_readback", "temperature_mapping", "affected_solution", "exported_results"],
         "example": {"request_id": "<REQUEST_ID>", "tool": "mechanical.add_analysis_step", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": null, "arguments": {"analysis_ref": null, "step_ref": null, "end_time": null, "time_controls": null}, "scope_kind": "analysis"},
-        "scope_kind": "analysis"
+        "scope_kind": "analysis",
+        "argument_schema_ref": "#/$defs/arguments_mechanical_add_analysis_step",
+        "parameter_semantics": {
+          "analysis_ref": "目标分析身份，不把瞬态热步设置直接复制到结构。",
+          "step_ref": "新步骤的项目标识与插入位置；重试必须经request_id日志。",
+          "end_time": "该步结束的物理时间，内部s；不自动补步长。",
+          "time_controls": "逐步控制及非线性设置引用；率相关本构的时间不得随意缩放。"
+        }
       },
       "mechanical.export_results": {
         "status": "draft",
@@ -633,7 +686,17 @@
         "requires_save": false,
         "invalidates": ["export_manifest_validation"],
         "example": {"request_id": "<REQUEST_ID>", "tool": "mechanical.export_results", "execution_mode": "preview_only", "context": {"project_ref": null, "model_revision": null, "software_version": null}, "target": null, "arguments": {"analysis_ref": null, "result_kinds": null, "times": null, "scope_ref": null, "coordinate_frame_ref": null, "formats": null, "output_ref": null}, "scope_kind": "analysis"},
-        "scope_kind": "analysis"
+        "scope_kind": "analysis",
+        "argument_schema_ref": "#/$defs/arguments_mechanical_export_results",
+        "parameter_semantics": {
+          "analysis_ref": "具有真实、未过期结果的目标分析。",
+          "result_kinds": "只选择实际分析可提供的结果；UZ需要明确坐标系与翘曲定义。",
+          "times": "需要导出的多个物理时刻；须对应实际保存结果。",
+          "scope_ref": "结果实体/面/支撑作用域；null只可作预览占位，不等于全部实体。",
+          "coordinate_frame_ref": "方向位移与支反力分量的坐标系。",
+          "formats": "CSV+PNG为第一版要求；可选rst/npz仅登记意图，绑定仍unresolved。",
+          "output_ref": "导出位置、修订和覆盖策略；需返回含范围/时刻/极值/单位的清单。"
+        }
       }
     },
     "contract_version": "0.1.0",
@@ -755,9 +818,9 @@
       "validator_class": "Draft202012Validator",
       "validator_version": "4.26.0",
       "python_version": "3.14.7",
-      "command": "python -",
-      "command_location": "shared/tools/README.md 的“可复跑静态校验”PowerShell代码块（从仓库根目录执行）",
-      "scope": "JSON Schema元schema、全部预览示例、工具槽位形状、失败反例与离线跨文档$ref；不校验ANSYS运行能力。",
+      "command": "python shared/tools/validate_contract.py",
+      "command_location": "shared/tools/README.md 的可复跑静态校验",
+      "scope": "元schema、15个预览示例、槽位、15个独立参数类型、target分支与反例、源编号、离线$ref；不证明ANSYS可执行。",
       "negative_cases": [
         {"id": "reject-execution-mode", "base_tool": "mechanical.read_property", "replace": {"execution_mode": "execute"}, "expected": "reject"},
         {
@@ -765,9 +828,42 @@
           "base_tool": "mechanical.read_property",
           "replace": {"arguments": {"property_key": "<NON_NULL>"}},
           "expected": "reject"
+        },
+        {"id": "reject-entity-null-target", "base_tool": "mechanical.read_property", "replace": {"target": null}, "expected": "reject"},
+        {
+          "id": "reject-project-non-null-target",
+          "base_tool": "workbench_project.list_parameters",
+          "replace": {
+            "target": {
+              "stable_id": null,
+              "display_name_hint": null,
+              "model_revision": null,
+              "mechanical_tree_id": null,
+              "geometry_body_ids": null,
+              "geometry_face_ids": null,
+              "resolved_from": {"kind": null, "source_ref": null, "evidence_ref": null}
+            }
+          },
+          "expected": "reject"
+        },
+        {
+          "id": "reject-analysis-invalid-target",
+          "base_tool": "mechanical.export_results",
+          "replace": {"target": "<NOT_AN_ENTITY_REFERENCE>"},
+          "expected": "reject"
         }
       ],
-      "last_result": "passed_static_only"
+      "last_result": null,
+      "last_run": null
+    },
+    "argument_typing": {
+      "status": "draft",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "definitions": "每工具argument_schema_ref引用$defs中的独立类型定义；parameter_semantics逐字段解释项目语义。",
+      "preview_rule": "实际请求arguments同时满足类型定义和全null占位限制，保留已确认预览边界；类型可独立静态引用，不意味着可提交真实值或执行。",
+      "semantics_not_static": "来源真实性、单位换算、ID解析、物理时间/表对应、材料新旧revision比较、gate判定与结果有效性仍需执行端实现。",
+      "no_native_signature_claim": "参数、枚举和SI单位是项目数据协议；不能原样当作ANSYS原生参数字典。所有adapter_method与软件包版本保持null。"
     }
   },
   "type": "object",
@@ -783,21 +879,299 @@
     "scope_kind": {"enum": ["entity", "analysis", "project"]}
   },
   "oneOf": [
-    {"properties": {"tool": {"const": "engineering_data.resolve_entity"}, "arguments": {"type": "object", "required": ["material_id", "material_revision"], "properties": {"material_id": {"type": "null"}, "material_revision": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "entity"}}, "required": ["tool", "arguments", "scope_kind"]},
-    {"properties": {"tool": {"const": "engineering_data.read_property"}, "arguments": {"type": "object", "required": ["property_key", "table_selector"], "properties": {"property_key": {"type": "null"}, "table_selector": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "entity"}}, "required": ["tool", "arguments", "scope_kind"]},
-    {"properties": {"tool": {"const": "workbench_project.list_parameters"}, "arguments": {"type": "object", "required": ["parameter_domain"], "properties": {"parameter_domain": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "project"}}, "required": ["tool", "arguments", "scope_kind"]},
-    {"properties": {"tool": {"const": "engineering_data.update_material_properties"}, "arguments": {"type": "object", "required": ["material_id", "base_revision", "new_revision", "property_changes"], "properties": {"material_id": {"type": "null"}, "base_revision": {"type": "null"}, "new_revision": {"type": "null"}, "property_changes": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "entity"}, "request_id": {"type": "string", "pattern": "\\S"}}, "required": ["tool", "arguments", "scope_kind"]},
-    {"properties": {"tool": {"const": "workbench_project.set_geometry_parameter"}, "arguments": {"type": "object", "required": ["parameter_ref", "value"], "properties": {"parameter_ref": {"type": "null"}, "value": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "project"}, "request_id": {"type": "string", "pattern": "\\S"}}, "required": ["tool", "arguments", "scope_kind"]},
-    {"properties": {"tool": {"const": "mechanical.resolve_entity"}, "arguments": {"type": "object", "required": ["expected_kind"], "properties": {"expected_kind": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "entity"}}, "required": ["tool", "arguments", "scope_kind"]},
-    {"properties": {"tool": {"const": "mechanical.read_property"}, "arguments": {"type": "object", "required": ["property_key"], "properties": {"property_key": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "entity"}}, "required": ["tool", "arguments", "scope_kind"]},
-    {"properties": {"tool": {"const": "mechanical.assign_material"}, "arguments": {"type": "object", "required": ["material_id", "material_revision"], "properties": {"material_id": {"type": "null"}, "material_revision": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "entity"}, "request_id": {"type": "string", "pattern": "\\S"}}, "required": ["tool", "arguments", "scope_kind"]},
-    {"properties": {"tool": {"const": "mechanical.reimport_geometry"}, "arguments": {"type": "object", "required": ["file_ref", "file_revision", "length_unit", "import_preferences"], "properties": {"file_ref": {"type": "null"}, "file_revision": {"type": "null"}, "length_unit": {"type": "null"}, "import_preferences": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "entity"}, "request_id": {"type": "string", "pattern": "\\S"}}, "required": ["tool", "arguments", "scope_kind"]},
-    {"properties": {"tool": {"const": "mechanical.transform_entity"}, "arguments": {"type": "object", "required": ["coordinate_frame_ref", "translation", "rotation"], "properties": {"coordinate_frame_ref": {"type": "null"}, "translation": {"type": "null"}, "rotation": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "entity"}, "request_id": {"type": "string", "pattern": "\\S"}}, "required": ["tool", "arguments", "scope_kind"]},
-    {"properties": {"tool": {"const": "mechanical.apply_convection"}, "arguments": {"type": "object", "required": ["analysis_ref", "film_coefficient", "ambient_temperature", "time_table"], "properties": {"analysis_ref": {"type": "null"}, "film_coefficient": {"type": "null"}, "ambient_temperature": {"type": "null"}, "time_table": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "entity"}, "request_id": {"type": "string", "pattern": "\\S"}}, "required": ["tool", "arguments", "scope_kind"]},
-    {"properties": {"tool": {"const": "mechanical.apply_temperature"}, "arguments": {"type": "object", "required": ["analysis_ref", "temperature", "time_table"], "properties": {"analysis_ref": {"type": "null"}, "temperature": {"type": "null"}, "time_table": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "entity"}, "request_id": {"type": "string", "pattern": "\\S"}}, "required": ["tool", "arguments", "scope_kind"]},
-    {"properties": {"tool": {"const": "mechanical.apply_constraint"}, "arguments": {"type": "object", "required": ["analysis_ref", "kind", "coordinate_frame_ref", "components"], "properties": {"analysis_ref": {"type": "null"}, "kind": {"type": "null"}, "coordinate_frame_ref": {"type": "null"}, "components": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "entity"}, "request_id": {"type": "string", "pattern": "\\S"}}, "required": ["tool", "arguments", "scope_kind"]},
-    {"properties": {"tool": {"const": "mechanical.add_analysis_step"}, "arguments": {"type": "object", "required": ["analysis_ref", "step_ref", "end_time", "time_controls"], "properties": {"analysis_ref": {"type": "null"}, "step_ref": {"type": "null"}, "end_time": {"type": "null"}, "time_controls": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "analysis"}, "request_id": {"type": "string", "pattern": "\\S"}}, "required": ["tool", "arguments", "scope_kind"]},
-    {"properties": {"tool": {"const": "mechanical.export_results"}, "arguments": {"type": "object", "required": ["analysis_ref", "result_kinds", "times", "scope_ref", "coordinate_frame_ref", "formats", "output_ref"], "properties": {"analysis_ref": {"type": "null"}, "result_kinds": {"type": "null"}, "times": {"type": "null"}, "scope_ref": {"type": "null"}, "coordinate_frame_ref": {"type": "null"}, "formats": {"type": "null"}, "output_ref": {"type": "null"}}, "additionalProperties": false}, "scope_kind": {"const": "analysis"}, "request_id": {"type": "string", "pattern": "\\S"}}, "required": ["tool", "arguments", "scope_kind"]}
+    {
+      "properties": {
+        "tool": {"const": "engineering_data.resolve_entity"},
+        "arguments": {
+          "allOf": [
+            {"$ref": "#/$defs/arguments_engineering_data_resolve_entity"},
+            {
+              "type": "object",
+              "required": ["material_id", "material_revision"],
+              "properties": {"material_id": {"type": "null"}, "material_revision": {"type": "null"}},
+              "additionalProperties": false
+            }
+          ]
+        },
+        "scope_kind": {"const": "entity"},
+        "target": {"$ref": "#/$defs/entity_ref"}
+      },
+      "required": ["tool", "arguments", "scope_kind", "target"]
+    },
+    {
+      "properties": {
+        "tool": {"const": "engineering_data.read_property"},
+        "arguments": {
+          "allOf": [
+            {"$ref": "#/$defs/arguments_engineering_data_read_property"},
+            {
+              "type": "object",
+              "required": ["property_key", "table_selector"],
+              "properties": {"property_key": {"type": "null"}, "table_selector": {"type": "null"}},
+              "additionalProperties": false
+            }
+          ]
+        },
+        "scope_kind": {"const": "entity"},
+        "target": {"$ref": "#/$defs/entity_ref"}
+      },
+      "required": ["tool", "arguments", "scope_kind", "target"]
+    },
+    {
+      "properties": {
+        "tool": {"const": "workbench_project.list_parameters"},
+        "arguments": {
+          "allOf": [
+            {"$ref": "#/$defs/arguments_workbench_project_list_parameters"},
+            {"type": "object", "required": ["parameter_domain"], "properties": {"parameter_domain": {"type": "null"}}, "additionalProperties": false}
+          ]
+        },
+        "scope_kind": {"const": "project"},
+        "target": {"type": "null"}
+      },
+      "required": ["tool", "arguments", "scope_kind", "target"]
+    },
+    {
+      "properties": {
+        "tool": {"const": "engineering_data.update_material_properties"},
+        "arguments": {
+          "allOf": [
+            {"$ref": "#/$defs/arguments_engineering_data_update_material_properties"},
+            {
+              "type": "object",
+              "required": ["material_id", "base_revision", "new_revision", "property_changes"],
+              "properties": {"material_id": {"type": "null"}, "base_revision": {"type": "null"}, "new_revision": {"type": "null"}, "property_changes": {"type": "null"}},
+              "additionalProperties": false
+            }
+          ]
+        },
+        "scope_kind": {"const": "entity"},
+        "request_id": {"type": "string", "pattern": "\\S"},
+        "target": {"$ref": "#/$defs/entity_ref"}
+      },
+      "required": ["tool", "arguments", "scope_kind", "target"]
+    },
+    {
+      "properties": {
+        "tool": {"const": "workbench_project.set_geometry_parameter"},
+        "arguments": {
+          "allOf": [
+            {"$ref": "#/$defs/arguments_workbench_project_set_geometry_parameter"},
+            {
+              "type": "object",
+              "required": ["parameter_ref", "value"],
+              "properties": {"parameter_ref": {"type": "null"}, "value": {"type": "null"}},
+              "additionalProperties": false
+            }
+          ]
+        },
+        "scope_kind": {"const": "project"},
+        "request_id": {"type": "string", "pattern": "\\S"},
+        "target": {"type": "null"}
+      },
+      "required": ["tool", "arguments", "scope_kind", "target"]
+    },
+    {
+      "properties": {
+        "tool": {"const": "mechanical.resolve_entity"},
+        "arguments": {
+          "allOf": [
+            {"$ref": "#/$defs/arguments_mechanical_resolve_entity"},
+            {"type": "object", "required": ["expected_kind"], "properties": {"expected_kind": {"type": "null"}}, "additionalProperties": false}
+          ]
+        },
+        "scope_kind": {"const": "entity"},
+        "target": {"$ref": "#/$defs/entity_ref"}
+      },
+      "required": ["tool", "arguments", "scope_kind", "target"]
+    },
+    {
+      "properties": {
+        "tool": {"const": "mechanical.read_property"},
+        "arguments": {
+          "allOf": [
+            {"$ref": "#/$defs/arguments_mechanical_read_property"},
+            {"type": "object", "required": ["property_key"], "properties": {"property_key": {"type": "null"}}, "additionalProperties": false}
+          ]
+        },
+        "scope_kind": {"const": "entity"},
+        "target": {"$ref": "#/$defs/entity_ref"}
+      },
+      "required": ["tool", "arguments", "scope_kind", "target"]
+    },
+    {
+      "properties": {
+        "tool": {"const": "mechanical.assign_material"},
+        "arguments": {
+          "allOf": [
+            {"$ref": "#/$defs/arguments_mechanical_assign_material"},
+            {
+              "type": "object",
+              "required": ["material_id", "material_revision"],
+              "properties": {"material_id": {"type": "null"}, "material_revision": {"type": "null"}},
+              "additionalProperties": false
+            }
+          ]
+        },
+        "scope_kind": {"const": "entity"},
+        "request_id": {"type": "string", "pattern": "\\S"},
+        "target": {"$ref": "#/$defs/entity_ref"}
+      },
+      "required": ["tool", "arguments", "scope_kind", "target"]
+    },
+    {
+      "properties": {
+        "tool": {"const": "mechanical.reimport_geometry"},
+        "arguments": {
+          "allOf": [
+            {"$ref": "#/$defs/arguments_mechanical_reimport_geometry"},
+            {
+              "type": "object",
+              "required": ["file_ref", "file_revision", "length_unit", "import_preferences"],
+              "properties": {"file_ref": {"type": "null"}, "file_revision": {"type": "null"}, "length_unit": {"type": "null"}, "import_preferences": {"type": "null"}},
+              "additionalProperties": false
+            }
+          ]
+        },
+        "scope_kind": {"const": "entity"},
+        "request_id": {"type": "string", "pattern": "\\S"},
+        "target": {"$ref": "#/$defs/entity_ref"}
+      },
+      "required": ["tool", "arguments", "scope_kind", "target"]
+    },
+    {
+      "properties": {
+        "tool": {"const": "mechanical.transform_entity"},
+        "arguments": {
+          "allOf": [
+            {"$ref": "#/$defs/arguments_mechanical_transform_entity"},
+            {
+              "type": "object",
+              "required": ["coordinate_frame_ref", "translation", "rotation"],
+              "properties": {"coordinate_frame_ref": {"type": "null"}, "translation": {"type": "null"}, "rotation": {"type": "null"}},
+              "additionalProperties": false
+            }
+          ]
+        },
+        "scope_kind": {"const": "entity"},
+        "request_id": {"type": "string", "pattern": "\\S"},
+        "target": {"$ref": "#/$defs/entity_ref"}
+      },
+      "required": ["tool", "arguments", "scope_kind", "target"]
+    },
+    {
+      "properties": {
+        "tool": {"const": "mechanical.apply_convection"},
+        "arguments": {
+          "allOf": [
+            {"$ref": "#/$defs/arguments_mechanical_apply_convection"},
+            {
+              "type": "object",
+              "required": ["analysis_ref", "film_coefficient", "ambient_temperature", "time_table"],
+              "properties": {
+                "analysis_ref": {"type": "null"},
+                "film_coefficient": {"type": "null"},
+                "ambient_temperature": {"type": "null"},
+                "time_table": {"type": "null"}
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "scope_kind": {"const": "entity"},
+        "request_id": {"type": "string", "pattern": "\\S"},
+        "target": {"$ref": "#/$defs/entity_ref"}
+      },
+      "required": ["tool", "arguments", "scope_kind", "target"]
+    },
+    {
+      "properties": {
+        "tool": {"const": "mechanical.apply_temperature"},
+        "arguments": {
+          "allOf": [
+            {"$ref": "#/$defs/arguments_mechanical_apply_temperature"},
+            {
+              "type": "object",
+              "required": ["analysis_ref", "temperature", "time_table"],
+              "properties": {"analysis_ref": {"type": "null"}, "temperature": {"type": "null"}, "time_table": {"type": "null"}},
+              "additionalProperties": false
+            }
+          ]
+        },
+        "scope_kind": {"const": "entity"},
+        "request_id": {"type": "string", "pattern": "\\S"},
+        "target": {"$ref": "#/$defs/entity_ref"}
+      },
+      "required": ["tool", "arguments", "scope_kind", "target"]
+    },
+    {
+      "properties": {
+        "tool": {"const": "mechanical.apply_constraint"},
+        "arguments": {
+          "allOf": [
+            {"$ref": "#/$defs/arguments_mechanical_apply_constraint"},
+            {
+              "type": "object",
+              "required": ["analysis_ref", "kind", "coordinate_frame_ref", "components"],
+              "properties": {"analysis_ref": {"type": "null"}, "kind": {"type": "null"}, "coordinate_frame_ref": {"type": "null"}, "components": {"type": "null"}},
+              "additionalProperties": false
+            }
+          ]
+        },
+        "scope_kind": {"const": "entity"},
+        "request_id": {"type": "string", "pattern": "\\S"},
+        "target": {"$ref": "#/$defs/entity_ref"}
+      },
+      "required": ["tool", "arguments", "scope_kind", "target"]
+    },
+    {
+      "properties": {
+        "tool": {"const": "mechanical.add_analysis_step"},
+        "arguments": {
+          "allOf": [
+            {"$ref": "#/$defs/arguments_mechanical_add_analysis_step"},
+            {
+              "type": "object",
+              "required": ["analysis_ref", "step_ref", "end_time", "time_controls"],
+              "properties": {"analysis_ref": {"type": "null"}, "step_ref": {"type": "null"}, "end_time": {"type": "null"}, "time_controls": {"type": "null"}},
+              "additionalProperties": false
+            }
+          ]
+        },
+        "scope_kind": {"const": "analysis"},
+        "request_id": {"type": "string", "pattern": "\\S"},
+        "target": {"anyOf": [{"$ref": "#/$defs/entity_ref"}, {"type": "null"}]}
+      },
+      "required": ["tool", "arguments", "scope_kind", "target"]
+    },
+    {
+      "properties": {
+        "tool": {"const": "mechanical.export_results"},
+        "arguments": {
+          "allOf": [
+            {"$ref": "#/$defs/arguments_mechanical_export_results"},
+            {
+              "type": "object",
+              "required": ["analysis_ref", "result_kinds", "times", "scope_ref", "coordinate_frame_ref", "formats", "output_ref"],
+              "properties": {
+                "analysis_ref": {"type": "null"},
+                "result_kinds": {"type": "null"},
+                "times": {"type": "null"},
+                "scope_ref": {"type": "null"},
+                "coordinate_frame_ref": {"type": "null"},
+                "formats": {"type": "null"},
+                "output_ref": {"type": "null"}
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "scope_kind": {"const": "analysis"},
+        "request_id": {"type": "string", "pattern": "\\S"},
+        "target": {"anyOf": [{"$ref": "#/$defs/entity_ref"}, {"type": "null"}]}
+      },
+      "required": ["tool", "arguments", "scope_kind", "target"]
+    }
   ],
   "$defs": {
     "entity_ref": {
@@ -835,7 +1209,7 @@
     },
     "constraint_kind": {
       "enum": ["fixed_support", "displacement", "frictionless_support", "remote_displacement", "elastic_support", null],
-      "description": "骨架预留；可用状态另见x-contract.constraint_kinds，pending不得执行。当前arguments仍只允许null。"
+      "description": "项目约束类型；Fixed Support/Displacement待后续绑定，其他kind为pending。请求预览参数仍保持null。"
     },
     "gate_id": {
       "enum": [
@@ -922,6 +1296,455 @@
         "readback": {"type": "array", "uniqueItems": true, "not": {"const": []}, "items": {"$ref": "#/$defs/readback_field"}},
         "failure_handling": {"type": "array", "uniqueItems": true, "not": {"const": []}, "items": {"$ref": "#/$defs/failure_code"}}
       }
+    },
+    "identifier": {"type": ["string", "null"], "pattern": "\\S", "description": "项目标识/属性键；null表示待解析，不是可执行默认值。"},
+    "text": {"type": ["string", "null"]},
+    "entity_ref_or_null": {"anyOf": [{"$ref": "#/$defs/entity_ref"}, {"type": "null"}]},
+    "length_quantity": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["value", "unit", "temperature_kind", "source_ref"],
+      "properties": {
+        "value": {"type": ["number", "null"]},
+        "unit": {"enum": ["m", null]},
+        "temperature_kind": {"enum": ["not_temperature", null]},
+        "source_ref": {"$ref": "#/$defs/identifier"}
+      },
+      "description": "项目内部SI量；值/单位/来源未知时留null，执行门槛不得据此放行。"
+    },
+    "time_quantity": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["value", "unit", "temperature_kind", "source_ref"],
+      "properties": {
+        "value": {"type": ["number", "null"]},
+        "unit": {"enum": ["s", null]},
+        "temperature_kind": {"enum": ["not_temperature", null]},
+        "source_ref": {"$ref": "#/$defs/identifier"}
+      },
+      "description": "项目内部SI量；值/单位/来源未知时留null，执行门槛不得据此放行。"
+    },
+    "absolute_temperature_quantity": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["value", "unit", "temperature_kind", "source_ref"],
+      "properties": {
+        "value": {"type": ["number", "null"]},
+        "unit": {"enum": ["K", null]},
+        "temperature_kind": {"enum": ["absolute_temperature", null]},
+        "source_ref": {"$ref": "#/$defs/identifier"}
+      },
+      "description": "项目内部SI量；值/单位/来源未知时留null，执行门槛不得据此放行。"
+    },
+    "temperature_difference_quantity": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["value", "unit", "temperature_kind", "source_ref"],
+      "properties": {
+        "value": {"type": ["number", "null"]},
+        "unit": {"enum": ["K", null]},
+        "temperature_kind": {"enum": ["temperature_difference", null]},
+        "source_ref": {"$ref": "#/$defs/identifier"}
+      },
+      "description": "项目内部SI量；值/单位/来源未知时留null，执行门槛不得据此放行。"
+    },
+    "film_coefficient_quantity": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["value", "unit", "temperature_kind", "source_ref"],
+      "properties": {
+        "value": {"type": ["number", "null"]},
+        "unit": {"enum": ["W m^-2 K^-1", null]},
+        "temperature_kind": {"enum": ["not_temperature", null]},
+        "source_ref": {"$ref": "#/$defs/identifier"}
+      },
+      "description": "项目内部SI量；值/单位/来源未知时留null，执行门槛不得据此放行。"
+    },
+    "property_quantity": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["value", "unit", "temperature_kind", "source_ref"],
+      "properties": {
+        "value": {"type": ["number", "null"]},
+        "unit": {"$ref": "#/$defs/identifier"},
+        "temperature_kind": {"enum": ["absolute_temperature", "temperature_difference", "not_temperature", null]},
+        "source_ref": {"$ref": "#/$defs/identifier"}
+      },
+      "description": "项目内部SI量；值/单位/来源未知时留null，执行门槛不得据此放行。"
+    },
+    "property_table": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["axes", "rows", "source_ref"],
+      "properties": {
+        "axes": {
+          "type": ["array", "null"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "required": ["name", "unit", "temperature_kind"],
+            "properties": {
+              "name": {"$ref": "#/$defs/identifier"},
+              "unit": {"$ref": "#/$defs/identifier"},
+              "temperature_kind": {"enum": ["absolute_temperature", "temperature_difference", "not_temperature", null]}
+            }
+          },
+          "not": {"const": []}
+        },
+        "rows": {
+          "type": ["array", "null"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "required": ["coordinates", "value"],
+            "properties": {
+              "coordinates": {"type": ["array", "null"], "items": {"$ref": "#/$defs/property_quantity"}, "not": {"const": []}},
+              "value": {"$ref": "#/$defs/property_quantity"}
+            }
+          },
+          "not": {"const": []}
+        },
+        "source_ref": {"$ref": "#/$defs/identifier"}
+      },
+      "description": "表轴、每行坐标与值一同保留；轴数量/行列对应、温区和插值依据由G-TABLE/G-UNITS核查。"
+    },
+    "property_change": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["property_key", "value_kind", "scalar", "table", "source_ref"],
+      "properties": {
+        "property_key": {"$ref": "#/$defs/identifier"},
+        "value_kind": {"enum": ["scalar", "table", null]},
+        "scalar": {"$ref": "#/$defs/property_quantity"},
+        "table": {"$ref": "#/$defs/property_table"},
+        "source_ref": {"$ref": "#/$defs/identifier"}
+      },
+      "allOf": [
+        {"if": {"properties": {"value_kind": {"const": "scalar"}}}, "then": {"properties": {"table": {"type": "null"}}}},
+        {"if": {"properties": {"value_kind": {"const": "table"}}}, "then": {"properties": {"scalar": {"type": "null"}}}}
+      ]
+    },
+    "table_selector": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["property_key", "axis_names", "component_names", "source_ref"],
+      "properties": {
+        "property_key": {"$ref": "#/$defs/identifier"},
+        "axis_names": {"type": ["array", "null"], "items": {"$ref": "#/$defs/identifier"}, "not": {"const": []}},
+        "component_names": {"type": ["array", "null"], "items": {"$ref": "#/$defs/identifier"}, "not": {"const": []}},
+        "source_ref": {"$ref": "#/$defs/identifier"}
+      },
+      "description": "按语义选表；不得把视图当前行号当稳定表标识。"
+    },
+    "file_ref": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["path", "sha256", "source_ref"],
+      "properties": {
+        "path": {"$ref": "#/$defs/identifier"},
+        "sha256": {"type": ["string", "null"], "pattern": "^[0-9a-fA-F]{64}$"},
+        "source_ref": {"$ref": "#/$defs/identifier"}
+      },
+      "description": "文件路径以实际操作主机为准；真实文件与哈希由执行端核验，本校验器不打开几何。"
+    },
+    "import_preferences": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["named_selection_policy", "coordinate_system_policy", "material_policy"],
+      "properties": {
+        "named_selection_policy": {"enum": ["preserve_and_revalidate", "rebuild", null]},
+        "coordinate_system_policy": {"enum": ["preserve_and_revalidate", "rebuild", null]},
+        "material_policy": {"enum": ["keep_registered_revisions", "ignore_imported_materials", null]}
+      },
+      "description": "项目导入意图，不是GeometryImport.Import的原生参数字典；映射保持unresolved。"
+    },
+    "translation": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["x", "y", "z", "unit", "source_ref"],
+      "properties": {
+        "x": {"type": ["number", "null"]},
+        "y": {"type": ["number", "null"]},
+        "z": {"type": ["number", "null"]},
+        "unit": {"enum": ["m", null]},
+        "source_ref": {"$ref": "#/$defs/identifier"}
+      },
+      "description": "相对指定坐标系的真实实体位移；不默认任何分量为零。"
+    },
+    "rotation": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["representation", "x", "y", "z", "unit", "convention", "source_ref"],
+      "properties": {
+        "representation": {"enum": ["euler_angles", null]},
+        "x": {"type": ["number", "null"]},
+        "y": {"type": ["number", "null"]},
+        "z": {"type": ["number", "null"]},
+        "unit": {"enum": ["rad", null]},
+        "convention": {"$ref": "#/$defs/identifier"},
+        "source_ref": {"$ref": "#/$defs/identifier"}
+      },
+      "description": "坐标系、内禀/外禀及旋转顺序均须明确；这里只描述数据，未实现旋转或默认约定。"
+    },
+    "temperature_time_table": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["interpolation", "points", "source_ref"],
+      "properties": {
+        "interpolation": {"enum": ["linear", "step", null]},
+        "points": {
+          "type": ["array", "null"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "required": ["time", "temperature"],
+            "properties": {"time": {"$ref": "#/$defs/time_quantity"}, "temperature": {"$ref": "#/$defs/absolute_temperature_quantity"}}
+          },
+          "not": {"const": []}
+        },
+        "source_ref": {"$ref": "#/$defs/identifier"}
+      },
+      "description": "完整时刻—绝对温度表；单调性、覆盖和插值实现由G-TABLE核查。"
+    },
+    "convection_time_table": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["interpolation", "points", "source_ref"],
+      "properties": {
+        "interpolation": {"enum": ["linear", "step", null]},
+        "points": {
+          "type": ["array", "null"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "required": ["time", "film_coefficient", "ambient_temperature"],
+            "properties": {
+              "time": {"$ref": "#/$defs/time_quantity"},
+              "film_coefficient": {"$ref": "#/$defs/film_coefficient_quantity"},
+              "ambient_temperature": {"$ref": "#/$defs/absolute_temperature_quantity"}
+            }
+          },
+          "not": {"const": []}
+        },
+        "source_ref": {"$ref": "#/$defs/identifier"}
+      }
+    },
+    "displacement_component": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["mode", "value"],
+      "properties": {"mode": {"enum": ["free", "prescribed", null]}, "value": {"$ref": "#/$defs/length_quantity"}},
+      "allOf": [{"if": {"properties": {"mode": {"const": "free"}}}, "then": {"properties": {"value": {"type": "null"}}}}]
+    },
+    "displacement_components": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["x", "y", "z"],
+      "properties": {
+        "x": {"$ref": "#/$defs/displacement_component"},
+        "y": {"$ref": "#/$defs/displacement_component"},
+        "z": {"$ref": "#/$defs/displacement_component"}
+      },
+      "description": "各分量显式声明free或prescribed；未知模式或给定位移仍阻止执行，不能用null补零。"
+    },
+    "step_ref": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["stable_id", "insert_after_step"],
+      "properties": {"stable_id": {"$ref": "#/$defs/identifier"}, "insert_after_step": {"$ref": "#/$defs/identifier"}},
+      "description": "项目步骤身份与插入位置；不是数组下标或软件原生步号。"
+    },
+    "time_controls": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["automatic_time_stepping", "initial_time_step", "minimum_time_step", "maximum_time_step", "time_integration", "nonlinear_settings_ref"],
+      "properties": {
+        "automatic_time_stepping": {"enum": ["on", "off", "program_controlled", null]},
+        "initial_time_step": {"$ref": "#/$defs/time_quantity"},
+        "minimum_time_step": {"$ref": "#/$defs/time_quantity"},
+        "maximum_time_step": {"$ref": "#/$defs/time_quantity"},
+        "time_integration": {"enum": ["on", "off", null]},
+        "nonlinear_settings_ref": {"$ref": "#/$defs/identifier"}
+      },
+      "description": "仅表达项目控制语义；各步一致性、大小关系及本构物理时间由G-STEPS检查，不推断软件枚举/默认步长。"
+    },
+    "output_ref": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["directory", "base_name", "revision", "overwrite_policy"],
+      "properties": {
+        "directory": {"$ref": "#/$defs/identifier"},
+        "base_name": {"$ref": "#/$defs/identifier"},
+        "revision": {"$ref": "#/$defs/identifier"},
+        "overwrite_policy": {"enum": ["reject_if_exists", "explicit_replace", null]}
+      },
+      "description": "导出主机目录与版本/覆盖意图；校验器不创建文件，不选择默认路径。"
+    },
+    "arguments_engineering_data_resolve_entity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["material_id", "material_revision"],
+      "properties": {"material_id": {"$ref": "#/$defs/identifier"}, "material_revision": {"$ref": "#/$defs/identifier"}},
+      "description": "项目工具参数类型；不是ANSYS原生调用签名。null仅允许预览待补充，不能据此执行。"
+    },
+    "arguments_engineering_data_read_property": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["property_key", "table_selector"],
+      "properties": {"property_key": {"$ref": "#/$defs/identifier"}, "table_selector": {"$ref": "#/$defs/table_selector"}},
+      "description": "项目工具参数类型；不是ANSYS原生调用签名。null仅允许预览待补充，不能据此执行。"
+    },
+    "arguments_workbench_project_list_parameters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["parameter_domain"],
+      "properties": {"parameter_domain": {"enum": ["workbench_parameter_set", null]}},
+      "description": "项目工具参数类型；不是ANSYS原生调用签名。null仅允许预览待补充，不能据此执行。"
+    },
+    "arguments_engineering_data_update_material_properties": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["material_id", "base_revision", "new_revision", "property_changes"],
+      "properties": {
+        "material_id": {"$ref": "#/$defs/identifier"},
+        "base_revision": {"$ref": "#/$defs/identifier"},
+        "new_revision": {"$ref": "#/$defs/identifier"},
+        "property_changes": {"type": ["array", "null"], "items": {"$ref": "#/$defs/property_change"}, "not": {"const": []}}
+      },
+      "description": "项目工具参数类型；不是ANSYS原生调用签名。null仅允许预览待补充，不能据此执行。"
+    },
+    "arguments_workbench_project_set_geometry_parameter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["parameter_ref", "value"],
+      "properties": {"parameter_ref": {"$ref": "#/$defs/entity_ref_or_null"}, "value": {"$ref": "#/$defs/property_quantity"}},
+      "description": "项目工具参数类型；不是ANSYS原生调用签名。null仅允许预览待补充，不能据此执行。"
+    },
+    "arguments_mechanical_resolve_entity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["expected_kind"],
+      "properties": {"expected_kind": {"enum": ["body", "named_selection", "analysis", "geometry_import", "boundary_condition", "result", null]}},
+      "description": "项目工具参数类型；不是ANSYS原生调用签名。null仅允许预览待补充，不能据此执行。"
+    },
+    "arguments_mechanical_read_property": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["property_key"],
+      "properties": {"property_key": {"$ref": "#/$defs/identifier"}},
+      "description": "项目工具参数类型；不是ANSYS原生调用签名。null仅允许预览待补充，不能据此执行。"
+    },
+    "arguments_mechanical_assign_material": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["material_id", "material_revision"],
+      "properties": {"material_id": {"$ref": "#/$defs/identifier"}, "material_revision": {"$ref": "#/$defs/identifier"}},
+      "description": "项目工具参数类型；不是ANSYS原生调用签名。null仅允许预览待补充，不能据此执行。"
+    },
+    "arguments_mechanical_reimport_geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file_ref", "file_revision", "length_unit", "import_preferences"],
+      "properties": {
+        "file_ref": {"$ref": "#/$defs/file_ref"},
+        "file_revision": {"$ref": "#/$defs/identifier"},
+        "length_unit": {"$ref": "#/$defs/identifier"},
+        "import_preferences": {"$ref": "#/$defs/import_preferences"}
+      },
+      "description": "项目工具参数类型；不是ANSYS原生调用签名。null仅允许预览待补充，不能据此执行。"
+    },
+    "arguments_mechanical_transform_entity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["coordinate_frame_ref", "translation", "rotation"],
+      "properties": {
+        "coordinate_frame_ref": {"$ref": "#/$defs/entity_ref_or_null"},
+        "translation": {"$ref": "#/$defs/translation"},
+        "rotation": {"$ref": "#/$defs/rotation"}
+      },
+      "description": "项目工具参数类型；不是ANSYS原生调用签名。null仅允许预览待补充，不能据此执行。"
+    },
+    "arguments_mechanical_apply_convection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["analysis_ref", "film_coefficient", "ambient_temperature", "time_table"],
+      "properties": {
+        "analysis_ref": {"$ref": "#/$defs/entity_ref_or_null"},
+        "film_coefficient": {"$ref": "#/$defs/film_coefficient_quantity"},
+        "ambient_temperature": {"$ref": "#/$defs/absolute_temperature_quantity"},
+        "time_table": {"$ref": "#/$defs/convection_time_table"}
+      },
+      "description": "项目工具参数类型；不是ANSYS原生调用签名。null仅允许预览待补充，不能据此执行。",
+      "allOf": [
+        {
+          "if": {"properties": {"time_table": {"not": {"type": "null"}}}},
+          "then": {"properties": {"film_coefficient": {"type": "null"}, "ambient_temperature": {"type": "null"}}}
+        }
+      ]
+    },
+    "arguments_mechanical_apply_temperature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["analysis_ref", "temperature", "time_table"],
+      "properties": {
+        "analysis_ref": {"$ref": "#/$defs/entity_ref_or_null"},
+        "temperature": {"$ref": "#/$defs/absolute_temperature_quantity"},
+        "time_table": {"$ref": "#/$defs/temperature_time_table"}
+      },
+      "description": "项目工具参数类型；不是ANSYS原生调用签名。null仅允许预览待补充，不能据此执行。",
+      "not": {
+        "properties": {"temperature": {"not": {"type": "null"}}, "time_table": {"not": {"type": "null"}}},
+        "required": ["temperature", "time_table"]
+      }
+    },
+    "arguments_mechanical_apply_constraint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["analysis_ref", "kind", "coordinate_frame_ref", "components"],
+      "properties": {
+        "analysis_ref": {"$ref": "#/$defs/entity_ref_or_null"},
+        "kind": {"$ref": "#/$defs/constraint_kind"},
+        "coordinate_frame_ref": {"$ref": "#/$defs/entity_ref_or_null"},
+        "components": {"$ref": "#/$defs/displacement_components"}
+      },
+      "description": "项目工具参数类型；不是ANSYS原生调用签名。null仅允许预览待补充，不能据此执行。",
+      "allOf": [{"if": {"properties": {"kind": {"const": "fixed_support"}}}, "then": {"properties": {"components": {"type": "null"}}}}]
+    },
+    "arguments_mechanical_add_analysis_step": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["analysis_ref", "step_ref", "end_time", "time_controls"],
+      "properties": {
+        "analysis_ref": {"$ref": "#/$defs/entity_ref_or_null"},
+        "step_ref": {"$ref": "#/$defs/step_ref"},
+        "end_time": {"$ref": "#/$defs/time_quantity"},
+        "time_controls": {"$ref": "#/$defs/time_controls"}
+      },
+      "description": "项目工具参数类型；不是ANSYS原生调用签名。null仅允许预览待补充，不能据此执行。"
+    },
+    "arguments_mechanical_export_results": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["analysis_ref", "result_kinds", "times", "scope_ref", "coordinate_frame_ref", "formats", "output_ref"],
+      "properties": {
+        "analysis_ref": {"$ref": "#/$defs/entity_ref_or_null"},
+        "result_kinds": {
+          "type": ["array", "null"],
+          "items": {"enum": ["temperature", "equivalent_stress", "equivalent_plastic_strain", "directional_displacement_UZ", "reaction_force", null]},
+          "not": {"const": []}
+        },
+        "times": {"type": ["array", "null"], "items": {"$ref": "#/$defs/time_quantity"}, "not": {"const": []}},
+        "scope_ref": {"$ref": "#/$defs/entity_ref_or_null"},
+        "coordinate_frame_ref": {"$ref": "#/$defs/entity_ref_or_null"},
+        "formats": {
+          "type": ["array", "null"],
+          "items": {"enum": ["CSV", "PNG", "rst", "npz", null]},
+          "not": {"const": []},
+          "allOf": [{"if": {"type": "array"}, "then": {"allOf": [{"contains": {"const": "CSV"}}, {"contains": {"const": "PNG"}}]}}]
+        },
+        "output_ref": {"$ref": "#/$defs/output_ref"}
+      },
+      "description": "项目工具参数类型；不是ANSYS原生调用签名。null仅允许预览待补充，不能据此执行。"
     }
   },
   "allOf": [
