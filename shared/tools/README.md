@@ -16,7 +16,7 @@ reviewed_at: ""
 
 # 执行契约骨架：第一阶段审阅件
 
-本目录是“规范加证据”，没有执行器、仿真脚本或已验证结果。当前为第一阶段参数值类型与语义审阅件；未绑定适配器方法，未实施仿真操作，也不修改结构输入模板或BGA取证文件。全部条目为draft，`software_version: null`等待用户提供ansys-mechanical-core确切版本；软件基线单独记录为Mechanical 2024 R2/v242。
+本目录是“规范加证据”，没有执行器、仿真脚本或已验证结果。当前为第一阶段参数值类型与语义审阅件；未绑定适配器方法，未实施仿真操作，本轮开始补结构输入模板的entity_ref与校验段，BGA结构侧取证文件尚未修改。全部条目为draft，`software_version: null`等待用户提供ansys-mechanical-core确切版本；软件基线单独记录为Mechanical 2024 R2/v242。
 
 [契约骨架](tools.schema.json)定义预览请求的形状；[未决清单](unresolved.md)集中记录API与人工取证卡点。源码中没有可调用适配器。所有工具`execution_enabled: false`；请求仅接受`execution_mode: preview_only`，各工具arguments暂时只接受null。示例用来审查字段，不是有效的仿真输入。
 
@@ -124,7 +124,7 @@ schema内容或校验脚本变更会使旧记录失效，脚本将拒绝沿用�
 
 注册规则来源为SRC-ENTITY-REGISTRY-USER-001，已先登记在catalog；每行还保留实际数据来源SRC、文件、行/对象定位及该文件SHA-256。规则如下：
 
-- 初始实体/分析/旧选择的stable_id由案例命名空间、种类与首次证据中的object_id确定，例如CSV中的ENT-BGA-BODY前缀；这不是原生API ID。材料直接复用材料目录的material_id；截图“外表面”用其唯一证据SRC编号登记逻辑ID，不填虚构树/面ID。
+- 初始实体/分析/旧选择的stable_id由案例命名空间、种类与首次证据中的object_id确定，例如CSV中的ENT-BGA-BODY前缀；这不是原生API ID。材料直接复用材料目录的material_id；“外表面”使用固定逻辑主键ENT-BGA-NS-OUTER-001；证据编号只放在来源字段，不进入主键，也不填虚构树/面ID。
 - 一经确认，stable_id不因显示名变化而重建；跨修订需要明确映射证据，不能根据新版本碰巧复用相同object_id就认作原实体。当前命名规则只是确定性初始登记，不是自动识别算法。
 - 逻辑身份为stable_id，overlay选择必须同时限定model_revision；材料还要固定material_revision。model_revision采用原source-manifest.json登记的归档SHA-256，不是猜测的ANSYS版本号，也不是当前工程修订。
 - source_object_id只保存历史导出编号。mechanical_tree_id、geometry_body_ids、geometry_face_ids均未运行回读，继续留空；CSV空字段代表未知，不表示零、空作用域或适用于任意修订。part_id未当作CAD体ID复制。
@@ -132,8 +132,21 @@ schema内容或校验脚本变更会使旧记录失效，脚本将拒绝沿用�
 - 材料目录当前只有revision 1，按原目录记录；不因材料名称相同就升级到revision 3。实体行只保留观察到的material_name_hint，实际material_id/revision绑定留空，避免把名称匹配当作版本证据。
 - resolved_from在材料行使用parameter_table仅指材料CSV登记表，不表示存在Workbench参数集；各行来源用于解析取证，不把显示名称作为执行唯一键。
 
-所有行status=draft、resolution_state=unresolved，审核字段为空；未绑定model_revision或未关闭解析证据的行不得供写工具执行。运行时映射仍需对应工程中只读解析与回读，不能通过复制历史编号获得“已解析”状态。注册表经用户确认后再修改阶段二模板；本轮没有更改模板或关闭U-STABLE-ID。
+所有行status=draft、resolution_state=unresolved，审核字段为空；未绑定model_revision或未关闭解析证据的行不得供写工具执行。运行时映射仍需对应工程中只读解析与回读，不能通过复制历史编号获得“已解析”状态。注册表已获用户确认，本轮按新要求补唯一性、alias与自动检查，并开始阶段二模板的entity_ref与校验段；没有关闭运行时U-STABLE-ID。
 
 注册表文件SHA-256固定在entity_policy.registry_sha256内，普通check也核对该哈希、逐行证据文件哈希、来源编号、历史对象编号、材料目录修订及overlay边界。修改注册表需同步更新哈希并重新取证；这些仍是只读静态检查，不是运行时实体解析。
 
 registry_hash_kind及逐行source_hash_kind均明确为utf8-lf：对这里的CSV/JSON/Markdown证据去UTF-8 BOM、统一LF后计算文本哈希，避免Git在Windows/CI之间转换换行造成误报。它们不是原始CAD/工程文件的字节哈希；model_revision引用的原归档SHA-256仍是source-manifest中记录的原文件字节哈希，两者不混用。
+
+
+## 阶段二第一部分：引用与校验
+
+[结构输入模板](../templates/package-structure-input.json)为每个部件增加entity_ref，为每个连接增加连接自身及上下端点引用；全部未知值保持null。引用形状复用工具契约的绝对$ref，不复制schema定义；原有尺寸、位置、材料和边界未知值没有补数。
+
+registry.csv新增aliases和parent_id。当前只登记die_1→ENT-BGA-BODY-25、substrate_1→ENT-BGA-BODY-496；alias必须限定案例及修订，不是执行主键。interposer_1没有BGA实体可映射，保持未注册；parent_id全部留空，不填die/interposer/substrate层级。
+
+校验器机械检查stable_id全局唯一、材料ID/revision在共享目录中存在、任一非空source_object_id在该案例bodies/object-names中存在、证据文件文本哈希一致、status/resolution_state属于声明枚举。所有实际entity_ref引用都检查注册行与修订；model_revision为空的行一律禁止被引用，包含ENT-BGA-NS-OUTER-001。源登记虽存在，不等于已解析运行时映射。
+
+模板validation_state可声明draft/resolved/executable；当前为draft且ready_for_execution=false。draft允许未知引用留null，但不允许错误ID、悬空修订或错连端点。resolved需要全部必需引用、材料与注册映射已解析；executable还需几何重叠、单位、适配器及执行版本门槛。几何重叠和单位转换仍为unresolved，不由LLM宣称已检查；0.1.0始终禁止执行。
+
+本轮仅完成上述数据结构与静态检查，不表示阶段二全部完成。单位换算、几何检查和运行时解析均未实现，也不提前进入阶段三。

@@ -58,8 +58,12 @@
       "registry_path": "shared/entities/registry.csv",
       "registry_lookup_rule": "以stable_id标识逻辑实体，在明确model_revision上overlay；材料另须固定material_revision。未给model_revision或resolution_state为unresolved时，禁止写入，不按显示名跨修订猜测。",
       "registry_source_id": "SRC-ENTITY-REGISTRY-USER-001",
-      "registry_sha256": "5cb4974bdf01ba3674d93adb716d33ce9e3f71f443fe34ae8af96e25ef1f7685",
-      "registry_hash_kind": "utf8-lf"
+      "registry_sha256": "731a926e5985aa3dfac78dfcd5ee92644cc46f823d0621ae6ae947d9fb2ca85a",
+      "registry_hash_kind": "utf8-lf",
+      "registry_enums": {"status": ["draft", "reviewed", "validated", "deprecated"], "resolution_state": ["unresolved", "resolved"]},
+      "registry_unique_key": "stable_id",
+      "alias_rule": "aliases以分号分隔；只能按case_id与model_revision限定查找。alias只是解析入口，最终引用仍使用stable_id；不做自动映射。",
+      "parent_rule": "parent_id预留为父实体stable_id；未知留空，不根据部件名称推断层级；填写时须存在、同案例同修订且无环。"
     },
     "material_policy": {
       "revision_required": true,
@@ -865,8 +869,8 @@
           "expected": "reject"
         }
       ],
-      "last_result": "passed_static_only",
-      "last_run": {"commit": "fe42005450e808c0cd7ab2901ec4dc10c16718fd", "at": "2026-11-02T04:39:48.018054+00:00", "python": "3.14.7", "jsonschema": "4.26.0", "schema_content_sha256": "2aeee5f8b6e2131f3e4603c8d25ff5172f93625df32e05b331512fcb46826ff8", "validation_script_sha256": "282570eab6a0232d8140f85a9f89a4f4a0470c3cfaaa6095d67da3dd2584abf0"}
+      "last_result": null,
+      "last_run": null
     },
     "argument_typing": {
       "status": "draft",
@@ -876,6 +880,12 @@
       "preview_rule": "实际请求arguments同时满足类型定义和全null占位限制，保留已确认预览边界；类型可独立静态引用，不意味着可提交真实值或执行。",
       "semantics_not_static": "来源真实性、单位换算、ID解析、物理时间/表对应、材料新旧revision比较、gate判定与结果有效性仍需执行端实现。",
       "no_native_signature_claim": "参数、枚举和SI单位是项目数据协议；不能原样当作ANSYS原生参数字典。所有adapter_method与软件包版本保持null。"
+    },
+    "package_structure_template": {
+      "path": "shared/templates/package-structure-input.json",
+      "hash_kind": "utf8-lf",
+      "sha256": "80019d98566c12b13cd78c443f43680e17bd8be2edcf426b8b9156e14e7d609d",
+      "scope": "entity_ref与校验段先行；状态draft，不执行，不填未知物理参数。"
     }
   },
   "type": "object",

@@ -55,6 +55,159 @@ def git(root: Path, *args: str) -> str:
     return subprocess.check_output(["git", *args], cwd=root, text=True).strip()
 
 
+def validate_registry_rows(root: Path, schema: dict, entities: list, sources: set) -> dict:
+    """Check declarative registry evidence; do not resolve any live ANSYS object."""
+    policy = schema["x-contract"]["entity_policy"]
+    with (root / "shared/materials/catalog.csv").open(encoding="utf-8-sig", newline="") as stream:
+        material_pairs = {(row["material_id"], row["revision"]) for row in csv.DictReader(stream)}
+    index, alias_keys, case_evidence = {}, set(), {}
+    for entity in entities:
+        stable = entity["stable_id"]
+        require(bool(stable) and stable not in index, "Duplicate stable_id or empty stable_id.")
+        index[stable] = entity
+        require(entity["status"] in policy["registry_enums"]["status"], "Invalid registry status enum.")
+        require(entity["resolution_state"] in policy["registry_enums"]["resolution_state"], "Invalid resolution_state enum.")
+        if entity["status"] == "draft":
+            require(entity["reviewed_by"] == entity["reviewed_at"] == "", "Draft registry review fields must be empty.")
+        elif entity["status"] in ("reviewed", "validated"):
+            require(bool(entity["reviewed_by"]) and bool(entity["reviewed_at"]), "Reviewed registry row lacks review evidence.")
+        material = (entity["material_id"], entity["material_revision"])
+        if any(material) or entity["entity_kind"] == "material":
+            require(all(material) and material in material_pairs, "Material ID/revision not in authoritative catalog.")
+        case_id = entity["case_id"]
+        require(re.fullmatch(r"[A-Za-z0-9_-]+", case_id) is not None, "Invalid case_id.")
+        if case_id not in case_evidence:
+            directory = root / "simulation/cases" / case_id / "data"
+            with (directory / "bodies.csv").open(encoding="utf-8-sig", newline="") as stream:
+                bodies = list(csv.DictReader(stream))
+            objects = json.loads((directory / "object-names.json").read_text(encoding="utf-8-sig"))
+            manifest = json.loads((directory / "source-manifest.json").read_text(encoding="utf-8-sig"))
+            ids = {row["object_id"] for row in bodies} | {str(row["object_id"]) for row in objects}
+            case_evidence[case_id] = (ids, "archive-sha256:" + manifest["archive_snapshot"]["sha256"])
+        native_ids, archive_revision = case_evidence[case_id]
+        if entity["source_object_id"]:
+            require(entity["source_object_id"] in native_ids, "source_object_id absent from bodies/object-names.")
+        require(entity["model_revision"] in ("", archive_revision), "Unproven model revision overlay.")
+        require(entity["resolved_from"] in schema["$defs"]["entity_ref"]["properties"]["resolved_from"]["properties"]["kind"]["enum"], "Unknown registry resolution source.")
+        require(set(entity["source_ids"].split(";")) <= sources, "Unregistered entity evidence source.")
+        artifact = (root / entity["source_artifact"]).resolve()
+        require(artifact.is_relative_to(root.resolve()) and artifact.suffix.lower() != ".pdf", "Unexpected registry evidence path.")
+        require(entity["source_hash_kind"] == "utf8-lf", "Unknown registry evidence hash normalization.")
+        require(text_digest(artifact) == entity["source_artifact_sha256"], "Registry evidence artifact hash mismatch.")
+        if entity["resolution_state"] == "unresolved":
+            require(not any(entity[field] for field in ("mechanical_tree_id", "geometry_body_ids", "geometry_face_ids")), "Unresolved registry row contains an unproved runtime mapping.")
+        else:
+            require(bool(entity["model_revision"]) and not entity["blocking_reason"], "Resolved registry row has unresolved identity prerequisites.")
+            require(any(entity[field] for field in ("mechanical_tree_id", "geometry_body_ids", "geometry_face_ids")), "Resolved registry row lacks a runtime identity.")
+        if artifact.suffix == ".csv":
+            with artifact.open(encoding="utf-8-sig", newline="") as stream:
+                evidence_rows = list(csv.DictReader(stream))
+            if entity["entity_kind"] == "body":
+                matches = [row for row in evidence_rows if row.get("object_id") == entity["source_object_id"]]
+                require(len(matches) == 1 and matches[0]["name"] == entity["display_name_hint"] and matches[0]["material"] == entity["material_name_hint"], "Historical body evidence mismatch.")
+            elif entity["entity_kind"] == "material":
+                matches = [row for row in evidence_rows if (row.get("material_id"), row.get("revision")) == material]
+                require(len(matches) == 1 and stable == entity["material_id"], "Material registry differs from its evidence catalog.")
+        elif entity["source_object_id"]:
+            evidence_rows = json.loads(artifact.read_text(encoding="utf-8-sig"))
+            matches = [row for row in evidence_rows if str(row["object_id"]) == entity["source_object_id"]]
+            require(len(matches) == 1 and matches[0]["name"] == entity["display_name_hint"], "Historical object index mismatch.")
+        for alias in filter(None, (value.strip() for value in entity["aliases"].split(";"))):
+            key = (case_id, entity["model_revision"], alias)
+            require(key not in alias_keys, "Ambiguous scoped alias.")
+            alias_keys.add(key)
+    for stable, entity in index.items():
+        parent = entity["parent_id"]
+        if parent:
+            require(parent in index and parent != stable, "Unknown or self parent_id.")
+            require(index[parent]["case_id"] == entity["case_id"] and index[parent]["model_revision"] == entity["model_revision"] and bool(entity["model_revision"]), "Parent revision/case mismatch.")
+        seen, current = set(), stable
+        while current:
+            require(current in index, "Unknown parent_id.")
+            require(current not in seen, "Cyclic parent_id hierarchy.")
+            seen.add(current)
+            current = index[current]["parent_id"]
+    return index
+
+
+def lookup_alias(entities: list, alias: str, case_id: str, model_revision: str) -> dict:
+    require(bool(case_id) and bool(model_revision), "Alias lookup requires explicit case_id and model_revision.")
+    matches = [row for row in entities if row["case_id"] == case_id and row["model_revision"] == model_revision and alias in [x.strip() for x in row["aliases"].split(";")]]
+    require(len(matches) == 1, "Alias is unregistered or ambiguous in this revision.")
+    return matches[0]
+
+
+def entity_refs(value, path="root", declared_reference=False):
+    if isinstance(value, dict):
+        if "stable_id" in value and ("resolved_from" in value or declared_reference or path == "root") and isinstance(value["stable_id"], (str, type(None))):
+            yield path, value
+        for key, child in value.items():
+            if key not in ("$defs", "shape_schema", "negative_cases"):
+                is_reference = key.endswith("entity_ref") or key in ("target", "scope_ref", "analysis_ref", "coordinate_frame_ref", "parameter_ref")
+                yield from entity_refs(child, path + "." + key, is_reference)
+    elif isinstance(value, list):
+        for position, child in enumerate(value):
+            yield from entity_refs(child, path + "[" + str(position) + "]")
+
+
+def validate_entity_ref_bindings(value, index: dict, case_id=None, model_revision=None) -> None:
+    for path, reference in entity_refs(value):
+        stable = reference["stable_id"]
+        if stable is None:
+            continue
+        require(stable in index, "Unknown entity_ref stable_id at " + path)
+        row = index[stable]
+        require(bool(row["model_revision"]), "entity_ref targets a registry row with empty model_revision: " + stable)
+        require(reference.get("model_revision") == row["model_revision"], "entity_ref model revision mismatch: " + stable)
+        if case_id:
+            require(case_id == row["case_id"], "entity_ref case mismatch: " + stable)
+        if model_revision:
+            require(model_revision == row["model_revision"], "entity_ref base revision mismatch: " + stable)
+
+
+def validate_package_document(document: dict, index: dict, material_pairs: set, validator, contract: dict, trusted_shape: dict) -> list:
+    require(document["validation"]["shape_schema"] == trusted_shape, "Package validation schema policy drift.")
+    validator.evolve(schema=trusted_shape).validate(document)
+    require(document["reviewed_by"] == document["reviewed_at"] == "", "Package draft review fields must be empty.")
+    require(document["entity_contract_ref"]["schema_id"] == validator.schema["$id"], "Package contract reference drift.")
+    validate_entity_ref_bindings(document, index, document["case_id"], document["base_model_revision"])
+    component_ids = [row["id"] for row in document["components"]]
+    require(len(set(component_ids)) == len(component_ids), "Duplicate package component ID.")
+    connections = [row["id"] for row in document["connections"]]
+    require(len(set(connections)) == len(connections), "Duplicate package connection ID.")
+    components = {row["id"]: row for row in document["components"]}
+    pending = []
+    for name in ("case_id", "base_model_revision"):
+        if document[name] is None:
+            pending.append(name)
+    for component in document["components"]:
+        material = component["material_ref"]
+        if material["id"] is not None or material["revision"] is not None:
+            require((material["id"], material["revision"]) in material_pairs, "Package material ID/revision missing or unknown.")
+        else:
+            pending.append(component["id"] + ".material_ref")
+    for connection in document["connections"]:
+        low, high = connection["lower_component"], connection["upper_component"]
+        require(low in components and high in components and low != high, "Package connection has an unknown or identical endpoint.")
+        for endpoint, name in (("lower_entity_ref", low), ("upper_entity_ref", high)):
+            actual, expected = connection[endpoint]["stable_id"], components[name]["entity_ref"]["stable_id"]
+            if actual is not None and expected is not None:
+                require(actual == expected, "Connection endpoint differs from component entity_ref.")
+        underfill = connection["underfill"]
+        if underfill["material_id"] is not None or underfill["material_revision"] is not None:
+            require((underfill["material_id"], underfill["material_revision"]) in material_pairs, "Underfill material revision missing or unknown.")
+    for path, reference in entity_refs(document):
+        if reference["stable_id"] is None or index[reference["stable_id"]]["resolution_state"] != "resolved":
+            pending.append(path)
+    if document["validation_state"] != "draft":
+        require(not pending, "Package cannot be promoted while references/materials remain unresolved.")
+    if document["validation_state"] == "executable" or document["ready_for_execution"]:
+        require(contract["execution_enabled"] and contract["software_version"] is not None, "Contract preview version forbids executable package state.")
+        require(document["validation"]["geometry_overlap"]["implementation_state"] != "unresolved" and document["validation"]["geometry_overlap"]["result"] == "passed", "Geometry overlap check has not been implemented or evidenced.")
+        require(document["validation"]["units"]["implementation_state"] != "unresolved", "Unit conversion remains unresolved.")
+    return pending
+
+
 def check(root: Path, schema: dict) -> dict:
     try:
         from jsonschema import Draft202012Validator
@@ -167,39 +320,67 @@ def check(root: Path, schema: dict) -> dict:
     require(text_digest(registry_path) == contract["entity_policy"]["registry_sha256"], "Entity registry content differs from its pinned digest.")
     with registry_path.open(encoding="utf-8-sig", newline="") as stream:
         entities = list(csv.DictReader(stream))
-    overlay_keys = set()
-    manifest_path = root / "simulation/cases/bga-2024r2-unsolved/data/source-manifest.json"
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    archive_revision = "archive-sha256:" + manifest["archive_snapshot"]["sha256"]
-    for entity in entities:
-        key = (entity["stable_id"], entity["model_revision"], entity["material_revision"])
-        require(bool(entity["stable_id"]) and key not in overlay_keys, "Empty or duplicate registry overlay key.")
-        overlay_keys.add(key)
-        require(entity["status"] == "draft" and entity["reviewed_by"] == entity["reviewed_at"] == "", "Registry review state changed.")
-        require(entity["resolution_state"] == "unresolved", "Unverified registry mapping was promoted.")
-        require(entity["resolved_from"] in schema["$defs"]["entity_ref"]["properties"]["resolved_from"]["properties"]["kind"]["enum"], "Unknown registry resolution source.")
-        require(set(entity["source_ids"].split(";")) <= sources, "Unregistered entity evidence source.")
-        artifact = (root / entity["source_artifact"]).resolve()
-        require(artifact.is_relative_to(root.resolve()) and artifact.suffix.lower() != ".pdf", "Unexpected registry evidence path.")
-        require(entity["source_hash_kind"] == "utf8-lf", "Unknown registry evidence hash normalization.")
-        require(text_digest(artifact) == entity["source_artifact_sha256"], "Registry evidence artifact changed.")
-        require(entity["model_revision"] in ("", archive_revision), "Unproven model revision overlay.")
-        require(not any(entity[field] for field in ("mechanical_tree_id", "geometry_body_ids", "geometry_face_ids")), "Runtime IDs were filled without resolution evidence.")
-        if artifact.suffix == ".csv":
-            with artifact.open(encoding="utf-8-sig", newline="") as stream:
-                evidence_rows = list(csv.DictReader(stream))
-            if entity["entity_kind"] == "body":
-                matches = [row for row in evidence_rows if row.get("object_id") == entity["source_object_id"]]
-                require(len(matches) == 1 and matches[0]["name"] == entity["display_name_hint"], "Historical body ID/evidence mismatch.")
-                require(not entity["material_id"] and not entity["material_revision"], "Body material revision inferred from a name.")
-            elif entity["entity_kind"] == "material":
-                matches = [row for row in evidence_rows if row.get("material_id") == entity["material_id"] and row.get("revision") == entity["material_revision"]]
-                require(len(matches) == 1 and entity["stable_id"] == entity["material_id"], "Material registry ID/revision differs from catalog.")
-        elif entity["source_object_id"]:
-            evidence_rows = json.loads(artifact.read_text(encoding="utf-8"))
-            matches = [row for row in evidence_rows if str(row["object_id"]) == entity["source_object_id"]]
-            require(len(matches) == 1 and matches[0]["name"] == entity["display_name_hint"], "Historical object index mismatch.")
-    print("PASS", len(entities), "draft entity registry rows; source hashes; revision overlays")
+    index = validate_registry_rows(root, schema, entities, sources)
+    with (root / "shared/materials/catalog.csv").open(encoding="utf-8-sig", newline="") as stream:
+        material_pairs = {(row["material_id"], row["revision"]) for row in csv.DictReader(stream)}
+    package_info = contract["package_structure_template"]
+    package_path = root / package_info["path"]
+    require(package_info["hash_kind"] == "utf8-lf" and text_digest(package_path) == package_info["sha256"], "Package template differs from pinned content.")
+    package = json.loads(package_path.read_text(encoding="utf-8-sig"))
+    require(set(package["source_ids"]) <= sources, "Unregistered package contract source.")
+    trusted_shape = copy.deepcopy(package["validation"]["shape_schema"])
+    pending = validate_package_document(package, index, material_pairs, validator, contract, trusted_shape)
+    for directory in ("shared", "simulation", "packaging"):
+        for candidate in (root / directory).rglob("*.json"):
+            document = json.loads(candidate.read_text(encoding="utf-8-sig"))
+            if isinstance(document, dict):
+                context = document.get("context", {})
+                validate_entity_ref_bindings(document, index, document.get("case_id"), document.get("base_model_revision", context.get("model_revision")))
+    def reject_semantic(name, callback, expected):
+        try:
+            callback()
+        except ValueError as error:
+            require(expected in str(error), "Wrong rejection reason for " + name + ": " + str(error))
+            rejected.append(name)
+        else:
+            raise ValueError("Unexpected semantic acceptance: " + name)
+    mutation_cases = [
+        ("registry-material-id", "material", "material_id", "<UNKNOWN>", "Material ID/revision"),
+        ("registry-material-revision", "material", "material_revision", "<UNKNOWN>", "Material ID/revision"),
+        ("registry-object-id", "body", "source_object_id", "<UNKNOWN>", "source_object_id absent"),
+        ("registry-artifact-hash", "body", "source_artifact_sha256", "<MISMATCH>", "artifact hash mismatch"),
+        ("registry-status", "body", "status", "<INVALID>", "status enum"),
+        ("registry-resolution-state", "body", "resolution_state", "<INVALID>", "resolution_state enum"),
+    ]
+    for label, kind, field, value, reason in mutation_cases:
+        changed = copy.deepcopy(entities)
+        next(row for row in changed if row["entity_kind"] == kind)[field] = value
+        reject_semantic(label, lambda data=changed: validate_registry_rows(root, schema, data, sources), reason)
+    duplicate = copy.deepcopy(entities); duplicate.append(copy.deepcopy(duplicate[0]))
+    reject_semantic("registry-stable-id-unique", lambda: validate_registry_rows(root, schema, duplicate, sources), "Duplicate stable_id")
+    reference = copy.deepcopy(tools["mechanical.read_property"]["example"]["target"])
+    reference["stable_id"] = "ENT-BGA-NS-OUTER-001"
+    reject_semantic("reference-to-unbound-revision", lambda: validate_entity_ref_bindings(reference, index), "empty model_revision")
+    body = index["ENT-BGA-BODY-25"]
+    require(lookup_alias(entities, "die_1", body["case_id"], body["model_revision"])["stable_id"] == "ENT-BGA-BODY-25", "die_1 alias mapping drift.")
+    require(lookup_alias(entities, "substrate_1", body["case_id"], body["model_revision"])["stable_id"] == "ENT-BGA-BODY-496", "substrate_1 alias mapping drift.")
+    reject_semantic("alias-without-revision", lambda: lookup_alias(entities, "die_1", body["case_id"], None), "explicit case_id")
+    reject_semantic("interposer-alias-not-invented", lambda: lookup_alias(entities, "interposer_1", body["case_id"], body["model_revision"]), "unregistered")
+    changed = copy.deepcopy(package); changed["validation_state"] = "resolved"
+    reject_semantic("package-false-resolved-state", lambda: validate_package_document(changed, index, material_pairs, validator, contract, trusted_shape), "cannot be promoted")
+    changed = copy.deepcopy(package); changed["ready_for_execution"] = True
+    reject_semantic("package-preview-cannot-execute", lambda: validate_package_document(changed, index, material_pairs, validator, contract, trusted_shape), "preview version forbids")
+    changed = copy.deepcopy(package); changed["components"][0]["entity_ref"] = reference
+    reject_semantic("package-unbound-scope-reference", lambda: validate_package_document(changed, index, material_pairs, validator, contract, trusted_shape), "empty model_revision")
+    changed = copy.deepcopy(package); changed["validation"]["shape_schema"] = {}
+    reject_semantic("package-cannot-relax-its-schema", lambda: validate_package_document(changed, index, material_pairs, validator, contract, trusted_shape), "policy drift")
+    changed = copy.deepcopy(package)
+    for target, stable in ((changed["components"][0]["entity_ref"], "ENT-BGA-BODY-25"), (changed["connections"][0]["upper_entity_ref"], "ENT-BGA-BODY-496")):
+        target["stable_id"] = stable
+        target["model_revision"] = index[stable]["model_revision"]
+    reject_semantic("package-conflicting-connection-endpoint", lambda: validate_package_document(changed, index, material_pairs, validator, contract, trusted_shape), "endpoint differs")
+    print("PASS", len(entities), "registry rows; six mechanical checks; scoped aliases; parent references")
+    print("PASS package entity-ref shape; validation_state=draft; pending identity/material fields:", len(pending))
     unresolved = (root / "shared/tools/unresolved.md").read_text(encoding="utf-8")
     for tool in tools.values():
         require(all("| " + key + " |" in unresolved for key in tool["unresolved_refs"]), "Unlisted unresolved ID.")
