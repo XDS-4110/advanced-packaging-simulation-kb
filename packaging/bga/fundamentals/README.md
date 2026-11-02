@@ -22,3 +22,5 @@
 - [BGA的定义与内部互连的区别](bga-definition.md)
 
 - [器件级与板级BGA研究范围](package-vs-board-scope.md)
+
+- [BGA热路径与热阻数据的使用边界](thermal-paths-and-resistance.md)：课程归纳，draft。

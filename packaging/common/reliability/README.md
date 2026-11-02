@@ -20,3 +20,7 @@
 下列正文均为待审核草稿。
 
 - [翘曲对照为什么需要制造状态](warpage-validation.md)（draft）
+
+- [焊料蠕变、黏塑性与疲劳寿命的区别](solder-creep-and-fatigue.md)：课程归纳，draft。
+
+- [封装吸湿状态、湿胀与回流前历史](moisture-state-and-preconditioning.md)：课程归纳，draft。

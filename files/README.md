@@ -30,3 +30,4 @@ PDF保持原样，保留作者及许可信息。文件校验见 [manifest](manif
 
 获取记录见 [清单](paper-acquisition.json)。未下载的文件不以摘要或生成 PDF 代替。所有笔记为 draft，尚不能作为已审核工程输入。
 
+- [芯片封装仿真41讲资料清单](course-41-reading-manifest.json)及[阅读笔记](../packaging/common/references/course-41-reading-notes.md)：记录本地课件的哈希和阅读范围，原课程文件未上传。
