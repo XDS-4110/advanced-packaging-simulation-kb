@@ -1,0 +1,17 @@
+[
+  {
+    "file": "bga-fatigue-2022.pdf",
+    "bytes": 1098572,
+    "sha256": "7ce0c809ec427130636d63e6047c21494024d092de4dc8077f5f7df1f5e6e634"
+  },
+  {
+    "file": "microelectronic-packaging-technology.pdf",
+    "bytes": 110369497,
+    "sha256": "5705cacb524db256a6441b47c354d657cd8c4e42741eb41509e7c589326f2085"
+  },
+  {
+    "file": "sip-review-2023.pdf",
+    "bytes": 9713012,
+    "sha256": "03fe3d1623531455ff9c581114b0733b7d6fc5d6fce09fe88d8b4f8810bd48df"
+  }
+]

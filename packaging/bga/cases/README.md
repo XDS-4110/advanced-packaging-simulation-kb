@@ -30,4 +30,6 @@
 
 ## 已有知识条目
 
-暂无独立正文；本目录说明和待办清单不代表已审核知识。
+下列正文均为待审核草稿。
+
+- [BGA复现前的封装证据清单](reproduction-evidence-checklist.md)（draft）

@@ -22,3 +22,5 @@
 ## 本次新增资料
 
 [多芯片装配结构字段与坐标参考](chiplet-assembly-description.md)（reviewed，文档核对，非仿真验证）。
+
+- [RDL导体与介质的结构记录](rdl-dielectric-scope.md)（draft）

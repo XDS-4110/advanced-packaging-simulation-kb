@@ -18,7 +18,7 @@ reviewed_at: ""
 
 - 作者：Baojun Qiu; Jingang Xiong; Han Wang; Shuai Zhou; Xiuding Yang; Zhengpei Lin; Maolin Liu; Nian Cai。
 - 年份：2022；[DOI](https://doi.org/10.3390/electronics11040542)。
-- [原文入口](https://mdpi-res.com/d_attachment/electronics/electronics-11-00542/article_deploy/electronics-11-00542.pdf?version=1644572039)；[仓库 PDF](../../../books/bga-fatigue-2022.pdf)
+- [原文入口](https://mdpi-res.com/d_attachment/electronics/electronics-11-00542/article_deploy/electronics-11-00542.pdf?version=1644572039)；[仓库 PDF](../../../files/bga-fatigue-2022.pdf)
 - 获取状态：PDF 已入库（17页）。
 - 许可：CC BY 4.0。
 - 阅读定位：PDF 17页；第1–3页、第3节及第4节目录线索。本笔记为归纳，不是译文或原文替代品。

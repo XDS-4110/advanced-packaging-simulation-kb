@@ -38,3 +38,5 @@ Thumbs.db
 !books/microelectronic-packaging-technology.pdf
 
 !books/bga-fatigue-2022.pdf
+
+!files/*.pdf
