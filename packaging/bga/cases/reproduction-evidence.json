@@ -1,0 +1,180 @@
+{
+  "schema_version": "1.0",
+  "id": "PKG-BGA-REPRODUCTION-EVIDENCE-001",
+  "document_type": "case_evidence_checklist",
+  "domain": "packaging",
+  "status": "draft",
+  "case_binding": null,
+  "purpose": "待绑定具体器件的资料交接清单；不是已提取案例数据",
+  "checklist_basis": [
+    "KB-PKG-20261102-007"
+  ],
+  "solver_authorization": false,
+  "fields": [
+    {
+      "parameter": "device_identity",
+      "value": null,
+      "unit": null,
+      "source_id": null,
+      "source_locator": null,
+      "applicability": null,
+      "status": "missing",
+      "reviewed_by": null,
+      "reviewed_at": null
+    },
+    {
+      "parameter": "target_interconnect",
+      "value": null,
+      "unit": null,
+      "source_id": null,
+      "source_locator": null,
+      "applicability": null,
+      "status": "missing",
+      "reviewed_by": null,
+      "reviewed_at": null
+    },
+    {
+      "parameter": "package_dimensions",
+      "value": null,
+      "unit": "mm",
+      "source_id": null,
+      "source_locator": null,
+      "applicability": null,
+      "status": "missing",
+      "reviewed_by": null,
+      "reviewed_at": null
+    },
+    {
+      "parameter": "die_dimensions",
+      "value": null,
+      "unit": "mm",
+      "source_id": null,
+      "source_locator": null,
+      "applicability": null,
+      "status": "missing",
+      "reviewed_by": null,
+      "reviewed_at": null
+    },
+    {
+      "parameter": "substrate_dimensions",
+      "value": null,
+      "unit": "mm",
+      "source_id": null,
+      "source_locator": null,
+      "applicability": null,
+      "status": "missing",
+      "reviewed_by": null,
+      "reviewed_at": null
+    },
+    {
+      "parameter": "ball_array_and_geometry",
+      "value": null,
+      "unit": "mm",
+      "source_id": null,
+      "source_locator": null,
+      "applicability": null,
+      "status": "missing",
+      "reviewed_by": null,
+      "reviewed_at": null
+    },
+    {
+      "parameter": "pcb_scope",
+      "value": null,
+      "unit": null,
+      "source_id": null,
+      "source_locator": null,
+      "applicability": null,
+      "status": "missing",
+      "reviewed_by": null,
+      "reviewed_at": null
+    },
+    {
+      "parameter": "underfill_location",
+      "value": null,
+      "unit": null,
+      "source_id": null,
+      "source_locator": null,
+      "applicability": null,
+      "status": "missing",
+      "reviewed_by": null,
+      "reviewed_at": null
+    },
+    {
+      "parameter": "material_id_and_revision",
+      "value": null,
+      "unit": null,
+      "source_id": null,
+      "source_locator": null,
+      "applicability": null,
+      "status": "missing",
+      "reviewed_by": null,
+      "reviewed_at": null
+    },
+    {
+      "parameter": "manufacturing_history",
+      "value": null,
+      "unit": null,
+      "source_id": null,
+      "source_locator": null,
+      "applicability": null,
+      "status": "missing",
+      "reviewed_by": null,
+      "reviewed_at": null
+    },
+    {
+      "parameter": "temperature_time_history",
+      "value": null,
+      "unit": "degC;s",
+      "source_id": null,
+      "source_locator": null,
+      "applicability": null,
+      "status": "missing",
+      "reviewed_by": null,
+      "reviewed_at": null
+    },
+    {
+      "parameter": "power_history",
+      "value": null,
+      "unit": "W;s",
+      "source_id": null,
+      "source_locator": null,
+      "applicability": null,
+      "status": "missing",
+      "reviewed_by": null,
+      "reviewed_at": null
+    },
+    {
+      "parameter": "mechanical_support",
+      "value": null,
+      "unit": null,
+      "source_id": null,
+      "source_locator": null,
+      "applicability": null,
+      "status": "missing",
+      "reviewed_by": null,
+      "reviewed_at": null
+    },
+    {
+      "parameter": "failure_criterion",
+      "value": null,
+      "unit": null,
+      "source_id": null,
+      "source_locator": null,
+      "applicability": null,
+      "status": "missing",
+      "reviewed_by": null,
+      "reviewed_at": null
+    },
+    {
+      "parameter": "comparison_results",
+      "value": null,
+      "unit": null,
+      "source_id": null,
+      "source_locator": null,
+      "applicability": null,
+      "status": "missing",
+      "reviewed_by": null,
+      "reviewed_at": null
+    }
+  ]
+}

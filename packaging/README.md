@@ -49,3 +49,7 @@
 模板见 [公共模板](../shared/templates/README.md)。具体材料数值统一写入 [公共材料库](../shared/materials/README.md)，案例仅引用 ID 与 revision。软件设置、网格、接触和求解步骤写入 simulation。
 
 例如：一篇 BGA 温循论文先在 bga/references 写阅读笔记；特定器件的尺寸和温循表写入 bga/cases；可复用的通用原理另写 common，使用链接关联而不复制全文。
+
+## 机器检索辅助
+
+[结构化索引与使用说明](data/README.md)：自动生成知识目录，并提供BGA案例证据JSON；正文仍以Markdown为准。

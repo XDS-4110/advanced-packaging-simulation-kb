@@ -33,3 +33,5 @@
 下列正文均为待审核草稿。
 
 - [BGA复现前的封装证据清单](reproduction-evidence-checklist.md)（draft）
+
+- [结构化复现证据清单](reproduction-evidence.json)：未绑定具体器件、数值待补；[填写约定](../../data/README.md)。

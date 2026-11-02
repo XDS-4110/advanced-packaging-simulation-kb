@@ -1,0 +1,1097 @@
+{
+  "schema_version": "1.0",
+  "generated": true,
+  "path_base": "repository_root",
+  "purpose": "metadata navigation; retrieve original Markdown for conditions and evidence",
+  "solver_authorization": false,
+  "entries": [
+    {
+      "id": "KB-PKG-20261102-008",
+      "title": "2.5D架构不能只靠名称描述",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "packaging",
+        "fundamentals"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-LIT-SIP-2023"
+      ],
+      "source_locator": "第1节、第2.6节及表2",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/2-5d/fundamentals/architecture-description.md",
+      "topic": "2-5d",
+      "category": "fundamentals",
+      "content_sha256": "4ba94f62b2fd5ac3f5efbb4e10524d642e8948916f7a78c0673e99b929fe073c"
+    },
+    {
+      "id": "KB-COURSE-PACKAGING-20261102-008",
+      "title": "TSV工艺时序与结构状态",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "TSV",
+        "process",
+        "integration"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-COURSE-CHIP-PACKAGING-15"
+      ],
+      "source_locator": "课件15 p.4–6（PDF文件页码）",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/2-5d/processes/tsv-process-sequence.md",
+      "topic": "2-5d",
+      "category": "processes",
+      "content_sha256": "387415067c1305745be305fc1b32a43e6b1373a9773ebffd567f056f12a8cb55"
+    },
+    {
+      "id": "KB-STRUCT-CHIPLET-001",
+      "title": "多芯片装配结构应记录哪些字段",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "reviewed",
+      "tags": [
+        "advanced-packaging",
+        "chiplet",
+        "structure-modeling",
+        "external-source"
+      ],
+      "physics": [
+        "thermal",
+        "structural"
+      ],
+      "source_ids": [
+        "SRC-GH-IHP-CHIPLET-001"
+      ],
+      "source_locator": "固定提交的CHIPLET_FORMAT_SPEC：Scope、Components、Connection Stacks、Interfaces；coord_frame_contract：1.4、1.5、3",
+      "updated_at": "2026-10-31",
+      "reviewed_by": "Codex（原文与适用范围核对，未执行工具验证）",
+      "reviewed_at": "2026-10-31",
+      "path": "packaging/2-5d/structures/chiplet-assembly-description.md",
+      "topic": "2-5d",
+      "category": "structures",
+      "content_sha256": "e314238f26105e5e0b264393a02f1bb48da9f5a36ad59c621aa00fd0975529d9"
+    },
+    {
+      "id": "KB-PKG-20261102-009",
+      "title": "RDL导体与介质的结构记录",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "packaging",
+        "fundamentals"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-LIT-RDL-2023"
+      ],
+      "source_locator": "公开HTML第1–2节、图1、表1–2；PDF未取得",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/2-5d/structures/rdl-dielectric-scope.md",
+      "topic": "2-5d",
+      "category": "structures",
+      "content_sha256": "016b84e89a8e5aed03bcd227f76392dd9865c498eae9a96932cb2a4c3a5bf62b"
+    },
+    {
+      "id": "KB-COURSE-PACKAGING-20261102-007",
+      "title": "硅中介层TSV与临时工艺层的区分",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "2.5D",
+        "TSV",
+        "interposer"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-COURSE-CHIP-PACKAGING-15"
+      ],
+      "source_locator": "课件15 p.3、5–6（PDF文件页码）",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/2-5d/structures/tsv-layer-identification.md",
+      "topic": "2-5d",
+      "category": "structures",
+      "content_sha256": "f013322476ed20912f1fa25260629bf7c1c6aaf7a2d5e7485f10a21dfb763296"
+    },
+    {
+      "id": "KB-PKG-20261102-007",
+      "title": "BGA复现前的封装证据清单",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "packaging",
+        "fundamentals"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-LIT-BGA-FATIGUE-2022",
+        "SRC-COURSE-VIDEO-SOLDER-UP"
+      ],
+      "source_locator": "综述第3节；锡球失效上段00:00–01:53及38:40画面；清单为本项目整理建议",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/bga/cases/reproduction-evidence-checklist.md",
+      "topic": "bga",
+      "category": "cases",
+      "content_sha256": "9773c67d0281df5c80b4748ebdcbb96317ef80a79af8904d13707e2cc6555074"
+    },
+    {
+      "id": "KB-BGA-FOUNDATION-20261102-001",
+      "title": "BGA的定义与内部互连的区别",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "BGA",
+        "fundamentals"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-BGA-MANUFACTURING-1995",
+        "SRC-LIT-SIP-2023"
+      ],
+      "source_locator": "Mearig与Goers，p.434–435；SiP综述第1节和第2.1节",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/bga/fundamentals/bga-definition.md",
+      "topic": "bga",
+      "category": "fundamentals",
+      "content_sha256": "30a3f8c2d911fbb6bd7f1c8c91780aba3ff6e5e71f084065cd7e3d9d55ff52e1"
+    },
+    {
+      "id": "KB-BGA-FOUNDATION-20261102-002",
+      "title": "器件级与板级BGA研究范围",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "BGA",
+        "fundamentals"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-BGA-REPORT-001",
+        "SRC-LIT-BGA-FATIGUE-2022"
+      ],
+      "source_locator": "案例报告第2.2节；Qiu等第3节",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/bga/fundamentals/package-vs-board-scope.md",
+      "topic": "bga",
+      "category": "fundamentals",
+      "content_sha256": "233bb216172b7719e80ec6fa4e7d033e890b029c6c31c1b44c3b39c8e2484137"
+    },
+    {
+      "id": "KB-COURSE-PACKAGING-20261102-006",
+      "title": "BGA热路径与热阻数据的使用边界",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "BGA",
+        "thermal",
+        "resistance"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-COURSE-CHIP-PACKAGING-02",
+        "SRC-TI-THERMAL-METRICS-D"
+      ],
+      "source_locator": "课件02 p.4–9；TI SPRA953D 第1–5节（PDF文件页码）",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/bga/fundamentals/thermal-paths-and-resistance.md",
+      "topic": "bga",
+      "category": "fundamentals",
+      "content_sha256": "5120c931ea725a0dc032aa40015b04113074a7e2e8f283c358535948e8a66f41"
+    },
+    {
+      "id": "KB-BGA-FOUNDATION-20261102-005",
+      "title": "BGA板级装配流程及其资料边界",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "BGA",
+        "processes"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-BGA-MANUFACTURING-1995"
+      ],
+      "source_locator": "p.434–437各工序小节",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/bga/processes/board-assembly-flow.md",
+      "topic": "bga",
+      "category": "processes",
+      "content_sha256": "8ca8bd314e178ca925fd01dd05913c259d5f476178ba82bedd9b1cd696c92c5d"
+    },
+    {
+      "id": "KB-BGA-FOUNDATION-20261102-008",
+      "title": "BGA清洗、检测与返修的条件限制",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "BGA",
+        "processes"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-BGA-MANUFACTURING-1995"
+      ],
+      "source_locator": "p.436 Cleaning、Inspection、Rework；p.437",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/bga/processes/cleaning-inspection-rework.md",
+      "topic": "bga",
+      "category": "processes",
+      "content_sha256": "0ed24dd1237735682d455a1bab37de72f2e61de9f2bac53edfabde16788fa0ab"
+    },
+    {
+      "id": "KB-BGA-FOUNDATION-20261102-007",
+      "title": "BGA贴装定位与回流自对中",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "BGA",
+        "processes"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-BGA-MANUFACTURING-1995"
+      ],
+      "source_locator": "p.435 Component Placement、Reflow，图3–4",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/bga/processes/placement-and-reflow.md",
+      "topic": "bga",
+      "category": "processes",
+      "content_sha256": "e8ba01688b6d820a079d573ee35b9bc7eccad3c65765fc5151fefd334b0f482e"
+    },
+    {
+      "id": "KB-BGA-FOUNDATION-20261102-006",
+      "title": "焊膏印刷与钢网开口的基本关系",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "BGA",
+        "processes"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-BGA-MANUFACTURING-1995"
+      ],
+      "source_locator": "p.434 Solder Paste Application；p.435 Table I",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/bga/processes/stencil-and-paste.md",
+      "topic": "bga",
+      "category": "processes",
+      "content_sha256": "344ab3b0417a6667b88e08d7325844747dea39a86afcacb5b8051e56255ca135"
+    },
+    {
+      "id": "REF-BGA-FATIGUE-2022",
+      "title": "Survey on Fatigue Life Prediction of BGA Solder Joints 阅读笔记",
+      "document_type": "reference_note",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "BGA",
+        "literature",
+        "bga"
+      ],
+      "physics": null,
+      "source_ids": [
+        "SRC-LIT-BGA-FATIGUE-2022"
+      ],
+      "source_locator": "PDF 17页；第1–3页、第3节及第4节目录线索",
+      "updated_at": "2026-10-31",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/bga/references/bga-fatigue-2022.md",
+      "topic": "bga",
+      "category": "references",
+      "content_sha256": "a54a019b25541bb9f1b0a21aa99cca7583850736a6ea873d19127453766e71f0"
+    },
+    {
+      "id": "REF-BGA-MANUFACTURING-1995",
+      "title": "BGA制造综述阅读说明",
+      "document_type": "reference_note",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": null,
+      "physics": null,
+      "source_ids": [
+        "SRC-BGA-MANUFACTURING-1995"
+      ],
+      "source_locator": "全文p.434–437；图1–5；表I",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/bga/references/manufacturing-bga-1995.md",
+      "topic": "bga",
+      "category": "references",
+      "content_sha256": "5da10555dd4a9e419bdaab8c9b7b55980ea25175bd9abb9d4532faa588618506"
+    },
+    {
+      "id": "KB-PKG-20261102-006",
+      "title": "BGA载荷类型与失效证据",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "packaging",
+        "fundamentals"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-LIT-BGA-FATIGUE-2022"
+      ],
+      "source_locator": "第2–3节，PDF第2–4页",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/bga/reliability/load-and-failure-scope.md",
+      "topic": "bga",
+      "category": "reliability",
+      "content_sha256": "c368057f7f61c87a8e6a9b6ab9e1c7426c37ea693716d8af6ee676fce53108f8"
+    },
+    {
+      "id": "KB-BGA-FOUNDATION-20261102-004",
+      "title": "BGA球阵列与装配尺寸应怎样记录",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "BGA",
+        "structures"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-BGA-MANUFACTURING-1995",
+        "SRC-BGA-REPORT-001"
+      ],
+      "source_locator": "Mearig与Goers p.435 Component Placement、p.436 Cleaning；报告图2-3",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/bga/structures/ball-array-dimensions.md",
+      "topic": "bga",
+      "category": "structures",
+      "content_sha256": "6cc3d8b3d8dfe21308cdc39bb2358ab5f1aefd7560f1c972c1e3dccfe106f564"
+    },
+    {
+      "id": "KB-BGA-FOUNDATION-20261102-003",
+      "title": "当前塑封倒装BGA的部件与连接关系",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "BGA",
+        "structures"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-BGA-REPORT-001"
+      ],
+      "source_locator": "报告第2.2节、图2-3和表2-1",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/bga/structures/flip-chip-bga-components.md",
+      "topic": "bga",
+      "category": "structures",
+      "content_sha256": "77eeb69d2d5a6d15bbfc7705a7ff49bd05ac1181470edd14fa43d71ce6826394"
+    },
+    {
+      "id": "KB-COURSE-PACKAGING-20261102-005",
+      "title": "线焊PBGA的部件与连接关系",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "PBGA",
+        "wire-bond",
+        "structures"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-COURSE-CHIP-PACKAGING-02"
+      ],
+      "source_locator": "课件02 p.2–3（PDF文件页码）",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/bga/structures/wire-bond-pbga.md",
+      "topic": "bga",
+      "category": "structures",
+      "content_sha256": "8957edab6be451753696c8aca93e80e9ebf1c6f2721852911ca83dc42c2b6ff5"
+    },
+    {
+      "id": "KB-PKG-20261102-001",
+      "title": "封装层级与案例研究边界",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "packaging",
+        "fundamentals"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-LIT-SIP-2023"
+      ],
+      "source_locator": "第1节，PDF第1–2页",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/common/fundamentals/integration-levels.md",
+      "topic": "common",
+      "category": "fundamentals",
+      "content_sha256": "b60b16e5e6f476ba4a7ae86bc6656a9fea10810cb4e15657b5ed14a4e3643cdf"
+    },
+    {
+      "id": "KB-PKG-TEMP-LOCATION-20261102",
+      "title": "测温位置、控温目标与芯片温度的区别",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "thermal",
+        "TEC",
+        "evidence"
+      ],
+      "physics": [
+        "thermal"
+      ],
+      "source_ids": [
+        "SRC-COURSE-VIDEO-TEC-UP",
+        "SRC-COURSE-VIDEO-TEC-DOWN"
+      ],
+      "source_locator": "TEC上32:30–38:50；下23:30–27:10、58:40–60:30",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/common/fundamentals/temperature-measurement-location.md",
+      "topic": "common",
+      "category": "fundamentals",
+      "content_sha256": "281d0f2c5193c482f948f84a87e836ebf95215e2a94ebe1fe6d69d7637d539a6"
+    },
+    {
+      "id": "KB-PKG-CTE-REFERENCE-20261102",
+      "title": "CTE数据参考温度与封装工艺状态",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "CTE",
+        "reference-temperature",
+        "warpage",
+        "material-evidence"
+      ],
+      "physics": [
+        "mechanical",
+        "thermal"
+      ],
+      "source_ids": [
+        "SRC-COURSE-VIDEO-WARPAGE-CORRECTION",
+        "SRC-ANSYS-242-CTE-DEFINITION",
+        "SRC-ANSYS-242-THERMAL-EXPANSION"
+      ],
+      "source_locator": "更正视频00:37–03:10；ANSYS 2024 R2 Linear Material Models及Material Reference §3.5",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/common/materials/cte-reference-and-process-state.md",
+      "topic": "common",
+      "category": "materials",
+      "content_sha256": "03bd060493310cb19794d144a4453db4a5aec7c5246485b3bcb0f6af1da2c264"
+    },
+    {
+      "id": "KB-COURSE-PACKAGING-20261102-002",
+      "title": "叠层与互连阵列的导热方向性",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "thermal",
+        "anisotropy",
+        "substrate"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-COURSE-CHIP-PACKAGING-03",
+        "SRC-COURSE-CHIP-PACKAGING-02"
+      ],
+      "source_locator": "课件03 p.5–8；补充课件02 p.5–7（PDF文件页码）",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/common/materials/directional-conduction-evidence.md",
+      "topic": "common",
+      "category": "materials",
+      "content_sha256": "d26839afcbfe8bcebd9660b8e28081f17562d0ff958c20559d82919a58348fa5"
+    },
+    {
+      "id": "KB-PKG-20261102-003",
+      "title": "底填胶的材料与工艺信息",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "packaging",
+        "fundamentals"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-LIT-UNDERFILL-2025"
+      ],
+      "source_locator": "公开HTML引言、表1、结论；PDF未取得",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/common/materials/underfill-selection.md",
+      "topic": "common",
+      "category": "materials",
+      "content_sha256": "1c6bfb15e156d5463d3bf14df93f5c642d1e2ecaae927cd9c72bbc9d8f9199e8"
+    },
+    {
+      "id": "KB-PKG-20261102-004",
+      "title": "塑封固化历史与残余状态",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "packaging",
+        "fundamentals"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-LIT-EMC-WARPAGE-2022"
+      ],
+      "source_locator": "第1–2页及第2节 Effective cure shrinkage",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/common/processes/cure-history.md",
+      "topic": "common",
+      "category": "processes",
+      "content_sha256": "8cd3a3e9d6adc666968e8bef826dea146301550cb3827d8b069b92a2db82d0b4"
+    },
+    {
+      "id": "REF-CONSTITUTIVE-2025",
+      "title": "Material and constitutive parameters of various Pb-based and Pb-free solders and other interconnection materials: A collective review 阅读笔记",
+      "document_type": "reference_note",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "BGA",
+        "literature",
+        "common"
+      ],
+      "physics": null,
+      "source_ids": [
+        "SRC-LIT-CONSTITUTIVE-2025"
+      ],
+      "source_locator": "出版社可检索第2.2节、表4；Crossref书目；PDF未取得",
+      "updated_at": "2026-10-31",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/common/references/constitutive-2025.md",
+      "topic": "common",
+      "category": "references",
+      "content_sha256": "9172165a2fe863c3b86b7bd7ff3384c22e5b365901e51783f3d2b281c476e110"
+    },
+    {
+      "id": "REF-COURSE-41-20261102",
+      "title": "芯片封装仿真41讲：课件阅读与入库边界",
+      "document_type": "reference_note",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "course",
+        "packaging",
+        "provenance"
+      ],
+      "physics": null,
+      "source_ids": [
+        "SRC-COURSE-CHIP-PACKAGING-02",
+        "SRC-COURSE-CHIP-PACKAGING-03",
+        "SRC-COURSE-CHIP-PACKAGING-06",
+        "SRC-COURSE-CHIP-PACKAGING-07",
+        "SRC-COURSE-CHIP-PACKAGING-13",
+        "SRC-COURSE-CHIP-PACKAGING-15"
+      ],
+      "source_locator": "课件02、03、06、07、13、15；下表为PDF文件页码",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/common/references/course-41-reading-notes.md",
+      "topic": "common",
+      "category": "references",
+      "content_sha256": "a4aba86e06358d6dbe9be89cc2677209505c1b3a09aa8f96ed2aee19be357b23"
+    },
+    {
+      "id": "REF-COURSE-VIDEO-OPTICAL-20261102",
+      "title": "光通信封装案例：结构与连接证据笔记",
+      "document_type": "reference_note",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "course-video",
+        "optical-package",
+        "wire-bond",
+        "connectivity"
+      ],
+      "physics": null,
+      "source_ids": [
+        "SRC-COURSE-VIDEO-OPTICAL-UP",
+        "SRC-COURSE-VIDEO-OPTICAL-DOWN",
+        "SRC-COURSE-VIDEO-OPTICAL-SUPPLEMENT",
+        "SRC-CARPENTER-KOVAR",
+        "SRC-IBIS-TOUCHSTONE-21"
+      ],
+      "source_locator": "光通信封装仿真实例上、下、下下；具体时间戳见正文；中段暂未形成笔记",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/common/references/course-video-optical.md",
+      "topic": "common",
+      "category": "references",
+      "content_sha256": "f87a055c2ec2c02b1c5f5b18881151cb2dc3ec674459e91e6c1b4be931d375fe"
+    },
+    {
+      "id": "REF-COURSE-VIDEO-SOLDER-20261102",
+      "title": "锡球失效与黏塑性：上段视频核对笔记",
+      "document_type": "reference_note",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "course-video",
+        "solder",
+        "creep",
+        "Anand",
+        "underfill"
+      ],
+      "physics": null,
+      "source_ids": [
+        "SRC-COURSE-VIDEO-SOLDER-UP",
+        "SRC-COURSE-CHIP-PACKAGING-07",
+        "SRC-ANSYS-242-ANAND",
+        "SRC-ANSYS-STRAIN-LIFE-SCOPE"
+      ],
+      "source_locator": "加餐课程/7. 锡球失效-粘塑性模型仿真上_.mkv；分段进度见正文",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/common/references/course-video-solder-viscoplastic.md",
+      "topic": "common",
+      "category": "references",
+      "content_sha256": "e877911e45dd7ecffbf22f8ec6510b92079cb596e33b405b975a77cfd0ad8be0"
+    },
+    {
+      "id": "REF-COURSE-VIDEO-TEC-20261102",
+      "title": "TEC原理与建模：上下两段视频核对笔记",
+      "document_type": "reference_note",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "course-video",
+        "TEC",
+        "thermal"
+      ],
+      "physics": null,
+      "source_ids": [
+        "SRC-COURSE-VIDEO-TEC-UP",
+        "SRC-COURSE-VIDEO-TEC-DOWN",
+        "SRC-FERROTEC-TEC-TECH"
+      ],
+      "source_locator": "加餐课程/10. TEC-原理、建模和仿真上_.mkv及下_.mkv；时间戳见正文",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/common/references/course-video-tec.md",
+      "topic": "common",
+      "category": "references",
+      "content_sha256": "a40d5c36a0c51d4ff7ce76c0df19f6752cdc48c5183c11a846181cc5c5b54d85"
+    },
+    {
+      "id": "REF-COURSE-VIDEO-WARPAGE-CORRECTION-20261102",
+      "title": "warpage计算问题更正：视频证据笔记",
+      "document_type": "reference_note",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "course-video",
+        "warpage",
+        "CTE",
+        "evidence"
+      ],
+      "physics": null,
+      "source_ids": [
+        "SRC-COURSE-VIDEO-WARPAGE-CORRECTION",
+        "SRC-ANSYS-242-CTE-DEFINITION",
+        "SRC-ANSYS-242-THERMAL-EXPANSION"
+      ],
+      "source_locator": "正式课程/6. 第11讲warpage计算问题更正_.mkv；时间戳见正文",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/common/references/course-video-warpage-correction.md",
+      "topic": "common",
+      "category": "references",
+      "content_sha256": "9cea42d67d1193ca793581e438259c2806b1c618ab30067e656d910b9279ca90"
+    },
+    {
+      "id": "REF-EMC-WARPAGE-2022",
+      "title": "Effect of critical properties of epoxy molding compound on warpage prediction: A critical review 阅读笔记",
+      "document_type": "reference_note",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "BGA",
+        "literature",
+        "common"
+      ],
+      "physics": null,
+      "source_ids": [
+        "SRC-LIT-EMC-WARPAGE-2022"
+      ],
+      "source_locator": "PDF 13页；第1–2页，第2–5节，第10页",
+      "updated_at": "2026-10-31",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/common/references/emc-warpage-2022.md",
+      "topic": "common",
+      "category": "references",
+      "content_sha256": "e43c8d0b44b87980561242856e87e46aa98cd14b6184cdeec317ec4f9d4e4574"
+    },
+    {
+      "id": "REF-SOLDER-FAILURES-2020",
+      "title": "Solder joint failures under thermo-mechanical loading conditions – A review 阅读笔记",
+      "document_type": "reference_note",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "BGA",
+        "literature",
+        "common"
+      ],
+      "physics": null,
+      "source_ids": [
+        "SRC-LIT-SOLDER-FAILURES-2020"
+      ],
+      "source_locator": "出版社摘要及大学存档可检索的摘要与引言；PDF未取得",
+      "updated_at": "2026-10-31",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/common/references/solder-failures-2020.md",
+      "topic": "common",
+      "category": "references",
+      "content_sha256": "e935c47c1d8549d29534a73d1e5eed090a8f6d913b2ad167dd9293b662232ba8"
+    },
+    {
+      "id": "REF-UNDERFILL-2025",
+      "title": "Underfill: A Review of Reliability Improvement Methods in Electronics Production 阅读笔记",
+      "document_type": "reference_note",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "BGA",
+        "literature",
+        "common"
+      ],
+      "physics": null,
+      "source_ids": [
+        "SRC-LIT-UNDERFILL-2025"
+      ],
+      "source_locator": "HTML 引言、表1、方法和结论；PDF未取得",
+      "updated_at": "2026-10-31",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/common/references/underfill-2025.md",
+      "topic": "common",
+      "category": "references",
+      "content_sha256": "ab5308f2ac7c9078dd9873bd44617ca5467598e10fc75cbb9c75dc382dab673a"
+    },
+    {
+      "id": "KB-COURSE-PACKAGING-20261102-004",
+      "title": "封装吸湿状态、湿胀与回流前历史",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "moisture",
+        "hygroscopic",
+        "reliability"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-COURSE-CHIP-PACKAGING-13"
+      ],
+      "source_locator": "课件13 p.2–7（PDF文件页码）",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/common/reliability/moisture-state-and-preconditioning.md",
+      "topic": "common",
+      "category": "reliability",
+      "content_sha256": "d1cee06731f105cc8a61dfd63be10acf3e2a5453999afa0a328e839e39717924"
+    },
+    {
+      "id": "KB-COURSE-PACKAGING-20261102-003",
+      "title": "焊料蠕变、黏塑性与疲劳寿命的区别",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "solder",
+        "creep",
+        "fatigue"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-COURSE-CHIP-PACKAGING-07",
+        "SRC-COURSE-VIDEO-SOLDER-UP",
+        "SRC-ANSYS-242-ANAND"
+      ],
+      "source_locator": "课件07 p.3–9；锡球失效上段14:23–27:53；ANSYS Theory Reference §4.3.2.4",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/common/reliability/solder-creep-and-fatigue.md",
+      "topic": "common",
+      "category": "reliability",
+      "content_sha256": "d3eb5b55ee0650157e2d95e0fc276de05215f96a44ab5b40c6cac35e159d528f"
+    },
+    {
+      "id": "KB-PKG-20261102-005",
+      "title": "翘曲对照为什么需要制造状态",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "packaging",
+        "fundamentals"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-LIT-EMC-WARPAGE-2022"
+      ],
+      "source_locator": "PDF第2页，第2–5节",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/common/reliability/warpage-validation.md",
+      "topic": "common",
+      "category": "reliability",
+      "content_sha256": "fe7a2df01c9f9666706a67ddcbc9376883d3c5e488a087d58bf42c2af98fdf20"
+    },
+    {
+      "id": "KB-PKG-20261102-002",
+      "title": "倒装互连与封装外部焊球",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "packaging",
+        "fundamentals"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-LIT-SIP-2023"
+      ],
+      "source_locator": "第2.1节，PDF第3页",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/common/structures/flip-chip-interconnect.md",
+      "topic": "common",
+      "category": "structures",
+      "content_sha256": "6f5416c7dfa0ef7393e487dc57c35dc0e1ada2f03b9cd8c3fa96333d4a1b602f"
+    },
+    {
+      "id": "KB-COURSE-PACKAGING-20261102-001",
+      "title": "基板叠层与过孔的结构识别",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "substrate",
+        "via",
+        "stackup"
+      ],
+      "physics": [
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-COURSE-CHIP-PACKAGING-03"
+      ],
+      "source_locator": "课件03 p.2–3、5–7（PDF文件页码）",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/common/structures/substrate-stackup-and-vias.md",
+      "topic": "common",
+      "category": "structures",
+      "content_sha256": "9355a9e14eb9f675b1f37c51ed65ada1573cfc6cae4134e174de9196b8f11a34"
+    },
+    {
+      "id": "KB-PKG-TEC-HEAT-PATH-20261102",
+      "title": "TEC的结构、热路径与热端散热负荷",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "thermal",
+        "TEC",
+        "evidence"
+      ],
+      "physics": [
+        "thermal"
+      ],
+      "source_ids": [
+        "SRC-COURSE-VIDEO-TEC-UP",
+        "SRC-COURSE-VIDEO-TEC-DOWN",
+        "SRC-FERROTEC-TEC-TECH"
+      ],
+      "source_locator": "TEC上15:00–27:50、28:38–32:30；下14:00–19:10、45:00–61:10",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/common/structures/tec-heat-path-and-load.md",
+      "topic": "common",
+      "category": "structures",
+      "content_sha256": "27b8649ad8f62d33c4373d060411e9e0de71534ed0e5536b89284bbba7d53013"
+    },
+    {
+      "id": "KB-PKG-WIREBOND-GEOMETRY-20261102",
+      "title": "键合线几何、工艺可制造性与电连接",
+      "document_type": "knowledge",
+      "domain": "packaging",
+      "status": "draft",
+      "tags": [
+        "wire-bond",
+        "geometry",
+        "connectivity",
+        "manufacturing"
+      ],
+      "physics": [
+        "electrical",
+        "thermal",
+        "mechanical"
+      ],
+      "source_ids": [
+        "SRC-COURSE-VIDEO-OPTICAL-DOWN"
+      ],
+      "source_locator": "光通信封装仿真实例下：13:50–21:45、28:00–37:15、44:45–50:15、54:30–57:00",
+      "updated_at": "2026-11-02",
+      "reviewed_by": "",
+      "reviewed_at": "",
+      "path": "packaging/common/structures/wire-bond-geometry-and-connectivity.md",
+      "topic": "common",
+      "category": "structures",
+      "content_sha256": "44355b6b1a9dc3dd67bc5ee0af04350ac98065d366b5875e302b03b3d3517ff0"
+    }
+  ]
+}
