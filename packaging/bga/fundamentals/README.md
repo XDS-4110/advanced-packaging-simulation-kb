@@ -2,7 +2,7 @@
 
 范围：BGA 定义、命名与分类；塑封、陶瓷、线焊和倒装等分类维度；器件级与板级研究范围。
 
-当前待补充经审核的知识条目。使用 [公共模板](../../../shared/templates/README.md)，遵循 [贡献约定](../../../CONTRIBUTING.md) 与 [RAG 规范](../../../shared/rag/README.md)。来源登记至 [统一来源表](../../../shared/references/catalog.csv)；未知信息标为“待补充”。
+下方已有知识正文；审核状态以各条目元数据为准。使用 [公共模板](../../../shared/templates/README.md)，遵循 [贡献约定](../../../CONTRIBUTING.md) 与 [RAG 规范](../../../shared/rag/README.md)。来源登记至 [统一来源表](../../../shared/references/catalog.csv)；未知信息标为“待补充”。
 
 [返回本专题](../README.md) · [封装总入口](../../README.md)
 
@@ -17,4 +17,8 @@
 
 ## 已有知识条目
 
-暂无独立正文；本目录说明和待办清单不代表已审核知识。
+以下是已编写的知识正文，均为draft，等待审核。
+
+- [BGA的定义与内部互连的区别](bga-definition.md)
+
+- [器件级与板级BGA研究范围](package-vs-board-scope.md)

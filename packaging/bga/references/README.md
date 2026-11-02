@@ -20,3 +20,5 @@
 暂无独立正文；本目录说明和待办清单不代表已审核知识。
 
 - [Survey on Fatigue Life Prediction of BGA Solder Joints](bga-fatigue-2022.md)：draft；PDF 已入库（17页）。
+
+- [BGA制造综述阅读说明](manufacturing-bga-1995.md)（draft）
