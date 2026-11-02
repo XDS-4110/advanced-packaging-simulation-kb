@@ -141,7 +141,7 @@ registry_hash_kind及逐行source_hash_kind均明确为utf8-lf：对这里的CSV
 
 ## 阶段二第一部分：引用与校验
 
-[结构输入模板](../templates/package-structure-input.json)为每个部件增加entity_ref，为每个连接增加连接自身及上下端点引用；全部未知值保持null。引用形状复用工具契约的绝对$ref，不复制schema定义；原有尺寸、位置、材料和边界未知值没有补数。
+[结构输入模板](../templates/package-structure-input.json)为每个部件保留entity_ref，连接只保留lower_entity_ref和upper_entity_ref两端引用；连接本身是关系，不登记为实体；全部未知值保持null。引用形状复用工具契约的绝对$ref，不复制schema定义；原有尺寸、位置、材料和边界未知值没有补数。
 
 registry.csv新增aliases和parent_id。当前只登记die_1→ENT-BGA-BODY-25、substrate_1→ENT-BGA-BODY-496；alias必须限定案例及修订，不是执行主键。interposer_1没有BGA实体可映射，保持未注册；parent_id全部留空，不填die/interposer/substrate层级。
 
@@ -150,3 +150,18 @@ registry.csv新增aliases和parent_id。当前只登记die_1→ENT-BGA-BODY-25�
 模板validation_state可声明draft/resolved/executable；当前为draft且ready_for_execution=false。draft允许未知引用留null，但不允许错误ID、悬空修订或错连端点。resolved需要全部必需引用、材料与注册映射已解析；executable还需几何重叠、单位、适配器及执行版本门槛。几何重叠和单位转换仍为unresolved，不由LLM宣称已检查；0.1.0始终禁止执行。
 
 本轮仅完成上述数据结构与静态检查，不表示阶段二全部完成。单位换算、几何检查和运行时解析均未实现，也不提前进入阶段三。
+
+
+## 实体种类与连接语义
+
+entity_kind只允许body、material、named_selection、analysis。components[].entity_ref和连接两端引用必须指向body；部件材料及underfill.material_id必须指向material。只验证存在性、case与revision不够，种类错误也必须拒绝；拼错entity_kind不能跳过证据分支。
+
+连接没有独立entity_ref，也不新造connection种类；其id标识输入关系，由两端body引用和连接定义推导。旧connection.entity_ref即使为null也禁止重新加入。
+
+## 修改注册表或模板后的协作顺序
+
+1. 修改registry.csv或package-structure-input.json，保留来源与未知字段，不关闭未经取证的映射。
+2. 同步更新tools.schema.json中的entity_policy.registry_sha256或package_structure_template.sha256；按utf8-lf规则计算，并将static_validation.last_run/last_result置null。先运行普通check，检查通过后提交内容，得到干净工作树。
+3. 重跑`python shared/tools/validate_contract.py --record`，再单独提交回执。CI在第二步之前报pin不一致是预期保护，不表示修改内容本身一定错误。
+
+变更后仍为draft，审计记录不等同于运行证据；若打开执行开关，必须遵守升次版本和同步$id的独立规则。

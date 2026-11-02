@@ -65,6 +65,7 @@ def validate_registry_rows(root: Path, schema: dict, entities: list, sources: se
         stable = entity["stable_id"]
         require(bool(stable) and stable not in index, "Duplicate stable_id or empty stable_id.")
         index[stable] = entity
+        require(entity["entity_kind"] in policy["registry_enums"]["entity_kind"], "Invalid entity_kind enum.")
         require(entity["status"] in policy["registry_enums"]["status"], "Invalid registry status enum.")
         require(entity["resolution_state"] in policy["registry_enums"]["resolution_state"], "Invalid resolution_state enum.")
         if entity["status"] == "draft":
@@ -94,6 +95,10 @@ def validate_registry_rows(root: Path, schema: dict, entities: list, sources: se
         require(artifact.is_relative_to(root.resolve()) and artifact.suffix.lower() != ".pdf", "Unexpected registry evidence path.")
         require(entity["source_hash_kind"] == "utf8-lf", "Unknown registry evidence hash normalization.")
         require(text_digest(artifact) == entity["source_artifact_sha256"], "Registry evidence artifact hash mismatch.")
+        if artifact == (root / "simulation/cases" / case_id / "data/bodies.csv").resolve():
+            require(entity["entity_kind"] == "body", "Historical body evidence kind mismatch.")
+        if artifact == (root / "shared/materials/catalog.csv").resolve():
+            require(entity["entity_kind"] == "material", "Material catalog evidence kind mismatch.")
         if entity["resolution_state"] == "unresolved":
             require(not any(entity[field] for field in ("mechanical_tree_id", "geometry_body_ids", "geometry_face_ids")), "Unresolved registry row contains an unproved runtime mapping.")
         else:
@@ -150,7 +155,7 @@ def entity_refs(value, path="root", declared_reference=False):
             yield from entity_refs(child, path + "[" + str(position) + "]")
 
 
-def validate_entity_ref_bindings(value, index: dict, case_id=None, model_revision=None) -> None:
+def validate_entity_ref_bindings(value, index: dict, case_id=None, model_revision=None, kind_expectations=None) -> None:
     for path, reference in entity_refs(value):
         stable = reference["stable_id"]
         if stable is None:
@@ -158,6 +163,10 @@ def validate_entity_ref_bindings(value, index: dict, case_id=None, model_revisio
         require(stable in index, "Unknown entity_ref stable_id at " + path)
         row = index[stable]
         require(bool(row["model_revision"]), "entity_ref targets a registry row with empty model_revision: " + stable)
+        normalized_path = re.sub(r"\[\d+\]", "[]", path).removeprefix("root.")
+        for field, kind in (kind_expectations or {}).items():
+            if normalized_path == field or normalized_path.endswith("." + field):
+                require(row["entity_kind"] == kind, "entity_ref kind mismatch at " + path + ": expected " + kind)
         require(reference.get("model_revision") == row["model_revision"], "entity_ref model revision mismatch: " + stable)
         if case_id:
             require(case_id == row["case_id"], "entity_ref case mismatch: " + stable)
@@ -170,7 +179,9 @@ def validate_package_document(document: dict, index: dict, material_pairs: set, 
     validator.evolve(schema=trusted_shape).validate(document)
     require(document["reviewed_by"] == document["reviewed_at"] == "", "Package draft review fields must be empty.")
     require(document["entity_contract_ref"]["schema_id"] == validator.schema["$id"], "Package contract reference drift.")
-    validate_entity_ref_bindings(document, index, document["case_id"], document["base_model_revision"])
+    kinds = contract["entity_policy"]["reference_kind_expectations"]
+    require(document["validation"]["expected_entity_kinds"] == kinds, "Package kind policy drift.")
+    validate_entity_ref_bindings(document, index, document["case_id"], document["base_model_revision"], kinds)
     component_ids = [row["id"] for row in document["components"]]
     require(len(set(component_ids)) == len(component_ids), "Duplicate package component ID.")
     connections = [row["id"] for row in document["connections"]]
@@ -184,6 +195,8 @@ def validate_package_document(document: dict, index: dict, material_pairs: set, 
         material = component["material_ref"]
         if material["id"] is not None or material["revision"] is not None:
             require((material["id"], material["revision"]) in material_pairs, "Package material ID/revision missing or unknown.")
+            require(material["id"] in index and index[material["id"]]["entity_kind"] == kinds["components[].material_ref.id"], "Package material entity kind mismatch.")
+            require(index[material["id"]]["material_revision"] == material["revision"], "Package material registry revision mismatch.")
         else:
             pending.append(component["id"] + ".material_ref")
     for connection in document["connections"]:
@@ -196,6 +209,8 @@ def validate_package_document(document: dict, index: dict, material_pairs: set, 
         underfill = connection["underfill"]
         if underfill["material_id"] is not None or underfill["material_revision"] is not None:
             require((underfill["material_id"], underfill["material_revision"]) in material_pairs, "Underfill material revision missing or unknown.")
+            require(underfill["material_id"] in index and index[underfill["material_id"]]["entity_kind"] == kinds["connections[].underfill.material_id"], "Underfill material entity kind mismatch.")
+            require(index[underfill["material_id"]]["material_revision"] == underfill["material_revision"], "Underfill registry revision mismatch.")
     for path, reference in entity_refs(document):
         if reference["stable_id"] is None or index[reference["stable_id"]]["resolution_state"] != "resolved":
             pending.append(path)
@@ -335,7 +350,7 @@ def check(root: Path, schema: dict) -> dict:
             document = json.loads(candidate.read_text(encoding="utf-8-sig"))
             if isinstance(document, dict):
                 context = document.get("context", {})
-                validate_entity_ref_bindings(document, index, document.get("case_id"), document.get("base_model_revision", context.get("model_revision")))
+                validate_entity_ref_bindings(document, index, document.get("case_id"), document.get("base_model_revision", context.get("model_revision")), contract["entity_policy"]["reference_kind_expectations"])
     def reject_semantic(name, callback, expected):
         try:
             callback()
@@ -351,8 +366,19 @@ def check(root: Path, schema: dict) -> dict:
         ("registry-artifact-hash", "body", "source_artifact_sha256", "<MISMATCH>", "artifact hash mismatch"),
         ("registry-status", "body", "status", "<INVALID>", "status enum"),
         ("registry-resolution-state", "body", "resolution_state", "<INVALID>", "resolution_state enum"),
+        ("registry-entity-kind", "body", "entity_kind", "<INVALID>", "entity_kind enum"),
+        ("registry-body-kind-spoof", "body", "entity_kind", "analysis", "body evidence kind mismatch"),
+        ("reference-analysis-as-body", "reference", "entity_ref", "ENT-BGA-ANALYSIS-5938", "entity_ref kind mismatch"),
+        ("reference-material-as-body", "reference", "entity_ref", "MAT-BGA-SI-001", "entity_ref kind mismatch"),
     ]
     for label, kind, field, value, reason in mutation_cases:
+        if kind == "reference":
+            changed = copy.deepcopy(package)
+            target = changed["components"][0][field]
+            target["stable_id"] = value
+            target["model_revision"] = index[value]["model_revision"]
+            reject_semantic(label, lambda data=changed: validate_package_document(data, index, material_pairs, validator, contract, trusted_shape), reason)
+            continue
         changed = copy.deepcopy(entities)
         next(row for row in changed if row["entity_kind"] == kind)[field] = value
         reject_semantic(label, lambda data=changed: validate_registry_rows(root, schema, data, sources), reason)
@@ -374,6 +400,8 @@ def check(root: Path, schema: dict) -> dict:
     reject_semantic("package-unbound-scope-reference", lambda: validate_package_document(changed, index, material_pairs, validator, contract, trusted_shape), "empty model_revision")
     changed = copy.deepcopy(package); changed["validation"]["shape_schema"] = {}
     reject_semantic("package-cannot-relax-its-schema", lambda: validate_package_document(changed, index, material_pairs, validator, contract, trusted_shape), "policy drift")
+    changed = copy.deepcopy(package); changed["connections"][0]["entity_ref"] = None
+    reject("connection-self-entity-ref-forbidden", changed, validator.evolve(schema=trusted_shape))
     changed = copy.deepcopy(package)
     for target, stable in ((changed["components"][0]["entity_ref"], "ENT-BGA-BODY-25"), (changed["connections"][0]["upper_entity_ref"], "ENT-BGA-BODY-496")):
         target["stable_id"] = stable

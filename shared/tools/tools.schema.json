@@ -16,7 +16,8 @@
       "SRC-ANSYS-242-OPS-API",
       "SRC-ANSYS-242-ENGDATA",
       "SRC-EXEC-JSONSCHEMA-202012",
-      "SRC-ENTITY-REGISTRY-USER-001"
+      "SRC-ENTITY-REGISTRY-USER-001",
+      "SRC-CONTRACT-STATIC-CHECK-001"
     ],
     "source_locator": "本会话确认要求；api_evidence中的官方v242类/字段及JSON Schema Core。",
     "mechanical_release": "2024 R2",
@@ -60,10 +61,21 @@
       "registry_source_id": "SRC-ENTITY-REGISTRY-USER-001",
       "registry_sha256": "731a926e5985aa3dfac78dfcd5ee92644cc46f823d0621ae6ae947d9fb2ca85a",
       "registry_hash_kind": "utf8-lf",
-      "registry_enums": {"status": ["draft", "reviewed", "validated", "deprecated"], "resolution_state": ["unresolved", "resolved"]},
+      "registry_enums": {
+        "status": ["draft", "reviewed", "validated", "deprecated"],
+        "resolution_state": ["unresolved", "resolved"],
+        "entity_kind": ["body", "material", "named_selection", "analysis"]
+      },
       "registry_unique_key": "stable_id",
       "alias_rule": "aliases以分号分隔；只能按case_id与model_revision限定查找。alias只是解析入口，最终引用仍使用stable_id；不做自动映射。",
-      "parent_rule": "parent_id预留为父实体stable_id；未知留空，不根据部件名称推断层级；填写时须存在、同案例同修订且无环。"
+      "parent_rule": "parent_id预留为父实体stable_id；未知留空，不根据部件名称推断层级；填写时须存在、同案例同修订且无环。",
+      "reference_kind_expectations": {
+        "components[].entity_ref": "body",
+        "connections[].lower_entity_ref": "body",
+        "connections[].upper_entity_ref": "body",
+        "components[].material_ref.id": "material",
+        "connections[].underfill.material_id": "material"
+      }
     },
     "material_policy": {
       "revision_required": true,
@@ -869,8 +881,8 @@
           "expected": "reject"
         }
       ],
-      "last_result": "passed_static_only",
-      "last_run": {"commit": "b23a38c270c80168852f12a2df9cbdebcad3bf45", "at": "2026-11-02T05:04:10.039466+00:00", "python": "3.14.7", "jsonschema": "4.26.0", "schema_content_sha256": "6a4ac0f4345d5a06062b72ef5a0e955f5459d1d02198206f572f1c6515fc30ee", "validation_script_sha256": "aa03b6fd458d809e9c7f45a6643165288edf0bacf666dd4743c8d1f12eb294fd"}
+      "last_result": null,
+      "last_run": null
     },
     "argument_typing": {
       "status": "draft",
@@ -884,7 +896,7 @@
     "package_structure_template": {
       "path": "shared/templates/package-structure-input.json",
       "hash_kind": "utf8-lf",
-      "sha256": "80019d98566c12b13cd78c443f43680e17bd8be2edcf426b8b9156e14e7d609d",
+      "sha256": "49fb1343ac776fced523bdb60b6c6125f5b9568b0c27bacece0d331793958e8a",
       "scope": "entity_ref与校验段先行；状态draft，不执行，不填未知物理参数。"
     }
   },

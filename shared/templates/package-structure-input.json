@@ -160,19 +160,6 @@
         "geometry_rule": null
       },
       "thermal_contact_definition": null,
-      "entity_ref": {
-        "stable_id": null,
-        "display_name_hint": null,
-        "model_revision": null,
-        "mechanical_tree_id": null,
-        "geometry_body_ids": null,
-        "geometry_face_ids": null,
-        "resolved_from": {
-          "kind": null,
-          "source_ref": null,
-          "evidence_ref": null
-        }
-      },
       "lower_entity_ref": {
         "stable_id": null,
         "display_name_hint": null,
@@ -215,19 +202,6 @@
         "geometry_rule": null
       },
       "thermal_contact_definition": null,
-      "entity_ref": {
-        "stable_id": null,
-        "display_name_hint": null,
-        "model_revision": null,
-        "mechanical_tree_id": null,
-        "geometry_body_ids": null,
-        "geometry_face_ids": null,
-        "resolved_from": {
-          "kind": null,
-          "source_ref": null,
-          "evidence_ref": null
-        }
-      },
       "lower_entity_ref": {
         "stable_id": null,
         "display_name_hint": null,
@@ -379,7 +353,6 @@
               "id",
               "lower_component",
               "upper_component",
-              "entity_ref",
               "lower_entity_ref",
               "upper_entity_ref"
             ],
@@ -394,9 +367,7 @@
               "upper_component": {
                 "type": "string"
               },
-              "entity_ref": {
-                "$ref": "urn:advanced-packaging-simulation-kb:tools:0.1.0#/$defs/entity_ref"
-              },
+              "entity_ref": false,
               "lower_entity_ref": {
                 "$ref": "urn:advanced-packaging-simulation-kb:tools:0.1.0#/$defs/entity_ref"
               },
@@ -427,7 +398,6 @@
       "case_id",
       "base_model_revision",
       "all_component_entity_refs",
-      "all_connection_entity_refs",
       "all_endpoint_entity_refs",
       "registered_material_id_and_revision",
       "resolved_registry_mappings"
@@ -458,6 +428,14 @@
       "geometry_overlap_not_checked",
       "unit_conversion_not_implemented",
       "adapter_bindings_unresolved"
-    ]
+    ],
+    "connection_identity": "连接是两端之间的关系，不登记为实体；仅由lower_entity_ref和upper_entity_ref及连接定义推导。禁止connection.entity_ref。",
+    "expected_entity_kinds": {
+      "components[].entity_ref": "body",
+      "connections[].lower_entity_ref": "body",
+      "connections[].upper_entity_ref": "body",
+      "components[].material_ref.id": "material",
+      "connections[].underfill.material_id": "material"
+    }
   }
 }
