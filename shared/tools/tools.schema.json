@@ -11,7 +11,13 @@
     "reviewed_by": "",
     "reviewed_at": "",
     "updated_at": "2026-11-02",
-    "source_ids": ["SRC-EXEC-CONTRACT-USER-001", "SRC-ANSYS-242-OPS-API", "SRC-ANSYS-242-ENGDATA", "SRC-EXEC-JSONSCHEMA-202012"],
+    "source_ids": [
+      "SRC-EXEC-CONTRACT-USER-001",
+      "SRC-ANSYS-242-OPS-API",
+      "SRC-ANSYS-242-ENGDATA",
+      "SRC-EXEC-JSONSCHEMA-202012",
+      "SRC-ENTITY-REGISTRY-USER-001"
+    ],
     "source_locator": "本会话确认要求；api_evidence中的官方v242类/字段及JSON Schema Core。",
     "mechanical_release": "2024 R2",
     "mechanical_api_namespace": "v242",
@@ -48,7 +54,12 @@
       "resolved_from_required": true,
       "resolver_implementation": null,
       "runtime_ids_are_revision_bound": true,
-      "on_geometry_change": "旧ID映射失效，重新解析并核对命名选择与全部载荷作用域。"
+      "on_geometry_change": "旧ID映射失效，重新解析并核对命名选择与全部载荷作用域。",
+      "registry_path": "shared/entities/registry.csv",
+      "registry_lookup_rule": "以stable_id标识逻辑实体，在明确model_revision上overlay；材料另须固定material_revision。未给model_revision或resolution_state为unresolved时，禁止写入，不按显示名跨修订猜测。",
+      "registry_source_id": "SRC-ENTITY-REGISTRY-USER-001",
+      "registry_sha256": "5cb4974bdf01ba3674d93adb716d33ce9e3f71f443fe34ae8af96e25ef1f7685",
+      "registry_hash_kind": "utf8-lf"
     },
     "material_policy": {
       "revision_required": true,
@@ -707,7 +718,8 @@
       "breaking_change": "0.x期间升次版本；稳定版以后升主版本。",
       "compatible_addition": "兼容新增工具或可选字段升次版本；仍需确认执行端支持，不能静默启用。",
       "documentation_only": "不改变验证和执行语义的说明修订升修订版本。",
-      "reference_rule": "版本变更同步更新$id与contract_version，引用方显式升级；禁止以latest作为执行契约身份。"
+      "reference_rule": "版本变更同步更新$id与contract_version，引用方显式升级；禁止以latest作为执行契约身份。",
+      "execution_enablement": "无论是否发布，从preview_only改为允许执行，或将执行开关由false转true，都必须升contract_version次版本并同步更新$id；同一0.1.0不得出现两种执行行为。"
     },
     "gate_registry": {
       "G-PREVIEW": {"definition": "本版本只允许preview_only，所有工具执行开关仍为false；这不是运行许可。", "implementation_state": "unresolved", "evidence_ref": null},
@@ -853,8 +865,8 @@
           "expected": "reject"
         }
       ],
-      "last_result": "passed_static_only",
-      "last_run": {"commit": "05557c5d0faadebbb6635c5b61e1e81a3e1f0cd2", "at": "2026-11-02T03:58:09.698551+00:00", "python": "3.14.7", "jsonschema": "4.26.0", "schema_content_sha256": "68165715040a7112666df88f3f4958391c8740f0e390b604a9c32b810cd23510", "validation_script_sha256": "bc8f189f6d1ee6cee80ed13918f15bcd7d00c771d47729ec2358285238a56727"}
+      "last_result": null,
+      "last_run": null
     },
     "argument_typing": {
       "status": "draft",

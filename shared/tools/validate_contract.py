@@ -23,7 +23,7 @@ METADATA = {
     "status": "draft",
     "reviewed_by": "",
     "reviewed_at": "",
-    "source_ids": ["SRC-EXEC-JSONSCHEMA-202012", "SRC-EXEC-CONTRACT-USER-001"],
+    "source_ids": ["SRC-EXEC-JSONSCHEMA-202012", "SRC-EXEC-CONTRACT-USER-001", "SRC-ENTITY-REGISTRY-USER-001"],
 }
 
 
@@ -44,6 +44,11 @@ def content_digest(schema: dict) -> str:
 def script_digest() -> str:
     # Universal-newline text hashing is stable across Git LF/CRLF checkouts.
     return hashlib.sha256(Path(__file__).read_text(encoding="utf-8").encode("utf-8")).hexdigest()
+
+
+def text_digest(path: Path) -> str:
+    """Hash UTF-8 evidence text with BOM removed and universal LF newlines."""
+    return hashlib.sha256(path.read_text(encoding="utf-8-sig").encode("utf-8")).hexdigest()
 
 
 def git(root: Path, *args: str) -> str:
@@ -157,6 +162,44 @@ def check(root: Path, schema: dict) -> dict:
     require(set(contract["source_ids"]) <= sources, "Unregistered contract source.")
     for evidence in contract["api_evidence"].values():
         require(evidence["source_id"] in sources, "Unregistered API source.")
+    registry_path = root / contract["entity_policy"]["registry_path"]
+    require(contract["entity_policy"]["registry_hash_kind"] == "utf8-lf", "Unknown registry hash normalization.")
+    require(text_digest(registry_path) == contract["entity_policy"]["registry_sha256"], "Entity registry content differs from its pinned digest.")
+    with registry_path.open(encoding="utf-8-sig", newline="") as stream:
+        entities = list(csv.DictReader(stream))
+    overlay_keys = set()
+    manifest_path = root / "simulation/cases/bga-2024r2-unsolved/data/source-manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    archive_revision = "archive-sha256:" + manifest["archive_snapshot"]["sha256"]
+    for entity in entities:
+        key = (entity["stable_id"], entity["model_revision"], entity["material_revision"])
+        require(bool(entity["stable_id"]) and key not in overlay_keys, "Empty or duplicate registry overlay key.")
+        overlay_keys.add(key)
+        require(entity["status"] == "draft" and entity["reviewed_by"] == entity["reviewed_at"] == "", "Registry review state changed.")
+        require(entity["resolution_state"] == "unresolved", "Unverified registry mapping was promoted.")
+        require(entity["resolved_from"] in schema["$defs"]["entity_ref"]["properties"]["resolved_from"]["properties"]["kind"]["enum"], "Unknown registry resolution source.")
+        require(set(entity["source_ids"].split(";")) <= sources, "Unregistered entity evidence source.")
+        artifact = (root / entity["source_artifact"]).resolve()
+        require(artifact.is_relative_to(root.resolve()) and artifact.suffix.lower() != ".pdf", "Unexpected registry evidence path.")
+        require(entity["source_hash_kind"] == "utf8-lf", "Unknown registry evidence hash normalization.")
+        require(text_digest(artifact) == entity["source_artifact_sha256"], "Registry evidence artifact changed.")
+        require(entity["model_revision"] in ("", archive_revision), "Unproven model revision overlay.")
+        require(not any(entity[field] for field in ("mechanical_tree_id", "geometry_body_ids", "geometry_face_ids")), "Runtime IDs were filled without resolution evidence.")
+        if artifact.suffix == ".csv":
+            with artifact.open(encoding="utf-8-sig", newline="") as stream:
+                evidence_rows = list(csv.DictReader(stream))
+            if entity["entity_kind"] == "body":
+                matches = [row for row in evidence_rows if row.get("object_id") == entity["source_object_id"]]
+                require(len(matches) == 1 and matches[0]["name"] == entity["display_name_hint"], "Historical body ID/evidence mismatch.")
+                require(not entity["material_id"] and not entity["material_revision"], "Body material revision inferred from a name.")
+            elif entity["entity_kind"] == "material":
+                matches = [row for row in evidence_rows if row.get("material_id") == entity["material_id"] and row.get("revision") == entity["material_revision"]]
+                require(len(matches) == 1 and entity["stable_id"] == entity["material_id"], "Material registry ID/revision differs from catalog.")
+        elif entity["source_object_id"]:
+            evidence_rows = json.loads(artifact.read_text(encoding="utf-8"))
+            matches = [row for row in evidence_rows if str(row["object_id"]) == entity["source_object_id"]]
+            require(len(matches) == 1 and matches[0]["name"] == entity["display_name_hint"], "Historical object index mismatch.")
+    print("PASS", len(entities), "draft entity registry rows; source hashes; revision overlays")
     unresolved = (root / "shared/tools/unresolved.md").read_text(encoding="utf-8")
     for tool in tools.values():
         require(all("| " + key + " |" in unresolved for key in tool["unresolved_refs"]), "Unlisted unresolved ID.")

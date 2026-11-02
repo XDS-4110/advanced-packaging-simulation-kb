@@ -76,7 +76,7 @@ JSON Schema验证的是骨架预览请求的结构，`x-contract`是配套的项
 
 `$id`为`urn:advanced-packaging-simulation-kb:tools:0.1.0`，`x-contract.contract_version`为`0.1.0`，这是用户指定的协议版本，不是材料/工程数值。URN是契约身份，不是下载地址。执行端应将仓库中的该文件注册到此URI，2.5D等引用方用`$ref: urn:advanced-packaging-simulation-kb:tools:0.1.0#/$defs/entity_ref`引用；校验脚本实际检查离线跨文档解析，没有复制定义。
 
-当前0.1.0尚未发布，分支审阅修订由Git提交区分。首次发布后同一$id内容冻结；破坏性变化在0.x阶段升次版本，稳定版以后升主版本；兼容新增升次版本，仅说明变化升修订版本。版本变化同步更新$id，引用方显式升级；不使用latest。规则见`x-contract.versioning`。
+当前0.1.0尚未发布，分支审阅修订由Git提交区分。首次发布后同一$id内容冻结；破坏性变化在0.x阶段升次版本，稳定版以后升主版本；兼容新增升次版本，仅说明变化升修订版本。版本变化同步更新$id，引用方显式升级；不使用latest。另有强制规则：preview_only变为允许执行（含执行开关false→true）必须升contract_version次版本并同步改$id；无论是否发布，同一0.1.0不得有两种执行行为。规则见`x-contract.versioning`。
 
 ## request_id与作用域
 
@@ -98,12 +98,42 @@ JSON Schema验证的是骨架预览请求的结构，`x-contract`是配套的项
 
 校验器为python-jsonschema 4.26.0 / Draft202012Validator；缺少依赖时需要访问PyPI安装该固定版本，或预先从可访问环境取得对应wheel及依赖、使用内网镜像。无法取得依赖时，等价子集校验可作为独立复核，但不能标成已运行本脚本/此版本；脚本不会自动安装或降级依赖。
 
-默认只读校验，不启动ANSYS、不触碰几何/工程文件。CI可直接使用同一命令，失败返回非零退出码。`--record`仅在Git工作区干净时把校验记录写回schema；这属于审计记录，不是模型执行工具。
+普通check只需Python、指定jsonschema及其依赖和仓库中的数据文件；不依赖git，也不要求干净工作树。默认只读校验，不启动ANSYS、不触碰几何/工程文件，CI可直接使用同一命令，失败返回非零退出码。`--record`在这些前提之外额外依赖git和干净、已提交的工作树，才把校验记录写回schema；这是审计记录，不是模型执行工具。
 
-static_validation.last_run记录被校验提交commit、UTC时间at、python、jsonschema，并附schema_content_sha256和校验脚本哈希。commit指向校验时工作区的提交，不是随后保存审计记录的提交；内容哈希用规范化JSON排除last_run/last_result两个自记录字段，避免提交/哈希自引用。首次取证前last_run保持null。
+static_validation.last_run记录被校验提交commit、UTC时间at、python、jsonschema，并附schema_content_sha256和校验脚本哈希。回执指向被校验内容所在提交，即本提交的父提交；这里“本提交”专指随后保存回执的审计提交，读者应在审计提交查看回执，在父提交查看被校验内容，而不是去父提交找回执。内容哈希用规范化JSON排除last_run/last_result两个自记录字段，避免提交/哈希自引用。首次取证前last_run保持null。
 
 校验脚本哈希按UTF-8文本统一换行后计算，避免Windows与CI的LF/CRLF检出差异造成误报。
 
 schema内容或校验脚本变更会使旧记录失效，脚本将拒绝沿用旧“通过”；需将last_run/last_result重置为null，提交内容后重新取证。记录校验结果不会将条目状态改为reviewed或validated。
 
 校验包括原有两个反例，以及entity的target=null、project的非null目标、analysis的非法目标类型三项反例；还检查每个分支的目标规则、三个槽位、非法scope_kind、缺参数键、非法gate ID及独立参数类型。analysis允许null或合法引用的正例也会保留。通过仅证明静态结构，不证明去重日志、API回读、保存、求解或结果导出。
+
+
+## 两种复核结论分开报告
+
+| 报告用语 | 前提 | 可证明的范围 |
+| --- | --- | --- |
+| 指定校验器通过 | 实际运行本脚本及jsonschema 4.26.0；保留对应last_run与内容/脚本哈希 | 该内容版本通过本项目静态校验，不证明ANSYS可执行 |
+| 逻辑等价复现通过 | 独立检查器/等价子集进行复核；未运行指定版本 | 只覆盖复核者列明的规则，不冒充指定校验器运行记录 |
+
+用户本机PyPI不通，已报告的是逻辑等价复现；不能据此给用户环境补写jsonschema 4.26.0运行回执。本仓库代理环境实际运行的指定校验器回执与用户独立复核是两类证据，保留各自边界，不合并成“所有环境均已复跑”。
+
+## stable_id注册表：阶段二前审阅件
+
+[shared/entities/registry.csv](../entities/registry.csv)是本项目stable_id登记入口；目前为15行草稿种子，不是完整实体清单或已解析的运行时映射。由7个明确单体、5个目录材料定义、历史tem、截图“外表面”和历史热分析组成。凸点/焊球各取一个有源对象编号的单体作为起始样本，不代表阵列整体。
+
+注册规则来源为SRC-ENTITY-REGISTRY-USER-001，已先登记在catalog；每行还保留实际数据来源SRC、文件、行/对象定位及该文件SHA-256。规则如下：
+
+- 初始实体/分析/旧选择的stable_id由案例命名空间、种类与首次证据中的object_id确定，例如CSV中的ENT-BGA-BODY前缀；这不是原生API ID。材料直接复用材料目录的material_id；截图“外表面”用其唯一证据SRC编号登记逻辑ID，不填虚构树/面ID。
+- 一经确认，stable_id不因显示名变化而重建；跨修订需要明确映射证据，不能根据新版本碰巧复用相同object_id就认作原实体。当前命名规则只是确定性初始登记，不是自动识别算法。
+- 逻辑身份为stable_id，overlay选择必须同时限定model_revision；材料还要固定material_revision。model_revision采用原source-manifest.json登记的归档SHA-256，不是猜测的ANSYS版本号，也不是当前工程修订。
+- source_object_id只保存历史导出编号。mechanical_tree_id、geometry_body_ids、geometry_face_ids均未运行回读，继续留空；CSV空字段代表未知，不表示零、空作用域或适用于任意修订。part_id未当作CAD体ID复制。
+- 当前“外表面”截图没有归档/工程修订桥接证据，model_revision也留空，不能覆盖到原归档的tem。两条登记分别保留，不能自动合并。
+- 材料目录当前只有revision 1，按原目录记录；不因材料名称相同就升级到revision 3。实体行只保留观察到的material_name_hint，实际material_id/revision绑定留空，避免把名称匹配当作版本证据。
+- resolved_from在材料行使用parameter_table仅指材料CSV登记表，不表示存在Workbench参数集；各行来源用于解析取证，不把显示名称作为执行唯一键。
+
+所有行status=draft、resolution_state=unresolved，审核字段为空；未绑定model_revision或未关闭解析证据的行不得供写工具执行。运行时映射仍需对应工程中只读解析与回读，不能通过复制历史编号获得“已解析”状态。注册表经用户确认后再修改阶段二模板；本轮没有更改模板或关闭U-STABLE-ID。
+
+注册表文件SHA-256固定在entity_policy.registry_sha256内，普通check也核对该哈希、逐行证据文件哈希、来源编号、历史对象编号、材料目录修订及overlay边界。修改注册表需同步更新哈希并重新取证；这些仍是只读静态检查，不是运行时实体解析。
+
+registry_hash_kind及逐行source_hash_kind均明确为utf8-lf：对这里的CSV/JSON/Markdown证据去UTF-8 BOM、统一LF后计算文本哈希，避免Git在Windows/CI之间转换换行造成误报。它们不是原始CAD/工程文件的字节哈希；model_revision引用的原归档SHA-256仍是source-manifest中记录的原文件字节哈希，两者不混用。
