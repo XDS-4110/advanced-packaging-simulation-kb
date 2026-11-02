@@ -1,0 +1,76 @@
+{
+  "profile_id": "thermal-structural-2024r2-compact",
+  "revision": 1,
+  "status": "configuration_contract_not_executed",
+  "software_release": "2024 R2",
+  "core_operation_documents": [
+    {
+      "id": "KB-ANSYS242-OPS-01",
+      "path": "simulation/software/ansys-workbench-2024r2/01-geometry-materials.md",
+      "stage": "geometry-materials"
+    },
+    {
+      "id": "KB-ANSYS242-OPS-02",
+      "path": "simulation/software/ansys-workbench-2024r2/02-scope-contacts.md",
+      "stage": "scope-contacts"
+    },
+    {
+      "id": "KB-ANSYS242-OPS-03",
+      "path": "simulation/software/ansys-workbench-2024r2/03-mesh.md",
+      "stage": "meshing"
+    },
+    {
+      "id": "KB-ANSYS242-OPS-04",
+      "path": "simulation/software/ansys-workbench-2024r2/04-transient-thermal.md",
+      "stage": "transient-thermal"
+    },
+    {
+      "id": "KB-ANSYS242-OPS-05",
+      "path": "simulation/software/ansys-workbench-2024r2/05-temperature-transfer-structure.md",
+      "stage": "temperature-transfer"
+    },
+    {
+      "id": "KB-ANSYS242-OPS-06",
+      "path": "simulation/software/ansys-workbench-2024r2/06-solve-results.md",
+      "stage": "solve-results"
+    }
+  ],
+  "core_article_count": 6,
+  "default_mode": "operation_guidance",
+  "default_status_allowlist": [
+    "reviewed",
+    "validated"
+  ],
+  "selection": "route by workflow stage and intent; retrieve relevant articles, do not inject all six on every request",
+  "chunks": "split by coherent task headings; retain source IDs, version limits, input conditions, result checks and limitations together",
+  "conditional_dependencies": {
+    "material_query": [
+      "shared/materials/",
+      "simulation/materials/"
+    ],
+    "mesh_query": [
+      "simulation/verification/project-mesh-requirements.md"
+    ],
+    "thermal_cycle_standard_query": [
+      "simulation/thermal-cycling/gjb548c-2021-method-1010-1.md"
+    ],
+    "case_or_current_value_query": [
+      "explicitly selected case and material revision only; draft evidence must stay labelled and not be promoted to approved settings"
+    ],
+    "structure_change_query": [
+      "simulation/modeling/insert-interposer-workflow.md"
+    ]
+  },
+  "exclude_from_default_context": [
+    "README.md",
+    "data/source-selection.json",
+    "data/source-manifest.json",
+    "raw upstream repositories",
+    "files/*.pdf",
+    "books/*.pdf",
+    "historical case snapshots unless explicitly requested"
+  ],
+  "exact_parameter_rule": "retrieve tables by material/case/property/revision and preserve units; do not infer missing values from embeddings",
+  "provenance": "source-selection.json stores audit metadata; it is not an operation chunk",
+  "implementation_note": "no embedding index, retriever, stage router or latency benchmark has been executed in this change"
+}

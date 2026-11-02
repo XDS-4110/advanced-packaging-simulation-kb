@@ -1,0 +1,165 @@
+{
+  "checked_on": "2026-11-02",
+  "scope": "sequential thermal-to-structural operating knowledge for Workbench/Mechanical 2024 R2",
+  "software_runtime_tested": false,
+  "upstream_source_bodies_copied": false,
+  "source_files": [
+    {
+      "repo": "ansys/pymechanical",
+      "path": "examples/01_basic/steady_state_thermal_analysis.py",
+      "commit": "ddcaf8256b8035e7a534cdca3b5b8b34b808f215",
+      "url": "https://github.com/ansys/pymechanical/blob/ddcaf8256b8035e7a534cdca3b5b8b34b808f215/examples/01_basic/steady_state_thermal_analysis.py",
+      "sha256": "9b85369d30e8257ad4dab67b2888e3805db3bd94bbcc63b5f69af8e61b22b1f9",
+      "bytes": 18398
+    },
+    {
+      "repo": "ansys/pymechanical-examples",
+      "path": "examples/00_basic/example_01_simple_structural_solve.py",
+      "commit": "1069560138e7cebfffc97de5d102913530d9c43d",
+      "url": "https://github.com/ansys/pymechanical-examples/blob/1069560138e7cebfffc97de5d102913530d9c43d/examples/00_basic/example_01_simple_structural_solve.py",
+      "sha256": "11e973653d4790cae390b0be001b34682c6a90e20ab890789802a0827164a9dd",
+      "bytes": 7598
+    },
+    {
+      "repo": "ansys/pyworkbench-examples",
+      "path": "examples/pymechanical-integration/main.py",
+      "commit": "406c4985e90b16a444fc8605e9f34c44812e6751",
+      "url": "https://github.com/ansys/pyworkbench-examples/blob/406c4985e90b16a444fc8605e9f34c44812e6751/examples/pymechanical-integration/main.py",
+      "sha256": "8e36b78d70cb0504da40df37ce090812262dba8834e84303b2b4737a078760ba",
+      "bytes": 3512
+    },
+    {
+      "repo": "ansys/pyworkbench-examples",
+      "path": "examples/pymechanical-integration/assets/project.wbjn",
+      "commit": "406c4985e90b16a444fc8605e9f34c44812e6751",
+      "url": "https://github.com/ansys/pyworkbench-examples/blob/406c4985e90b16a444fc8605e9f34c44812e6751/examples/pymechanical-integration/assets/project.wbjn",
+      "sha256": "faa9c41ea710ea3ae42be1e5f9b4b941c57063653566c315c261645618994734",
+      "bytes": 508
+    },
+    {
+      "repo": "ansys/pyansys-workflows",
+      "path": "fluent-mechanical/README.rst",
+      "commit": "20647415eef62c71fdea3fc5a5e56abd5295dcf8",
+      "url": "https://github.com/ansys/pyansys-workflows/blob/20647415eef62c71fdea3fc5a5e56abd5295dcf8/fluent-mechanical/README.rst",
+      "sha256": "4898611ab458db8744f2a8ec9599844397d54e11e796ff5a535951273bdea948",
+      "bytes": 381
+    },
+    {
+      "repo": "ansys/pyansys-workflows",
+      "path": "fluent-mechanical/wf_fm_02_mechanical.py",
+      "commit": "20647415eef62c71fdea3fc5a5e56abd5295dcf8",
+      "url": "https://github.com/ansys/pyansys-workflows/blob/20647415eef62c71fdea3fc5a5e56abd5295dcf8/fluent-mechanical/wf_fm_02_mechanical.py",
+      "sha256": "c82d0c9285c0b8b50e0ebb99d31050daa429f6f3d10e07f1510403f5aa75fe3d",
+      "bytes": 29180
+    },
+    {
+      "repo": "ansys/pyansys-workflows",
+      "path": "fluent-mechanical/requirements_24.2.txt",
+      "commit": "20647415eef62c71fdea3fc5a5e56abd5295dcf8",
+      "url": "https://github.com/ansys/pyansys-workflows/blob/20647415eef62c71fdea3fc5a5e56abd5295dcf8/fluent-mechanical/requirements_24.2.txt",
+      "sha256": "7a1395489838517ff41037317973d926c3777bc68cff2384c3c0d95187dc17b7",
+      "bytes": 133
+    }
+  ],
+  "api_pages": [
+    {
+      "class": "Temperature",
+      "url": "https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/BoundaryConditions/Temperature.html",
+      "release_namespace": "v242",
+      "sha256": "1cd01431606ab2da4f05495270c0c66aa091c4ad90d7e13b0f94919b35797c06",
+      "bytes": 632748,
+      "checked_on": "2026-11-02"
+    },
+    {
+      "class": "ContactRegion",
+      "url": "https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/Connections/ContactRegion.html",
+      "release_namespace": "v242",
+      "sha256": "02090c8076bef6f4a87d1e1200ce50bbaaee57990ab036c651414dafb3e1f7fc",
+      "bytes": 787122,
+      "checked_on": "2026-11-02"
+    },
+    {
+      "class": "ImportedBodyTemperature",
+      "url": "https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/ImportedLoads/ImportedBodyTemperature.html",
+      "release_namespace": "v242",
+      "sha256": "7ec9d1567c59a44f99b691f75eb2be452d91ef7b6deb9cbef09a472f01f20a97",
+      "bytes": 701719,
+      "checked_on": "2026-11-02"
+    },
+    {
+      "class": "Mesh",
+      "url": "https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/MeshControls/Mesh.html",
+      "release_namespace": "v242",
+      "sha256": "9197347adc042aabb010b02e911a4523de3f457f7a337a52c8354126bbdd422f",
+      "bytes": 1075720,
+      "checked_on": "2026-11-02"
+    },
+    {
+      "class": "Model",
+      "url": "https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/Model.html",
+      "release_namespace": "v242",
+      "sha256": "178216cea39bc8ffdb828223189ef71a151c83446e91c5bc1682aeadced183f9",
+      "bytes": 784170,
+      "checked_on": "2026-11-02"
+    },
+    {
+      "class": "Analysis",
+      "url": "https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/Analysis.html",
+      "release_namespace": "v242",
+      "sha256": "c9d367d4e5923844dbfa38335a3c7ece9a85cad5689c55dd6c2b68c9d10f2c36",
+      "bytes": 915768,
+      "checked_on": "2026-11-02"
+    },
+    {
+      "class": "Body",
+      "url": "https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/Body.html",
+      "release_namespace": "v242",
+      "sha256": "fe6e2fdb017fee3c6ae894b0a5ae577ecc404d38427114bbb11326b83322de00",
+      "bytes": 732004,
+      "checked_on": "2026-11-02"
+    },
+    {
+      "class": "NamedSelection",
+      "url": "https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/NamedSelection.html",
+      "release_namespace": "v242",
+      "sha256": "05e68ef06c2658c98a677c29f499478acf79596883a21ee2cbdaf9cc8cbadcc5",
+      "bytes": 640027,
+      "checked_on": "2026-11-02"
+    },
+    {
+      "class": "ANSYSAnalysisSettings",
+      "url": "https://scripting.mechanical.docs.pyansys.com/version/stable/api/ansys/mechanical/stubs/v242/Ansys/ACT/Automation/Mechanical/AnalysisSettings/ANSYSAnalysisSettings.html",
+      "release_namespace": "v242",
+      "sha256": "6e72cc3f5d76f6491c6cb4ba3a1eed1def4a471d19fb1e7726f54b743f63919b",
+      "bytes": 1409838,
+      "checked_on": "2026-11-02"
+    }
+  ],
+  "api_note": "generated v242 documentation is identified by release namespace, retrieval date and page hash; not falsely pinned to a GitHub commit",
+  "excluded": [
+    {
+      "item": "PyAnsys Geometry source and deployments",
+      "reason": "geometry creation is a separate topic; no need to index the complete backend here"
+    },
+    {
+      "item": "MCP startup, installation and HTTP/gRPC details",
+      "reason": "handled by integration side; outside this operation profile"
+    },
+    {
+      "item": "Fluent exhaust-manifold setup and detailed CSV import",
+      "reason": "not needed for current solid thermal-to-structural workflow"
+    },
+    {
+      "item": "modal, acoustics, electromagnetic, LS-DYNA, bolt pretension",
+      "reason": "outside current task scope"
+    },
+    {
+      "item": "large raw stubs, full manuals, source code, screenshots and logs",
+      "reason": "index short operation records and exact provenance, not whole trees"
+    },
+    {
+      "item": "sample materials, dimensions, loads, contacts and numeric IDs",
+      "reason": "not project defaults"
+    }
+  ]
+}
