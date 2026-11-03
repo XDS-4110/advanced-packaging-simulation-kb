@@ -1,0 +1,12 @@
+{
+  "_comment": "Copy to the MCP client config and replace both paths with absolute paths on that machine.",
+  "mcpServers": {
+    "kb": {
+      "command": "<path-to-python.exe>",
+      "args": ["<path-to-repo>/tooling/kb_retrieve.py", "serve"],
+      "env": {
+        "KB_REPO": "<path-to-repo>"
+      }
+    }
+  }
+}
