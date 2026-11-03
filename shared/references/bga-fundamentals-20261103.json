@@ -1,0 +1,73 @@
+{
+  "status": "draft",
+  "updated_at": "2026-11-03",
+  "policy": "按用户要求，fundamentals不包含出处或文献介绍；出处保存在检索正文之外。",
+  "new_sources": [
+    {
+      "id": "SRC-BGA-ADI-DESIGN",
+      "title": "Ball Grid Array Packages and PCB Design Guidelines",
+      "url": "https://www.analog.com/en/resources/app-notes/2022/07/16/12/13/ball-grid-array-bga-packages-and-pcb-design-guidelines.html",
+      "locator": "Package Construction；PCB Land Pattern；只引用定义，不推广特定模块工艺数值"
+    },
+    {
+      "id": "SRC-BGA-COMSOL-CONTACT",
+      "title": "Thermal Contact Resistance Between an Electronic Package and a Heat Sink",
+      "url": "https://www.comsol.com/model/thermal-contact-resistance-between-an-electronic-package-and-a-heat-sink-14659",
+      "locator": "Application ID 14659；model description"
+    },
+    {
+      "id": "SRC-BGA-COMSOL63-EXPANSION",
+      "title": "Thermal Expansion for Materials",
+      "url": "https://doc.comsol.com/6.3/doc/com.comsol.help.sme/sme_ug_solid.07.033.html",
+      "locator": "Thermal Expansion；Volume reference temperature"
+    },
+    {
+      "id": "SRC-BGA-MICROSTRUCTURE-2023",
+      "title": "The role of microstructure in the thermal fatigue of solder joints",
+      "url": "https://arxiv.org/abs/2311.03891",
+      "locator": "Abstract；仅摘要层面支持晶粒取向与损伤相关性，不引用全文参数"
+    }
+  ],
+  "mapping": {
+    "bga-definition": [
+      "SRC-TI-PBGA-SSZA002B: Introduction；原定义来源见legacy存档",
+      "术语分类与绘图规则为工程综合"
+    ],
+    "package-vs-board-scope": [
+      "原范围条目来源见legacy存档；移除特定报告叙述",
+      "模型边界、对称及子模型限制为工程综合"
+    ],
+    "thermal-paths-and-resistance": [
+      "SRC-TI-THERMAL-METRICS-D: sections 1-5，仅支持热指标定义与边界",
+      "导热、热源守恒与对称功率关系为基础物理推导"
+    ],
+    "geometry-coordinates-and-units": [
+      "SRC-BGA-ADI-DESIGN: PCB Land Pattern，仅支持焊盘术语；不采用器件限定尺寸",
+      "坐标、量纲及绘图规则为基础几何与工程综合"
+    ],
+    "cte-mismatch-and-warpage": [
+      "SRC-BGA-COMSOL63-EXPANSION: reference temperature",
+      "自由失配位移、平均剪切尺度及翘曲定义为有条件近似，非软件求解或标定寿命模型"
+    ],
+    "material-behavior-and-timescales": [
+      "SRC-COMSOL63-SOLDER: Introduction / Model Definition / Results and Discussion",
+      "SRC-BGA-MICROSTRUCTURE-2023: Abstract",
+      "其他材料与时间尺度限制为工程综合"
+    ],
+    "interfaces-and-load-paths": [
+      "SRC-BGA-COMSOL-CONTACT: model description，仅支持接触导热相关因素",
+      "界面换热量纲及多场拓扑限制为基础关系和工程综合"
+    ],
+    "model-input-and-result-contract": [
+      "本项目工程综合及绘图规则，不是软件官方API或已验证操作规程"
+    ]
+  },
+  "legacy_archive": "bga-fundamentals-legacy-20261103.json",
+  "limitations": [
+    "无新增推荐工程数值",
+    "原有条目ID保留，出处单独存档",
+    "保持draft，审核人和日期留空",
+    "未运行COMSOL或ANSYS，软件版本与具体器件参数待补充",
+    "U-GEOMETRY-PARAMETER/U-RUNTIME/U-SAVE/U-RETRY 未解除"
+  ]
+}
