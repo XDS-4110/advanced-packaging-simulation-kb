@@ -38,8 +38,10 @@ REPO = Path(os.environ.get("KB_REPO") or find_repo(Path(__file__).resolve().pare
 
 STRICT = {"reviewed", "validated"}
 EXPLAIN = STRICT | {"draft"}
-EXCLUDED_DIRS = ("shared/templates/", "shared/tools/", "files/")
-EXCLUDED_FILES = ("README.md",)
+# Only knowledge entries are searched. Instruction files and code must never
+# become citable "sources": the agent would otherwise cite its own rules.
+EXCLUDED_DIRS = ("shared/templates/", "shared/tools/", "files/", "tooling/")
+EXCLUDED_FILES = ("README.md", "AGENTS.md", "CONTRIBUTING.md")
 
 CJK = re.compile(r"[\u4e00-\u9fa5]+")
 ASCII = re.compile(r"[A-Za-z][A-Za-z0-9_\-\.]{1,}")
@@ -302,11 +304,21 @@ def info(root: Path) -> dict:
     status: dict[str, int] = {}
     for d in idx.docs:
         status[d["status"]] = status.get(d["status"], 0) + 1
-    return {"repo": str(root), "python": sys.version.split()[0],
-            "platform": sys.platform, "documents": len(idx.docs),
-            "chunks": len(idx.chunks), "by_status": status,
-            "corpus_sha256": h.hexdigest(),
-            "registry_present": (root / "shared/entities/registry.csv").exists()}
+    digest = h.hexdigest()
+    base_path = Path(__file__).with_name("corpus-baseline.json")
+    expected = json.loads(base_path.read_text(encoding="utf-8")) if base_path.exists() else None
+    report = {"repo": str(root), "python": sys.version.split()[0],
+              "platform": sys.platform, "documents": len(idx.docs),
+              "chunks": len(idx.chunks), "by_status": status,
+              "corpus_sha256": digest,
+              "registry_present": (root / "shared/entities/registry.csv").exists()}
+    if expected:
+        report["baseline"] = {"commit": expected.get("commit"),
+                              "corpus_sha256": expected.get("corpus_sha256"),
+                              "documents": expected.get("documents")}
+        report["baseline_match"] = (digest == expected.get("corpus_sha256")
+                                    and len(idx.docs) == expected.get("documents"))
+    return report
 
 
 # ---------------------------------------------------------------- MCP
