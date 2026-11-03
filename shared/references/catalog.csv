@@ -89,3 +89,4 @@ SRC-BGA-MICROSTRUCTURE-2023,The role of microstructure in the thermal fatigue of
 SRC-SW-COM-LAB-001,SolidWorks COM 自动化本机实测记录,internal_validation_record,项目组,2026,,2026-11-03 本机,Windows 10 + SW 2024 SP0.1 + pywin32,仅记录现象与返回码,reviewed,2026-11-03 实测：连接、晚绑定、轻量化、重建、单位、实例状态六类问题均为本机复现
 SRC-GEOM-STRUCTURE-USER-001,用户提供的 SolidWorks 装配结构说明：单零件加装配级阵列,user_confirmed_project_requirement,用户,2026,,2026-11-03 本会话,仅项目内部约定,仅归纳；不复制全文,reviewed,用户截图确认 TUDIAN 与 HANQIU 为单实例加阵列；所有组件为固定
 SRC-REF-TEMP-POLICY-USER-001,项目决策：所有模型的无应力参考温度统一取环境温度,user_confirmed_project_requirement,用户,2026,,2026-11-03 本会话,仅项目内部约定,仅归纳；不复制全文,reviewed,用户 2026-11-03 明确决策；属工程约定而非物理结论
+SRC-ANSYS-WB-LOCAL-20261103,Workbench 批处理与对象层级本机失败记录,internal_validation_record,用户提供；Codex整理,2026,,目标2024 R2；实际进程版本待核对,脱敏日志摘录；原始脚本仅登记哈希,用户授权整理并提交；不含模型和厂商文档全文,draft,定位：simulation/troubleshooting/ansys/runtime/data/source-manifest.json；三份实际日志及代理摘要；未完成材料/网格/求解

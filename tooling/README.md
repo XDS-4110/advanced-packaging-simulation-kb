@@ -50,8 +50,8 @@ python tooling/kb_retrieve.py serve
 
 ```
 baseline_match = true
-documents = 119, chunks = 585
-corpus_sha256 = 0bba538c862ac59b4b74377812b47ea23f4747a9e8c42402cf5355fdef14ae44
+documents = 124, chunks = 623
+corpus_sha256 = f2609adaf8699ea47e4a200cb5de813a32fb247f0c5a3b9bbf0ba034d73fe6e6
 ```
 
 `baseline_match: false` 表示知识内容已变。改内容时**在同一 PR 内**更新 `corpus-baseline.json`，不要事后补。
@@ -80,3 +80,7 @@ corpus_sha256 = 0bba538c862ac59b4b74377812b47ea23f4747a9e8c42402cf5355fdef14ae44
 - 排序调优（课程笔记类文档需降权）
 - 评估集扩到 20 题
 - 与 `shared/tools/validate_contract.py` 的证据编号互链
+
+## ANSYS运行排错条目入库检查（2026-11-03）
+
+新增5篇draft；语料124篇、623块。12题回归 hit@5=1.0、MRR=0.861、gate_violations=0。draft仅在explain层返回，usable_for_arguments=false；strict层不新增可执行依据。

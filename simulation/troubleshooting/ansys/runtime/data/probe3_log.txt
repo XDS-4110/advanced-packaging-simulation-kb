@@ -1,0 +1,6 @@
+geometry refreshed
+model dir has SendCommand: False
+ERR Traceback (most recent call last):
+  File "[WORKSPACE]\wb_probe3.py", line 37, in <module>
+    model.Edit()
+AttributeError: 'DataReference' object has no attribute 'Edit'
