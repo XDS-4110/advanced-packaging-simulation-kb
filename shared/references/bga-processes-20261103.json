@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-03",
+  "status": "draft",
+  "policy": "应用户要求，processes 不含来源文字；本文件在检索正文范围之外。",
+  "source_mapping": {
+    "process-state-and-assembly-sequence.md": [
+      "SRC-TI-PBGA-SSZA002B: pp.2-3",
+      "倒装路线及分阶段状态表为工程综合，需器件流程审核"
+    ],
+    "reflow-thermal-history.md": [
+      "SRC-TI-NFBGA-SPRAA99C: section 4.4",
+      "热边界、时间步与映射检查为工程建模建议"
+    ],
+    "solder-solidification-and-residual-stress.md": [
+      "SRC-ANSYS-242-ANAND: 4.3.2.4",
+      "SRC-COMSOL63-SOLDER: Introduction / Model Definition / Results and Discussion",
+      "参考温度、支承与状态继承为工程综合"
+    ],
+    "joint-geometry-from-process.md": [
+      "SRC-TI-PBGA-SSZA002B: section 2.1",
+      "SRC-TI-NFBGA-SPRAA99C: section 4.3",
+      "体积关系为几何推导；CAD 约束为工程建议"
+    ],
+    "process-defects-and-figure-contract.md": [
+      "SRC-TI-NFBGA-SPRAA99C: section 4.5",
+      "缺陷拓扑、绘图契约及验收为工程综合，尚未经求解验证"
+    ],
+    "legacy_entries": "四篇原条目的来源和原文保存在 bga-processes-legacy-20261103.json；本次删除历史文献叙述，改为直接知识表述。钢网面积比统一为开口面积/孔壁面积，参照 SSZA002B section 2.1。"
+  },
+  "limitations": [
+    "未新增工程推荐数值",
+    "未运行 COMSOL 或 ANSYS",
+    "未提供具体器件的固化动力学、热曲线、焊点截面和材料标定",
+    "软件路线不是 API 实现；现有 U-GEOMETRY-PARAMETER/U-RUNTIME/U-SAVE/U-RETRY 未解除"
+  ]
+}
