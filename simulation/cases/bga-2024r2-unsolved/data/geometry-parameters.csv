@@ -1,21 +1,21 @@
-logical_name,part_file,dimension_name,kind,current_value,unit,class,notes
-die_length,XINPIAN.SLDPRT,D1@草图1,length,5.0,mm,A,芯片平面尺寸
-die_width,XINPIAN.SLDPRT,D2@草图1,length,5.0,mm,A,芯片平面尺寸
-die_thickness,XINPIAN.SLDPRT,D1@凸台-拉伸1,length,0.35,mm,A,芯片厚度
-bump_d1,TUDIAN.SLDPRT,D1@草图2,length,0.025,mm,A,凸点轮廓尺寸（含义待确认）
-bump_d2,TUDIAN.SLDPRT,D2@草图2,length,0.0125,mm,A,凸点轮廓尺寸（含义待确认）
-ball_diameter,HANQIU.SLDPRT,D1@草图1,length,0.3,mm,A,焊球直径
-ball_h1,HANQIU.SLDPRT,D2@草图1,length,0.15,mm,A,焊球轮廓高度（含义待确认）
-ball_h2,HANQIU.SLDPRT,D3@草图1,length,0.12,mm,A,焊球轮廓高度（含义待确认）
-substrate_length,JIBAN.SLDPRT,D1@草图1,length,12.0,mm,A,基板平面尺寸
-substrate_width,JIBAN.SLDPRT,D2@草图1,length,12.0,mm,A,基板平面尺寸
-substrate_thickness,JIBAN.SLDPRT,D1@凸台-拉伸1,length,0.27,mm,A,基板厚度
-mold_length,SUFENGLIAO.SLDPRT,D1@草图1,length,12.0,mm,A,塑封外形
-mold_width,SUFENGLIAO.SLDPRT,D2@草图1,length,12.0,mm,A,塑封外形
-mold_height,SUFENGLIAO.SLDPRT,D1@凸台-拉伸1,length,0.624,mm,A,塑封高度
-mold_cut_depth,SUFENGLIAO.SLDPRT,D1@切除-拉伸1,length,0.4,mm,A,塑封开口深度
-underfill_thickness,Underfill.SLDPRT,D1@凸台-拉伸1,length,0.05,mm,A,底填厚度
-pcb_diameter,PCB.SLDPRT,D1@草图1,length,140.0,mm,A,PCB 直径（圆形）
-pcb_thickness,PCB.SLDPRT,D1@凸台-拉伸1,length,1.8,mm,A,PCB 厚度
-bump_revolve_angle,TUDIAN.SLDPRT,D1@旋转1,angle,360,deg,C,旋转角度（勿当长度）
-ball_revolve_angle,HANQIU.SLDPRT,D1@旋转1,angle,360,deg,C,旋转角度（勿当长度）
+logical_name,part_file,dimension_name,kind,current_value,unit,class,stack_axis,interferes_with,compensation,notes
+die_length,XINPIAN.SLDPRT,D1@草图1,length,5.0,mm,A,none,,,芯片平面尺寸
+die_width,XINPIAN.SLDPRT,D2@草图1,length,5.0,mm,A,none,,,芯片平面尺寸
+die_thickness,XINPIAN.SLDPRT,D1@凸台-拉伸1,length,0.35,mm,A,z,SUFENGLIAO,同步 mold_cut_depth +Δ（实测有效）；mold_height +Δ 无效,实测：+0.1 得 2.5 mm3；腔深补偿后 0
+bump_d1,TUDIAN.SLDPRT,D1@草图2,length,0.025,mm,A,z,"JIBAN;XINPIAN",凸点与基板/芯片原为接触；改直径须同步调整 die-substrate 间距,实测 +0.005 得 155 处干涉
+bump_d2,TUDIAN.SLDPRT,D2@草图2,length,0.0125,mm,A,z,,+0.0025 测量范围内 0 干涉,含义待确认
+ball_diameter,HANQIU.SLDPRT,D1@草图1,length,0.3,mm,A,z,,+0.05 测量范围内 0 干涉,焊球直径
+ball_h1,HANQIU.SLDPRT,D2@草图1,length,0.15,mm,A,z,,不可驱动：写入 0.17 后仍为 0.15,受几何关系驱动，不是独立参数
+ball_h2,HANQIU.SLDPRT,D3@草图1,length,0.12,mm,A,z,,+0.02 测量范围内 0 干涉,焊球轮廓高度
+substrate_length,JIBAN.SLDPRT,D1@草图1,length,12.0,mm,A,none,,,基板平面尺寸
+substrate_width,JIBAN.SLDPRT,D2@草图1,length,12.0,mm,A,none,,,基板平面尺寸
+substrate_thickness,JIBAN.SLDPRT,D1@凸台-拉伸1,length,0.27,mm,A,z,,+0.1 测量范围内 0 干涉,基板厚度
+mold_length,SUFENGLIAO.SLDPRT,D1@草图1,length,12.0,mm,A,none,,,塑封外形
+mold_width,SUFENGLIAO.SLDPRT,D2@草图1,length,12.0,mm,A,none,,,塑封外形
+mold_height,SUFENGLIAO.SLDPRT,D1@凸台-拉伸1,length,0.624,mm,A,z,,+0.05 测量范围内 0 干涉；对 die 增厚无补偿作用,塑封高度
+mold_cut_depth,SUFENGLIAO.SLDPRT,D1@切除-拉伸1,length,0.4,mm,A,z,,die_thickness +Δ 时同步 +Δ（实测可消除干涉）,腔深；die 增厚的正确补偿对象
+underfill_thickness,Underfill.SLDPRT,D1@凸台-拉伸1,length,0.05,mm,A,z,SUFENGLIAO,+0.02 得 0.5 mm3；补偿对象待测,与 die_thickness 同一干涉对
+pcb_diameter,PCB.SLDPRT,D1@草图1,length,140.0,mm,A,none,,,PCB 直径（圆形）
+pcb_thickness,PCB.SLDPRT,D1@凸台-拉伸1,length,1.8,mm,A,z,,+0.2 测量范围内 0 干涉,PCB 厚度
+bump_revolve_angle,TUDIAN.SLDPRT,D1@旋转1,angle,360,deg,C,none,,,旋转角度（勿当长度）
+ball_revolve_angle,HANQIU.SLDPRT,D1@旋转1,angle,360,deg,C,none,,,旋转角度（勿当长度）

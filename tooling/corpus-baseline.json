@@ -1,10 +1,10 @@
 {
   "note": "Indexed corpus baseline. Update deliberately in the same PR that changes knowledge content.",
   "commit": "set-at-merge",
-  "generated_at": "2026-11-03T08:02:16.215Z",
-  "documents": 119,
-  "chunks": 585,
-  "corpus_sha256": "0bba538c862ac59b4b74377812b47ea23f4747a9e8c42402cf5355fdef14ae44",
+  "generated_at": "2026-11-03T09:11:26.103Z",
+  "documents": 120,
+  "chunks": 595,
+  "corpus_sha256": "19d05366db14e9f887850155dcad50c03a2d66a4b040ee0e3c51cad45db063e3",
   "excludes": [
     "README.md",
     "AGENTS.md",

@@ -1,0 +1,30 @@
+name: contract-and-corpus
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install contract validator
+        run: python -m pip install --disable-pip-version-check "jsonschema==4.26.0"
+
+      - name: Contract static validation
+        run: python shared/tools/validate_contract.py
+
+      - name: Corpus baseline and encoding hygiene
+        run: python tooling/ci_check.py

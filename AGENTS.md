@@ -56,6 +56,7 @@ python tooling/sw_params.py set die_thickness 0.40
 3. 长宽高单位是 **mm**，写入时由工具换算成米；角度用度。**不得手工写 SystemValue**。
 4. 改完必须回读 `after` 与 `verified`；`verified=false` 视为失败。
 5. 记录改动前后的值、零件、尺寸名，写入案例记录。
+6. 看 `stack_axis`、`interferes_with`、`compensation` 三列：**z 向尺寸改完必须跑干涉检查**；干涉体积约等于"面积 × 增量"时，说明堆叠未随动（见案例 `15-geometry-change-interference.md`），不是建模错误。
 
 ---
 
