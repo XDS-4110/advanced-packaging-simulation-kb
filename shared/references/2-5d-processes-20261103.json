@@ -1,0 +1,89 @@
+{
+  "status": "draft",
+  "updated_at": "2026-11-03",
+  "policy": "按用户要求将出处放在检索正文之外；processes 仅保留具体知识与适用限制。",
+  "sources": [
+    {
+      "id": "SRC-25D-AMKOR-PROCESS",
+      "title": "2.5D/3D TSV Packaging",
+      "url": "https://amkor.com/technology/25d-3d-tsv/",
+      "locator": "Meet high performance, low energy demands；backend technology platforms"
+    },
+    {
+      "id": "SRC-25D-TSMC-COWOS",
+      "title": "CoWoS platform variants",
+      "url": "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm",
+      "locator": "CoWoS-S / CoWoS-R / CoWoS-L technology descriptions"
+    },
+    {
+      "id": "SRC-25D-COMSOL-TSV",
+      "title": "Thermo-Mechanical Reliability Analysis of Through-Silicon-Via",
+      "url": "https://www.comsol.com/model/thermo-mechanical-reliability-analysis-of-through-silicon-via-tsv-131101",
+      "locator": "Application ID 131101；model description"
+    },
+    {
+      "id": "SRC-25D-COMSOL-CURE",
+      "title": "Residual Stress and Warpage Induced by Underfill Curing in a Chip Package",
+      "url": "https://www.comsol.com/model/residual-stress-and-warpage-induced-by-underfill-curing-in-a-chip-package-131061",
+      "locator": "Application ID 131061；model description"
+    },
+    {
+      "id": "SRC-25D-VERYST-NCF",
+      "title": "Underfill Adhesive Flow and Cure",
+      "url": "https://www.veryst.com/about/case-stories/underfill-adhesive-flow-and-cure/",
+      "locator": "Technical Challenge；Veryst Solution"
+    },
+    {
+      "id": "SRC-25D-TSV-STRESS-2016",
+      "title": "On the Origins of Near-Surface Stresses in Silicon around Cu-filled and CNT-filled Through Silicon Vias",
+      "url": "https://arxiv.org/abs/1601.04107",
+      "locator": "Abstract；仅阅读摘要，不引用全文参数"
+    },
+    {
+      "id": "SRC-25D-ANSYS-UF",
+      "title": "Underfill Process Modeling",
+      "url": "https://innovationspace.ansys.com/product/underfill-process-modeling/",
+      "locator": "公开课程说明；仅确认 Fluent 用于底填流动建模，不视作已读付费课程"
+    }
+  ],
+  "mapping": {
+    "process-route-and-state": [
+      "SRC-25D-TSMC-COWOS",
+      "SRC-25D-AMKOR-PROCESS"
+    ],
+    "tsv-process-sequence": [
+      "SRC-COURSE-CHIP-PACKAGING-15: p.4-6；原条目存档",
+      "SRC-25D-COMSOL-TSV",
+      "SRC-25D-TSV-STRESS-2016"
+    ],
+    "carrier-thinning-and-debond": [
+      "SRC-25D-AMKOR-PROCESS"
+    ],
+    "rdl-build-up-and-planarization": [
+      "SRC-25D-TSMC-COWOS: 仅支持路线区分；逐层建模为工程综合"
+    ],
+    "microbump-bonding-and-placement": [
+      "SRC-25D-VERYST-NCF: 仅支持热压和胶流动耦合，其他连接模型为工程综合"
+    ],
+    "underfill-flow-and-cure": [
+      "SRC-25D-COMSOL-CURE",
+      "SRC-25D-VERYST-NCF",
+      "SRC-25D-ANSYS-UF"
+    ],
+    "substrate-attach-lid-and-singulation": [
+      "SRC-25D-AMKOR-PROCESS: 支持组装层级；释放、接触与切割建模为工程综合"
+    ],
+    "staged-simulation-and-drawing-contract": [
+      "工程综合与本项目建议；不是某厂商已验证流程"
+    ]
+  },
+  "derivations": "薄板刚度、平均压力、反应热源、相对位移、线/体积小应变关系为基础物理及几何关系；各式限制在正文同节给出，不是从厂商取得的推荐数值。",
+  "review_limits": [
+    "网页介绍不等于读取完整模型文件或付费课程",
+    "尚未运行 COMSOL/ANSYS",
+    "软件版本、工艺窗口及具体材料数据待补充",
+    "无新增工程推荐数值；保持 draft",
+    "既有 U-GEOMETRY-PARAMETER、U-RUNTIME、U-SAVE、U-RETRY 未解除"
+  ],
+  "legacy": "2-5d-processes-legacy-20261103.json"
+}

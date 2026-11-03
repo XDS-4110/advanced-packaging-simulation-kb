@@ -1,22 +1,16 @@
 # 2.5D 工艺
 
-范围：中介层制造、薄化与搬运、多芯片贴装、键合、底填及组装顺序；记录制造热历程。
+覆盖中介层制造、临时支承、多芯片键合、底填固化、基板与散热结构安装，以及分阶段仿真和 AI 绘图约束。正文均为 draft，供解释和建模准备；尚未完成工程求解验证。具体器件工艺窗口与材料数据需另行确认。
 
-当前待补充经审核的知识条目。使用 [公共模板](../../../shared/templates/README.md)，遵循 [贡献约定](../../../CONTRIBUTING.md) 与 [RAG 规范](../../../shared/rag/README.md)。来源登记至 [统一来源表](../../../shared/references/catalog.csv)；未知信息标为“待补充”。
+## 工艺知识
 
-[返回本专题](../README.md) · [封装总入口](../../README.md)
+- [2.5D工艺路线与装配状态](process-route-and-state.md)
+- [TSV制造、退火与残余状态](tsv-process-sequence.md)
+- [临时键合、减薄、TSV露出与解键合](carrier-thinning-and-debond.md)
+- [RDL增层、平坦化与工艺几何](rdl-build-up-and-planarization.md)
+- [多芯片贴装、微凸点回流与热压键合](microbump-bonding-and-placement.md)
+- [底填流动、固化收缩与边缘胶形](underfill-flow-and-cure.md)
+- [上基板、散热结构安装与切割释放](substrate-attach-lid-and-singulation.md)
+- [分阶段仿真输入与AI绘图约束](staged-simulation-and-drawing-contract.md)
 
-## 如何新增文件
-
-复制 [填写模板](../../../shared/templates/knowledge-entry.md) 到本目录，另起有意义的文件名，例如 `topic-note.md`（仅为命名示例）。
-
-- 必填内容：工序顺序；每步作用；温度、时间及材料状态；通用流程与已确认器件流程的区别。
-- 自查：工艺温度不直接当作无应力温度；标明原文证据和未知项。
-- 元数据：唯一 id、domain: packaging、status: draft、source_ids、原文页码或图表、更新日期。
-- README 仅作导航；新增正文后在下方添加链接。
-
-## 已有知识条目
-
-以下正文的审核状态以各条目元数据为准。
-
-- [TSV工艺时序与结构状态](tsv-process-sequence.md)：课程归纳，draft。
+[返回2.5D专题](../README.md)
