@@ -1,0 +1,72 @@
+{
+  "recorded_at": "2026-11-03",
+  "scope": "只读归档；本次未启动Workbench或重跑探针",
+  "sources": [
+    {
+      "source_name": "probe_log.txt",
+      "original_sha256": "7385e68f50abc2927afde259963011fa993cd580babc738b15df1487417c80d5",
+      "sanitized_sha256": "a1132d0e73e0321f88561750f524ed6f9b53a36046eb467749b436d65c4c56c4",
+      "redactions": [
+        "Windows user workspace path"
+      ]
+    },
+    {
+      "source_name": "probe2_log.txt",
+      "original_sha256": "a1e17df03c79e1b0ddec7283c17b85c842ec8c9a6f8385fff1639a3978761913",
+      "sanitized_sha256": "fef92621ddef6528067d358e816a4068ca4a321a2b5c9128ecbddede4eb0c095",
+      "redactions": [
+        "Windows user workspace path"
+      ]
+    },
+    {
+      "source_name": "probe3_log.txt",
+      "original_sha256": "fc03919ea94ef8ef54777f192679eb92ab434cc8148d5956ce64e14bdb412ec7",
+      "sanitized_sha256": "5b61780121f93467734d8b862e13c958c4d8b82d428395f68430960e16855693",
+      "redactions": [
+        "Windows user workspace path"
+      ]
+    },
+    {
+      "source_name": "wb_probe.py",
+      "original_sha256": "237abc6347abe1cf8303a1f6ee1251dd166268efdde1134c0fc1783756f27aba",
+      "uploaded": false,
+      "reason": "仅保存哈希定位；失败脚本不作为可执行模板上传"
+    },
+    {
+      "source_name": "wb_probe2.py",
+      "original_sha256": "b8196651fc1f595b14716f18fdfb324657b2329298aae5f59566b9cf02daaaa2",
+      "uploaded": false,
+      "reason": "仅保存哈希定位；失败脚本不作为可执行模板上传"
+    },
+    {
+      "source_name": "wb_probe3.py",
+      "original_sha256": "e0bccb61e1ae7dac7cdb065cf622948b2fddeec999ce7a3ac37168e12d1ce19c",
+      "uploaded": false,
+      "reason": "仅保存哈希定位；失败脚本不作为可执行模板上传"
+    },
+    {
+      "source_name": "wb_probe4.py",
+      "original_sha256": "b548e83979e65bbcae563ddc72d842514a6cf997e8e78348f46ca1a7d6680895",
+      "uploaded": false,
+      "reason": "仅保存哈希定位；失败脚本不作为可执行模板上传"
+    },
+    {
+      "source_name": "wb_touch.py",
+      "original_sha256": "8c706d135d7d4c3d61229edbdf248cb025062947b318cbbd1fc10f7933fe7612",
+      "uploaded": false,
+      "reason": "仅保存哈希定位；失败脚本不作为可执行模板上传"
+    },
+    {
+      "source_name": "wb_touch.wbjn",
+      "original_sha256": "86ad8c371d982a203e1a1cec51a057511960dfe11639e4109e5b53c7745ab1fa",
+      "uploaded": false,
+      "reason": "仅保存哈希定位；失败脚本不作为可执行模板上传"
+    },
+    {
+      "source_name": "user-pasted-execution-trace.txt",
+      "original_sha256": "05ac382cf3facc47ba5794b8723f41de4d87451e4e3042fcc3ea324d4b869cab",
+      "uploaded": false,
+      "evidence_type": "用户提供的代理执行摘要；不是操作系统原始日志"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+TYPE geo: <type 'DataReference'>
+DIR geo: Clean, Container, DeleteShare, DeleteTransfer, DirectoryName, DisplayText, GetContainer, GetEntityProperties, GetEntityProperty, GetExpression, GetProperties, GetProperty, HasAssociatedParameter, Name, Notes, Refresh, RemoveFromSystem, ReplaceWithShare, Reset, SetEntityProperties, SetEntityProperty, SimulationSetEntityProperty, ToString, TransferData, TransferSpecificData, Type, Update, UpdateConditionParameter, UpdateUpstreamComponents, UserId
+TYPE sys: <type 'DataReference'>
+DIR sys: AnalysisType, Container, Copy, Delete, DisplayText, Duplicate, GetComponent, GetContainer, GetEntityProperties, GetEntityProperty, GetExpression, GetProperties, GetProperty, GetReplaceableTemplates, HasAssociatedParameter, Move, Name, Notes, Physics, RecreateDeletedComponents, Refresh, SetEntityProperties, SetEntityProperty, SimulationSetEntityProperty, Solver, ToString, Type, Update, UserId
+ERR Traceback (most recent call last):
+  File "[WORKSPACE]\wb_probe2.py", line 22, in <module>
+    w("DIR system_children: " + str(sys1.GetChildren()))
+AttributeError: 'DataReference' object has no attribute 'GetChildren'

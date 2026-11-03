@@ -1,0 +1,40 @@
+{
+  "observations": [
+    {
+      "kind": "reported_only",
+      "fact": "重定向输出时出现 The requested operation requires elevation；本机原始异常栈未留存。"
+    },
+    {
+      "kind": "reported_only",
+      "fact": "一次 Wait-Process 等待480秒后超时，期间没有探针阶段日志。"
+    },
+    {
+      "kind": "reported_only",
+      "fact": "记录称 cmd start 有一次启动成功；没有完整命令/退出码与探针对应关系，不能固化为已验证标准命令。"
+    },
+    {
+      "kind": "artifact_confirmed",
+      "fact": "probe_log.txt 已记录模板与系统创建，随后 DataReference.Import 引发 AttributeError。"
+    },
+    {
+      "kind": "artifact_confirmed",
+      "fact": "probe2_log.txt 记录 DataReference.GetChildren 引发 AttributeError。"
+    },
+    {
+      "kind": "artifact_confirmed",
+      "fact": "probe3_log.txt 写出 geometry refreshed 与 SendCommand: False，随后 DataReference.Edit 引发 AttributeError。"
+    },
+    {
+      "kind": "reported_only",
+      "fact": "记录出现Workbench 2026窗口标题，与v242目标路径矛盾；准确运行版本未确认。"
+    }
+  ],
+  "not_demonstrated": [
+    "材料库导入",
+    "三个实体材料分配",
+    "成功生成网格",
+    "工程保存重开一致性",
+    "完整热结构耦合",
+    "任意求解成功"
+  ]
+}

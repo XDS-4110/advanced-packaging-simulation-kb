@@ -1,0 +1,8 @@
+project dir ok
+template: /Schematic/Template:Transient Structural (ANSYS)
+system: SYS
+geometry component: Geometry
+ERR Traceback (most recent call last):
+  File "[WORKSPACE]\wb_probe.py", line 28, in <module>
+    geo.Import(STEP)
+AttributeError: 'DataReference' object has no attribute 'Import'
