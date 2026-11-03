@@ -26,6 +26,8 @@
 
 ### 1 geometry-materials
 
+- **改尺寸时**：`python tooling/sw_params.py set <逻辑名> <值>`，参数表见 `simulation/cases/bga-2024r2-unsolved/data/geometry-parameters.csv`；改完回读 `verified`，并把 before/after 写入案例记录。**不要直接调 SolidWorks API 或猜尺寸名。**
+
 - **调**：`resolve geometry-materials`；`lookup ENT-*`；`lookup MAT-*`
 - **检查**：实体数量与名称、装配单位、每个实体的材料 ID+revision 是否与注册表一致
 - **产出**：实体清单表（stable_id / 名称 / 材料 / revision / 来源）

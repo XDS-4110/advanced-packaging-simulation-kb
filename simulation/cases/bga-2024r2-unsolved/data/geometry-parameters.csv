@@ -1,0 +1,21 @@
+logical_name,part_file,dimension_name,kind,current_value,unit,class,notes
+die_length,XINPIAN.SLDPRT,D1@草图1,length,5.0,mm,A,芯片平面尺寸
+die_width,XINPIAN.SLDPRT,D2@草图1,length,5.0,mm,A,芯片平面尺寸
+die_thickness,XINPIAN.SLDPRT,D1@凸台-拉伸1,length,0.35,mm,A,芯片厚度
+bump_d1,TUDIAN.SLDPRT,D1@草图2,length,0.025,mm,A,凸点轮廓尺寸（含义待确认）
+bump_d2,TUDIAN.SLDPRT,D2@草图2,length,0.0125,mm,A,凸点轮廓尺寸（含义待确认）
+ball_diameter,HANQIU.SLDPRT,D1@草图1,length,0.3,mm,A,焊球直径
+ball_h1,HANQIU.SLDPRT,D2@草图1,length,0.15,mm,A,焊球轮廓高度（含义待确认）
+ball_h2,HANQIU.SLDPRT,D3@草图1,length,0.12,mm,A,焊球轮廓高度（含义待确认）
+substrate_length,JIBAN.SLDPRT,D1@草图1,length,12.0,mm,A,基板平面尺寸
+substrate_width,JIBAN.SLDPRT,D2@草图1,length,12.0,mm,A,基板平面尺寸
+substrate_thickness,JIBAN.SLDPRT,D1@凸台-拉伸1,length,0.27,mm,A,基板厚度
+mold_length,SUFENGLIAO.SLDPRT,D1@草图1,length,12.0,mm,A,塑封外形
+mold_width,SUFENGLIAO.SLDPRT,D2@草图1,length,12.0,mm,A,塑封外形
+mold_height,SUFENGLIAO.SLDPRT,D1@凸台-拉伸1,length,0.624,mm,A,塑封高度
+mold_cut_depth,SUFENGLIAO.SLDPRT,D1@切除-拉伸1,length,0.4,mm,A,塑封开口深度
+underfill_thickness,Underfill.SLDPRT,D1@凸台-拉伸1,length,0.05,mm,A,底填厚度
+pcb_diameter,PCB.SLDPRT,D1@草图1,length,140.0,mm,A,PCB 直径（圆形）
+pcb_thickness,PCB.SLDPRT,D1@凸台-拉伸1,length,1.8,mm,A,PCB 厚度
+bump_revolve_angle,TUDIAN.SLDPRT,D1@旋转1,angle,360,deg,C,旋转角度（勿当长度）
+ball_revolve_angle,HANQIU.SLDPRT,D1@旋转1,angle,360,deg,C,旋转角度（勿当长度）
