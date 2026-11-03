@@ -16,6 +16,8 @@ reviewed_at: ""
 
 # 未对齐绑定与人工确认清单
 
+2026-11-03 进展：几何尺寸修改已在 SolidWorks 侧打通（`tooling/sw_params.py` 与 `data/geometry-parameters.csv`），但不属于本契约的工具绑定——Workbench 内仍无参数集，`set_geometry_parameter` 保持 unresolved。
+
 当前所有工具绑定均为`unresolved`且执行禁用；官方页面有字段不代表项目适配器已实现。下表仅写卡点与关闭所需证据，没有替用户决定任何物理条件。关闭某个卡点也不自动提升本文draft状态；审核人/日期继续留空。
 
 | 编号 | 影响范围 | 卡点 | 谁补充什么才能关闭 |

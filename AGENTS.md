@@ -39,6 +39,26 @@
 
 ---
 
+## 几何参数修改（SolidWorks）
+
+改几何尺寸**只能**通过参数表，不允许猜尺寸名、不允许直接调 SolidWorks API：
+
+```bash
+python tooling/sw_params.py show
+python tooling/sw_params.py list
+python tooling/sw_params.py set die_thickness 0.40
+```
+
+规则：
+
+1. 只能修改 `geometry-parameters.csv` 中登记的 A 类（尺寸）参数；B 类（阵列）与 C 类（拓扑）需人工确认。
+2. `set` 默认在副本上操作、不保存；确认无误后加 `--commit` 才写回。
+3. 长宽高单位是 **mm**，写入时由工具换算成米；角度用度。**不得手工写 SystemValue**。
+4. 改完必须回读 `after` 与 `verified`；`verified=false` 视为失败。
+5. 记录改动前后的值、零件、尺寸名，写入案例记录。
+
+---
+
 ## 目录地图
 
 | 路径 | 内容 | 是否进检索索引 |
@@ -88,6 +108,16 @@ python tooling/kb_retrieve.py lookup <entity> [prop]    # 3. 需要数值时才�
 **提交**
 新分支 + PR，不直推 `main`。PR 描述需含：文件清单、新数值的来源定位、留空字段及原因、未验证项。
 
+**提交前必须同步 main。** 本仓库有多个协作者同时写入，本地副本很容易落后：
+
+1. 先拉取最新 `main`（`git fetch && git merge origin/main`，或重新下载），确认本地与远端一致；
+2. 把本地改动**重新叠加**到最新版本上，不要整文件覆盖；
+3. `catalog.csv` 只允许**追加行**，禁止整文件替换——那会删掉别人的来源登记；
+4. 同步后重算基线：`python tooling/kb_retrieve.py info`，更新 `corpus-baseline.json` 与 `tooling/README.md`；
+5. 跑 `python tooling/ci_check.py`，通过后再提交。
+
+**判断是否落后**：`info` 报 `documents` 与 main 的 md 数量明显不符，或 `baseline_match=false`，即为落后，先同步。
+
 ---
 
 ## 报告格式
@@ -117,7 +147,7 @@ python tooling/kb_retrieve.py lookup <entity> [prop]    # 3. 需要数值时才�
 
 | 编号 | 内容 |
 | --- | --- |
-| `U-GEOMETRY-PARAMETER` | 几何为 STEP 导入、无 Workbench 参数集；尺寸参数无法由 LLM 修改，只能换文件或改位置 |
+| `U-GEOMETRY-PARAMETER` | Workbench 侧无参数集；**尺寸修改已改由 SolidWorks 参数表承担**（见「几何参数修改」一节）。Workbench 内仍无法直接改尺寸，只能换文件或改位置 |
 | `U-RUNTIME` | `ansys-mechanical-core` 版本与所连会话身份未确认 |
 | `U-SAVE` | 保存与重开的一致性无证据 |
 | `U-RETRY` | 请求日志存储、指纹与恢复机制未实现 |
