@@ -22,3 +22,5 @@
 ## 本次新增资料
 
 [GitHub结构资料筛选及固定来源](../../../simulation/references/github-packaging-source-selection.md)。
+
+- [芯粒格式与坐标规范](chiplet-format-and-coordinates.md)：保留原格式说明及原审核范围。

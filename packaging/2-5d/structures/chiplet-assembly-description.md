@@ -1,33 +1,41 @@
 ---
-id: KB-STRUCT-CHIPLET-001
-title: "多芯片装配结构应记录哪些字段"
+id: KB-25D-STRUCTURE-20261103-003
+title: "芯粒布局、朝向与装配高度"
 document_type: knowledge
 domain: packaging
-status: reviewed
+status: draft
 language: zh-CN
-tags: [advanced-packaging, chiplet, structure-modeling, external-source]
-physics: [thermal, structural]
+tags: [2.5D, structures]
+physics: [thermal, mechanical]
 software: []
 software_versions: []
-source_ids: [SRC-GH-IHP-CHIPLET-001]
-source_locator: "固定提交的CHIPLET_FORMAT_SPEC：Scope、Components、Connection Stacks、Interfaces；coord_frame_contract：1.4、1.5、3"
-updated_at: "2026-10-31"
-reviewed_by: "Codex（原文与适用范围核对，未执行工具验证）"
-reviewed_at: "2026-10-31"
+updated_at: "2026-11-03"
+reviewed_by: ""
+reviewed_at: ""
 ---
 
-# 多芯片装配结构应记录哪些字段
+# 芯粒布局、朝向与装配高度
 
-## 来源中可直接借鉴的内容
+## 芯粒的组成与朝向
 
-IHP的`.chiplet`用YAML表达多芯片装配：部件身份、类型、尺寸、位置、旋转、连接堆叠和接口。规范本身不提供完整热、功耗或力学材料表。[字段原文](https://github.com/IHP-GmbH/chiplet-spec/blob/aa2eee4e71f1678f0b791d5129a8dfd263d6bb37/docs/CHIPLET_FORMAT_SPEC.md)
+芯粒（chiplet）是参与多芯片系统集成的功能裸片，不是一种固定尺寸或固定互连方式。不同芯粒可采用不同制造工艺，承担计算、I/O或其他功能。
 
-坐标合同规定XY位置为部件几何中心，坐标系以中介层GDS包围框角点为原点、Y向上，使用μm；Z表示部件底部安装面。中介层还具有专门的安装面语义，不能一律用厚度代替装配高度。[坐标合同1.4、1.5及3节](https://github.com/IHP-GmbH/chiplet-spec/blob/aa2eee4e71f1678f0b791d5129a8dfd263d6bb37/docs/coord_frame_contract.md)
+在典型倒装2.5D结构中，逻辑芯片有源面朝向中介层，背面朝向封装顶部。HBM以堆栈的底部连接面接入中介层，不能把整个堆栈当成一块具有相同朝向含义的均匀硅片。
 
-## 对本项目的用途（本库归纳）
+## 平面位置与间隙
 
-结构记录应分别保留部件、连接和几何定位，不把“中介层材料”“连接方式”和“几何厚度”混成同一个属性。实体材料数值统一引用共享材料ID/revision。
+芯片的中心坐标、外形尺寸和旋转方向共同确定占据范围。中心间距不是边缘间隙：对沿X方向排列、未旋转、边缘平行的矩形芯片，边缘间隙等于X方向中心距离减去两片芯片宽度之和的一半。旋转或不规则外形需要按实际轮廓判断。
 
-新增部件时，要明确它连接哪些对象、连接层是否单独建模，以及层间高度是否发生变化。共享坐标系不等于所有外部文件采用同一种位置锚点。
+芯片间留出的区域可能容纳底填胶脚、布线、装配空间或其他结构，不能默认都是空气，也不能默认全部被塑封料填满。相邻芯片间隙与芯片到中介层边缘的退让距离是两个量。
 
-本条目reviewed仅表示上述格式内容及来源已核对，不表示`.chiplet`能直接生成Workbench实体或已验证热力耦合模型。项目自己的[结构输入模板](../../../shared/templates/package-structure-input.json)与[中介层插入流程草稿](../../../simulation/modeling/insert-interposer-workflow.md)需要单独适配。
+## 高度由多个实体共同决定
+
+同一安装基准上，一块倒装芯片顶部高度等于其连接间隙高度与芯片厚度之和，再加上安装基准的绝对高度。芯片下凸点的装配高度通常也是相应底填区的间隙尺度，不能把凸点和底填厚度顺次相加。
+
+HBM堆栈总高包含内部芯片和层间连接；从中介层安装面计算顶部高度时还要区分堆栈外部连接高度。逻辑芯片和HBM顶面不必共面。
+
+## 坐标与剖面
+
+坐标原点可以取中介层中心或角点，但必须明确。Z坐标可以代表底面、中心面或顶面，三者不能混用。观察方向改变会改变平面图的视觉左右；不能只凭图上位置判定旋转和镜像。
+
+一个剖切面可能只经过部分芯片或部分桥。剖面未出现的实体仍可能位于剖面之外。

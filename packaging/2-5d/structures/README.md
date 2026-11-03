@@ -1,28 +1,12 @@
-# 2.5D 结构
+# 2.5D结构
 
-范围：硅、有机、玻璃中介层与局部桥接；芯片布局、间距、多级互连；TSV、RDL、微凸点在具体架构中的作用。
+先认识整体层级，再学习中介层、芯片布局和各类互连，最后辨认填充与散热结构。
 
-当前待补充经审核的知识条目。使用 [公共模板](../../../shared/templates/README.md)，遵循 [贡献约定](../../../CONTRIBUTING.md) 与 [RAG 规范](../../../shared/rag/README.md)。来源登记至 [统一来源表](../../../shared/references/catalog.csv)；未知信息标为“待补充”。
-
-[返回本专题](../README.md) · [封装总入口](../../README.md)
-
-## 如何新增文件
-
-复制 [填写模板](../../../shared/templates/knowledge-entry.md) 到本目录，另起有意义的文件名，例如 `topic-note.md`（仅为命名示例）。
-
-- 必填内容：部件与位置；层叠及连接关系；结构示意与来源；尺寸定义和单位。具体器件的完整尺寸表放案例。
-- 自查：区分焊球与芯片下凸点、封装基板与 PCB；未知尺寸不估填。
-- 元数据：唯一 id、domain: packaging、status: draft、source_ids、原文页码或图表、更新日期。
-- README 仅作导航；新增正文后在下方添加链接。
-
-## 已有知识条目
-
-正文链接见下方新增资料。
-
-## 本次新增资料
-
-[多芯片装配结构字段与坐标参考](chiplet-assembly-description.md)（reviewed，文档核对，非仿真验证）。
-
-- [RDL导体与介质的结构记录](rdl-dielectric-scope.md)（draft）
-
-- [硅中介层TSV与临时工艺层的区分](tsv-layer-identification.md)：课程归纳，draft。
+1. [2.5D结构总览与层级关系](structure-overview.md)
+2. [全尺寸中介层与局部桥接结构](interposer-types-and-bridges.md)
+3. [芯粒布局、朝向与装配高度](chiplet-assembly-description.md)
+4. [RDL布线、介质与层间过孔](rdl-dielectric-scope.md)
+5. [硅中介层TSV与临时工艺层](tsv-layer-identification.md)
+6. [微凸点、中介层连接与BGA焊球](multilevel-interconnects.md)
+7. [HBM存储堆栈与逻辑芯片的结构关系](hbm-stack-components.md)
+8. [2.5D底填、塑封体与顶部散热结构](underfill-mold-and-lid.md)

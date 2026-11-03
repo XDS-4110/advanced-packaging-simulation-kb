@@ -50,3 +50,7 @@
 ## BGA结构知识的来源旁存
 
 `packaging/bga/structures/` 按纯知识正文维护，不在条目中保存来源段落或来源字段。该目录的来源定位与历史元数据保存在 `shared/references/bga-structures-20261103.json`，以文件名关联。此目录是上述来源字段必填规则的局部例外，其他元数据和审核状态规则不变。后续入库程序需在元数据阶段读取旁存映射，不把映射文本拼入知识片段；当前检索程序尚未读取该旁存映射，explain检索可返回正文，但来源字段暂为空。条目保持draft，待内容审核后才能进入默认正式索引。
+
+## 2.5D结构知识的来源旁存
+
+`packaging/2-5d/structures/` 与BGA结构目录采用相同的纯知识正文约定，来源字段在 `shared/references/2-5d-structures-20261103.json` 中按文件关联，不拼入正文。该目录是来源字段必填规则的局部例外，索引范围和状态白名单保持不变。新写或重写的结构条目均为draft；原reviewed格式条目移至 `packaging/2-5d/references/chiplet-format-and-coordinates.md`，保留原ID及审核范围。当前检索器未读取旁存映射，explain检索中的这些结构条目来源字段暂为空。

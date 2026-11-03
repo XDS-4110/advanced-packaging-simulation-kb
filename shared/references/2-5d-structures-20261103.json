@@ -1,0 +1,126 @@
+{
+  "scope": "packaging/2-5d/structures",
+  "updated_at": "2026-11-03",
+  "status": "draft",
+  "note": "正文只含结构知识。通用几何关系及辨认方法为自主综合；不提供器件工程参数。旧格式条目原文及reviewed状态保留于packaging/2-5d/references/chiplet-format-and-coordinates.md。",
+  "sources": [
+    {
+      "source_id": "SRC-25D-TSMC-COWOS",
+      "title": "CoWoS technology overview",
+      "authors": "TSMC",
+      "url": "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm",
+      "source_locator": "CoWoS-S / CoWoS-R / CoWoS-L descriptions"
+    },
+    {
+      "source_id": "SRC-25D-AMKOR-2018",
+      "title": "Amkor 2.5D Package and HDFO",
+      "authors": "John Lee; Mike Kelly",
+      "url": "https://amkor.com/jp/wp-content/uploads/2018/12/Amkor_2.5D_Package_and_HDFO_Technical_Article_EN.pdf",
+      "source_locator": "2018; sections 2–3; figures 2 and 4"
+    },
+    {
+      "source_id": "SRC-25D-AMKOR-MEOL",
+      "title": "2.5D/3D TSV Packaging",
+      "authors": "Amkor",
+      "url": "https://amkor.com/technology/25d-3d-tsv/",
+      "source_locator": "MEOL production tooling and processes"
+    },
+    {
+      "source_id": "SRC-25D-INTEL-EMIB",
+      "title": "EMIB Technology Brief",
+      "authors": "Intel",
+      "url": "https://www.intel.com/content/dam/www/central-libraries/us/en/documents/2025-07/emib-product-brief.pdf",
+      "source_locator": "pages 1–2; figures 1–2; EMIB-M and EMIB-T"
+    },
+    {
+      "source_id": "SRC-25D-IZM-TGV",
+      "title": "Glass interposer and TGV Integration",
+      "authors": "Fraunhofer IZM",
+      "url": "https://www.izm.fraunhofer.de/en/abteilungen/wafer-level-system-integration/leistungsangebot/TGV_integration.html",
+      "source_locator": "Glass interposer and TGV Integration introduction"
+    },
+    {
+      "source_id": "SRC-25D-MICRON-HBM",
+      "title": "High-bandwidth memory",
+      "authors": "Micron",
+      "url": "https://www.micron.com/products/memory/hbm",
+      "source_locator": "HBM stack structure: DRAM, optional base die, TSV and microbumps"
+    },
+    {
+      "source_id": "SRC-25D-SKHYNIX-STACK",
+      "title": "Advanced Memory Package Architecture",
+      "authors": "SK hynix",
+      "url": "https://research.skhynix.com/research-areas/advanced-package/advanced-memory-package-architecture",
+      "source_locator": "HBM architecture; micro-bumps or hybrid bonding"
+    },
+    {
+      "source_id": "SRC-25D-TSMC-RDL",
+      "title": "Off-chip Interconnect",
+      "authors": "TSMC",
+      "url": "https://research.tsmc.com/page/off-chip-interconnect/19.html",
+      "source_locator": "Off-chip Interconnect; high density RDL"
+    }
+  ],
+  "entries": {
+    "structure-overview.md": {
+      "source_ids": [
+        "SRC-25D-TSMC-COWOS",
+        "SRC-25D-AMKOR-2018"
+      ]
+    },
+    "interposer-types-and-bridges.md": {
+      "source_ids": [
+        "SRC-25D-TSMC-COWOS",
+        "SRC-25D-INTEL-EMIB",
+        "SRC-25D-IZM-TGV"
+      ]
+    },
+    "chiplet-assembly-description.md": {
+      "source_ids": [
+        "SRC-25D-AMKOR-2018",
+        "SRC-25D-MICRON-HBM"
+      ]
+    },
+    "rdl-dielectric-scope.md": {
+      "source_ids": [
+        "SRC-25D-TSMC-COWOS",
+        "SRC-25D-TSMC-RDL"
+      ]
+    },
+    "tsv-layer-identification.md": {
+      "source_ids": [
+        "SRC-25D-AMKOR-2018",
+        "SRC-25D-AMKOR-MEOL",
+        "SRC-COURSE-CHIP-PACKAGING-15"
+      ],
+      "additional_locator": "原条目课程15 p.3,5–6；历史阅读范围见previous_text。"
+    },
+    "multilevel-interconnects.md": {
+      "source_ids": [
+        "SRC-25D-AMKOR-2018",
+        "SRC-25D-INTEL-EMIB",
+        "SRC-25D-SKHYNIX-STACK"
+      ]
+    },
+    "hbm-stack-components.md": {
+      "source_ids": [
+        "SRC-25D-MICRON-HBM",
+        "SRC-25D-SKHYNIX-STACK"
+      ]
+    },
+    "underfill-mold-and-lid.md": {
+      "source_ids": [
+        "SRC-25D-TSMC-COWOS",
+        "SRC-25D-AMKOR-2018",
+        "SRC-BGA-TI-SPRU811A"
+      ],
+      "additional_locator": "SPRU811A §2 Figure 1；多芯片高度与不同胶体区域为几何综合说明。"
+    }
+  },
+  "previous_text": {
+    "chiplet-assembly-description.md": "---\nid: KB-STRUCT-CHIPLET-001\ntitle: \"多芯片装配结构应记录哪些字段\"\ndocument_type: knowledge\ndomain: packaging\nstatus: reviewed\nlanguage: zh-CN\ntags: [advanced-packaging, chiplet, structure-modeling, external-source]\nphysics: [thermal, structural]\nsoftware: []\nsoftware_versions: []\nsource_ids: [SRC-GH-IHP-CHIPLET-001]\nsource_locator: \"固定提交的CHIPLET_FORMAT_SPEC：Scope、Components、Connection Stacks、Interfaces；coord_frame_contract：1.4、1.5、3\"\nupdated_at: \"2026-10-31\"\nreviewed_by: \"Codex（原文与适用范围核对，未执行工具验证）\"\nreviewed_at: \"2026-10-31\"\n---\n\n# 多芯片装配结构应记录哪些字段\n\n## 来源中可直接借鉴的内容\n\nIHP的`.chiplet`用YAML表达多芯片装配：部件身份、类型、尺寸、位置、旋转、连接堆叠和接口。规范本身不提供完整热、功耗或力学材料表。[字段原文](https://github.com/IHP-GmbH/chiplet-spec/blob/aa2eee4e71f1678f0b791d5129a8dfd263d6bb37/docs/CHIPLET_FORMAT_SPEC.md)\n\n坐标合同规定XY位置为部件几何中心，坐标系以中介层GDS包围框角点为原点、Y向上，使用μm；Z表示部件底部安装面。中介层还具有专门的安装面语义，不能一律用厚度代替装配高度。[坐标合同1.4、1.5及3节](https://github.com/IHP-GmbH/chiplet-spec/blob/aa2eee4e71f1678f0b791d5129a8dfd263d6bb37/docs/coord_frame_contract.md)\n\n## 对本项目的用途（本库归纳）\n\n结构记录应分别保留部件、连接和几何定位，不把“中介层材料”“连接方式”和“几何厚度”混成同一个属性。实体材料数值统一引用共享材料ID/revision。\n\n新增部件时，要明确它连接哪些对象、连接层是否单独建模，以及层间高度是否发生变化。共享坐标系不等于所有外部文件采用同一种位置锚点。\n\n本条目reviewed仅表示上述格式内容及来源已核对，不表示`.chiplet`能直接生成Workbench实体或已验证热力耦合模型。项目自己的[结构输入模板](../../../shared/templates/package-structure-input.json)与[中介层插入流程草稿](../../../simulation/modeling/insert-interposer-workflow.md)需要单独适配。\n",
+    "rdl-dielectric-scope.md": "---\nid: KB-PKG-20261102-009\ntitle: \"RDL导体与介质的结构记录\"\ndocument_type: knowledge\ndomain: packaging\nstatus: draft\nlanguage: zh-CN\ntags: [packaging, fundamentals]\nphysics: [thermal, mechanical]\nsoftware: []\nsoftware_versions: []\nsource_ids: [SRC-LIT-RDL-2023]\nsource_locator: \"公开HTML第1–2节、图1、表1–2；PDF未取得\"\nupdated_at: \"2026-11-02\"\nreviewed_by: \"\"\nreviewed_at: \"\"\n---\n\n# RDL导体与介质的结构记录\n\n## 回答的问题与结论\n\nRDL结构包含布线与介质，不能仅按铜层描述。不同介质和加工方式对应不同结构与可靠性条件。\n\n## 适用对象、假设与限制\n\n原文因工艺相近交替使用interposer与package substrate；本项目仍按实际位置和连接对象区分。\n\n## 原理、公式与单位\n\n本条为定性知识与资料整理要求，不提供可直接导入的参数、拟合公式或寿命常数。尺寸、时间、温度及物性数据必须与单位和来源一起登记。\n\n## 资料整理步骤（本项目建议）\n\n记录铜与介质层厚、线宽线距、过孔、芯层、材料牌号及来源版本；不把历史综述中的技术指标当作当前推荐值。\n\n## 验证方法与常见错误\n\n检查同名介质是否为同一牌号；表中固化温度不等于器件实际经历的全部工艺温度。\n\n## 来源与证据\n\nSRC-LIT-RDL-2023；公开HTML第1–2节、图1、表1–2；PDF未取得。参见 [原始资料与获取状态](../../../files/README.md)。全文取得不代表每项引用实验均已复核；本条等待用户筛选和审核。\n",
+    "README.md": "# 2.5D 结构\n\n范围：硅、有机、玻璃中介层与局部桥接；芯片布局、间距、多级互连；TSV、RDL、微凸点在具体架构中的作用。\n\n当前待补充经审核的知识条目。使用 [公共模板](../../../shared/templates/README.md)，遵循 [贡献约定](../../../CONTRIBUTING.md) 与 [RAG 规范](../../../shared/rag/README.md)。来源登记至 [统一来源表](../../../shared/references/catalog.csv)；未知信息标为“待补充”。\n\n[返回本专题](../README.md) · [封装总入口](../../README.md)\n\n## 如何新增文件\n\n复制 [填写模板](../../../shared/templates/knowledge-entry.md) 到本目录，另起有意义的文件名，例如 `topic-note.md`（仅为命名示例）。\n\n- 必填内容：部件与位置；层叠及连接关系；结构示意与来源；尺寸定义和单位。具体器件的完整尺寸表放案例。\n- 自查：区分焊球与芯片下凸点、封装基板与 PCB；未知尺寸不估填。\n- 元数据：唯一 id、domain: packaging、status: draft、source_ids、原文页码或图表、更新日期。\n- README 仅作导航；新增正文后在下方添加链接。\n\n## 已有知识条目\n\n正文链接见下方新增资料。\n\n## 本次新增资料\n\n[多芯片装配结构字段与坐标参考](chiplet-assembly-description.md)（reviewed，文档核对，非仿真验证）。\n\n- [RDL导体与介质的结构记录](rdl-dielectric-scope.md)（draft）\n\n- [硅中介层TSV与临时工艺层的区分](tsv-layer-identification.md)：课程归纳，draft。\n",
+    "tsv-layer-identification.md": "---\nid: KB-COURSE-PACKAGING-20261102-007\ntitle: \"硅中介层TSV与临时工艺层的区分\"\ndocument_type: knowledge\ndomain: packaging\nstatus: draft\nlanguage: zh-CN\ntags: [2.5D, TSV, interposer]\nphysics: [thermal, mechanical]\nsoftware: []\nsoftware_versions: []\nsource_ids: [SRC-COURSE-CHIP-PACKAGING-15]\nsource_locator: \"课件15 p.3、5–6（PDF文件页码）\"\nupdated_at: \"2026-11-02\"\nreviewed_by: \"\"\nreviewed_at: \"\"\n---\n\n# 硅中介层TSV与临时工艺层的区分\n\n## TSV不是一根没有边界的铜柱\n\n课件的硅中介层示意包括硅本体、铜通孔及绝缘衬层，结合表面布线和互连形成跨厚度连接。建立结构说明时，应分别识别导体、周围介质和硅的接触关系。实际工艺中是否还有阻挡/种子层，需要查器件剖面或工艺资料，不能凭教学图补齐厚度。\n\n微凸点连接芯片与中介层，TSV穿过硅，基板下焊球连接到PCB：三者的空间位置和功能不同。仅有BGA球图不足以确定TSV阵列，也不能用微凸点直径替代TSV直径。\n\n## 永久结构与临时支撑分开登记\n\n课件示意中还有支撑晶圆及临时胶层。它们服务于某个加工阶段，不应自动放进最终服役结构。若研究对象是减薄或解键合阶段，应记录其存在状态；若研究成品工作温度，先核实这些层是否已经去除。\n\n## 结构记录与适用范围\n\n应记录中介层类型及厚度、TSV孔形/直径/深度/节距/数量/位置、绝缘层、上下布线、芯片互连和装配阶段。尺寸含义需明确，例如孔径是否包含绝缘层，铜柱尺寸是否等于刻蚀孔尺寸。\n\n本条只适用于含硅通孔的中介层结构。2.5D还存在其他连接架构；局部硅桥不能直接按全尺寸TSV中介层处理。课件p.5的尺寸和零应变温度只属于示例，不是2.5D通用设计值。\n\n## 来源与审核边界\n\n本条为课程课件的归纳及明确标注的基础推导/项目交接建议，尚待审核；未通过本案例求解验证。阅读范围与原文疑点见[课程阅读笔记](../../common/references/course-41-reading-notes.md)。\n"
+  }
+}
