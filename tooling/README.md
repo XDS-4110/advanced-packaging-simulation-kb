@@ -46,12 +46,21 @@ python tooling/kb_retrieve.py serve
 
 ## 换机验收
 
-在新机器上执行 `info`，比对 `corpus_sha256`。一致表示同一份知识库内容；不一致说明仓库未同步或存在本地改动。
+在新机器上执行 `info`，看 `baseline_match`。基线固定在 `corpus-baseline.json`，含 commit、文档数与内容哈希。
 
 ```
-corpus_sha256 = 034f3ab4499997c6f4fed87075f3c382107affed74667ab04293466fae022f07
-documents = 83, chunks = 431 （2026-11-03 快照，随内容变化）
+baseline_match = true
+documents = 82, chunks = 425
+corpus_sha256 = 7fe4d5418cf39ff9b822d47dca247ad5016d6237c11369b9ce082a45088a3eb6
 ```
+
+`baseline_match: false` 表示知识内容已变。改内容时**在同一 PR 内**更新 `corpus-baseline.json`，不要事后补。
+
+## 索引范围
+
+只索引知识条目：`packaging/`、`simulation/`、`shared/materials/`。
+**排除**：`README.md`、`AGENTS.md`、`CONTRIBUTING.md`、`shared/templates/`、`shared/tools/`、`files/`、`tooling/`。
+指令文件与代码不得成为可引用来源，否则代理会引用自己的规则。
 
 ## 评估
 
