@@ -12,7 +12,8 @@
         "ball-array-dimensions.md",
         "pads-and-solder-joints.md",
         "mold-lid-and-stiffener.md"
-      ]
+      ],
+      "source_id": "SRC-BGA-TI-SPRU811A"
     },
     {
       "url": "https://amkor.com/packaging/laminate/fcbga/",
@@ -21,7 +22,8 @@
         "structure-overview.md",
         "substrate-stackup.md",
         "flip-chip-bga-components.md"
-      ]
+      ],
+      "source_id": "SRC-BGA-AMKOR-FCBGA"
     },
     {
       "url": "https://amkor.com/packaging/laminate/pbga/",
@@ -29,7 +31,8 @@
       "topics": [
         "wire-bond-pbga.md",
         "ball-array-dimensions.md"
-      ]
+      ],
+      "source_id": "SRC-BGA-AMKOR-PBGA"
     },
     {
       "url": "https://www.analog.com/en/resources/app-notes/2022/07/16/12/13/ball-grid-array-bga-packages-and-pcb-design-guidelines.html",
@@ -37,7 +40,8 @@
       "topics": [
         "structure-overview.md",
         "pads-and-solder-joints.md"
-      ]
+      ],
+      "source_id": "SRC-BGA-ADI-GUIDELINES"
     }
   ],
   "previous_metadata": {
