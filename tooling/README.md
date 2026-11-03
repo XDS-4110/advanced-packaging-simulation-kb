@@ -50,8 +50,8 @@ python tooling/kb_retrieve.py serve
 
 ```
 baseline_match = true
-documents = 82, chunks = 425
-corpus_sha256 = 7fe4d5418cf39ff9b822d47dca247ad5016d6237c11369b9ce082a45088a3eb6
+documents = 90, chunks = 495
+corpus_sha256 = bc8abe81354d12eff08bd69ad7c2a90c19bfe534b3837ec6b9579acf9c2e3ccf
 ```
 
 `baseline_match: false` 表示知识内容已变。改内容时**在同一 PR 内**更新 `corpus-baseline.json`，不要事后补。
