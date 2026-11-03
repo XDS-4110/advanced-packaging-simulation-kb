@@ -1,0 +1,13 @@
+question,tier,expected_ids,must_not_include,notes
+瞬态热分析怎么设置时间步,strict,KB-ANSYS242-OPS-04,,操作类问题只允许 reviewed
+网格质量怎么验收,strict,KB-ANSYS242-OPS-03;KB-PROJECT-MESH-001,,网格是唯一经人工确认的规范
+温度场怎么传递到结构分析,strict,KB-ANSYS242-OPS-05,,顺序耦合关键链路
+求解完成后怎么检查结果,strict,KB-ANSYS242-OPS-06,,
+命名选择和接触怎么设置,strict,KB-ANSYS242-OPS-02,,
+怎么用 pymechanical 执行热结构流程,strict,KB-ANSYS242-PYMECH-THERMOSTRUCT-01,,
+温度载荷实际作用在哪些面,explain,KB-BGA-THERMAL-UI-001,,答案在 draft，strict 下应为空
+结构侧还缺哪些证据,explain,KB-BGA-STRUCT-EVIDENCE-001,,
+Anand 参数怎么填,explain,KB-MATINPUT-004,,别名 anand→viscoplasticity
+材料属性怎么映射到 Engineering Data,explain,KB-MATINPUT-001,,
+温度循环用哪个标准,explain,KB-CYCLE-GJB548C-1010-001,,
+2.5D 插入中介层的流程,explain,KB-INSERT-INTERPOSER-001,,
