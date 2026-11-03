@@ -1,0 +1,2 @@
+# Contract validator dependency (pinned: the validator refuses other versions).
+jsonschema==4.26.0

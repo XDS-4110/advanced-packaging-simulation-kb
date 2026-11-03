@@ -90,6 +90,17 @@ reviewed_at: ""
 
 格式为 `D<序号>@<特征名>`。特征名为中文界面下的本地化名称（如 `凸台-拉伸1`）时，尺寸名同样是中文，例如 `D1@凸台-拉伸1`；写成英文 `D1@Boss-Extrude1` 会**找不到**。跨语言环境共享模型时，这一点会导致自动化脚本失效。
 
+## 9. MCP 只接受"正常启动"的 SolidWorks
+
+**现象**：用 `Dispatch` 从脚本启动 SolidWorks 后，MCP 的 `connect` 返回 ok，但 `open_document` 报 `SW_INSTANCE_NOT_READY`；从可执行文件正常启动后，同一调用成功。
+
+**原因**：执行层通过 ROT 附加实例；脚本经 COM 启动的实例在该环境下无法被附加，于是判定"实例不可用"并拒绝重复启动。
+
+**处理**：
+
+- 让 SolidWorks 正常启动（开始菜单或 `Start-Process SLDWORKS.exe`），再调用 MCP；
+- 需要脚本控制时全程用 COM，不要混用两条路径。
+
 ## 判据
 
 修复是否成立，用三条判断：

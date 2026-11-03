@@ -112,7 +112,11 @@ def set_parameter(args) -> dict:
     if not doc:
         return {"error": "open failed", "path": str(work)}
     out = {"parameter": args.name, "part": part, "dimension": dimension, "kind": kind,
-           "target_value": value, "path": str(work), "saved": False}
+           "target_value": value, "path": str(work), "saved": False,
+           "stack_axis": row.get("stack_axis") or "",
+           "interferes_with": row.get("interferes_with") or "",
+           "compensation": row.get("compensation") or "",
+           "next_check": "重建后必须跑干涉检查；随动未实现时干涉体积约等于面积×增量"}
     try:
         dim = doc.Parameter(dimension)
         if not dim:
