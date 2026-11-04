@@ -80,3 +80,9 @@ corpus_sha256 = 0bba538c862ac59b4b74377812b47ea23f4747a9e8c42402cf5355fdef14ae44
 - 排序调优（课程笔记类文档需降权）
 - 评估集扩到 20 题
 - 与 `shared/tools/validate_contract.py` 的证据编号互链
+
+## 中文指令离线预览（第一阶段）
+
+`python tooling/nl_request.py "把芯片厚度改成0.45"` 输出确定性意图JSON。只承诺理解结果可校验，不承诺减少总耗时。无软件执行、无LLM调用，契约保持0.1.0。详见 [实现与边界](nl_request.md)。
+
+同一套测试支持 `python -m unittest discover -s tooling/tests -q` 和 `python -m pytest tooling/tests -q`；`ci_check.py` 用标准库运行测试，不新增pytest运行依赖。

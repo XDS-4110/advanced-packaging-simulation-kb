@@ -12,6 +12,7 @@ Checks
 from __future__ import annotations
 
 import sys
+import subprocess
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -88,6 +89,18 @@ def main() -> int:
         if unknown:
             sample = "; ".join(f"{k} ({v})" for k, v in list(unknown.items())[:5])
             failures.append(f"{len(unknown)} unknown source id(s) referenced: {sample}")
+
+    # Standard-library tests also run under pytest, without requiring it in CI.
+    tests = kb_retrieve.REPO / 'tooling/tests'
+    if tests.is_dir():
+        result = subprocess.run(
+            [sys.executable, '-X', 'utf8', '-m', 'unittest', 'discover', '-s', str(tests), '-q'],
+            cwd=kb_retrieve.REPO, capture_output=True, text=True, encoding='utf-8',
+        )
+        print(result.stdout, end='')
+        print(result.stderr, end='', file=sys.stderr)
+        if result.returncode:
+            failures.append('Natural-language preview tests failed')
 
     if failures:
         for message in failures:
