@@ -30,12 +30,14 @@
   ],
   "mapping": {
     "bga-definition": [
-      "SRC-TI-PBGA-SSZA002B: Introduction；原定义来源见legacy存档",
+      "SRC-TI-PBGA-SSZA002B: Introduction；仅支持相关定义",
       "术语分类与绘图规则为工程综合"
     ],
     "package-vs-board-scope": [
-      "原范围条目来源见legacy存档；移除特定报告叙述",
-      "模型边界、对称及子模型限制为工程综合"
+      "原特定工程报告已撤下；此条为建模范围整理，待独立审核",
+      "模型边界、对称及子模型限制为工程综合",
+      "SRC-KB-COMSOL-MIGRATION-20261116: 方法整理草稿，非官方操作或推荐参数",
+      "SRC-LIT-BGA-FATIGUE-2022: Qiu 等第3节；保留旧条目的独立文献来源"
     ],
     "thermal-paths-and-resistance": [
       "SRC-TI-THERMAL-METRICS-D: sections 1-5，仅支持热指标定义与边界",
@@ -59,15 +61,15 @@
       "界面换热量纲及多场拓扑限制为基础关系和工程综合"
     ],
     "model-input-and-result-contract": [
-      "本项目工程综合及绘图规则，不是软件官方API或已验证操作规程"
+      "本项目工程综合及绘图规则，不是软件官方API或已验证操作规程",
+      "SRC-KB-COMSOL-MIGRATION-20261116: 方法整理草稿，非官方操作或推荐参数"
     ]
   },
-  "legacy_archive": "bga-fundamentals-legacy-20261103.json",
   "limitations": [
     "无新增推荐工程数值",
     "原有条目ID保留，出处单独存档",
     "保持draft，审核人和日期留空",
-    "未运行COMSOL或ANSYS，软件版本与具体器件参数待补充",
+    "未运行COMSOL，软件版本与具体器件参数待补充",
     "U-GEOMETRY-PARAMETER/U-RUNTIME/U-SAVE/U-RETRY 未解除"
   ]
 }

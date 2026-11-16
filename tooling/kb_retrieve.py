@@ -70,8 +70,50 @@ def excluded(rel: str) -> bool:
     return Path(rel).name in EXCLUDED_FILES
 
 
+def sidecar_sources(root: Path) -> dict[str, dict]:
+    """Read existing source sidecars as metadata, never as citable prose."""
+    out: dict[str, dict] = {}
+    scopes = {
+        "bga-structures-20261103.json": "packaging/bga/structures",
+        "2-5d-structures-20261103.json": "packaging/2-5d/structures",
+        "bga-fundamentals-20261103.json": "packaging/bga/fundamentals",
+        "bga-processes-20261103.json": "packaging/bga/processes",
+        "2-5d-processes-20261103.json": "packaging/2-5d/processes",
+    }
+    for filename, scope in scopes.items():
+        path = root / "shared/references" / filename
+        if not path.exists():
+            continue
+        data = json.loads(path.read_text(encoding="utf-8-sig"))
+        sources = data.get("sources", []) + data.get("new_sources", [])
+        by_id = {s.get("source_id", s.get("id")): s for s in sources}
+        mapping = data.get("entries", data.get("mapping", data.get("source_mapping", {})))
+        for source in sources:
+            for topic in source.get("topics", []):
+                sid = source.get("source_id", source.get("id"))
+                existing = mapping.setdefault(topic, [])
+                if isinstance(existing, list):
+                    existing.append(sid)
+        for name, entry in mapping.items():
+            rel = f"{scope}/{name if name.endswith('.md') else name + '.md'}"
+            if not (root / rel).is_file():
+                continue
+            strings = entry.get("source_ids", []) if isinstance(entry, dict) else entry
+            if not isinstance(strings, list):
+                continue
+            ids = list(dict.fromkeys(re.findall(r"SRC-[A-Za-z0-9-]+", " ".join(strings))))
+            locators = [f"{sid}: {by_id.get(sid, {}).get('source_locator', by_id.get(sid, {}).get('locator', ''))}" for sid in ids]
+            if isinstance(entry, dict) and entry.get("additional_locator"):
+                locators.append(entry["additional_locator"])
+            locators += [s for s in strings if ":" in s or not s.startswith("SRC-")]
+            out[rel] = {"source_ids": ids, "source_locator": "; ".join(locators),
+                        "source_metadata_path": path.relative_to(root).as_posix()}
+    return out
+
+
 def load_docs(root: Path) -> list[dict]:
     docs = []
+    sidecars = sidecar_sources(root)
     for path in sorted(root.rglob("*.md")):
         rel = path.relative_to(root).as_posix()
         if excluded(rel):
@@ -81,6 +123,10 @@ def load_docs(root: Path) -> list[dict]:
         except OSError:
             continue
         meta, body = front_matter(text)
+        extra = sidecars.get(rel, {})
+        if not meta.get("source_ids"):
+            meta["source_ids"] = extra.get("source_ids", [])
+            meta["source_locator"] = extra.get("source_locator", "")
         docs.append({
             "path": rel,
             "id": str(meta.get("id", "")) or f"PATH:{rel}",
@@ -91,6 +137,9 @@ def load_docs(root: Path) -> list[dict]:
             "tags": meta.get("tags", []) if isinstance(meta.get("tags", []), list) else [],
             "source_ids": meta.get("source_ids", []) if isinstance(meta.get("source_ids", []), list) else [],
             "source_locator": str(meta.get("source_locator", "")),
+            "source_metadata_path": extra.get("source_metadata_path", ""),
+            "reviewed_by": str(meta.get("reviewed_by", "")),
+            "reviewed_at": str(meta.get("reviewed_at", "")),
             "body": body,
         })
     return docs
@@ -182,6 +231,7 @@ class Index:
                 "status": c["status"], "score": round(score, 3),
                 "usable_for_arguments": c["status"] in STRICT,
                 "source_locator": c["source_locator"],
+                "source_ids": c["source_ids"],
                 "excerpt": c["text"][:280].replace("\n", " "),
             })
             if len(out) >= k:
@@ -210,7 +260,8 @@ def resolve(root: Path, stage: str) -> list[dict]:
             meta, _ = front_matter(p.read_text(encoding="utf-8-sig"))
         out.append({"id": h.get("id"), "path": h["path"], "stage": stage,
                     "status": meta.get("status", "missing"),
-                    "title": meta.get("title", "")})
+                    "title": meta.get("title", ""),
+                    "usable_for_arguments": meta.get("status") in STRICT})
     deps = prof.get("conditional_dependencies", {})
     return [{"documents": out, "conditional_dependencies": deps,
              "allowlist": prof.get("default_status_allowlist", []),
@@ -238,7 +289,8 @@ PROPERTY_ALIASES = {
 def lookup(root: Path, entity: str, prop: str | None = None) -> dict:
     registry = read_csv(root / "shared/entities/registry.csv")
     row = next((r for r in registry if r["stable_id"] == entity), None)
-    result = {"entity": entity, "found_in_registry": bool(row)}
+    result = {"entity": entity, "found_in_registry": bool(row),
+              "usable_for_arguments": False}
     if row:
         result.update({
             "entity_kind": row["entity_kind"],
@@ -248,22 +300,13 @@ def lookup(root: Path, entity: str, prop: str | None = None) -> dict:
             "aliases": [a for a in row.get("aliases", "").split(";") if a],
             "source_ids": [s for s in row["source_ids"].split(";") if s],
             "source_locator": row["source_locator"],
-            "usable_for_arguments": bool(row["model_revision"]) and row["resolution_state"] == "resolved",
+            "usable_for_arguments": (bool(row["model_revision"])
+                                     and row["resolution_state"] == "resolved"
+                                     and row.get("status") in STRICT),
         })
-    if prop and row and row["entity_kind"] == "material":
-        catalog = {r["material_id"]: r for r in read_csv(root / "shared/materials/catalog.csv")}
-        mat = catalog.get(entity, {})
-        name = row.get("material_name_hint") or mat.get("material_name_as_imported", "")
-        needle = PROPERTY_ALIASES.get(prop.lower(), prop.lower())
-        rows = [r for r in read_csv(root / "shared/materials/datasets/bga-2024r2-draft/material-parameters.csv")
-                if r.get("material") == name
-                and needle in (r.get("property", "") + " " + r.get("parameter", "")).lower()]
-        result["property"] = prop
-        result["values"] = [{"property": r["property"], "value": r["raw_values"],
-                             "unit": r["unit_as_exported"], "temperature_axis_degC": r["temperature_axis_degC"],
-                             "source": "shared/materials/datasets/bga-2024r2-draft/material-parameters.csv"}
-                            for r in rows][:12]
-        result["value_count"] = len(rows)
+    if prop:
+        result.update(property=prop, values=[], value_count=0, usable_for_arguments=False,
+                      limitation="No reviewed material-property dataset is registered; do not infer values.")
     return result
 
 
@@ -280,9 +323,11 @@ def run_eval(root: Path, csv_path: Path) -> dict:
         ids = [g["id"] for g in got]
         expected = [x for x in (r.get("expected_ids") or "").split(";") if x]
         banned = [x for x in (r.get("must_not_include") or "").split(";") if x]
-        hit = any(e in ids for e in expected)
+        hit = any(e in ids for e in expected) if expected else not got
         rank = next((i + 1 for i, g in enumerate(got) if g["id"] in expected), None)
         bad = [b for b in banned if b in ids]
+        bad += [g["id"] for g in got if tier == "strict" and g["status"] not in STRICT]
+        bad += [g["id"] for g in got if g["status"] == "draft" and g["usable_for_arguments"]]
         hits += hit
         mrr += (1.0 / rank) if rank else 0.0
         violations += len(bad)
@@ -300,12 +345,14 @@ def info(root: Path) -> dict:
     for d in sorted(idx.docs, key=lambda x: x["path"]):
         h.update(d["path"].encode("utf-8"))
         # normalise newlines: git autocrlf must not change the corpus identity
-        h.update(hashlib.sha256(d["body"].replace("\r\n", "\n").encode("utf-8")).digest())
+        content = {key: value for key, value in d.items() if key != "body"}
+        content["body"] = d["body"].replace("\r\n", "\n")
+        h.update(hashlib.sha256(json.dumps(content, ensure_ascii=False, sort_keys=True).encode("utf-8")).digest())
     status: dict[str, int] = {}
     for d in idx.docs:
         status[d["status"]] = status.get(d["status"], 0) + 1
     digest = h.hexdigest()
-    base_path = Path(__file__).with_name("corpus-baseline.json")
+    base_path = root / "tooling/corpus-baseline.json"
     expected = json.loads(base_path.read_text(encoding="utf-8")) if base_path.exists() else None
     report = {"repo": str(root), "python": sys.version.split()[0],
               "platform": sys.platform, "documents": len(idx.docs),

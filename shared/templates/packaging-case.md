@@ -6,7 +6,7 @@ domain: packaging
 status: draft
 language: zh-CN
 tags: [packaging-case]
-source_ids: []
+source_ids: [SRC-KB-COMSOL-MIGRATION-20261116]
 source_locator: ""
 updated_at: ""
 reviewed_by: ""

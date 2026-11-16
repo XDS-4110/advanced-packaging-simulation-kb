@@ -2,7 +2,7 @@
 """Repository checks that need no third-party packages.
 
 Run locally with:  python tooling/ci_check.py
-CI runs this after the contract validator.
+Checks documentation only; does not execute a solver or model.
 
 Checks
   1. the indexed corpus matches tooling/corpus-baseline.json
@@ -20,7 +20,7 @@ sys.path.insert(0, str(HERE))
 import kb_retrieve  # noqa: E402
 
 # Only files this project authors by hand. Machine exports (CSV under data/ and
-# datasets/) legitimately carry a BOM from Excel/ANSYS and are read with utf-8-sig.
+# datasets/) can carry a BOM from spreadsheet exports and are read with utf-8-sig.
 TEXT_SUFFIXES = {".md", ".py", ".json", ".yml", ".yaml"}
 TEXT_NAMES = {".gitattributes", ".gitignore"}
 SKIP_DIRS = {".git", "files", "node_modules", "__pycache__"}
@@ -89,12 +89,54 @@ def main() -> int:
             sample = "; ".join(f"{k} ({v})" for k, v in list(unknown.items())[:5])
             failures.append(f"{len(unknown)} unknown source id(s) referenced: {sample}")
 
+        docs = kb_retrieve.load_docs(kb_retrieve.REPO)
+        for doc in docs:
+            for sid in doc["source_ids"]:
+                if sid not in known:
+                    failures.append(f"Unknown effective source {sid}: {doc['path']}")
+            if doc["status"] in kb_retrieve.STRICT and not (doc["reviewed_by"] and doc["reviewed_at"]):
+                failures.append(f"Missing review evidence: {doc['path']}")
+
+    # 4. routes and local links must survive directory cleanup.
+    import re
+    from urllib.parse import unquote
+    for item in kb_retrieve.profile(kb_retrieve.REPO).get("core_operation_documents", []):
+        path = kb_retrieve.REPO / item["path"]
+        if not path.is_file():
+            failures.append(f"Missing routed document: {item['path']}")
+            continue
+        meta, _ = kb_retrieve.front_matter(path.read_text(encoding="utf-8-sig"))
+        if item["id"] != meta.get("id"):
+            failures.append(f"Route ID mismatch: {item['path']}")
+    for path in kb_retrieve.REPO.rglob("*.md"):
+        rel = path.relative_to(kb_retrieve.REPO).as_posix()
+        if ".git/" in rel or "shared/templates/" in rel:
+            continue
+        for target in re.findall(r"\]\(([^)]+)\)", path.read_text(encoding="utf-8-sig")):
+            target = target.strip().split(' "', 1)[0].strip("<>")
+            if not target or re.match(r"^[A-Za-z][\w+.-]*:", target) or target.startswith("#"):
+                continue
+            target = unquote(target.split("#", 1)[0])
+            if target and not (path.parent / target).exists():
+                failures.append(f"Broken local link: {rel} -> {target}")
+
+    # 5. generated navigation and query-state guardrails.
+    import rebuild_metadata
+    for path, content in rebuild_metadata.generated_files().items():
+        if not path.exists() or path.read_text(encoding="utf-8") != content:
+            failures.append(f"Stale generated metadata: {path.relative_to(kb_retrieve.REPO)}")
+    evaluation = kb_retrieve.run_eval(kb_retrieve.REPO, HERE / "kb_eval.csv")
+    if evaluation["gate_violations"] or evaluation["hit_at_5"] != 1.0:
+        failures.append(f"Retrieval regression: {evaluation}")
+    if kb_retrieve.lookup(kb_retrieve.REPO, "__missing__", "cte").get("usable_for_arguments"):
+        failures.append("Missing entity was authorized as an engineering argument")
+
     if failures:
         for message in failures:
             print("FAIL: " + message, file=sys.stderr)
         return 1
 
-    print("OK: baseline matches; no BOM; LF only")
+    print("OK: metadata, sources, routes, links, encoding and retrieval guardrails")
     return 0
 
 

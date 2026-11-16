@@ -33,7 +33,7 @@
 
 封装协作者主要维护 `packaging/`，仿真负责人主要维护 `simulation/`。公共模板、RAG 约定和来源登记位于 `shared/`。跨领域内容以链接/ID 引用，避免重复维护材料数据。
 
-仿真软件基线为 ANSYS Workbench 2024 R2；不同版本需显式标注。知识条目 `domain` 为 `packaging`、`simulation`，公共材料记录为 `shared`。分工是协作约定，不代表 GitHub 路径级权限隔离。
+仿真软件基线为 COMSOL Multiphysics 6.4；不同版本需显式标注。知识条目 `domain` 为 `packaging`、`simulation`，公共材料记录为 `shared`。分工是协作约定，不代表 GitHub 路径级权限隔离。
 
 ## 公共材料维护
 

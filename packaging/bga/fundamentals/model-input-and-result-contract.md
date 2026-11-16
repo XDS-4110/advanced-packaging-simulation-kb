@@ -7,7 +7,7 @@ status: draft
 language: zh-CN
 tags: [BGA, fundamentals, modeling, drawing-constraints]
 physics: [thermal, mechanical]
-software: [COMSOL, ANSYS]
+software: [COMSOL]
 software_versions: []
 updated_at: "2026-11-03"
 reviewed_by: ""
@@ -20,7 +20,7 @@ reviewed_at: ""
 
 必须给出研究目标、内部互连类型、器件级或板级范围、几何单位、球图与观察方向、材料及状态、接触、热源或温度历程、支承、工艺参考状态和目标输出。未知字段保留待补充，不能用软件默认值伪装成器件事实。
 
-COMSOL与ANSYS模型之间先对齐物理定义，再比较数值。名为“应力”“应变”或“温度”的变量不一定有相同分量、平均方式、参考状态和输出位置。软件功能及API需按具体版本另行核验；本条不提供自动执行指令。
+不同仿真模型之间先对齐物理定义，再比较数值。名为“应力”“应变”或“温度”的变量不一定有相同分量、平均方式、参考状态和输出位置。软件功能及API需按具体版本另行核验；本条不提供自动执行指令。
 
 ## 结果量应对应问题
 

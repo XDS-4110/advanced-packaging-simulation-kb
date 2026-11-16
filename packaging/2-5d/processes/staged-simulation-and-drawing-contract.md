@@ -7,7 +7,7 @@ status: draft
 language: zh-CN
 tags: [2.5D, processes, modeling, drawing-constraints]
 physics: [thermal, mechanical]
-software: [COMSOL, ANSYS]
+software: [COMSOL]
 software_versions: []
 updated_at: "2026-11-03"
 reviewed_by: ""
@@ -30,7 +30,7 @@ reviewed_at: ""
 
 ## 软件间映射
 
-COMSOL 与 ANSYS 都需区分热载荷求解和结构状态更新。温度传递只带来温度场，不自动继承残余应力、塑性应变、黏弹内部变量及固化度。阶段激活、重启动和状态映射的具体实现需按版本验证，不在知识条目中假定通用 API。
+分阶段模型需区分热载荷求解和结构状态更新。温度传递只带来温度场，不自动继承残余应力、塑性应变、黏弹内部变量及固化度。阶段激活、重启动和状态映射的具体实现需按版本验证，不在知识条目中假定通用 API。
 
 实体加入时区分参考几何与当前变形几何，避免新层在错误位置产生数值预应变。移除实体或解除约束后检查力平衡。焊料黏塑性、胶固化和接触开闭需要真实时间历程，不能用无物理时间意义的静力步冒充保温时间。
 

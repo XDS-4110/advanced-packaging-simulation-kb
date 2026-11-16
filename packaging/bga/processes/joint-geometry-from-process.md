@@ -7,7 +7,7 @@ status: draft
 language: zh-CN
 tags: [BGA, processes, modeling, drawing-constraints]
 physics: [thermal, mechanical]
-software: [COMSOL, ANSYS]
+software: [COMSOL]
 software_versions: []
 updated_at: "2026-11-03"
 reviewed_by: ""
@@ -32,7 +32,7 @@ reviewed_at: ""
 
 全局翘曲分析可以使用校准后的简化焊点，但局部应变分析应保留接触颈部和必要的圆角。几何简化必须检查等效刚度和传热是否改变。薄层 IMC 是否显式建模由失效目标决定；没有厚度和材料数据时不编造一层实体。
 
-导入 COMSOL 或 ANSYS 后检查上下连接面、微小间隙、实体重叠及球阵列缺位。完好焊接界面可用连续连接近似；研究脱粘时需单独定义界面损伤或接触，不能仍用永久绑定得到“裂纹张开”。
+导入几何后检查上下连接面、微小间隙、实体重叠及球阵列缺位。完好焊接界面可用连续连接近似；研究脱粘时需单独定义界面损伤或接触，不能仍用永久绑定得到“裂纹张开”。
 
 ## AI 几何生成约束
 

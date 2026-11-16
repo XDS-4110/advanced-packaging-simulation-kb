@@ -30,4 +30,4 @@ IHP的`.chiplet`用YAML表达多芯片装配：部件身份、类型、尺寸、
 
 新增部件时，要明确它连接哪些对象、连接层是否单独建模，以及层间高度是否发生变化。共享坐标系不等于所有外部文件采用同一种位置锚点。
 
-本条目reviewed仅表示上述格式内容及来源已核对，不表示`.chiplet`能直接生成Workbench实体或已验证热力耦合模型。项目自己的[结构输入模板](../../../../shared/templates/package-structure-input.json)与[中介层插入流程草稿](../../../../simulation/modeling/insert-interposer-workflow.md)需要单独适配。
+本条目reviewed仅表示上述格式内容及来源已核对，不表示`.chiplet`能直接生成求解器几何实体或已验证热力耦合模型。项目自己的[结构输入模板](../../../shared/templates/package-structure-input.json)与[中介层插入流程草稿](../../../simulation/modeling/insert-interposer-workflow.md)需要单独适配。

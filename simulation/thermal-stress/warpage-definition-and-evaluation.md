@@ -9,10 +9,10 @@ scope_note: "方法级判据，不绑定型号或工程；具体数值与设置�
 language: zh-CN
 tags: [warpage, deformation, reference-plane, evaluation]
 physics: [thermal, structural]
-software: [ANSYS Workbench, ANSYS Mechanical]
-software_versions: ["2024 R2"]
-source_ids: [SRC-ANSYS-242-OPS-API]
-source_locator: "方法与判据为本库归纳；引用 OPS-06 关于 Total Deformation 与翘曲区别的表述"
+software: []
+software_versions: []
+source_ids: [SRC-KB-COMSOL-MIGRATION-20261116]
+source_locator: "本库方法草稿；不含已验证的软件字段映射"
 updated_at: "2026-11-03"
 reviewed_by: ""
 reviewed_at: ""
@@ -54,7 +54,7 @@ reviewed_at: ""
 | --- | --- |
 | 峰值时刻 | 关注最坏情况 |
 | 末态 | 关注稳定形态 |
-| 循环稳定后（如第 2–3 循环） | 温度循环问题；首循环含初始瞬态 |
+| 循环响应已通过逐周期比较确认稳定后 | 温度循环问题；首循环含初始瞬态 |
 
 只报一个时刻而不说明理由，等于没定义。
 

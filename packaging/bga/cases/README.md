@@ -1,37 +1,3 @@
-# BGA 案例
+# BGA 案例资料
 
-范围：实际封装结构、尺寸、材料来源、工艺与工况、测试记录和资料缺口。
-
-## 当前复现任务
-
-目标资料：《BGA器件热可靠性分析》。待建立独立的封装案例条目，并登记来源；此处仅为资料整理清单，不代表复现完成。
-
-- 确认塑封料、芯片、凸点、Underfill、BT 基板与底部焊球的层叠及连接关系。
-- 补齐器件型号、CAD/尺寸图、各层厚度、凸点和焊球尺寸与排列，明确模型是否包含 PCB。
-- 记录原文材料采用值的出处、牌号与适用温度；参数归入公共材料库，不将未审核案例值作为通用推荐值。
-- 核实温度循环时间表、初始状态及工艺历史；区分环境温循与芯片功耗发热。
-- 记录原文结果、可用于对照的测试证据和缺失项，不将应力结果直接标记为寿命验证。
-
-仓库已有 [BGA 未求解工程资料](../../../simulation/cases/bga-2024r2-unsolved/README.md) 和 [共用材料快照](../../../shared/materials/bga-2024r2-import.md)，均需按其 draft 状态使用。文档与工程是否完全对应仍须核对，不因题材相同而自动认定一致。
-
-
-当前待补充经审核的知识条目。使用 [公共模板](../../../shared/templates/README.md)，遵循 [贡献约定](../../../CONTRIBUTING.md) 与 [RAG 规范](../../../shared/rag/README.md)。来源登记至 [统一来源表](../../../shared/references/catalog.csv)；未知信息标为“待补充”。
-
-[返回本专题](../README.md) · [封装总入口](../../README.md)
-
-## 如何新增文件
-
-复制 [填写模板](../../../shared/templates/packaging-case.md) 到本目录，另起有意义的文件名，例如 `topic-note.md`（仅为命名示例）。
-
-- 必填内容：对象和版本；结构层叠与尺寸；材料 ID/revision；制造历史；功耗或环境温度时间表；试验结果；资料缺口。
-- 自查：区分已知实物事实和建模假设；关联 simulation 案例，不重复软件设置。
-- 元数据：唯一 id、domain: packaging、status: draft、source_ids、原文页码或图表、更新日期。
-- README 仅作导航；新增正文后在下方添加链接。
-
-## 已有知识条目
-
-下列正文均为待审核草稿。
-
-- [BGA复现前的封装证据清单](reproduction-evidence-checklist.md)（draft）
-
-- [结构化复现证据清单](reproduction-evidence.json)：未绑定具体器件、数值待补；[填写约定](../../data/README.md)。
+[复现前证据清单](reproduction-evidence-checklist.md)记录需要补齐的结构、材料、工艺、载荷和对照证据。当前没有经验证的 COMSOL BGA 案例；不从已撤下的历史工程补充默认参数。

@@ -7,7 +7,7 @@ status: draft
 language: zh-CN
 tags: [2.5D, processes, modeling, drawing-constraints]
 physics: [thermal, mechanical]
-software: [COMSOL, ANSYS]
+software: [COMSOL]
 software_versions: []
 updated_at: "2026-11-03"
 reviewed_by: ""
@@ -22,7 +22,7 @@ reviewed_at: ""
 
 简化各向同性均匀薄板的弯曲刚度 D = Et³/[12(1−ν²)]，E 为弹性模量、t 为厚度、ν 为泊松比。此式只说明厚度变化的敏感性，不能直接代替具有铜、介质和胶层的层合晶圆刚度；硅的晶向也可能需要显式处理。
 
-## COMSOL与ANSYS模型输入
+## 几何与工艺模型输入
 
 减薄前后应分别保留实体厚度、膜层应力和承载条件。移除的硅不能继续提供刚度或质量。若研究磨削损伤，需要损伤层或实测残余应力输入；仅减小几何厚度不会自动生成磨削残余应力。
 

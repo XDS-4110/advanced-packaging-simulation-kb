@@ -7,7 +7,7 @@ status: draft
 language: zh-CN
 tags: [2.5D, processes, modeling, drawing-constraints]
 physics: [thermal, mechanical]
-software: [COMSOL, ANSYS]
+software: [COMSOL]
 software_versions: []
 updated_at: "2026-11-03"
 reviewed_by: ""
@@ -22,7 +22,7 @@ reviewed_at: ""
 
 填充模型需间隙、凸点障碍、入口位置、排气通道、接触角、表面张力及黏度随温度和固化度的变化。多个流动前沿合并可能封闭空气，但不能仅凭二维示意图给出三维孔洞体积。只建立固体底填实体不等于完成填充分析。
 
-COMSOL 可按目标组合流动、自由表面、传热与固化模型；ANSYS Fluent 用于流动问题，Mechanical 用于固化后的结构响应。具体实现、模块许可与数据映射需按软件版本核对，不能假定普通静力结构分析能自动求填充前沿。
+底填流动、自由表面、传热、固化以及固化后的结构响应是不同问题，应按目标选择模型。具体实现、模块许可与数据映射需按软件版本核对，不能假定普通静力结构分析能自动求填充前沿。
 
 ## 固化到应力的耦合
 

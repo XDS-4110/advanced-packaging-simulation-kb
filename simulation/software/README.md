@@ -1,13 +1,3 @@
-# 仿真软件操作
+# 仿真软件资料
 
-范围：以 ANSYS Workbench 2024 R2 为当前基线，其他产品/版本单独标注。
-
-内容按条目状态逐步补充。使用根目录 `shared/templates/` 中的模板，并遵循根目录 `CONTRIBUTING.md` 和 `shared/rag/README.md`。
-
-## 排错记录
-
-COMSOL 与 ANSYS 的实际问题统一收录到 [排错案例库](../troubleshooting/README.md)，软件操作条目通过链接引用，避免重复维护。
-
-## 热—结构操作资料
-
-[2024 R2热—结构耦合操作精简集](ansys-workbench-2024r2/README.md)：6篇，按阶段检索。
+当前只维护 [COMSOL 操作与核验资料](comsol/README.md)，基线 6.4。来源版本以条目记录为准，不把旧版本示例当作新版已验证接口。

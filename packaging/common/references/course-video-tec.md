@@ -49,4 +49,4 @@ reviewed_at: ""
 
 形成[TEC结构与热端负荷](../structures/tec-heat-path-and-load.md)及[测温位置与控温目标](../fundamentals/temperature-measurement-location.md)。热端能量平衡另与[Ferrotec技术说明](https://www.product.ferrotec.co.jp/en/product/electronic_device/thermo/technology/)对照。
 
-仍需核对：实际TEC型号/性能曲线、材料与几何原始数据、每项热源的定义和能量平衡、传感器测温误差、案例是否已达到稳态。涉及模型热源温度单位、网格及残差的复现需由simulation负责人另行确认，不能直接按课程界面迁移到2024 R2。
+仍需核对：实际TEC型号/性能曲线、材料与几何原始数据、每项热源的定义和能量平衡、传感器测温误差、案例是否已达到稳态。涉及模型热源温度单位、网格及残差的复现需由simulation负责人另行确认，不能直接按课程界面迁移到当前软件。
