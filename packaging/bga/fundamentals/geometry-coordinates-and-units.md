@@ -7,7 +7,7 @@ status: draft
 language: zh-CN
 tags: [BGA, fundamentals, modeling, drawing-constraints]
 physics: [thermal, mechanical]
-software: [COMSOL, ANSYS]
+software: [COMSOL]
 software_versions: []
 updated_at: "2026-11-03"
 reviewed_by: ""
@@ -28,7 +28,7 @@ reviewed_at: ""
 
 俯视、仰视和 PCB 焊盘视图可能出现镜像。必须给出观察方向、原点、轴向及方向标记，再将球号映射到坐标。底视图不能直接作为顶视图复制；两侧焊盘视觉一致也不证明电气球号一致。
 
-## COMSOL与ANSYS的量纲检查
+## 几何与物理量的量纲检查
 
 几何缩放会同时改变体积、刚度及热源密度。导入后用外形长度、层厚和球距交叉检查单位，不仅查看模型是否“看起来正常”。应力与模量使用一致压力单位，导热率含长度量纲，瞬态输入的时间单位也必须统一。
 

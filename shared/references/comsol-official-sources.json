@@ -1,0 +1,471 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-16",
+  "status": "draft",
+  "verification": "official_documentation_checked; not_run_locally",
+  "id_note": "来源 ID 已正式登记在 catalog.csv；与 11 篇 COMSOL 条目一一对应。",
+  "source_count": 27,
+  "document_count": 11,
+  "sources": [
+    {
+      "id": "SRC-COMSOL-OFFICIAL-temperature-units",
+      "title": "About Temperature Units",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.comsol/comsol_ref_modeling.19.104.html",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "Differential vs. Absolute Temperature",
+      "topics": [
+        "01-temperature-units"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-union-assembly",
+      "title": "The Form Union/Assembly Node — Unifying the Geometry",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.comsol/comsol_ref_geometry.23.019.html",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "Physics Considerations; Form Union/Assembly",
+      "topics": [
+        "02-union-assembly"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-explicit-selection",
+      "title": "Explicit Selection (Geometry Sequences)",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.comsol/comsol_ref_visualizationselection.22.31.html",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "Entities to Select; Resulting Selection; Cumulative Selection",
+      "topics": [
+        "03-named-selections"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-cumulative-selection",
+      "title": "Cumulative Selections",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.comsol/comsol_api_geom.48.034.html",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "Cumulative Selections",
+      "topics": [
+        "03-named-selections"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-cad-import",
+      "title": "Importing and Exporting CAD Files",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.design/design_ug_function.5.24.html",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "Associativity; Length Unit; Simplify and Repair",
+      "topics": [
+        "03-named-selections",
+        "11-geometry-parameters"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-adjacent-selection",
+      "title": "model.selection()",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.comsol/comsol_api_general.47.56.html",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "Adjacent — Table 2-136",
+      "topics": [
+        "04-air-exposed-boundaries"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-thermal-contact",
+      "title": "Thermal Contact",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.heat/heat_ug_ht_features.09.100.html",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "Thermal Contact; Pair Selection",
+      "topics": [
+        "04-air-exposed-boundaries"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-thermal-boundary-types",
+      "title": "Temperature and Heat Flux Boundary Conditions",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.heat/heat_ug_modeling.06.21.html",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "Temperature and Heat Flux Boundary Conditions",
+      "topics": [
+        "05-temperature-vs-convection"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-heat-flux",
+      "title": "Heat Flux",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.comsol/comsol_ref_heattransfer.30.30.html",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "Convective Heat Flux; Heat Rate",
+      "topics": [
+        "05-temperature-vs-convection"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-thermal-stress",
+      "title": "Thermal Stress",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.sme/sme_introduction.02.34.html",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "Thermal Stress",
+      "topics": [
+        "06-transient-thermal-stress"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-quasistatic-structure",
+      "title": "The Solid Mechanics Interface",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.sme/sme_ug_solid.07.002.html?type=ext",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "Structural Transient Behavior",
+      "topics": [
+        "06-transient-thermal-stress"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-thermal-expansion",
+      "title": "Thermal Expansion",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.sme/sme_ug_modeling.05.168.html",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "Temperature Dependence; Tangent or Secant Data",
+      "topics": [
+        "06-transient-thermal-stress"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-interpolation",
+      "title": "Interpolation",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.comsol/comsol_ref_definitions.21.067.html",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "Definition; Interpolation and Extrapolation; Units",
+      "topics": [
+        "07-thermal-cycle-functions"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-analytic",
+      "title": "Analytic",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.comsol/comsol_ref_definitions.21.059.html",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "Definition; Periodic Extension; Plot Parameters",
+      "topics": [
+        "07-thermal-cycle-functions"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-functions-api",
+      "title": "model.func()",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.comsol/comsol_api_general.47.34.html",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "Piecewise — Table 2-87",
+      "topics": [
+        "07-thermal-cycle-functions"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-mesh-quality",
+      "title": "Mesh Element Quality",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.comsol/comsol_ref_mesh.24.24.html",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "Mesh Element Quality",
+      "topics": [
+        "08-mesh-quality-convergence"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-mesh-statistics",
+      "title": "Mesh Statistics",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.comsol/comsol_ref_mesh.24.25.html",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "Statistics; Element Quality Histogram",
+      "topics": [
+        "08-mesh-quality-convergence"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-mesh-api-quality",
+      "title": "Quality of Elements",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.comsol/comsol_api_mesh.49.028.html",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "Quality of Elements",
+      "topics": [
+        "08-mesh-quality-convergence"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-mesh-refinement",
+      "title": "Performing a Mesh Refinement Study",
+      "url": "https://www.comsol.com/support/knowledgebase/1261",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "All versions (official knowledge base; not tied to 6.4)",
+      "source_locator": "Comparing and Evaluating Results; General Remarks",
+      "topics": [
+        "08-mesh-quality-convergence"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-time-dependent-study",
+      "title": "Time Dependent",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.comsol/comsol_ref_solver.36.017.html",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "Time Dependent; Tolerance",
+      "topics": [
+        "09-time-stepping-tolerances"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-time-dependent-solver",
+      "title": "Time-Dependent Solver",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.comsol/comsol_ref_solver.36.139.html",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "General; Time Stepping",
+      "topics": [
+        "09-time-stepping-tolerances"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-transient-convergence",
+      "title": "Improving Convergence of Transient Models",
+      "url": "https://www.comsol.com/support/knowledgebase/1262",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "Unversioned official knowledge-base page",
+      "source_locator": "Mesh Refinement; Consistent Initialization; Scaling",
+      "topics": [
+        "09-time-stepping-tolerances"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-modelutil",
+      "title": "ModelUtil",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.comsol/comsol_api_general.47.15.html",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "ModelUtil.load; loadCopy; loadOnServer",
+      "topics": [
+        "10-mph-save-readback"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-model-save",
+      "title": "model",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.comsol/comsol_api_general.47.16.html",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "model.save; model.location; model.getComsolVersion",
+      "topics": [
+        "10-mph-save-readback"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-parameter-api",
+      "title": "model.param() and model.result().param()",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.comsol/comsol_api_general.47.50.html",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "get; evaluate; evaluateUnit; descr",
+      "topics": [
+        "10-mph-save-readback"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-scale",
+      "title": "Scale",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.comsol/comsol_ref_geometry.23.100.html",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "Input; Scale Factor; Center of Scaling",
+      "topics": [
+        "11-geometry-parameters"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    },
+    {
+      "id": "SRC-COMSOL-OFFICIAL-geometry-new",
+      "title": "New Geometry and Mesh Functionality",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.comsol/comsol_release_text.06.008.html",
+      "publisher": "COMSOL",
+      "source_type": "official_documentation",
+      "software": "COMSOL Multiphysics",
+      "software_version": "6.4",
+      "source_locator": "Geometry News — Create parameters",
+      "topics": [
+        "11-geometry-parameters"
+      ],
+      "accessed_at": "2026-11-16",
+      "status": "draft",
+      "verification": "official_documentation_checked; not_run_locally",
+      "rights_note": "原创简要归纳与来源链接；不分发官方手册全文"
+    }
+  ]
+}

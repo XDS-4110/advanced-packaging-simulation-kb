@@ -1,82 +1,29 @@
-# tooling — 知识库检索与自动化代码
+# 只读知识检索工具
 
-本目录存放可执行代码。知识条目仍在 `packaging/`、`simulation/`、`shared/`；本目录**不进入 RAG 正文索引**，也不提供任何工程数值。
+Python 3.10+，仅使用标准库，不调用求解器、不改工程。
 
-## 当前内容
-
-| 文件 | 用途 |
-| --- | --- |
-| `kb_retrieve.py` | 知识库检索引擎；同时提供 CLI 与 MCP stdio 服务 |
-| `kb_eval.csv` | 检索评估集（问题 / 期望命中 / 不得命中） |
-| `mcp.example.json` | MCP 客户端配置示例 |
-| `README.md` | 本文件 |
-
-## 依赖
-
-- Python ≥ 3.9（实测 3.12.14）
-- **无第三方依赖**，不需要 pip install
-
-## 用法
-
-全部命令在仓库根目录执行。
-
-```bash
+```text
 python tooling/kb_retrieve.py info
-python tooling/kb_retrieve.py search "温度场怎么传给结构" --tier strict -k 3
+python tooling/kb_retrieve.py search "COMSOL 网格质量" --tier explain --k 3
 python tooling/kb_retrieve.py resolve transient-thermal
-python tooling/kb_retrieve.py lookup MAT-BGA-SN63PB37-001 anand
+python tooling/kb_retrieve.py lookup CURRENT-MODEL-ID
 python tooling/kb_retrieve.py eval
-python tooling/kb_retrieve.py serve
+python tooling/rebuild_metadata.py
+python tooling/ci_check.py
 ```
 
-指定其他仓库副本：`--repo <path>` 或环境变量 `KB_REPO`。
+`--repo <path>` 或 `KB_REPO` 可指定副本。`strict` 只返回 reviewed/validated；`explain` 也返回 draft。每条结果保留来源、状态及 `usable_for_arguments`；即使已审核也须核对适用范围。新增 COMSOL 文档保持 draft，不能用提高状态的方式让查询返回正式参数。
 
-## 状态门控
+`lookup` 只读明确登记的实体，未找到则返回缺失。旧工程实体和材料数值已撤下，当前注册表为空。`resolve` 是文档路由，不是执行计划或写入授权。
 
-| tier | 允许状态 | 能否作为工具参数值 |
-| --- | --- | --- |
-| `strict` | `reviewed`、`validated` | 可以 |
-| `explain` | 上述 + `draft`（标注） | **不可以** |
+保留原有可选 stdio 资料服务，但本次不连接客户端，也不增加求解器执行接口。
 
-每条结果带 `status` 与 `usable_for_arguments`。门控在代码中强制，不依赖提示词。`draft` 结果仅供解释与排错，不得写入 `arguments`。
+## 元数据与检查
 
-## MCP 接入
+`rebuild_metadata.py` 同步语料基线与封装导航索引。`info` 的 `baseline_match` 应为 true；具体计数和哈希以 `corpus-baseline.json` 为准。知识内容、来源或状态修改后，在同一 PR 重建并检查。
 
-`serve` 提供三个工具：`kb_search`、`kb_resolve`、`kb_lookup`。配置见 `mcp.example.json`，把 `command` 与 `args` 换成目标机器的绝对路径。
+`ci_check.py` 检查基线、换行、来源、路由、相对链接及草稿门禁；`eval` 检查检索命中和负例。不把文档静态检查说成 COMSOL 运行验证。
 
-## 换机验收
+正文范围保持封装、仿真和公共材料条目；README、代理规则、模板、工具、原文件及生成索引不进入知识正文。来源旁存映射只补充元数据，不拼入正文。
 
-在新机器上执行 `info`，看 `baseline_match`。基线固定在 `corpus-baseline.json`，含 commit、文档数与内容哈希。
-
-```
-baseline_match = true
-documents = 119, chunks = 585
-corpus_sha256 = 0bba538c862ac59b4b74377812b47ea23f4747a9e8c42402cf5355fdef14ae44
-```
-
-`baseline_match: false` 表示知识内容已变。改内容时**在同一 PR 内**更新 `corpus-baseline.json`，不要事后补。
-
-## 索引范围
-
-只索引知识条目：`packaging/`、`simulation/`、`shared/materials/`。
-**排除**：`README.md`、`AGENTS.md`、`CONTRIBUTING.md`、`shared/templates/`、`shared/tools/`、`files/`、`tooling/`。
-指令文件与代码不得成为可引用来源，否则代理会引用自己的规则。
-
-## 评估
-
-`eval` 输出 `hit_at_5`、`mrr`、`gate_violations`。`gate_violations` 必须恒为 0：它统计的是 `strict` 模式下是否返回了非 reviewed/validated 文档。
-
-2026-11-03 快照：12 题，hit@5 = 1.0，MRR = 0.903，gate_violations = 0。其中 2 题命中但未排第一，属排序调优项。
-
-## 边界
-
-- 不做向量检索：当前可入库正文规模约 8 万字符，BM25 足够；引入 embedding 会带来版本漂移。
-- 不生成、不推断任何工程数值；数值只能来自 `kb_lookup` 命中的材料表或案例数据。
-- 不连接 ANSYS，不执行求解。执行端适配器不在本目录。
-- 尚未接入 CI；`eval` 目前需手动运行。
-
-## 待办
-
-- 排序调优（课程笔记类文档需降权）
-- 评估集扩到 20 题
-- 与 `shared/tools/validate_contract.py` 的证据编号互链
+迁移范围与待审内容见 [清理记录](COMSOL_MIGRATION.md)。

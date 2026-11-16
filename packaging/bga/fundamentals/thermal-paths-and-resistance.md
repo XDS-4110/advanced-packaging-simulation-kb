@@ -7,7 +7,7 @@ status: draft
 language: zh-CN
 tags: [BGA, fundamentals, modeling, drawing-constraints]
 physics: [thermal, mechanical]
-software: [COMSOL, ANSYS]
+software: [COMSOL]
 software_versions: []
 updated_at: "2026-11-03"
 reviewed_by: ""
@@ -38,4 +38,4 @@ RθJA=(Tj−Ta)/P 是指定板与环境下的结到环境指标，不是独立�
 
 ## 软件输入与绘图
 
-COMSOL固体传热或ANSYS热分析需区分功率、热源密度、热流密度、恒温和环境对流。导热率不能填入热阻字段，热阻不能填入换热系数字段。温度图注明时刻、测点和单位；热流箭头表示实际方向，示意箭头不得附带未经计算的分流百分比。
+热分析需区分功率、热源密度、热流密度、恒温和环境对流。导热率不能填入热阻字段，热阻不能填入换热系数字段。温度图注明时刻、测点和单位；热流箭头表示实际方向，示意箭头不得附带未经计算的分流百分比。

@@ -7,9 +7,9 @@ status: draft
 language: zh-CN
 tags: [glossary, terminology, retrieval, synonym]
 physics: [thermal, structural]
-software: [ANSYS Workbench, ANSYS Mechanical]
+software: []
 software_versions: []
-source_ids: [SRC-BGA-001]
+source_ids: [SRC-KB-COMSOL-MIGRATION-20261116]
 source_locator: "本库各条目正文用词统计；定义不引入新来源"
 updated_at: "2026-11-02"
 reviewed_by: ""
@@ -35,7 +35,7 @@ reviewed_at: ""
 | 凸点 | bump | 芯片侧的微互连；尺寸小于焊球 | 微凸点、micro-bump |
 | 焊球 | solder ball | 封装底部的外部互连球 | 锡球、solder bump |
 | 底填 | underfill | 填充芯片与基板间隙的胶 | 底部填充胶、毛细底填 |
-| 塑封料 | EMC / SFL (Epoxy Molding Compound) | 包封用环氧模塑料；本库工程中显示名为 SFL | 封胶、molding compound |
+| 塑封料 | EMC / SFL (Epoxy Molding Compound) | 包封用环氧模塑料；SFL 为部分资料中的显示名，不作为材料身份 | 封胶、molding compound |
 | 基板 | substrate (BT) | 封装内承载芯片的有机基板 | BT 板、载板 |
 | 印制板 | PCB | 板级承载与互连 | 电路板 |
 
@@ -44,8 +44,8 @@ reviewed_at: ""
 | 中文 | 英文/缩写 | 说明 | 常见别名 |
 | --- | --- | --- | --- |
 | 翘曲 | warpage | 封装因材料失配产生的面外变形 | 变形、弯曲、warp、out-of-plane |
-| 热膨胀系数 | CTE | 温度变化引起的应变率；区分瞬时与割线定义 | 线膨胀系数、α |
-| 无应力参考温度 | stress-free / reference temperature | 该温度下结构应变为零 | 参考温度、零应力温度、stress-free temp |
+| 热膨胀系数 | CTE | 热应变对温度变化的关系；区分瞬时与割线定义 | 线膨胀系数、α |
+| 无应力参考温度 | stress-free / reference temperature | 热膨胀的参考温度，不保证总应变或真实应力为零 | 参考温度、零应力温度、stress-free temp |
 | 玻璃化转变温度 | Tg | 材料模量显著下降的温度 | 玻璃化温度 |
 | 粘塑性 | viscoplasticity | 与速率相关的塑性行为；焊料常用 Anand 模型 | 率相关塑性 |
 | 蠕变 | creep | 恒定载荷下随时间发展的变形 | 徐变 |
@@ -62,7 +62,7 @@ reviewed_at: ""
 | 中文 | 英文/缩写 | 说明 | 常见别名 |
 | --- | --- | --- | --- |
 | 顺序耦合 | sequential coupling | 先热后结构，传递温度场 | 热-力顺序耦合、one-way coupling |
-| 导入体温度 | Imported Body Temperature | 把热分析结果作为结构分析的体载荷 | 温度导入、imported load |
+| 温度场传递 | temperature-field transfer | 将热分析温度供结构热膨胀使用，需核对时刻与作用域 | 温度导入 |
 | 命名选择 | Named Selection | 命名的几何集合，供边界与接触引用 | 选择组、NS |
 | 接触对 | contact pair | 源面与目标面的接触定义 | contact region |
 | 绑定接触 | bonded | 界面不分离、不滑移的约束 | tie、绑定 |
@@ -90,4 +90,4 @@ reviewed_at: ""
 ## 待补充
 
 - 新增术语需同时补"本库出现位置"；
-- 英文缩写与 ANSYS 界面用词的对应（如 SFL 与 EMC）需在实际界面核对后确认。
+- 软件字段与物理术语的对应须在目标版本文档及实际模型中核对。

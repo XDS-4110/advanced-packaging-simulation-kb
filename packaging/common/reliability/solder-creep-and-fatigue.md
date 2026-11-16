@@ -9,8 +9,8 @@ tags: [solder, creep, fatigue]
 physics: [thermal, mechanical]
 software: []
 software_versions: []
-source_ids: [SRC-COURSE-CHIP-PACKAGING-07, SRC-COURSE-VIDEO-SOLDER-UP, SRC-ANSYS-242-ANAND]
-source_locator: "课件07 p.3–9；锡球失效上段14:23–27:53；ANSYS Theory Reference §4.3.2.4"
+source_ids: [SRC-COURSE-CHIP-PACKAGING-07, SRC-COURSE-VIDEO-SOLDER-UP]
+source_locator: "课件07 p.3–9；锡球失效上段14:23–27:53；本构定义仍需目标版本文档核对"
 updated_at: "2026-11-02"
 reviewed_by: ""
 reviewed_at: ""
@@ -34,7 +34,7 @@ reviewed_at: ""
 
 “稳态蠕变”不表示应变不再随时间累积。在给定温度和应力下，若蠕变应变率近似恒定且不为零，持续时间越长，累积的蠕变应变仍会增加。这是对视频21:38附近转录歧义的澄清；不能把稳态蠕变等同于可忽略保温时间。
 
-Anand描述统一的非弹性变形，不能再把同一份变形任意重复算作独立塑性和蠕变贡献。它也不要求先跨过常规屈服面才出现非弹性流动。模型含应变率和内部状态演化，因此仅比较两次计算的最高温度或最大应力不足以说明两者经历相同。定义依据见[ANSYS 2024 R2 §4.3.2.4](https://ansyshelp.ansys.com/public/Views/Secured/corp/v242/en/ans_thry/thy_mat2.html)。
+Anand描述统一的非弹性变形，不能再把同一份变形任意重复算作独立塑性和蠕变贡献。它也不要求先跨过常规屈服面才出现非弹性流动。模型含应变率和内部状态演化，因此仅比较两次计算的最高温度或最大应力不足以说明两者经历相同。本条仅保留机理解释；具体方程、参数及实现须按原始标定来源与目标软件文档核对。
 
 ## 封装资料交接字段
 

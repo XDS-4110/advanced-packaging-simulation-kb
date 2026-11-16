@@ -7,7 +7,7 @@ status: draft
 language: zh-CN
 tags: [BGA, processes, modeling, drawing-constraints]
 physics: [thermal, mechanical]
-software: [COMSOL, ANSYS]
+software: [COMSOL]
 software_versions: []
 updated_at: "2026-11-03"
 reviewed_by: ""
@@ -29,9 +29,9 @@ reviewed_at: ""
 
 瞬态热输入包括密度、比热、导热率及其温度依赖。PCB 与基板采用等效各向异性时，需要保持铜分布及层合方向的物理意义。若相变潜热影响研究目标，可用相变焓或表观比热方法，但不能重复计入潜热。
 
-## COMSOL 与 ANSYS 的交接
+## 热与结构模型的交接
 
-COMSOL 可用固体传热与固体力学的热膨胀耦合表达固态热应力；ANSYS 可用瞬态热分析向瞬态结构传递温度。软件接口仅描述建模路线，具体功能需核对版本和许可证。
+固态热应力模型需要明确热分析、温度场与热膨胀的关联。软件接口仅描述建模路线，具体功能需核对版本和许可证。
 
 时间表须单调，时间单位统一，明确插值和外推规则。对升温转折、峰值、凝固及冷却转折加密时间步，并通过进一步减小步长验证结果稳定性。检查温度映射的空间覆盖、局部极值和时刻对应，不能只核对最后一帧。
 

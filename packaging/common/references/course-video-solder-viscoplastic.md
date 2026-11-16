@@ -5,7 +5,7 @@ document_type: reference_note
 domain: packaging
 status: draft
 tags: [course-video, solder, creep, Anand, underfill]
-source_ids: [SRC-COURSE-VIDEO-SOLDER-UP, SRC-COURSE-CHIP-PACKAGING-07, SRC-ANSYS-242-ANAND, SRC-ANSYS-STRAIN-LIFE-SCOPE]
+source_ids: [SRC-COURSE-VIDEO-SOLDER-UP, SRC-COURSE-CHIP-PACKAGING-07]
 source_locator: "加餐课程/7. 锡球失效-粘塑性模型仿真上_.mkv；分段进度见正文"
 updated_at: "2026-11-02"
 reviewed_by: ""
@@ -40,10 +40,10 @@ reviewed_at: ""
 2. **“Anand最准确”。** 约23:35–24:00的转录使用绝对化评价，但没有相应比较试验；不作为模型选择规则。采用模型仍需核对材料状态、温度和应变率的标定范围。
 3. **“温度越高应变越大”。** 约26:00–27:10讨论指数项。方程左侧首先是非弹性应变率，不能把瞬时速率直接写成最终累积应变；当前内部状态、应力和后续加载历史也不能省略。
 4. **“底填一定提高可靠性”。** 33:42画面展示共同承载及温度相关弹性模型的说明；未给出所引论文和适用范围。本条不据此保证所有焊点寿命提高，也不把温度相关弹性与黏弹性视为等价。
-5. **“高周/低周按单次周期长短区分”。** 约34:10–35:50的转录把温循、回流/TCB与高周/低周并列说明，容易混淆单次周期时长、失效循环数和变形机制。不据此给BGA温循直接贴高周标签；[ANSYS概念说明](https://innovationspace.ansys.com/knowledge/forums/topic/when-is-a-strain-life-fatigue-analysis-appropriate/)明确低周疲劳需要考虑塑性。该说明不等于已选定本案例的焊料寿命关系。
+5. **“高周/低周按单次周期长短区分”。** 约34:10–35:50的转录把温循、回流/TCB与高周/低周并列说明，容易混淆单次周期时长、失效循环数和变形机制。不据此给BGA温循直接贴高周标签；寿命分类与模型选择仍需查阅原始疲劳研究依据，不由课程转录直接确定。
 6. **“底填后再次回流使连接更好”。** 约31:00–31:40的转录出现此解释，但没有器件、底填耐温、回流次数限制和测试证据；不编成通用制造步骤。热固性材料不重新熔融，也不意味着可以承受任意高温或反复回流。
 
-[ANSYS 2024 R2 Theory Reference §4.3.2.4](https://ansyshelp.ansys.com/public/Views/Secured/corp/v242/en/ans_thry/thy_mat2.html)把Anand归为统一黏塑性模型，非弹性流动依赖温度、应力、加载速率及内部状态；其流动规律也不采用常规屈服面的启动条件。以上用于核对概念，不是该课程参数的实验来源。
+本轮迁移保留课程机理笔记及其疑点，不保留旧软件教程交叉引用；Anand 的具体方程、参数单位和实现需查阅目标版本资料及原始标定文献。
 
 ## 给BGA案例的交接建议
 

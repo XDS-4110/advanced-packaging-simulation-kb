@@ -43,10 +43,5 @@
       ],
       "source_id": "SRC-BGA-ADI-GUIDELINES"
     }
-  ],
-  "previous_metadata": {
-    "ball-array-dimensions.md": "\nid: KB-BGA-FOUNDATION-20261102-004\ntitle: \"BGA球阵列与装配尺寸应怎样记录\"\ndocument_type: knowledge\ndomain: packaging\nstatus: draft\nlanguage: zh-CN\ntags: [BGA, structures]\nphysics: [thermal, mechanical]\nsoftware: []\nsoftware_versions: []\nsource_ids: [SRC-BGA-MANUFACTURING-1995, SRC-BGA-REPORT-001]\nsource_locator: \"Mearig与Goers p.435 Component Placement、p.436 Cleaning；报告图2-3\"\nupdated_at: \"2026-11-02\"\nreviewed_by: \"\"\nreviewed_at: \"\"\n",
-    "flip-chip-bga-components.md": "\nid: KB-BGA-FOUNDATION-20261102-003\ntitle: \"当前塑封倒装BGA的部件与连接关系\"\ndocument_type: knowledge\ndomain: packaging\nstatus: draft\nlanguage: zh-CN\ntags: [BGA, structures]\nphysics: [thermal, mechanical]\nsoftware: []\nsoftware_versions: []\nsource_ids: [SRC-BGA-REPORT-001]\nsource_locator: \"报告第2.2节、图2-3和表2-1\"\nupdated_at: \"2026-11-02\"\nreviewed_by: \"\"\nreviewed_at: \"\"\n",
-    "wire-bond-pbga.md": "\nid: KB-COURSE-PACKAGING-20261102-005\ntitle: \"线焊PBGA的部件与连接关系\"\ndocument_type: knowledge\ndomain: packaging\nstatus: draft\nlanguage: zh-CN\ntags: [PBGA, wire-bond, structures]\nphysics: [thermal, mechanical]\nsoftware: []\nsoftware_versions: []\nsource_ids: [SRC-COURSE-CHIP-PACKAGING-02]\nsource_locator: \"课件02 p.2–3（PDF文件页码）\"\nupdated_at: \"2026-11-02\"\nreviewed_by: \"\"\nreviewed_at: \"\"\n"
-  }
+  ]
 }

@@ -9,10 +9,10 @@ scope_note: "方法级判据，不绑定型号或工程；具体数值与设置�
 language: zh-CN
 tags: [nonlinear, convergence, solver-settings]
 physics: [thermal, structural]
-software: [ANSYS Workbench, ANSYS Mechanical]
-software_versions: ["2024 R2"]
-source_ids: [SRC-ANSYS-242-OPS-API]
-source_locator: "方法与判据为本库归纳；参数名以 v242 界面与 OPS-04/06 为准"
+software: []
+software_versions: []
+source_ids: [SRC-KB-COMSOL-MIGRATION-20261116]
+source_locator: "本库方法草稿；不含已验证的软件字段映射"
 updated_at: "2026-11-03"
 reviewed_by: ""
 reviewed_at: ""

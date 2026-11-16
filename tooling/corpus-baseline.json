@@ -1,10 +1,14 @@
 {
-  "note": "Indexed corpus baseline. Update deliberately in the same PR that changes knowledge content.",
+  "note": "Effective knowledge text and metadata, including sidecar provenance. Rebuild in the same PR.",
   "commit": "set-at-merge",
-  "generated_at": "2026-11-03T08:02:16.215Z",
-  "documents": 119,
-  "chunks": 585,
-  "corpus_sha256": "0bba538c862ac59b4b74377812b47ea23f4747a9e8c42402cf5355fdef14ae44",
+  "generated_at": "2026-11-16",
+  "documents": 96,
+  "chunks": 403,
+  "corpus_sha256": "7ca0f6091a5cc12d4e22a3d66f3a1c58e0642f9b042de615386b4042e1a516ee",
+  "by_status": {
+    "draft": 92,
+    "reviewed": 4
+  },
   "excludes": [
     "README.md",
     "AGENTS.md",

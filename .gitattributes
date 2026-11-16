@@ -1,1 +1,2 @@
+* text=auto eol=lf
 files/*.pdf filter=lfs diff=lfs merge=lfs -text

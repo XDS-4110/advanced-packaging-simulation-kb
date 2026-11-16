@@ -9,8 +9,8 @@ tags: [CTE, reference-temperature, warpage, material-evidence]
 physics: [mechanical, thermal]
 software: []
 software_versions: []
-source_ids: [SRC-COURSE-VIDEO-WARPAGE-CORRECTION, SRC-ANSYS-242-CTE-DEFINITION, SRC-ANSYS-242-THERMAL-EXPANSION]
-source_locator: "更正视频00:37–03:10；ANSYS 2024 R2 Linear Material Models及Material Reference §3.5"
+source_ids: [SRC-COURSE-VIDEO-WARPAGE-CORRECTION]
+source_locator: "更正视频00:37–03:10；仅保留材料与工艺概念，软件输入定义另行核对"
 updated_at: "2026-11-02"
 reviewed_by: ""
 reviewed_at: ""
@@ -20,9 +20,9 @@ reviewed_at: ""
 
 ## 一张CTE表为什么还需要参考条件
 
-热膨胀系数CTE描述热应变随温度的关系，但“平均/割线系数”与“瞬时/切线系数”的定义不同。割线系数联系某个共同参考点与当前温度，瞬时系数描述当前温度附近的变化率。因而一列温度和一列CTE并不足以完整定义材料输入，还需说明系数类型、测量基准及材料方向。[ANSYS 2024 R2材料说明](https://ansyshelp.ansys.com/public/Views/Secured/corp/v242/en/ans_mat/ansmattherexp.html)区分了这两种输入与直接输入热应变的方式。
+热膨胀系数CTE描述热应变随温度的关系，但“平均/割线系数”与“瞬时/切线系数”的定义不同。割线系数联系某个共同参考点与当前温度，瞬时系数描述当前温度附近的变化率。因而一列温度和一列CTE并不足以完整定义材料输入，还需说明系数类型、测量基准及材料方向。具体软件输入方式须查阅目标版本的热膨胀文档，不能由本条直接生成材料输入。
 
-Engineering Data中的Zero-Thermal-Strain Reference Temperature与CTE数据的参考基准有关。它不应仅因工艺中出现某个峰值温度就被任意改成该数值；数据定义与模型参考状态不同时，需要一致的转换。参见[2024 R2 Engineering Data说明](https://ansyshelp.ansys.com/public/Views/Secured/corp/v242/en/wb_eda/eda_linear_mat_mdl.html)。
+CTE 数据的参考基准不能仅因工艺中出现某个峰值温度就被任意改写；数据定义与模型参考状态不同时，需要核对一致的转换。此处不再提供旧软件字段映射。
 
 ## 从更正视频得到的资料整理要求
 
@@ -44,6 +44,6 @@ Engineering Data中的Zero-Thermal-Strain Reference Temperature与CTE数据的�
 
 ## 适用范围与待验证事项
 
-本条适用于整理BGA、2.5D及其他封装的热机械材料证据，不提供软件操作步骤或推荐数值。材料输入与参考温度的具体映射交由simulation负责人核验；课程使用2020 R2，当前项目基线2024 R2。本条仍为draft，未完成算例复现。
+本条适用于整理BGA、2.5D及其他封装的热机械材料证据，不提供软件操作步骤或推荐数值。材料输入与参考温度的具体映射交由simulation负责人核验；历史课程软件与当前 COMSOL 基线不同。本条仍为draft，未完成算例复现。
 
 课程观察与尚未确认的部分见[更正视频笔记](../references/course-video-warpage-correction.md)。

@@ -7,7 +7,7 @@ status: draft
 language: zh-CN
 tags: [2.5D, processes, modeling, drawing-constraints]
 physics: [thermal, mechanical]
-software: [COMSOL, ANSYS]
+software: [COMSOL]
 software_versions: []
 updated_at: "2026-11-03"
 reviewed_by: ""
@@ -42,4 +42,4 @@ reviewed_at: ""
 
 ## 建模及绘图约束
 
-COMSOL 或 ANSYS 模型中每个阶段要明确“已有、加入、移除、释放”的实体和界面。载具存在时才提供相应支承；芯片贴装之前不得存在芯片底填的承载贡献。阶段图用同一坐标系与部件编号，临时载具使用独立图例。未知温度、压力、时间和尺寸保留变量，不填写所谓通用工艺值。
+模型中每个阶段要明确“已有、加入、移除、释放”的实体和界面。载具存在时才提供相应支承；芯片贴装之前不得存在芯片底填的承载贡献。阶段图用同一坐标系与部件编号，临时载具使用独立图例。未知温度、压力、时间和尺寸保留变量，不填写所谓通用工艺值。

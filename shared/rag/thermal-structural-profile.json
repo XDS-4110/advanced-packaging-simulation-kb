@@ -1,47 +1,72 @@
 {
-  "profile_id": "thermal-structural-2024r2-compact",
-  "revision": 2,
-  "status": "configuration_contract_not_executed",
-  "software_release": "2024 R2",
+  "profile_id": "thermal-structural-comsol64",
+  "revision": 3,
+  "status": "documentation_guidance_not_executed",
+  "software_release": "COMSOL Multiphysics 6.4",
   "core_operation_documents": [
     {
-      "id": "KB-ANSYS242-OPS-01",
-      "path": "simulation/software/ansys-workbench-2024r2/01-geometry-materials.md",
-      "stage": "geometry-materials"
+      "stage": "geometry-materials",
+      "id": "COMSOL-GUIDE-GEOMETRY-PARAMETERS",
+      "path": "simulation/software/comsol/11-geometry-parameters.md"
     },
     {
-      "id": "KB-ANSYS242-OPS-02",
-      "path": "simulation/software/ansys-workbench-2024r2/02-scope-contacts.md",
-      "stage": "scope-contacts"
+      "stage": "geometry-materials",
+      "id": "COMSOL-GUIDE-TEMPERATURE-UNITS",
+      "path": "simulation/software/comsol/01-temperature-units.md"
     },
     {
-      "id": "KB-ANSYS242-OPS-03",
-      "path": "simulation/software/ansys-workbench-2024r2/03-mesh.md",
-      "stage": "meshing"
+      "stage": "scope-contacts",
+      "id": "COMSOL-GUIDE-UNION-ASSEMBLY",
+      "path": "simulation/software/comsol/02-union-assembly.md"
     },
     {
-      "id": "KB-ANSYS242-OPS-04",
-      "path": "simulation/software/ansys-workbench-2024r2/04-transient-thermal.md",
-      "stage": "transient-thermal"
+      "stage": "scope-contacts",
+      "id": "COMSOL-GUIDE-NAMED-SELECTIONS",
+      "path": "simulation/software/comsol/03-named-selections.md"
     },
     {
-      "id": "KB-ANSYS242-OPS-05",
-      "path": "simulation/software/ansys-workbench-2024r2/05-temperature-transfer-structure.md",
-      "stage": "temperature-transfer"
+      "stage": "scope-contacts",
+      "id": "COMSOL-GUIDE-AIR-EXPOSED-BOUNDARIES",
+      "path": "simulation/software/comsol/04-air-exposed-boundaries.md"
     },
     {
-      "id": "KB-ANSYS242-OPS-06",
-      "path": "simulation/software/ansys-workbench-2024r2/06-solve-results.md",
-      "stage": "solve-results"
+      "stage": "meshing",
+      "id": "COMSOL-GUIDE-MESH-QUALITY-CONVERGENCE",
+      "path": "simulation/software/comsol/08-mesh-quality-convergence.md"
+    },
+    {
+      "stage": "transient-thermal",
+      "id": "COMSOL-GUIDE-TEMPERATURE-VS-CONVECTION",
+      "path": "simulation/software/comsol/05-temperature-vs-convection.md"
+    },
+    {
+      "stage": "transient-thermal",
+      "id": "COMSOL-GUIDE-THERMAL-CYCLE-FUNCTIONS",
+      "path": "simulation/software/comsol/07-thermal-cycle-functions.md"
+    },
+    {
+      "stage": "transient-thermal",
+      "id": "COMSOL-GUIDE-TIME-STEPPING",
+      "path": "simulation/software/comsol/09-time-stepping-tolerances.md"
+    },
+    {
+      "stage": "temperature-transfer",
+      "id": "COMSOL-GUIDE-TRANSIENT-THERMAL-STRESS",
+      "path": "simulation/software/comsol/06-transient-thermal-stress.md"
+    },
+    {
+      "stage": "solve-results",
+      "id": "COMSOL-GUIDE-MPH-SAVE-READBACK",
+      "path": "simulation/software/comsol/10-mph-save-readback.md"
     }
   ],
-  "core_article_count": 6,
+  "core_article_count": 11,
   "default_mode": "operation_guidance",
   "default_status_allowlist": [
     "reviewed",
     "validated"
   ],
-  "selection": "route by workflow stage and intent; retrieve relevant articles, do not inject all six on every request",
+  "selection": "按阶段检索相关条目；路由结果保留 draft，不构成工程参数授权",
   "chunks": "split by coherent task headings; retain source IDs, version limits, input conditions, result checks and limitations together",
   "conditional_dependencies": {
     "material_query": [
@@ -59,9 +84,6 @@
     ],
     "structure_change_query": [
       "simulation/modeling/insert-interposer-workflow.md"
-    ],
-    "pymechanical_api_or_importload_issue_query": [
-      "simulation/software/ansys-workbench-2024r2/07-pymechanical-thermal-structural.md"
     ]
   },
   "exclude_from_default_context": [
@@ -71,10 +93,9 @@
     "raw upstream repositories",
     "files/*.pdf",
     "books/*.pdf",
-    "historical case snapshots unless explicitly requested",
-    "data/pymechanical-coupling-selection.json"
+    "historical case snapshots unless explicitly requested"
   ],
   "exact_parameter_rule": "retrieve tables by material/case/property/revision and preserve units; do not infer missing values from embeddings",
   "provenance": "source-selection.json stores audit metadata; it is not an operation chunk",
-  "implementation_note": "no embedding index, retriever, stage router or latency benchmark has been executed in this change"
+  "implementation_note": "只读检索与路由已实现；软件操作及物理结果仍需具体项目运行核验"
 }

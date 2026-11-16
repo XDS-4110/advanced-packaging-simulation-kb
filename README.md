@@ -1,43 +1,23 @@
 # LLM 驱动先进封装自动化建模与仿真知识库
 
-为先进封装自动化建模与仿真提供可追溯的 RAG 知识。已有目录、模板及一个待审核的 BGA 设置提取案例；尚无经验证的仿真结果。
+面向电子封装的可追溯知识库，当前软件基线为 **COMSOL Multiphysics 6.4**。保留封装结构、材料机理、工艺、可靠性与数值验证知识；软件操作必须注明来源版本、模块许可和验证范围。旧工程快照不作为当前项目输入。
 
-## 两个知识入口
+| 入口 | 内容 |
+| --- | --- |
+| [封装知识](packaging/README.md) | BGA、2.5D、TSV、材料、工艺与可靠性 |
+| [仿真知识](simulation/README.md) | 建模、热与结构分析、验证及案例规则 |
+| [COMSOL 操作资料](simulation/software/comsol/README.md) | 官方资料归纳，全部新条目为待审核草稿 |
+| [材料资料](shared/materials/README.md) | 材料身份、单位、温区与审核边界 |
+| [只读检索工具](tooling/README.md) | 搜索、流程路由、注册信息查询与一致性检查 |
 
-| 入口 | 主要维护 | 内容 |
-| --- | --- | --- |
-| [封装知识 packaging](packaging/README.md) | 封装协作者 | 基础、结构、工艺、材料原始资料、可靠性试验与封装案例 |
-| [仿真知识 simulation](simulation/README.md) | 仿真负责人 | 建模等效、热分析、结构分析、发热应力翘曲、温度循环、材料输入、软件操作与验证 |
+## 使用边界
 
-仿真基线：**ANSYS Workbench 2024 R2**。当前重点为运行发热后的应力与翘曲，以及温度循环。
+- 默认正式检索仅允许 `reviewed` / `validated`；`draft` 只供解释和方案讨论，不能自动作为工程参数。
+- 官方文档已核对不等于本地运行已验证；仿真计算完成也不等于物理模型已验证。
+- 现有论文、课程与上游来源保留其年代、许可和原审核状态；教材演示数值不转成推荐值。
+- 实际项目状态由客户端读取；本知识库的资料不能替代当前模型、域/面编号、保存设置及求解记录。
+- 本次仅整理资料与只读工具，未为客户端接入 MCP，也不提供直接写入求解器的执行接口。
 
-## 公共资料
+协作遵循 [贡献约定](CONTRIBUTING.md)、[RAG 规范](shared/rag/README.md) 与 [来源登记](shared/references/catalog.csv)。新增知识先登记来源，默认 `draft`；不得猜测缺失参数，不上传未授权的全文、工程文件或密钥。
 
-- [文件：论文与书籍原件](files/README.md)
-
-
-- [公共材料库](shared/materials/README.md)
-- [填写模板](shared/templates/README.md)
-- [RAG 入库规范](shared/rag/README.md)
-- [资料来源登记](shared/references/README.md)
-- [贡献与协作约定](CONTRIBUTING.md)
-
-## 两人协作方式
-
-1. 封装协作者在 `packaging/` 补充结构、工艺、材料原始证据及试验条件。
-2. 仿真负责人在 `simulation/` 补充建模假设、材料输入、边界、网格、求解和验证。
-3. 材料身份、原始资料与属性统一维护在 `shared/materials/`，封装和仿真共同引用材料 ID 与修订版。`simulation/materials/` 只记录本构选择、单位转换和软件映射；案例中的历史输入保持可追溯。
-4. 先在 `shared/references/catalog.csv` 登记来源，再复制模板建立条目，默认状态为 `draft`。
-5. 知识元数据 `domain` 填 `packaging`、`simulation` 或公共材料的 `shared`，方便 RAG 按领域过滤。模板和目录说明不进入正式检索索引。
-
-目录分工不限制协作者的实际写入权限；本次整理不修改仓库可见性或成员权限。
-
-缺失信息标注“待补充”，不填猜测数值。不上传密钥、受限工程文件或未经许可的论文和标准全文；外部内容保留原始许可和署名。公开前另行确定本仓库许可。
-
-## 仿真排错案例
-
-新增 [COMSOL 与 ANSYS 问题及解决办法入口](simulation/troubleshooting/README.md)，用于积累报错、复现条件、原因排查、解决步骤和验证证据。COMSOL 版本逐案注明；现阶段为目录与模板，尚无已验证排错案例。
-
-## BGA 参数提取案例
-
-- [BGA 未求解工程：参数、来源与待补充清单](simulation/cases/bga-2024r2-unsolved/README.md)（draft，未求解；含待复核设置，不能直接作为推荐输入）。
+本次迁移范围与待审事项见 [清理记录](tooling/COMSOL_MIGRATION.md)。
